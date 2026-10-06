@@ -1,0 +1,186 @@
+@import 'tailwindcss';
+
+/* Lufga, self-hosted */
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaThin.woff2') format('woff2'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaThinItalic.woff2') format('woff2'); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaExtraLight.woff2') format('woff2'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaExtraLightItalic.woff2') format('woff2'); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaLight.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaLightItalic.woff2') format('woff2'); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaRegular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaItalic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaMedium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaMediumItalic.woff2') format('woff2'); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaSemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaSemiBoldItalic.woff2') format('woff2'); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaBold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaBoldItalic.woff2') format('woff2'); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaExtraBold.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaExtraBoldItalic.woff2') format('woff2'); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaBlack.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lufga'; src: url('/fonts/LufgaBlackItalic.woff2') format('woff2'); font-weight: 900; font-style: italic; font-display: swap; }
+
+@theme {
+  --font-serif: 'Lufga', system-ui, sans-serif;
+  --font-sans: 'Lufga', system-ui, sans-serif;
+
+  --color-profun-orange: #F85707;
+  --color-profun-navy: #000050;
+  --color-parchment: #F9F8F6;
+  --color-charcoal: #1C1C1A;
+  --color-stone: #6B6B65;
+  --color-fog: #E2E0DB;
+  --color-mist: #F2F1EF;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: auto; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+section[id] { scroll-margin-top: 88px; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F9F8F6;
+  color: #1C1C1A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar { width: 0; background: transparent; }
+
+.font-serif { font-family: var(--font-serif); }
+.font-sans  { font-family: var(--font-sans); }
+
+/* ── Scroll reveal ───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ── Hero text stagger ───────────────────────────────────── */
+.hero-line {
+  overflow: hidden;
+}
+.hero-line-inner {
+  display: block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s ease;
+}
+.hero-line-inner.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── Scroll indicator ────────────────────────────────────── */
+@keyframes scrollLine {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(300%); opacity: 0; }
+}
+
+/* ── Image reveal clip ───────────────────────────────────── */
+.img-reveal {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-reveal.visible {
+  clip-path: inset(0% 0 0 0);
+}
+
+/* ── Marquee ─────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Video overlay fade ──────────────────────────────────── */
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.hero-fade-in {
+  animation: heroFadeIn 1.6s ease forwards;
+}
+
+/* ── Ken Burns ───────────────────────────────────────────── */
+@keyframes kenBurns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+.ken-burns {
+  animation: kenBurns 12s ease-in-out forwards;
+}
+
+
+/* ── Showcase polish: smooth, GPU-friendly motion ─────────── */
+.reveal, .hero-line-inner, .img-reveal { will-change: transform, opacity; backface-visibility: hidden; }
+.reveal { transform: translate3d(0, 32px, 0); }
+.reveal.visible { transform: translate3d(0, 0, 0); }
+.ken-burns { animation: kenBurns 20s ease-out forwards; will-change: transform; }
+.marquee-track { will-change: transform; animation-duration: 38s; }
+
+/* Delivery reel cross-fade */
+.reel-slide { opacity: 0; transform: scale(1.06); transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 7s ease-out; will-change: opacity, transform; }
+.reel-slide.is-active { opacity: 1; transform: scale(1); }
+@keyframes reelCopyIn { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+.reel-copy > * { animation: reelCopyIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.reel-copy > *:nth-child(2) { animation-delay: 0.08s; }
+.reel-copy > *:nth-child(3) { animation-delay: 0.16s; }
+.reel-copy > *:nth-child(4) { animation-delay: 0.24s; }
+@keyframes reelProgress { from { width: 0; } to { width: 100%; } }
+.reel-progress { animation: reelProgress linear forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .reveal, .hero-line-inner { opacity: 1 !important; transform: none !important; }
+  .img-reveal { clip-path: none !important; }
+}
+
+/* Page transition */
+@keyframes pageEnter { from { opacity: 0; transform: translate3d(0, 14px, 0); } to { opacity: 1; transform: none; } }
+.page-enter { animation: pageEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+
+/* ── Social icons: lift + brand colour ──────────────────── */
+.social-icon-link { position: relative; transition: color .3s ease, transform .45s cubic-bezier(.16,1,.3,1); }
+.social-icon-link::after { content: ''; position: absolute; left: 50%; bottom: -10px; width: 5px; height: 5px; border-radius: 9999px; background: var(--brand); transform: translateX(-50%) scale(0); transition: transform .35s cubic-bezier(.16,1,.3,1); }
+.social-icon-link:hover, .social-icon-link:focus-visible { color: var(--brand); transform: translateY(-3px) scale(1.1); outline: none; }
+.social-icon-link:hover::after, .social-icon-link:focus-visible::after { transform: translateX(-50%) scale(1); }
+
+/* ── Partner cards: colour rises from below ─────────────── */
+.partner-fill { position: absolute; inset: 0; background: var(--brand); transform: translate3d(0, 101%, 0); transition: transform .6s cubic-bezier(.16,1,.3,1); }
+.partner-card:hover .partner-fill { transform: none; }
+.partner-card:hover .partner-name { color: #fff; }
+.partner-card:hover .partner-sub { color: rgba(255,255,255,.85); }
+.partner-card:hover .partner-dot { transform: scale(1.6); background: #fff !important; }
+
+/* ── Quote glows drift ─────────────────────────────────── */
+@keyframes glowDrift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(60px,40px,0) scale(1.12); } }
+.quote-glow { animation: glowDrift 16s ease-in-out infinite; will-change: transform; }
+.quote-glow-2 { animation-duration: 20s; animation-direction: reverse; }
+.partner-plate { box-shadow: 0 1px 2px rgba(0,0,80,.06), 0 12px 28px -14px rgba(0,0,80,.28); transition: box-shadow .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1) !important; }
+.partner-card:hover .partner-plate { transform: translate3d(0,-4px,0); box-shadow: 0 2px 4px rgba(0,0,80,.08), 0 24px 48px -16px rgba(0,0,80,.5); }

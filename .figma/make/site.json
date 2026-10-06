@@ -1,0 +1,11 @@
+{
+  "description": "Delivers a premium, elegant corporate website showcasing ProFun's services with refined typography, large authentic imagery, and a minimalist, confident design.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  },
+  "title": "The ProFun Academy"
+}
