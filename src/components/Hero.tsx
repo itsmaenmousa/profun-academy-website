@@ -69,7 +69,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="text-[20px] leading-relaxed text-white/65 mb-12 max-w-[520px] font-light transition-all duration-700"
+            className="text-[17px] sm:text-[clamp(17px,1.6vw,22px)] leading-relaxed text-white/70 mb-12 max-w-[520px] md:max-w-none md:whitespace-nowrap font-light transition-all duration-700"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(16px)',
