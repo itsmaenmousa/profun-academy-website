@@ -6,14 +6,14 @@ const services = [
   {
     n: '01',
     title: 'Bespoke Learning Experience Design & Delivery',
-    desc: 'We design and deliver learning experiences built entirely from the ground up for your organisation, your roles and your operational context. No off-the-shelf content. Every programme reflects your brand, your standards and your workforce.',
-    context: 'From individual modules to multi-month capability programmes. Suitable for pre-opening, post-acquisition or performance improvement contexts.',
+    desc: 'We design and deliver learning experiences built entirely from the ground up for your organisation, your roles and your operational context. No off-the-shelf content. Every program reflects your brand, your standards and your workforce.',
+    context: 'From individual modules to multi-month capability programs. Suitable for pre-opening, post-acquisition or performance improvement contexts.',
   },
   {
     n: '02',
     title: 'In-Person Learning',
     desc: 'Facilitated learning delivered on-site or at designated training facilities. Our facilitators are experienced attractions professionals who bring operational credibility to every session.',
-    context: 'Ideal for leadership development, technical operations training and cultural alignment programmes requiring direct facilitation.',
+    context: 'Ideal for leadership development, technical operations training and cultural alignment programs requiring direct facilitation.',
   },
   {
     n: '03',
@@ -25,18 +25,18 @@ const services = [
     n: '04',
     title: 'Accredited & Certified Learning Experiences',
     desc: 'Accredited and certified programs delivered with Jeff Ellis & Associates and TVTC (Technical and Vocational Training Corporation), carrying real-world weight with employers and industry regulators.',
-    context: 'Lifeguard training, ride operator certification, aquatics management, vocational qualifications and attraction operations programmes.',
+    context: 'Lifeguard training, ride operator certification, aquatics management, vocational qualifications and attraction operations programs.',
   },
   {
     n: '05',
     title: 'Human Capital & Capability Development',
-    desc: 'Strategic consultancy and programme design to build organisation-wide capability. Includes competency framework development, succession planning support, talent identification and structured development pathways.',
+    desc: 'Strategic consultancy and program design to build organisation-wide capability. Includes competency framework development, succession planning support, talent identification and structured development pathways.',
     context: 'Typically engaged as part of a wider workforce transformation or pre-opening capability build for large-scale attractions.',
   },
   {
     n: '06',
     title: 'Learning Strategy Formulation & Management',
-    desc: 'We work with senior leadership to define, sequence and manage a learning strategy aligned with operational objectives. Includes learning needs analysis, annual planning, budget modelling and ongoing programme governance.',
+    desc: 'We work with senior leadership to define, sequence and manage a learning strategy aligned with operational objectives. Includes learning needs analysis, annual planning, budget modelling and ongoing program governance.',
     context: 'Best suited to operators with multiple venues, high workforce volumes or significant annual training investment.',
   },
 ]
@@ -68,7 +68,7 @@ export default function AcademyServices() {
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
             <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">
-              Each service is designed to address a specific operational learning need. They can be engaged independently or combined as part of an integrated capability programme.
+              Each service is designed to address a specific operational learning need. They can be engaged independently or combined as part of an integrated capability program.
             </p>
           </div>
         </div>

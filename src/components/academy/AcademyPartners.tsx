@@ -25,7 +25,7 @@ const partners = [
   {
     name: 'Ellis & Associates',
     full: 'Jeff Ellis & Associates',
-    role: 'Aquatics safety management and certification programmes',
+    role: 'Aquatics safety management and certification programs',
   },
   {
     name: 'TEA',

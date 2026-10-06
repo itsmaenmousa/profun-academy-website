@@ -5,7 +5,7 @@ const partners = [
   { short: 'IAAPA', logo: './partner-iaapa.png', full: 'International Association of Amusement Parks and Attractions', role: 'The global association for the attractions industry', color: '#3985FD' },
   { short: 'Ellis & Associates', logo: './partner-ellis.png', full: 'Jeff Ellis & Associates', role: 'World leader in aquatic safety, lifeguard training and attraction operations', color: '#00AFDC' },
   { short: 'SST', logo: './partner-sst.png', full: 'Safety Skills Training DMCC', role: 'International training division of Ellis & Associates and our delivery partner for the full Ellis portfolio', color: '#15D2A4' },
-  { short: 'TVTC', logo: '', full: 'Technical and Vocational Training Corporation', role: 'National accreditation for vocational attractions programmes in Saudi Arabia', color: '#99CA32' },
+  { short: 'TVTC', logo: '', full: 'Technical and Vocational Training Corporation', role: 'National accreditation for vocational attractions programs in Saudi Arabia', color: '#99CA32' },
   { short: 'AAM', logo: './partner-aam.png', full: 'American Alliance of Museums', role: 'Professional standards and advocacy for museums worldwide', color: '#FFCA03' },
   { short: 'WWA', logo: './partner-wwa.png', full: 'World Waterpark Association', role: 'The industry body for waterpark operators and suppliers', color: '#F85707' },
   { short: 'IRT', logo: './partner-irt.png', full: 'International Ride Training', role: 'Specialist ride operations training and certification', color: '#FC026F' },
@@ -33,7 +33,7 @@ export default function Partners() {
           </h2>
         </div>
         <p className="max-w-[420px] text-[18px] text-[#6B6B65] leading-relaxed font-light">
-          Accreditation partners, delivery partners and industry bodies that keep every Academy programme aligned with global best practice.
+          Accreditation partners, delivery partners and industry bodies that keep every Academy program aligned with global best practice.
         </p>
       </div>
 

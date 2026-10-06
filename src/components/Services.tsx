@@ -5,7 +5,7 @@ const services = [
   {
     number: '01',
     title: 'Bespoke Learning Experiences Design & Delivery',
-    desc: 'Custom-built programmes developed from scratch around your organisation\'s specific roles, culture and strategic objectives.',
+    desc: 'Custom-built programs developed from scratch around your organisation\'s specific roles, culture and strategic objectives.',
   },
   {
     number: '02',
@@ -15,12 +15,12 @@ const services = [
   {
     number: '03',
     title: 'Blended or Online Learning',
-    desc: 'Hybrid programmes combining structured digital content with live touchpoints to suit distributed or part-time workforces.',
+    desc: 'Hybrid programs combining structured digital content with live touchpoints to suit distributed or part-time workforces.',
   },
   {
     number: '04',
     title: 'Accredited & Certified Learning Experiences',
-    desc: 'Industry-recognised certification pathways through our partners Jeff Ellis & Associates and TVTC-accredited programmes.',
+    desc: 'Industry-recognised certification pathways through our partners Jeff Ellis & Associates and TVTC-accredited programs.',
   },
   {
     number: '05',
@@ -30,7 +30,7 @@ const services = [
   {
     number: '06',
     title: 'Learning Strategy Formulation & Management',
-    desc: 'End-to-end learning strategy design: needs analysis, programme architecture, governance, measurement and continuous improvement.',
+    desc: 'End-to-end learning strategy design: needs analysis, program architecture, governance, measurement and continuous improvement.',
   },
 ]
 

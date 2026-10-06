@@ -33,7 +33,7 @@ const cols: { title: string; links: [string, string][] }[] = [
     title: 'Services',
     links: [
       ['Bespoke Learning Design', '/services'], ['In-Person Learning', '/services'], ['Blended & Online', '/services'],
-      ['Accredited Programmes', '/programs'], ['Capability Development', '/services'], ['Learning Strategy', '/services'],
+      ['Accredited Programs', '/programs'], ['Capability Development', '/services'], ['Learning Strategy', '/services'],
     ],
   },
   {

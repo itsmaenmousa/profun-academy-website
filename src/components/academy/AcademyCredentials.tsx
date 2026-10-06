@@ -47,7 +47,7 @@ export default function AcademyCredentials() {
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
             <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">
-              ProFun Academy programmes carry accreditation from globally recognised bodies, ensuring credentials that hold weight with employers, regulators and industry peers worldwide.
+              ProFun Academy programs carry accreditation from globally recognised bodies, ensuring credentials that hold weight with employers, regulators and industry peers worldwide.
             </p>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function AcademyCredentials() {
 
             <div className="border-t border-[#DDDBD6] pt-8">
               <p className="text-[14px] text-[#6B6B65] font-light leading-relaxed">
-                TVTC accreditation ensures ProFun Academy vocational programmes meet national standards for workforce qualification in the Kingdom of Saudi Arabia, supporting Saudisation and national capability development objectives.
+                TVTC accreditation ensures ProFun Academy vocational programs meet national standards for workforce qualification in the Kingdom of Saudi Arabia, supporting Saudisation and national capability development objectives.
               </p>
             </div>
           </div>

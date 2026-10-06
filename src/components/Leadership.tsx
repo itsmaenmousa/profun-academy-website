@@ -6,7 +6,7 @@ const team = [
     name: 'Salah Elatrash',
     photo: './team-salah-elatrash.jpg',
     role: 'Partner',
-    bio: 'Salah leads ProFun\'s operations advisory practice across the Middle East and Africa, with deep expertise in workforce capability development and senior leadership programme design.',
+    bio: 'Salah leads ProFun\'s operations advisory practice across the Middle East and Africa, with deep expertise in workforce capability development and senior leadership program design.',
   },
   {
     name: 'Michael Oswald',
@@ -18,7 +18,7 @@ const team = [
     name: 'Ryan Phillips',
     photo: './team-ryan-phillips.jpg',
     role: 'General Manager',
-    bio: 'Ryan oversees programme management and client delivery, with a focus on learning systems design and regional business development across ProFun\'s international portfolio.',
+    bio: 'Ryan oversees program management and client delivery, with a focus on learning systems design and regional business development across ProFun\'s international portfolio.',
   },
   {
     name: 'Ludwig Louw',

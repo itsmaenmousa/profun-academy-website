@@ -23,7 +23,7 @@ export default function Contact() {
               Build capability<br className="hidden sm:block" /> that lasts.
             </h2>
             <p className="text-[19px] text-[#6B6B65] leading-relaxed font-light mb-12">
-              Whether you need a single programme or a full learning strategy, tell us about your team and we will shape the right approach with you.
+              Whether you need a single program or a full learning strategy, tell us about your team and we will shape the right approach with you.
             </p>
 
             <div className="space-y-8">

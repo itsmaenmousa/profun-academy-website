@@ -164,7 +164,7 @@ export default function AcademyContact() {
                         <option value="bespoke" className="bg-[#111110]">Bespoke learning experience design</option>
                         <option value="inperson" className="bg-[#111110]">In-person learning</option>
                         <option value="blended" className="bg-[#111110]">Blended or online learning</option>
-                        <option value="accredited" className="bg-[#111110]">Accredited programmes</option>
+                        <option value="accredited" className="bg-[#111110]">Accredited programs</option>
                         <option value="hcd" className="bg-[#111110]">Human capital development</option>
                         <option value="strategy" className="bg-[#111110]">Learning strategy</option>
                       </select>

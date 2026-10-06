@@ -47,7 +47,7 @@ const channels = [
     color: '#15D2A4',
     label: 'Blended',
     title: 'Blended Learning.',
-    desc: 'The most effective approach for lasting behavioural change, combining digital, live and on-the-job components into a single coherent programme.',
+    desc: 'The most effective approach for lasting behavioural change, combining digital, live and on-the-job components into a single coherent program.',
     tags: ['Pre-Work', 'Live Session', 'Sustained Follow-Through', 'Spaced Learning Design'],
     image: './academy-blended.jpg',
     pos: '50% 42%',

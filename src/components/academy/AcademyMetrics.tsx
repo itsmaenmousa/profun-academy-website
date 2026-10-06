@@ -6,7 +6,7 @@ const metrics = [
   { value: 45, suffix: '+', label: 'Years in business', sub: 'Founded in 1980' },
   { value: 500, suffix: '+', label: 'Clients & projects', sub: 'Some of the world\'s most iconic destinations' },
   { value: 50, suffix: '+', label: 'Countries served', sub: 'Operating across every continent' },
-  { value: 10000, suffix: '+', label: 'Trainees', sub: 'Across all programme levels', format: (n: number) => n >= 1000 ? `${(n/1000).toFixed(0)}K` : String(n) },
+  { value: 10000, suffix: '+', label: 'Trainees', sub: 'Across all program levels', format: (n: number) => n >= 1000 ? `${(n/1000).toFixed(0)}K` : String(n) },
 ]
 
 function Metric({ m, active }: { m: typeof metrics[0]; active: boolean }) {

@@ -41,7 +41,7 @@ const modes = [
       </svg>
     ),
     headline: 'Self-directed. Accessible. Scalable.',
-    desc: 'Purpose-built digital learning experiences for self-directed consumption. Designed for compliance programmes, knowledge foundations and wide-reach onboarding. Our eLearning standards mandate industry-relevant scenarios, not generic content dropped into a player.',
+    desc: 'Purpose-built digital learning experiences for self-directed consumption. Designed for compliance programs, knowledge foundations and wide-reach onboarding. Our eLearning standards mandate industry-relevant scenarios, not generic content dropped into a player.',
     features: ['Available 24/7 on any device', 'SCORM-compatible for LMS integration', 'Branching scenario-based design', 'Progress tracking and reporting', 'Supports onboarding at scale'],
     image: './academy-elearning.jpg',
   },
@@ -54,7 +54,7 @@ const modes = [
       </svg>
     ),
     headline: 'Learning through doing. In the real environment.',
-    desc: 'The highest-impact learning occurs within the operational environment itself. Experiential programmes place learners in live or simulated conditions, requiring them to make real decisions, manage real consequences and reflect on real outcomes with skilled facilitation support.',
+    desc: 'The highest-impact learning occurs within the operational environment itself. Experiential programs place learners in live or simulated conditions, requiring them to make real decisions, manage real consequences and reflect on real outcomes with skilled facilitation support.',
     features: ['Live operational exercises', 'Emergency scenario simulations', 'Guest interaction role-plays', 'Ride and safety practicals', 'Debrief and structured reflection'],
     image: './academy-experiential.jpg',
   },
@@ -67,9 +67,9 @@ const modes = [
         <circle cx="9" cy="9" r="3" stroke="currentColor" strokeWidth="1.3"/>
       </svg>
     ),
-    headline: 'The most effective programmes use all modes.',
-    desc: 'Blended pathways sequence digital pre-learning, live facilitation, on-site practicals and post-programme coaching into a coherent experience. They are the standard for our flagship capability programmes where depth, retention and behaviour change are the measurable outcomes.',
-    features: ['Structured multi-modal pathways', 'Pre-work, live sessions, practicals', 'Coaching and follow-up', 'Competency-based assessment', 'Recommended for all leadership programmes'],
+    headline: 'The most effective programs use all modes.',
+    desc: 'Blended pathways sequence digital pre-learning, live facilitation, on-site practicals and post-program coaching into a coherent experience. They are the standard for our flagship capability programs where depth, retention and behaviour change are the measurable outcomes.',
+    features: ['Structured multi-modal pathways', 'Pre-work, live sessions, practicals', 'Coaching and follow-up', 'Competency-based assessment', 'Recommended for all leadership programs'],
     image: './academy-blended.jpg',
   },
 ]

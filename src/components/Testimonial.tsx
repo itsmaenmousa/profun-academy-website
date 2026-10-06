@@ -19,7 +19,7 @@ export default function Testimonial() {
             <path d="M0 34V20.4C0 8.9 6.1 2.1 18.2 0l1.7 4.3C13.4 6.2 10.3 9.8 10 15.2h8.3V34H0Zm24.1 0V20.4C24.1 8.9 30.2 2.1 42.3 0L44 4.3c-6.5 1.9-9.6 5.5-9.9 10.9h8.3V34H24.1Z" fill="#FFCA03" />
           </svg>
           <blockquote className="font-serif text-[clamp(22px,2.6vw,42px)] text-white leading-[1.32] mb-12 tracking-[-0.005em] text-balance">
-            Every programme is built from real industry experience and delivered by people who have worked at the highest levels of the attractions world.
+            Every program is built from real industry experience and delivered by people who have worked at the highest levels of the attractions world.
           </blockquote>
           <div className="flex flex-col items-center gap-1">
             <p className="text-[17px] font-medium text-white">The ProFun Academy</p>

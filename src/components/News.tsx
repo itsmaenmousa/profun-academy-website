@@ -4,22 +4,22 @@ import { useInView } from '../hooks/useInView'
 const articles = [
   {
     category: 'Accredited',
-    date: '11 programmes',
+    date: '11 programs',
     title: 'Jeff Ellis & Associates',
-    desc: 'ProFun Academy is an authorised provider of Jeff Ellis & Associates programmes, the gold standard in aquatics safety and attractions operations certification. From the International Lifeguard Training Program and vanGUARD Aquatics Leadership to Water Slide Dispatch Operator and Attraction Operator.',
+    desc: 'ProFun Academy is an authorised provider of Jeff Ellis & Associates programs, the gold standard in aquatics safety and attractions operations certification. From the International Lifeguard Training Program and vanGUARD Aquatics Leadership to Water Slide Dispatch Operator and Attraction Operator.',
     image: './grand-hyatt-waterpark.jpg',
   },
   {
     category: 'TVTC Accredited',
-    date: '3 programmes',
+    date: '3 programs',
     title: 'Nationally recognised qualifications for Saudi Arabia',
-    desc: 'Visitor Attractions Operator, Entertainment Center Maintenance and Destination Management programmes, designed for the Saudi attractions and tourism sector and aligned with Vision 2030 workforce development objectives.',
+    desc: 'Visitor Attractions Operator, Entertainment Center Maintenance and Destination Management programs, designed for the Saudi attractions and tourism sector and aligned with Vision 2030 workforce development objectives.',
     image: './news-1.jpg',
   },
   {
     category: 'Training Topics',
     date: '13 topic areas',
-    title: 'Thirteen topic areas. Hundreds of programmes.',
+    title: 'Thirteen topic areas. Hundreds of programs.',
     desc: 'Leadership & Management, Industry Experience, Safety & Security, Rides & Attractions, Frontline Colleagues, Human Resources, Guest Service Excellence, Sales & Marketing, Food & Beverage, Retail, Engineering & Technical Services, Information Technology and Housekeeping.',
     image: './news-2.jpg',
   },
@@ -43,7 +43,7 @@ export default function News() {
             href="#contact"
             className="hidden lg:inline-flex items-center gap-2 text-[14px] font-medium text-[#6B6B65] hover:text-[#F85707] hover:gap-4 transition-all duration-200"
           >
-            Request a custom programme
+            Request a custom program
             <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
               <path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
