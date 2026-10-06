@@ -34,7 +34,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-[1920px] mx-auto px-6 sm:px-12 pb-20 sm:pb-24 w-full">
-        <div className="max-w-[900px]">
+        <div className="max-w-[1100px]">
           {/* Accent line + eyebrow */}
           <div className="flex items-center gap-4 mb-10">
             <div className="flex gap-1" aria-hidden="true">
@@ -55,9 +55,9 @@ export default function Hero() {
           </div>
 
           {/* Staggered headline */}
-          <h1 className="font-serif text-[clamp(40px,6vw,96px)] leading-[1.04] text-white mb-8 tracking-[-0.01em]">
+          <h1 className="font-serif text-[clamp(26px,7.2vw,96px)] leading-[1.04] text-white mb-8 tracking-[-0.01em]">
             {LINES.map((line, i) => (
-              <span key={i} className="hero-line block">
+              <span key={i} className="hero-line block whitespace-nowrap">
                 <span
                   className={`hero-line-inner ${ready ? 'visible' : ''}`}
                   style={{ transitionDelay: `${0.4 + i * 0.14}s` }}
