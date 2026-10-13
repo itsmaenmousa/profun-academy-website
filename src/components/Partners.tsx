@@ -4,7 +4,7 @@ import { useInView } from '../hooks/useInView'
 const partners = [
   { short: 'Ellis & Associates + SST', logo: './partner-ellis-sst.png', full: 'Ellis & Associates and Safety Skills Training DMCC', role: 'The world leader in aquatic safety, lifeguard training and attraction operations. Through SST, its international arm, the Academy is an authorized delivery partner for the full Ellis portfolio.', color: '#00AFDC', wide: true },
   { short: 'IAAPA', logo: './partner-iaapa.png', full: 'International Association of Amusement Parks and Attractions', role: 'The global association for the attractions industry', color: '#3985FD' },
-  { short: 'AAM', logo: './partner-aam.png', full: 'American Alliance of Museums', role: 'Professional standards and advocacy for museums worldwide', color: '#FFCA03' },
+  { short: 'AAM', logo: './partner-aam.png', full: 'American Alliance of Museums', role: 'Professional standards and advocacy for museums worldwide', color: '#000050' },
   { short: 'WWA', logo: './partner-wwa.png', full: 'World Waterpark Association', role: 'The industry body for waterpark operators and suppliers', color: '#F85707' },
   { short: 'TEA', logo: './partner-tea.png', full: 'Themed Entertainment Association', role: 'Global network for experience design and themed entertainment', color: '#8238EB' },
 ]
