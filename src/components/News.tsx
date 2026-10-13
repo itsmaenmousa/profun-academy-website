@@ -10,11 +10,11 @@ const articles = [
     image: './grand-hyatt-waterpark.jpg',
   },
   {
-    category: 'TVTC Accredited',
-    date: '3 programs',
-    title: 'Nationally recognised qualifications for Saudi Arabia',
-    desc: 'Visitor Attractions Operator, Entertainment Center Maintenance and Destination Management programs, designed for the Saudi attractions and tourism sector and aligned with Vision 2030 workforce development objectives.',
-    image: './news-1.jpg',
+    category: 'IBCCES Certified',
+    date: 'Accessibility & inclusion',
+    title: 'Accessibility and inclusion, built into every program.',
+    desc: 'Our team is certified by IBCCES, the International Board of Credentialing and Continuing Education Standards, bringing recognised accessibility and neurodiversity best practice into guest service and frontline training.',
+    image: './ibcces-card.jpg',
   },
   {
     category: 'Training Topics',
