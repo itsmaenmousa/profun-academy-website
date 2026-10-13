@@ -5,7 +5,7 @@ import { useInView } from '../hooks/useInView'
 const projects = [
   {
     title: 'Grand Hyatt',
-    category: 'WATERPARKS',
+    category: 'Waterparks',
     location: 'Dubai, UAE',
     image: './grand-hyatt-waterpark.jpg',
   },
@@ -17,19 +17,19 @@ const projects = [
   },
   {
     title: 'Ferrari World Abu Dhabi',
-    category: 'Theme Park',
+    category: 'Theme park',
     location: 'Abu Dhabi, UAE',
     image: './ferrari-world-abu-dhabi.jpg',
   },
   {
     title: 'Doha Quest',
-    category: 'INDOOR THEME PARK',
+    category: 'Indoor theme park',
     location: 'Doha, Qatar',
     image: './doha-quest.jpg',
   },
   {
     title: 'Merdeka 118',
-    category: 'MIXED-USE DESTINATION',
+    category: 'Mixed-use destination',
     location: 'Kuala Lumpur, Malaysia',
     image: './merdeka-118.jpg',
   },
@@ -41,19 +41,19 @@ const projects = [
   },
   {
     title: 'Makkah Clock Royal Tower',
-    category: 'HOSPITALITY DESTINATION',
+    category: 'Hospitality destination',
     location: 'Makkah, Kingdom of Saudi Arabia',
     image: './makkah-clock-royal-tower.jpg',
   },
   {
     title: 'Natural History Museum',
-    category: 'Cultural Destination',
+    category: 'Cultural destination',
     location: 'Los Angeles, USA',
     image: './natural-history-museum-los-angeles.jpg',
   },
   {
     title: 'Dubai Parks & Resorts',
-    category: 'Leisure Destination',
+    category: 'Leisure destination',
     location: 'Dubai, UAE',
     image: './dubai-parks-resorts.jpg',
   },
@@ -141,12 +141,7 @@ export default function Projects() {
             inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          <div className="mb-7 flex items-center gap-4">
-            <span className="h-8 w-px bg-[#F85707]" aria-hidden="true" />
-            <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-white/45">
-              Selected Work
-            </p>
-          </div>
+          <p className="mb-5 text-[17px] font-medium text-[#F85707]">Selected work</p>
 
           <div className="flex items-end justify-between gap-8">
             <h2
@@ -155,7 +150,7 @@ export default function Projects() {
             >
               Projects that define categories
             </h2>
-            <p className="hidden shrink-0 pb-2 text-[12px] font-medium uppercase tracking-[0.15em] text-white/30 lg:block">
+            <p className="hidden shrink-0 pb-2 text-[15px] font-medium text-white/50 lg:block">
               Drag to explore
             </p>
           </div>
@@ -196,12 +191,12 @@ export default function Projects() {
             <div className="absolute inset-0 bg-black/20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
 
-            <span className="absolute right-5 top-5 text-[12px] font-medium tabular-nums tracking-[0.12em] text-white/55 drop-shadow-sm">
+            <span className="absolute right-5 top-5 text-[13px] font-medium tabular-nums text-white/60 drop-shadow-sm">
               {String(index + 1).padStart(2, '0')}
             </span>
 
             <div className="absolute inset-x-0 bottom-0 p-6">
-              <p className="mb-2 text-[12px] font-medium uppercase tracking-[0.14em] text-white/55">
+              <p className="mb-2 text-[14px] font-medium text-white/75">
                 {project.category}
               </p>
               <h3 className="font-serif text-[clamp(24px,2.4vw,32px)] leading-[1.08] text-white">

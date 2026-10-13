@@ -39,9 +39,8 @@ export default function AcademyMetrics() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter strip */}
         <div className="flex items-center gap-4 py-8 border-b border-white/10">
-          <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">03</span>
+          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Proven scale</span>
           <span className="flex-1 h-px bg-white/10" />
-          <span className="text-white/30 text-[12px] font-medium tracking-[0.15em] uppercase">Proven Scale</span>
         </div>
 
         {/* Metrics integrated bar */}

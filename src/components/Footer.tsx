@@ -73,7 +73,7 @@ export default function Footer() {
             <p className="text-[17px] text-white/55 leading-relaxed font-light max-w-[320px] mb-8">
               Tailored learning and capability development for the attractions industry. Riyadh, Kingdom of Saudi Arabia.
             </p>
-            <p className="text-[12px] tracking-[0.15em] uppercase text-white/35 mb-4">Follow the Academy</p>
+            <p className="text-[16px] font-medium text-white/75 mb-4">Follow the Academy</p>
             <ul className="flex items-center gap-7" aria-label="The ProFun Academy on social media">
               {SOCIALS.map(s => (
                 <li key={s.name}>
@@ -97,7 +97,7 @@ export default function Footer() {
           <div className="lg:col-span-7 lg:col-start-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {cols.map((col, i) => (
               <div key={col.title}>
-                <p className="text-[12px] tracking-[0.15em] uppercase mb-6" style={{ color: ['#15D2A4', '#FFCA03', '#00AFDC'][i] }}>
+                <p className="text-[16px] font-medium mb-5" style={{ color: ['#15D2A4', '#FFCA03', '#00AFDC'][i] }}>
                   {col.title}
                 </p>
                 <ul className="space-y-3">

@@ -89,9 +89,8 @@ export default function AcademyDelivery() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">06</span>
+          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Delivery model</span>
           <span className="flex-1 h-px bg-white/10" />
-          <span className="text-white/30 text-[12px] font-medium tracking-[0.15em] uppercase">Delivery Model</span>
         </div>
 
         <div className={`mb-14 reveal ${inView ? 'visible' : ''}`}>
@@ -149,7 +148,7 @@ export default function AcademyDelivery() {
 
           {/* Content */}
           <div className="lg:col-span-6 lg:col-start-7 flex flex-col justify-center">
-            <p className="text-[12px] tracking-[0.15em] uppercase text-[#F85707] font-medium mb-4">{mode.label}</p>
+            <p className="text-[15px] text-[#F85707] font-medium mb-4">{mode.label}</p>
             <h3 className="font-serif text-[clamp(24px,2.4vw,36px)] text-white leading-tight mb-5">
               {mode.headline}
             </h3>

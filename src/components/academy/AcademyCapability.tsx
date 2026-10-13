@@ -26,9 +26,8 @@ export default function AcademyCapability() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">04</span>
+          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Capability model</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
-          <span className="text-[#6B6B65] text-[12px] font-medium tracking-[0.15em] uppercase">Capability Model</span>
         </div>
 
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16 reveal ${inView ? 'visible' : ''}`}>
@@ -52,7 +51,7 @@ export default function AcademyCapability() {
               className={`bg-[#F9F8F6] p-8 hover:bg-[#F2F1EF] transition-colors duration-300 reveal reveal-delay-${Math.min(i % 3 + 1, 5)} ${inView ? 'visible' : ''}`}
             >
               <div className="flex items-start gap-4 mb-4">
-                <span className="text-[#F85707] text-[12px] font-medium tracking-[0.12em] mt-0.5">{c.n}</span>
+                <span className="text-[#F85707] text-[12px] font-medium mt-0.5">{c.n}</span>
                 <h3 className="text-[17px] font-semibold text-[#1C1C1A] leading-snug">{c.title}</h3>
               </div>
               <p className="text-[14px] text-[#6B6B65] font-light leading-relaxed pl-8">{c.desc}</p>

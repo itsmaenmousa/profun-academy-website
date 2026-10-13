@@ -34,9 +34,8 @@ export default function AcademyContact() {
         <div className="max-w-[1440px] mx-auto">
           {/* Chapter rule */}
           <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-            <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">12</span>
+            <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Contact</span>
             <span className="flex-1 h-px bg-white/10" />
-            <span className="text-white/30 text-[12px] font-medium tracking-[0.15em] uppercase">Contact</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
@@ -52,7 +51,7 @@ export default function AcademyContact() {
               <div className="space-y-10">
                 {/* Email */}
                 <div>
-                  <p className="text-[12px] tracking-[0.15em] uppercase text-white/25 mb-3">Email</p>
+                  <p className="text-[15px] text-white/60 mb-3 font-medium">Email</p>
                   <a
                     href="mailto:info@theprofunacademy.com"
                     className="text-[17px] text-white/70 hover:text-[#F85707] transition-colors duration-200"
@@ -63,7 +62,7 @@ export default function AcademyContact() {
 
                 {/* Location */}
                 <div className="pt-2 border-t border-white/8">
-                  <p className="text-[12px] tracking-[0.15em] uppercase text-white/25 mb-3">Location</p>
+                  <p className="text-[15px] text-white/60 mb-3 font-medium">Location</p>
                   <p className="text-[16px] text-white/70 font-light">4936 Anas Ibn Malik, Al Malqa Dist., Riyadh 13525, Saudi Arabia</p>
                 </div>
               </div>
@@ -81,14 +80,14 @@ export default function AcademyContact() {
                 </div>
               ) : (
                 <form onSubmit={handle} noValidate aria-label="Learning strategy enquiry form">
-                  <p className="text-[12px] tracking-[0.15em] uppercase text-white/25 mb-8">
+                  <p className="text-[15px] text-white/60 mb-8 font-medium">
                     Start the conversation
                   </p>
 
                   <div className="space-y-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
-                        <label htmlFor="ac-name" className="block text-[12px] tracking-[0.12em] uppercase text-white/35 mb-2">
+                        <label htmlFor="ac-name" className="block text-[15px] text-white/60 mb-2 font-medium">
                           Full name <span aria-hidden="true">*</span>
                         </label>
                         <input
@@ -103,7 +102,7 @@ export default function AcademyContact() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="ac-org" className="block text-[12px] tracking-[0.12em] uppercase text-white/35 mb-2">
+                        <label htmlFor="ac-org" className="block text-[15px] text-white/60 mb-2 font-medium">
                           Organisation
                         </label>
                         <input
@@ -120,7 +119,7 @@ export default function AcademyContact() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
-                        <label htmlFor="ac-email" className="block text-[12px] tracking-[0.12em] uppercase text-white/35 mb-2">
+                        <label htmlFor="ac-email" className="block text-[15px] text-white/60 mb-2 font-medium">
                           Email address <span aria-hidden="true">*</span>
                         </label>
                         <input
@@ -135,7 +134,7 @@ export default function AcademyContact() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="ac-phone" className="block text-[12px] tracking-[0.12em] uppercase text-white/35 mb-2">
+                        <label htmlFor="ac-phone" className="block text-[15px] text-white/60 mb-2 font-medium">
                           Phone
                         </label>
                         <input
@@ -151,7 +150,7 @@ export default function AcademyContact() {
                     </div>
 
                     <div>
-                      <label htmlFor="ac-interest" className="block text-[12px] tracking-[0.12em] uppercase text-white/35 mb-2">
+                      <label htmlFor="ac-interest" className="block text-[15px] text-white/60 mb-2 font-medium">
                         Area of interest
                       </label>
                       <select
@@ -171,7 +170,7 @@ export default function AcademyContact() {
                     </div>
 
                     <div>
-                      <label htmlFor="ac-message" className="block text-[12px] tracking-[0.12em] uppercase text-white/35 mb-2">
+                      <label htmlFor="ac-message" className="block text-[15px] text-white/60 mb-2 font-medium">
                         Tell us about your learning challenge
                       </label>
                       <textarea

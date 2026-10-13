@@ -41,7 +41,7 @@ export default function Leadership() {
           className={`grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
         >
           <div className="lg:col-span-4">
-            <p className="text-[12px] tracking-[0.18em] uppercase text-[#6B6B65] mb-5">Leadership</p>
+            <p className="text-[17px] font-medium text-[#F85707] mb-4">Leadership</p>
             <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">
               The people who lead our practice
             </h2>

@@ -80,7 +80,7 @@ export default function VideoReel() {
         className={`max-w-[1920px] mx-auto px-6 sm:px-12 pt-20 pb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 reveal ${inView ? 'visible' : ''}`}
       >
         <div>
-          <p className="text-[12px] tracking-[0.18em] uppercase text-white/30 mb-4">How we deliver</p>
+          <p className="text-[17px] font-medium text-[#F85707] mb-4">How we deliver</p>
           <h2 className="font-serif text-[clamp(36px,3.4vw,56px)] text-white leading-tight tracking-[-0.01em] max-w-[620px]">
             Five learning channels.<br /> One seamless experience.
           </h2>
@@ -132,16 +132,13 @@ export default function VideoReel() {
 
         <div className="absolute inset-0 flex items-end">
           <div key={c.id} className="max-w-[1920px] w-full mx-auto px-6 sm:px-12 pb-12 sm:pb-16 reel-copy">
-            <p className="text-[12px] tracking-[0.18em] uppercase mb-4" style={{ color: c.color }}>
-              {String(active + 1).padStart(2, '0')} / {String(channels.length).padStart(2, '0')}
-            </p>
             <h3 className="font-serif text-[clamp(32px,3.6vw,60px)] text-white leading-[1.05] tracking-[-0.01em] mb-5 max-w-[640px]">
               {c.title}
             </h3>
             <p className="text-[17px] sm:text-[19px] text-white/70 font-light leading-relaxed max-w-[560px] mb-6">
               {c.desc}
             </p>
-            <p className="text-[12px] tracking-[0.14em] uppercase text-white/45 max-w-[640px] leading-relaxed">
+            <p className="text-[15px] text-white/60 max-w-[640px] leading-relaxed">
               {c.tags.join(' · ')}
             </p>
           </div>

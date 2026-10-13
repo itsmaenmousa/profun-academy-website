@@ -15,10 +15,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Left */}
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-4 mb-10">
-              <div className="w-8 h-[3px] bg-[#15D2A4]" />
-              <span className="text-[12px] tracking-[0.18em] uppercase text-[#6B6B65]">Get started</span>
-            </div>
+            <p className="text-[17px] font-medium text-[#F85707] mb-6">Get started</p>
             <h2 className="font-serif text-[clamp(38px,3.3vw,52px)] text-[#000050] leading-tight mb-8 tracking-[-0.01em]">
               Build capability<br className="hidden sm:block" /> that lasts.
             </h2>
@@ -28,13 +25,13 @@ export default function Contact() {
 
             <div className="space-y-8">
               <div>
-                <p className="text-[12px] tracking-[0.15em] uppercase text-[#6B6B65] mb-2">Location</p>
+                <p className="text-[15px] font-medium text-[#000050] mb-1.5">Location</p>
                 <p className="text-[17px] text-[#1C1C1A] font-light leading-relaxed">
                   Riyadh, Kingdom of Saudi Arabia
                 </p>
               </div>
               <div>
-                <p className="text-[12px] tracking-[0.15em] uppercase text-[#6B6B65] mb-2">Get in touch</p>
+                <p className="text-[15px] font-medium text-[#000050] mb-1.5">Get in touch</p>
                 <a href="mailto:info@theprofunacademy.com" className="text-[17px] text-[#F85707] hover:text-[#D94A05] transition-colors">
                   info@theprofunacademy.com
                 </a>
@@ -46,7 +43,6 @@ export default function Contact() {
           <div className="lg:col-span-6 lg:col-start-7">
             {sent ? (
               <div className="flex flex-col items-start justify-center h-full py-16">
-                <div className="w-8 h-px bg-[#F85707] mb-8" />
                 <h3 className="font-serif text-[36px] text-[#1C1C1A] mb-4">Thank you</h3>
                 <p className="text-[19px] text-[#6B6B65] font-light leading-relaxed">
                   We have received your message and will be in touch shortly.
@@ -56,7 +52,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[14px] tracking-[0.12em] uppercase text-[#6B6B65] mb-2">
+                    <label className="block text-[15px] font-medium text-[#000050] mb-1">
                       Full name
                     </label>
                     <input
@@ -69,7 +65,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label className="block text-[14px] tracking-[0.12em] uppercase text-[#6B6B65] mb-2">
+                    <label className="block text-[15px] font-medium text-[#000050] mb-1">
                       Organisation
                     </label>
                     <input
@@ -82,7 +78,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-[14px] tracking-[0.12em] uppercase text-[#6B6B65] mb-2">
+                  <label className="block text-[15px] font-medium text-[#000050] mb-1">
                     Email address
                   </label>
                   <input
@@ -95,7 +91,7 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[14px] tracking-[0.12em] uppercase text-[#6B6B65] mb-2">
+                  <label className="block text-[15px] font-medium text-[#000050] mb-1">
                     How can we help?
                   </label>
                   <textarea

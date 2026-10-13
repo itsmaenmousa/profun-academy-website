@@ -29,9 +29,8 @@ export default function AcademyProjects() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">09</span>
+          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Applied experience</span>
           <span className="flex-1 h-px bg-white/10" />
-          <span className="text-white/30 text-[12px] font-medium tracking-[0.15em] uppercase">Applied Experience</span>
         </div>
 
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16 reveal ${inView ? 'visible' : ''}`}>
@@ -51,10 +50,10 @@ export default function AcademyProjects() {
         <div className={`divide-y divide-white/8 reveal reveal-delay-1 ${inView ? 'visible' : ''}`}>
           {/* Header row */}
           <div className="grid grid-cols-12 gap-4 pb-4">
-            <span className="col-span-1 text-[12px] tracking-[0.15em] uppercase text-white/25">#</span>
-            <span className="col-span-4 text-[12px] tracking-[0.15em] uppercase text-white/25">Project</span>
-            <span className="col-span-4 text-[12px] tracking-[0.15em] uppercase text-white/25">Location</span>
-            <span className="col-span-3 text-[12px] tracking-[0.15em] uppercase text-white/25">Focus area</span>
+            <span className="col-span-1 text-[15px] text-white/60 font-medium">#</span>
+            <span className="col-span-4 text-[15px] text-white/60 font-medium">Project</span>
+            <span className="col-span-4 text-[15px] text-white/60 font-medium">Location</span>
+            <span className="col-span-3 text-[15px] text-white/60 font-medium">Focus area</span>
           </div>
 
           {projects.map((p, i) => (

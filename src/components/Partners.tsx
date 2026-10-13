@@ -20,10 +20,7 @@ export default function Partners() {
         className={`max-w-[1920px] mx-auto px-6 sm:px-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
       >
         <div>
-          <div className="flex items-center gap-4 mb-5">
-            <div className="w-8 h-[3px] bg-[#FFCA03]" />
-            <p className="text-[12px] tracking-[0.18em] uppercase text-[#6B6B65]">Partners & affiliations</p>
-          </div>
+          <p className="text-[17px] font-medium text-[#F85707] mb-4">Partners & affiliations</p>
           <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#000050] leading-tight tracking-[-0.01em] max-w-[920px]">
             Connected to the institutions<br className="hidden md:block" /> that set the standard.
           </h2>

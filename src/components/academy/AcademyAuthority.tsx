@@ -14,15 +14,14 @@ export default function AcademyAuthority() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">02</span>
+          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Authority</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
-          <span className="text-[#6B6B65] text-[12px] font-medium tracking-[0.15em] uppercase">Authority</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-16 gap-y-12">
           {/* Section heading label */}
           <div className={`lg:col-span-3 reveal ${inView ? 'visible' : ''}`}>
-            <h2 id="authority-heading" className="text-[14px] font-medium text-[#6B6B65] tracking-[0.04em] uppercase leading-relaxed">
+            <h2 id="authority-heading" className="text-[16px] font-medium text-[#6B6B65] leading-relaxed">
               Context &<br />Foundation
             </h2>
           </div>

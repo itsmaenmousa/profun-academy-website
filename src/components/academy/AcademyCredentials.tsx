@@ -34,9 +34,8 @@ export default function AcademyCredentials() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">08</span>
+          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Standards & accreditation</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
-          <span className="text-[#6B6B65] text-[12px] font-medium tracking-[0.15em] uppercase">Standards & Accreditation</span>
         </div>
 
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16 reveal ${inView ? 'visible' : ''}`}>
@@ -57,7 +56,7 @@ export default function AcademyCredentials() {
           <div className={`bg-[#F2F1EF] p-10 reveal ${inView ? 'visible' : ''}`}>
             <div className="flex items-start justify-between mb-8">
               <div>
-                <p className="text-[12px] tracking-[0.15em] uppercase text-[#F85707] font-medium mb-2">Accreditor</p>
+                <p className="text-[15px] text-[#F85707] font-medium mb-2">Accreditor</p>
                 <h3 className="text-[20px] font-semibold text-[#1C1C1A]">Jeff Ellis & Associates</h3>
                 <p className="text-[14px] text-[#6B6B65] font-light mt-1">International aquatics safety & attraction operations</p>
               </div>
@@ -79,7 +78,7 @@ export default function AcademyCredentials() {
           <div className={`bg-[#F9F8F6] p-10 reveal reveal-delay-1 ${inView ? 'visible' : ''}`}>
             <div className="flex items-start justify-between mb-8">
               <div>
-                <p className="text-[12px] tracking-[0.15em] uppercase text-[#F85707] font-medium mb-2">Accreditor</p>
+                <p className="text-[15px] text-[#F85707] font-medium mb-2">Accreditor</p>
                 <h3 className="text-[20px] font-semibold text-[#1C1C1A]">TVTC</h3>
                 <p className="text-[14px] text-[#6B6B65] font-light mt-1">Technical and Vocational Training Corporation, Kingdom of Saudi Arabia</p>
               </div>

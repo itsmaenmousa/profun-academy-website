@@ -34,7 +34,7 @@ export default function News() {
         {/* Header */}
         <div className={`flex items-end justify-between mb-16 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}>
           <div>
-            <p className="text-[12px] tracking-[0.18em] uppercase text-[#6B6B65] mb-5">Accredited & certified</p>
+            <p className="text-[17px] font-medium text-[#F85707] mb-4">Accredited & certified</p>
             <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">
               Industry-recognised certification, built in.
             </h2>
@@ -74,7 +74,7 @@ export default function News() {
               {/* Content */}
               <div className="p-8">
                 <div className="flex items-center gap-3 mb-5">
-                  <span className="text-[12px] tracking-[0.12em] uppercase font-medium" style={{ color: ['#00AFDC', '#15D2A4', '#8238EB'][i] }}>{a.category}</span>
+                  <span className="text-[15px] font-medium" style={{ color: ['#00AFDC', '#15D2A4', '#8238EB'][i] }}>{a.category}</span>
                   <span className="text-[#E2E0DB]">·</span>
                   <span className="text-[14px] text-[#6B6B65] font-light">{a.date}</span>
                 </div>

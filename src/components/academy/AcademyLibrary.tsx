@@ -100,9 +100,8 @@ export default function AcademyLibrary() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">07</span>
+          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Training library</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
-          <span className="text-[#6B6B65] text-[12px] font-medium tracking-[0.15em] uppercase">Training Library</span>
         </div>
 
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 mb-12 reveal ${inView ? 'visible' : ''}`}>
@@ -157,7 +156,7 @@ export default function AcademyLibrary() {
               key={`${m.cat}-${m.title}-${i}`}
               className="bg-[#F9F8F6] p-6 hover:bg-[#F2F1EF] transition-colors duration-200 group cursor-pointer"
             >
-              <p className="text-[12px] tracking-[0.12em] uppercase text-[#F85707] font-medium mb-3">{m.cat}</p>
+              <p className="text-[15px] text-[#F85707] font-medium mb-3">{m.cat}</p>
               <p className="text-[16px] font-medium text-[#1C1C1A] leading-snug group-hover:text-[#000050] transition-colors duration-200">
                 {m.title}
               </p>

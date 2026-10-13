@@ -55,9 +55,8 @@ export default function AcademyServices() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">05</span>
+          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Services</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
-          <span className="text-[#6B6B65] text-[12px] font-medium tracking-[0.15em] uppercase">Services</span>
         </div>
 
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16 reveal ${inView ? 'visible' : ''}`}>
@@ -85,7 +84,7 @@ export default function AcademyServices() {
                   aria-expanded={isOpen}
                   aria-controls={`service-panel-${s.n}`}
                 >
-                  <span className={`text-[12px] font-medium tracking-[0.12em] w-6 flex-shrink-0 transition-colors duration-200 ${isOpen ? 'text-[#F85707]' : 'text-[#6B6B65]'}`}>
+                  <span className={`text-[13px] font-medium w-6 flex-shrink-0 transition-colors duration-200 ${isOpen ? 'text-[#F85707]' : 'text-[#6B6B65]'}`}>
                     {s.n}
                   </span>
                   <span className={`flex-1 text-[19px] font-medium transition-colors duration-200 ${isOpen ? 'text-[#1C1C1A]' : 'text-[#1C1C1A] group-hover:text-[#F85707]'}`}>
@@ -110,7 +109,7 @@ export default function AcademyServices() {
                   <div className="pb-8 pl-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">{s.desc}</p>
                     <div className="bg-[#F9F8F6] p-5 border-l-2 border-[#F85707]">
-                      <p className="text-[12px] tracking-[0.12em] uppercase text-[#F85707] font-medium mb-2">Typical use</p>
+                      <p className="text-[15px] text-[#F85707] font-medium mb-2">Typical use</p>
                       <p className="text-[14px] text-[#6B6B65] font-light leading-relaxed">{s.context}</p>
                     </div>
                   </div>

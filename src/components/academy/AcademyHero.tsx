@@ -28,9 +28,8 @@ export default function AcademyHero() {
           className="flex items-center gap-4 mb-16 transition-all duration-700"
           style={{ opacity: ready ? 1 : 0, transitionDelay: '0.2s' }}
         >
-          <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">01</span>
+          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Academy</span>
           <span className="w-8 h-px bg-[#F85707]" />
-          <span className="text-white/40 text-[12px] font-medium tracking-[0.15em] uppercase">Academy</span>
         </div>
 
         {/* Grid: headline + meta */}
@@ -81,15 +80,15 @@ export default function AcademyHero() {
           >
             <div className="border-l border-white/15 pl-8 space-y-5">
               <div>
-                <p className="text-[12px] tracking-[0.15em] uppercase text-white/30 mb-1.5">Division of</p>
+                <p className="text-[15px] text-white/60 mb-1.5 font-medium">Division of</p>
                 <p className="text-[16px] text-white/75 font-light">ProFun</p>
               </div>
               <div>
-                <p className="text-[12px] tracking-[0.15em] uppercase text-white/30 mb-1.5">Est.</p>
+                <p className="text-[15px] text-white/60 mb-1.5 font-medium">Est.</p>
                 <p className="text-[16px] text-white/75 font-light">1980</p>
               </div>
               <div>
-                <p className="text-[12px] tracking-[0.15em] uppercase text-white/30 mb-1.5">Specialisation</p>
+                <p className="text-[15px] text-white/60 mb-1.5 font-medium">Specialisation</p>
                 <p className="text-[16px] text-white/75 font-light">Attraction operations training</p>
               </div>
             </div>
@@ -106,7 +105,7 @@ export default function AcademyHero() {
         <div className="w-px h-10 bg-white/30 relative overflow-hidden">
           <div className="absolute top-0 w-full bg-white h-[40%]" style={{ animation: 'scrollLine 2.2s ease-in-out infinite' }} />
         </div>
-        <span className="text-[12px] tracking-[0.2em] uppercase text-white/50 font-light">Scroll</span>
+        
       </div>
     </section>
   )

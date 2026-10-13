@@ -47,7 +47,7 @@ export default function Services() {
           className={`flex items-end justify-between mb-20 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
         >
           <div>
-            <p className="text-[12px] tracking-[0.18em] uppercase text-[#6B6B65] mb-5">What we offer</p>
+            <p className="text-[17px] font-medium text-[#F85707] mb-4">What we offer</p>
             <h2 className="font-serif text-[clamp(40px,4vw,64px)] text-[#1C1C1A] leading-tight max-w-[520px] tracking-[-0.01em]">
               Six ways we work with you.
             </h2>

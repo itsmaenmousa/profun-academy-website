@@ -14,10 +14,7 @@ export default function About() {
         >
           {/* Text column */}
           <div className={`lg:col-span-5 reveal ${inView ? 'visible' : ''}`}>
-            <div className="flex items-center gap-4 mb-10">
-              <div className="w-8 h-[3px] bg-[#3985FD]" />
-              <span className="text-[12px] tracking-[0.18em] uppercase text-[#6B6B65]">About the Academy</span>
-            </div>
+            <p className="text-[17px] font-medium text-[#F85707] mb-6">About the Academy</p>
             <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#1C1C1A] leading-tight mb-8 tracking-[-0.01em]">
               The people behind{' '}<br className="hidden lg:block" />great experiences.
             </h2>
@@ -64,7 +61,7 @@ export default function About() {
         >
           <div className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 reveal ${inView2 ? 'visible' : ''}`}>
             <div>
-              <p className="text-[12px] tracking-[0.18em] uppercase text-[#6B6B65] mb-5">What sets us apart</p>
+              <p className="text-[17px] font-medium text-[#F85707] mb-4">What sets us apart</p>
               <h3 className="font-serif text-[clamp(32px,3vw,48px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">Built Differently, By Design.</h3>
             </div>
             <p className="max-w-[460px] text-[17px] text-[#6B6B65] leading-relaxed font-light">

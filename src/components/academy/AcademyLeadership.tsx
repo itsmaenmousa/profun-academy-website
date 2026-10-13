@@ -61,9 +61,8 @@ export default function AcademyLeadership() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[#F85707] text-[12px] font-medium tracking-[0.15em] uppercase">11</span>
+          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Leadership & delivery</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
-          <span className="text-[#6B6B65] text-[12px] font-medium tracking-[0.15em] uppercase">Leadership & Delivery</span>
         </div>
 
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16 reveal ${inView ? 'visible' : ''}`}>
@@ -125,7 +124,7 @@ export default function AcademyLeadership() {
 
         {/* Delivery streams */}
         <div className={`mt-16 reveal reveal-delay-2 ${inView ? 'visible' : ''}`}>
-          <p className="text-[12px] tracking-[0.15em] uppercase text-[#6B6B65] font-medium mb-6">
+          <p className="text-[15px] text-[#6B6B65] font-medium mb-6">
             Delivery infrastructure
           </p>
           <div

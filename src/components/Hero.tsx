@@ -35,24 +35,13 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-[1920px] mx-auto px-6 sm:px-12 pb-20 sm:pb-24 w-full">
         <div className="max-w-[1100px]">
-          {/* Accent line + eyebrow */}
-          <div className="flex items-center gap-4 mb-10">
-            <div className="flex gap-1" aria-hidden="true">
-              {['#3985FD', '#15D2A4', '#99CA32', '#FC026F', '#8238EB', '#F85707'].map((c, i) => (
-                <span
-                  key={c}
-                  className="h-[3px] transition-all duration-500"
-                  style={{ background: c, width: ready ? 14 : 0, transitionDelay: `${0.3 + i * 0.06}s` }}
-                />
-              ))}
-            </div>
-            <span
-              className="text-[12px] tracking-[0.18em] uppercase text-white/60 transition-opacity duration-700"
-              style={{ opacity: ready ? 1 : 0, transitionDelay: '0.35s' }}
-            >
-              The ProFun Academy · Attractions Industry Training
-            </span>
-          </div>
+          {/* Eyebrow */}
+          <p
+            className="text-[18px] font-medium text-white/85 mb-8 transition-opacity duration-700"
+            style={{ opacity: ready ? 1 : 0, transitionDelay: '0.35s' }}
+          >
+            The ProFun Academy
+          </p>
 
           {/* Staggered headline */}
           <h1 className="font-serif text-[clamp(26px,7.2vw,96px)] leading-[1.04] text-white mb-8 tracking-[-0.01em]">
@@ -110,12 +99,6 @@ export default function Hero() {
           className="absolute bottom-24 right-12 flex flex-col items-center gap-3 transition-all duration-700"
           style={{ opacity: ready ? 1 : 0, transitionDelay: '1.4s' }}
         >
-          <span
-            className="text-[12px] tracking-[0.2em] uppercase text-white/40 font-light"
-            style={{ writingMode: 'vertical-lr' }}
-          >
-            Scroll
-          </span>
           <div className="w-px h-16 bg-white/15 relative overflow-hidden mt-2">
             <div
               className="absolute top-0 left-0 w-full bg-white/60"
