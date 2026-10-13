@@ -18,24 +18,14 @@ const partners = [
     role: 'Industry body for waterpark operators and suppliers',
   },
   {
-    name: 'IRT',
-    full: 'International Ride Training',
-    role: 'Specialist ride operations training and certification',
-  },
-  {
-    name: 'Ellis & Associates',
-    full: 'Jeff Ellis & Associates',
-    role: 'Aquatics safety management and certification programs',
+    name: 'Ellis & Associates + SST',
+    full: 'Ellis & Associates and Safety Skills Training DMCC',
+    role: 'Aquatic safety and attraction operations certification, delivered through SST, E&A\'s international arm',
   },
   {
     name: 'TEA',
     full: 'Themed Entertainment Association',
     role: 'Global network for experience design and themed entertainment',
-  },
-  {
-    name: 'AIMS International',
-    full: 'AIMS International',
-    role: 'Amusement industry safety standards and education',
   },
 ]
 
@@ -71,7 +61,7 @@ export default function AcademyPartners() {
         </div>
 
         {/* Partners typographic grid */}
-        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#DDDBD6] reveal reveal-delay-1 ${inView ? 'visible' : ''}`}>
+        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#DDDBD6] reveal reveal-delay-1 ${inView ? 'visible' : ''}`}>
           {partners.map((p, i) => (
             <div
               key={p.name}

@@ -5,8 +5,8 @@ const articles = [
   {
     category: 'Accredited',
     date: '11 programs',
-    title: 'Jeff Ellis & Associates',
-    desc: 'ProFun Academy is an authorised provider of Jeff Ellis & Associates programs, the gold standard in aquatics safety and attractions operations certification. From the International Lifeguard Training Program and vanGUARD Aquatics Leadership to Water Slide Dispatch Operator and Attraction Operator.',
+    title: 'Ellis & Associates + SST',
+    desc: 'Through SST (Safety Skills Training DMCC), the international arm of Ellis & Associates, the Academy is an authorized delivery partner for the full Ellis portfolio, the gold standard in aquatic safety and attractions operations certification. From the International Lifeguard Training Program and vanGUARD Aquatics Leadership to Water Slide Dispatch Operator and Attraction Operator.',
     image: './grand-hyatt-waterpark.jpg',
   },
   {

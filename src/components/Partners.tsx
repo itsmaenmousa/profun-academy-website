@@ -2,15 +2,11 @@ import type React from 'react'
 import { useInView } from '../hooks/useInView'
 
 const partners = [
+  { short: 'Ellis & Associates + SST', logo: './partner-ellis-sst.png', full: 'Ellis & Associates and Safety Skills Training DMCC', role: 'The world leader in aquatic safety, lifeguard training and attraction operations. Through SST, its international arm, the Academy is an authorized delivery partner for the full Ellis portfolio.', color: '#00AFDC', wide: true },
   { short: 'IAAPA', logo: './partner-iaapa.png', full: 'International Association of Amusement Parks and Attractions', role: 'The global association for the attractions industry', color: '#3985FD' },
-  { short: 'Ellis & Associates', logo: './partner-ellis.png', full: 'Jeff Ellis & Associates', role: 'World leader in aquatic safety, lifeguard training and attraction operations', color: '#00AFDC' },
-  { short: 'SST', logo: './partner-sst.png', full: 'Safety Skills Training DMCC', role: 'International training division of Ellis & Associates and our delivery partner for the full Ellis portfolio', color: '#15D2A4' },
-  { short: 'TVTC', logo: '', full: 'Technical and Vocational Training Corporation', role: 'National accreditation for vocational attractions programs in Saudi Arabia', color: '#99CA32' },
   { short: 'AAM', logo: './partner-aam.png', full: 'American Alliance of Museums', role: 'Professional standards and advocacy for museums worldwide', color: '#FFCA03' },
   { short: 'WWA', logo: './partner-wwa.png', full: 'World Waterpark Association', role: 'The industry body for waterpark operators and suppliers', color: '#F85707' },
-  { short: 'IRT', logo: './partner-irt.png', full: 'International Ride Training', role: 'Specialist ride operations training and certification', color: '#FC026F' },
   { short: 'TEA', logo: './partner-tea.png', full: 'Themed Entertainment Association', role: 'Global network for experience design and themed entertainment', color: '#8238EB' },
-  { short: 'AIMS', logo: './partner-aims.png', full: 'AIMS International', role: 'Amusement industry safety standards and education', color: '#000050' },
 ]
 
 export default function Partners() {
@@ -43,13 +39,13 @@ export default function Partners() {
           {partners.map((p, i) => (
             <div
               key={p.short}
-              className={`partner-card group relative bg-[#F9F8F6] p-8 sm:p-10 min-h-[300px] flex flex-col overflow-hidden reveal reveal-delay-${(i % 3) + 1} ${inView ? 'visible' : ''}`}
+              className={`partner-card group relative bg-[#F9F8F6] p-8 sm:p-10 min-h-[300px] flex flex-col overflow-hidden reveal reveal-delay-${(i % 3) + 1} ${p.wide ? 'sm:col-span-2' : ''} ${inView ? 'visible' : ''}`}
               style={{ ['--brand' as string]: p.color }}
             >
               <span className="partner-fill" aria-hidden="true" />
               <div className="partner-plate relative h-24 mb-8 bg-white flex items-center justify-center px-6 transition-shadow duration-500">
                 {p.logo ? (
-                  <img src={p.logo} alt={`${p.full} logo`} loading="lazy" decoding="async" className="max-h-14 max-w-full w-auto object-contain" />
+                  <img src={p.logo} alt={`${p.full} logo`} loading="lazy" decoding="async" className={`${p.wide ? 'max-h-16' : 'max-h-14'} max-w-full w-auto object-contain`} />
                 ) : (
                   <span className="font-serif text-[30px] font-semibold tracking-[0.08em]" style={{ color: '#007A3D' }}>{p.short}</span>
                 )}
@@ -63,7 +59,7 @@ export default function Partners() {
                 </div>
                 <p className="partner-sub text-[14px] text-[#6B6B65] font-medium transition-colors duration-500">{p.full}</p>
               </div>
-              <p className="partner-sub relative text-[15px] text-[#6B6B65] font-light leading-relaxed mt-auto pt-6 max-w-[360px] transition-colors duration-500">
+              <p className={`partner-sub relative text-[15px] text-[#6B6B65] font-light leading-relaxed mt-auto pt-6 ${p.wide ? 'max-w-[620px]' : 'max-w-[360px]'} transition-colors duration-500`}>
                 {p.role}
               </p>
             </div>
