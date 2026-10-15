@@ -122,12 +122,20 @@ export default function Footer() {
           <p className="text-[15px] text-white/35 font-light">
             © {new Date().getFullYear()} ProFun. All rights reserved. The ProFun Academy is a division of ProFun International.
           </p>
+          <div className="flex items-center gap-6">
+          <Link
+            to="/courses"
+            className="text-[15px] text-white/35 hover:text-[#FFCA03] transition-colors duration-200"
+          >
+            Courses & booking
+          </Link>
           <a
             href="mailto:info@theprofunacademy.com"
             className="text-[15px] text-white/55 hover:text-[#FFCA03] transition-colors duration-200"
           >
             info@theprofunacademy.com
           </a>
+          </div>
         </div>
       </div>
     </footer>

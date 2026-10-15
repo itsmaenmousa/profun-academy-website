@@ -15,6 +15,7 @@ import Leadership from './components/Leadership'
 import News from './components/News'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Courses from './components/Courses'
 import Academy from './pages/Academy'
 
 // "#section" links: scroll if that section is on the current page, otherwise open its page.
@@ -112,6 +113,7 @@ export default function App() {
         <Route path="/team" element={<Layout><Leadership /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/academy" element={<Academy />} />
+        <Route path="/courses" element={<Layout><Courses /></Layout>} />
         <Route path="*" element={<Home />} />
       </Routes>
     </HashRouter>
