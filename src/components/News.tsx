@@ -34,14 +34,14 @@ export default function News() {
         {/* Header */}
         <div className={`flex items-end justify-between mb-16 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}>
           <div>
-            <p className="text-[17px] font-medium text-[#F85707] mb-4">Accredited & certified</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">Accredited & certified</p>
             <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">
               Industry-recognised certification, built in.
             </h2>
           </div>
           <a
             href="#contact"
-            className="hidden lg:inline-flex items-center gap-2 text-[14px] font-medium text-[#6B6B65] hover:text-[#F85707] hover:gap-4 transition-all duration-200"
+            className="hidden lg:inline-flex items-center gap-2 text-[15px] font-medium text-[#6B6B65] hover:text-[#F85707] hover:gap-4 transition-all duration-200"
           >
             Request a custom program
             <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
@@ -74,15 +74,15 @@ export default function News() {
               {/* Content */}
               <div className="p-8">
                 <div className="flex items-center gap-3 mb-5">
-                  <span className="text-[15px] font-medium" style={{ color: ['#00AFDC', '#15D2A4', '#8238EB'][i] }}>{a.category}</span>
+                  <span className="text-[16px] font-medium" style={{ color: ['#00AFDC', '#15D2A4', '#8238EB'][i] }}>{a.category}</span>
                   <span className="text-[#E2E0DB]">·</span>
-                  <span className="text-[14px] text-[#6B6B65] font-light">{a.date}</span>
+                  <span className="text-[15px] text-[#6B6B65] font-light">{a.date}</span>
                 </div>
                 <h3 className="font-serif text-[24px] text-[#1C1C1A] leading-tight mb-4 group-hover:text-[#000050] transition-colors duration-300">
                   {a.title}
                 </h3>
-                <p className="text-[16px] text-[#6B6B65] leading-relaxed font-light mb-6">{a.desc}</p>
-                <a href="#contact" className="flex items-center gap-2 text-[14px] font-medium text-[#1C1C1A] group-hover:text-[#F85707] group-hover:gap-4 transition-all duration-200">
+                <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light mb-6">{a.desc}</p>
+                <a href="#contact" className="flex items-center gap-2 text-[15px] font-medium text-[#1C1C1A] group-hover:text-[#F85707] group-hover:gap-4 transition-all duration-200">
                   Start a conversation
                   <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
                     <path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>

@@ -20,8 +20,8 @@ function Metric({ m, active }: { m: typeof metrics[0]; active: boolean }) {
         </span>
       </div>
       <div className="mt-4">
-        <p className="text-[16px] font-medium text-[#1C1C1A] mb-0.5">{m.label}</p>
-        <p className="text-[14px] text-[#6B6B65] font-light">{m.sub}</p>
+        <p className="text-[17px] font-medium text-[#1C1C1A] mb-0.5">{m.label}</p>
+        <p className="text-[15px] text-[#6B6B65] font-light">{m.sub}</p>
       </div>
     </div>
   )
@@ -39,7 +39,7 @@ export default function AcademyMetrics() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter strip */}
         <div className="flex items-center gap-4 py-8 border-b border-white/10">
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Proven scale</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Proven scale</span>
           <span className="flex-1 h-px bg-white/10" />
         </div>
 
@@ -54,8 +54,8 @@ export default function AcademyMetrics() {
                 <CounterDisplay m={m} active={inView} />
               </span>
               <div className="mt-6">
-                <p className="text-[16px] font-medium text-white/80 mb-1">{m.label}</p>
-                <p className="text-[14px] text-white/35 font-light">{m.sub}</p>
+                <p className="text-[17px] font-medium text-white/80 mb-1">{m.label}</p>
+                <p className="text-[15px] text-white/35 font-light">{m.sub}</p>
               </div>
             </div>
           ))}

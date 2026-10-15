@@ -14,14 +14,14 @@ export default function AcademyAuthority() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Authority</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Authority</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-16 gap-y-12">
           {/* Section heading label */}
           <div className={`lg:col-span-3 reveal ${inView ? 'visible' : ''}`}>
-            <h2 id="authority-heading" className="text-[16px] font-medium text-[#6B6B65] leading-relaxed">
+            <h2 id="authority-heading" className="text-[17px] font-medium text-[#6B6B65] leading-relaxed">
               Context &<br />Foundation
             </h2>
           </div>
@@ -31,7 +31,7 @@ export default function AcademyAuthority() {
             <p className="font-serif text-[clamp(30px,3vw,46px)] text-[#1C1C1A] leading-[1.25] tracking-[-0.01em] mb-10">
               The ProFun Academy is a division of ProFun, the world leader and the only firm of its kind dedicated exclusively to operations advisory, training and management for the attractions industry.
             </p>
-            <div className="space-y-5 text-[18px] text-[#6B6B65] font-light leading-relaxed">
+            <div className="space-y-5 text-[19px] text-[#6B6B65] font-light leading-relaxed">
               <p>
                 Since 1980, we have advised on, trained for and managed projects on every continent. Our work spans more than 500 projects across 50 countries, a record unmatched in the attractions industry, from theme parks and water parks to museums, brand centers and world expos.
               </p>
@@ -50,7 +50,7 @@ export default function AcademyAuthority() {
                 </h3>
               </div>
               <div className="lg:col-span-6 lg:col-start-7">
-                <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">
+                <p className="text-[18px] text-[#6B6B65] font-light leading-relaxed">
                   Our value lies in bridging creative ambition with operational reality. Every program applies commercial discipline, practical experience and global insight, and is built by people who know what it takes to deliver guest satisfaction, financial performance and operational reliability, because they've been there.
                 </p>
               </div>

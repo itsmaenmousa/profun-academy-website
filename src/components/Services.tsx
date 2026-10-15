@@ -47,12 +47,12 @@ export default function Services() {
           className={`flex items-end justify-between mb-20 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
         >
           <div>
-            <p className="text-[17px] font-medium text-[#F85707] mb-4">What we offer</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">What we offer</p>
             <h2 className="font-serif text-[clamp(40px,4vw,64px)] text-[#1C1C1A] leading-tight max-w-[520px] tracking-[-0.01em]">
               Six ways we work with you.
             </h2>
           </div>
-          <div className="hidden lg:block max-w-[400px] text-[18px] text-[#6B6B65] leading-relaxed font-light">
+          <div className="hidden lg:block max-w-[400px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
             From bespoke learning design to full capability strategy, the Academy partners with organisations at every stage of their learning journey.
           </div>
         </div>
@@ -66,12 +66,12 @@ export default function Services() {
               style={{ ['--accent' as string]: ACCENTS[i] }}
             >
               <span className="absolute top-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-500" style={{ background: ACCENTS[i] }} aria-hidden="true" />
-              <div className="text-[14px] mb-8 font-medium tracking-wide" style={{ color: ACCENTS[i] }}>{s.number}</div>
+              <div className="text-[15px] mb-8 font-medium tracking-wide" style={{ color: ACCENTS[i] }}>{s.number}</div>
               <h3 className="font-serif text-[28px] text-[#000050] mb-4 transition-colors duration-300 leading-tight">
                 {s.title}
               </h3>
-              <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light">{s.desc}</p>
-              <a href="#contact" className="mt-8 flex items-center gap-2 text-[14px] font-medium text-[#F85707] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p className="text-[18px] text-[#6B6B65] leading-relaxed font-light">{s.desc}</p>
+              <a href="#contact" className="mt-8 flex items-center gap-2 text-[15px] font-medium text-[#F85707] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Start a conversation
                 <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
                   <path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>

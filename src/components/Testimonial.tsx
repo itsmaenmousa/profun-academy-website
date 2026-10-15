@@ -22,8 +22,8 @@ export default function Testimonial() {
             Every program is built from real industry experience and delivered by people who have worked at the highest levels of the attractions world.
           </blockquote>
           <div className="flex flex-col items-center gap-1">
-            <p className="text-[17px] font-medium text-white">The ProFun Academy</p>
-            <p className="text-[14px] text-white/55 font-light">A division of ProFun, operating since 1980</p>
+            <p className="text-[18px] font-medium text-white">The ProFun Academy</p>
+            <p className="text-[15px] text-white/55 font-light">A division of ProFun, operating since 1980</p>
           </div>
           <div className="w-px h-16 mx-auto mt-12 bg-gradient-to-b from-[#FC026F] to-transparent" />
         </div>

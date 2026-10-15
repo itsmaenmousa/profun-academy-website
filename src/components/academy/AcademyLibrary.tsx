@@ -100,7 +100,7 @@ export default function AcademyLibrary() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Training library</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Training library</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
         </div>
 
@@ -111,7 +111,7 @@ export default function AcademyLibrary() {
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">
+            <p className="text-[18px] text-[#6B6B65] font-light leading-relaxed">
               Select training and delivery topics across 13 curriculum areas. Filter by discipline to explore what we deliver.
             </p>
           </div>
@@ -128,7 +128,7 @@ export default function AcademyLibrary() {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`text-[14px] font-medium px-4 py-2 border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
+                className={`text-[15px] font-medium px-4 py-2 border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
                   filter === cat
                     ? 'bg-[#1C1C1A] text-white border-[#1C1C1A]'
                     : 'text-[#6B6B65] border-[#DDDBD6] hover:border-[#1C1C1A] hover:text-[#1C1C1A]'
@@ -142,7 +142,7 @@ export default function AcademyLibrary() {
         </div>
 
         {/* Results count */}
-        <p className="text-[14px] text-[#6B6B65] font-light mb-8 reveal reveal-delay-2" aria-live="polite">
+        <p className="text-[15px] text-[#6B6B65] font-light mb-8 reveal reveal-delay-2" aria-live="polite">
           Showing {count} module{count !== 1 ? 's' : ''}
           {filter !== 'All' ? ` in ${filter}` : ''}
         </p>
@@ -156,8 +156,8 @@ export default function AcademyLibrary() {
               key={`${m.cat}-${m.title}-${i}`}
               className="bg-[#F9F8F6] p-6 hover:bg-[#F2F1EF] transition-colors duration-200 group cursor-pointer"
             >
-              <p className="text-[15px] text-[#F85707] font-medium mb-3">{m.cat}</p>
-              <p className="text-[16px] font-medium text-[#1C1C1A] leading-snug group-hover:text-[#000050] transition-colors duration-200">
+              <p className="text-[16px] text-[#F85707] font-medium mb-3">{m.cat}</p>
+              <p className="text-[17px] font-medium text-[#1C1C1A] leading-snug group-hover:text-[#000050] transition-colors duration-200">
                 {m.title}
               </p>
             </div>

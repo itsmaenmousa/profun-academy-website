@@ -34,7 +34,7 @@ export default function Nav() {
   useEffect(() => { setMobileOpen(false) }, [pathname])
 
   const linkCls = ({ isActive }: { isActive: boolean }) =>
-    `relative text-[14px] font-medium tracking-wide uppercase transition-colors duration-200 hover:text-[#F85707] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
+    `relative text-[13px] xl:text-[15px] font-medium tracking-wide uppercase whitespace-nowrap transition-colors duration-200 hover:text-[#F85707] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
       isActive ? 'text-[#F85707]' : scrolled ? 'text-[#000050]' : 'text-white/85'
     }`
 
@@ -49,7 +49,7 @@ export default function Nav() {
       }`}
     >
       {/* ── Desktop bar ─────────────────────────────────────────── */}
-      <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center h-20 max-w-[1920px] mx-auto px-12">
+      <div className="hidden lg:grid grid-cols-[minmax(max-content,1fr)_auto_minmax(max-content,1fr)] gap-6 items-center h-20 max-w-[1920px] mx-auto px-8 xl:px-12">
 
         {/* LEFT: Logo */}
         <div className="flex items-center">
@@ -58,7 +58,7 @@ export default function Nav() {
             <img
               src="./academy-full-color.svg"
               alt="The ProFun Academy"
-              className="h-14 w-auto transition-opacity duration-300"
+              className="h-14 w-auto max-w-none transition-opacity duration-300"
               style={{ opacity: scrolled ? 1 : 0 }}
             />
             {/* Colour flare, shown over the hero */}
@@ -73,7 +73,7 @@ export default function Nav() {
         </div>
 
         {/* CENTRE: Navigation */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-5 xl:gap-8">
           {PAGES.map(([label, to]) => (
             <NavLink key={to} to={to} className={linkCls}>
               {({ isActive }) => (
@@ -93,7 +93,7 @@ export default function Nav() {
         <div className="flex items-center justify-end gap-6">
           <Link
             to="/contact"
-            className={`text-[14px] font-medium text-white bg-[#F85707] px-5 py-2.5 whitespace-nowrap transition-all duration-300 hover:bg-[#000050] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
+            className={`text-[14px] xl:text-[15px] font-medium text-white bg-[#F85707] px-4 xl:px-5 py-2.5 whitespace-nowrap transition-all duration-300 hover:bg-[#000050] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
               scrolled ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
             }`}
             tabIndex={scrolled ? 0 : -1}
@@ -146,7 +146,7 @@ export default function Nav() {
               key={to}
               to={to}
               className={({ isActive }) =>
-                `block py-3 text-[17px] font-medium border-b transition-colors hover:text-[#F85707] ${
+                `block py-3 text-[18px] font-medium border-b transition-colors hover:text-[#F85707] ${
                   isActive ? 'text-[#F85707]' : scrolled ? 'text-[#000050]' : 'text-white/85'
                 } ${scrolled ? 'border-[#E2E0DB]' : 'border-white/10'}`
               }
@@ -157,7 +157,7 @@ export default function Nav() {
           <div className="pt-6">
             <Link
               to="/contact"
-              className="inline-block text-[14px] font-medium text-white bg-[#F85707] px-6 py-3 hover:bg-[#D94A05] transition-colors"
+              className="inline-block text-[15px] font-medium text-white bg-[#F85707] px-6 py-3 hover:bg-[#D94A05] transition-colors"
             >
               Start a conversation
             </Link>

@@ -20,7 +20,7 @@ export default function AcademyContact() {
   }
 
   const inputCls =
-    'w-full bg-transparent border-b border-[#DDDBD6] py-3 text-[17px] text-[#1C1C1A] placeholder:text-[#BEBBB5] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200'
+    'w-full bg-transparent border-b border-[#DDDBD6] py-3 text-[18px] text-[#1C1C1A] placeholder:text-[#BEBBB5] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200'
 
   return (
     <>
@@ -34,7 +34,7 @@ export default function AcademyContact() {
         <div className="max-w-[1440px] mx-auto">
           {/* Chapter rule */}
           <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-            <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Contact</span>
+            <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Contact</span>
             <span className="flex-1 h-px bg-white/10" />
           </div>
 
@@ -51,10 +51,10 @@ export default function AcademyContact() {
               <div className="space-y-10">
                 {/* Email */}
                 <div>
-                  <p className="text-[15px] text-white/60 mb-3 font-medium">Email</p>
+                  <p className="text-[16px] text-white/60 mb-3 font-medium">Email</p>
                   <a
                     href="mailto:info@theprofunacademy.com"
-                    className="text-[17px] text-white/70 hover:text-[#F85707] transition-colors duration-200"
+                    className="text-[18px] text-white/70 hover:text-[#F85707] transition-colors duration-200"
                   >
                     info@theprofunacademy.com
                   </a>
@@ -62,8 +62,8 @@ export default function AcademyContact() {
 
                 {/* Location */}
                 <div className="pt-2 border-t border-white/8">
-                  <p className="text-[15px] text-white/60 mb-3 font-medium">Location</p>
-                  <p className="text-[16px] text-white/70 font-light">4936 Anas Ibn Malik, Al Malqa Dist., Riyadh 13525, Saudi Arabia</p>
+                  <p className="text-[16px] text-white/60 mb-3 font-medium">Location</p>
+                  <p className="text-[17px] text-white/70 font-light">4936 Anas Ibn Malik, Al Malqa Dist., Riyadh 13525, Saudi Arabia</p>
                 </div>
               </div>
             </div>
@@ -74,20 +74,20 @@ export default function AcademyContact() {
                 <div className="py-20 flex flex-col gap-6">
                   <div className="w-8 h-px bg-[#F85707]" />
                   <h3 className="font-serif text-[36px] text-white leading-tight">Thank you.</h3>
-                  <p className="text-[18px] text-white/50 font-light max-w-[400px] leading-relaxed">
+                  <p className="text-[19px] text-white/50 font-light max-w-[400px] leading-relaxed">
                     Your enquiry has been received. A member of the ProFun Academy team will be in touch shortly.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handle} noValidate aria-label="Learning strategy enquiry form">
-                  <p className="text-[15px] text-white/60 mb-8 font-medium">
+                  <p className="text-[16px] text-white/60 mb-8 font-medium">
                     Start the conversation
                   </p>
 
                   <div className="space-y-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
-                        <label htmlFor="ac-name" className="block text-[15px] text-white/60 mb-2 font-medium">
+                        <label htmlFor="ac-name" className="block text-[16px] text-white/60 mb-2 font-medium">
                           Full name <span aria-hidden="true">*</span>
                         </label>
                         <input
@@ -97,12 +97,12 @@ export default function AcademyContact() {
                           autoComplete="name"
                           value={form.name}
                           onChange={e => setForm({ ...form, name: e.target.value })}
-                          className="w-full bg-transparent border-b border-white/15 py-3 text-[17px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200"
+                          className="w-full bg-transparent border-b border-white/15 py-3 text-[18px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200"
                           placeholder="Your name"
                         />
                       </div>
                       <div>
-                        <label htmlFor="ac-org" className="block text-[15px] text-white/60 mb-2 font-medium">
+                        <label htmlFor="ac-org" className="block text-[16px] text-white/60 mb-2 font-medium">
                           Organisation
                         </label>
                         <input
@@ -111,7 +111,7 @@ export default function AcademyContact() {
                           autoComplete="organization"
                           value={form.org}
                           onChange={e => setForm({ ...form, org: e.target.value })}
-                          className="w-full bg-transparent border-b border-white/15 py-3 text-[17px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200"
+                          className="w-full bg-transparent border-b border-white/15 py-3 text-[18px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200"
                           placeholder="Your organisation"
                         />
                       </div>
@@ -119,7 +119,7 @@ export default function AcademyContact() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
-                        <label htmlFor="ac-email" className="block text-[15px] text-white/60 mb-2 font-medium">
+                        <label htmlFor="ac-email" className="block text-[16px] text-white/60 mb-2 font-medium">
                           Email address <span aria-hidden="true">*</span>
                         </label>
                         <input
@@ -129,12 +129,12 @@ export default function AcademyContact() {
                           autoComplete="email"
                           value={form.email}
                           onChange={e => setForm({ ...form, email: e.target.value })}
-                          className="w-full bg-transparent border-b border-white/15 py-3 text-[17px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200"
+                          className="w-full bg-transparent border-b border-white/15 py-3 text-[18px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200"
                           placeholder="your@email.com"
                         />
                       </div>
                       <div>
-                        <label htmlFor="ac-phone" className="block text-[15px] text-white/60 mb-2 font-medium">
+                        <label htmlFor="ac-phone" className="block text-[16px] text-white/60 mb-2 font-medium">
                           Phone
                         </label>
                         <input
@@ -143,21 +143,21 @@ export default function AcademyContact() {
                           autoComplete="tel"
                           value={form.phone}
                           onChange={e => setForm({ ...form, phone: e.target.value })}
-                          className="w-full bg-transparent border-b border-white/15 py-3 text-[17px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200"
+                          className="w-full bg-transparent border-b border-white/15 py-3 text-[18px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200"
                           placeholder="+xxx xxx xxx xxxx"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="ac-interest" className="block text-[15px] text-white/60 mb-2 font-medium">
+                      <label htmlFor="ac-interest" className="block text-[16px] text-white/60 mb-2 font-medium">
                         Area of interest
                       </label>
                       <select
                         id="ac-interest"
                         value={form.interest}
                         onChange={e => setForm({ ...form, interest: e.target.value })}
-                        className="w-full bg-transparent border-b border-white/15 py-3 text-[17px] text-white/70 focus:outline-none focus:border-white/50 transition-colors duration-200 cursor-pointer"
+                        className="w-full bg-transparent border-b border-white/15 py-3 text-[18px] text-white/70 focus:outline-none focus:border-white/50 transition-colors duration-200 cursor-pointer"
                       >
                         <option value="" className="bg-[#111110]">Select a service area</option>
                         <option value="bespoke" className="bg-[#111110]">Bespoke learning experience design</option>
@@ -170,7 +170,7 @@ export default function AcademyContact() {
                     </div>
 
                     <div>
-                      <label htmlFor="ac-message" className="block text-[15px] text-white/60 mb-2 font-medium">
+                      <label htmlFor="ac-message" className="block text-[16px] text-white/60 mb-2 font-medium">
                         Tell us about your learning challenge
                       </label>
                       <textarea
@@ -178,14 +178,14 @@ export default function AcademyContact() {
                         rows={4}
                         value={form.message}
                         onChange={e => setForm({ ...form, message: e.target.value })}
-                        className="w-full bg-transparent border-b border-white/15 py-3 text-[17px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200 resize-none"
+                        className="w-full bg-transparent border-b border-white/15 py-3 text-[18px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200 resize-none"
                         placeholder="Describe your team, your challenge and the outcome you're working towards"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="inline-flex items-center gap-3 text-[14px] font-medium text-white bg-[#F85707] px-8 py-4 hover:bg-[#D94A05] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111110]"
+                      className="inline-flex items-center gap-3 text-[15px] font-medium text-white bg-[#F85707] px-8 py-4 hover:bg-[#D94A05] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111110]"
                     >
                       Send enquiry
                       <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
@@ -216,7 +216,7 @@ export default function AcademyContact() {
                   <li key={l}>
                     <a
                       href={`#${l.toLowerCase()}`}
-                      className="text-[14px] font-medium text-white/30 hover:text-white/70 transition-colors duration-200"
+                      className="text-[15px] font-medium text-white/30 hover:text-white/70 transition-colors duration-200"
                     >
                       {l}
                     </a>
@@ -227,10 +227,10 @@ export default function AcademyContact() {
           </div>
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <p className="text-[12px] text-white/20 font-light">
+            <p className="text-[13px] text-white/20 font-light">
               © {new Date().getFullYear()} The ProFun Academy, a division of ProFun. All rights reserved.
             </p>
-            <p className="text-[12px] text-white/20 font-light">
+            <p className="text-[13px] text-white/20 font-light">
               Riyadh, KSA · Los Angeles, USA
             </p>
           </div>

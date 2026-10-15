@@ -42,7 +42,7 @@ export default function AcademyPartners() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Global ecosystem</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Global ecosystem</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
         </div>
 
@@ -53,7 +53,7 @@ export default function AcademyPartners() {
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">
+            <p className="text-[18px] text-[#6B6B65] font-light leading-relaxed">
               ProFun Academy's partnerships and affiliations reflect our commitment to industry standards, accreditation integrity and the global professional community for attractions.
             </p>
           </div>
@@ -70,11 +70,11 @@ export default function AcademyPartners() {
                 <div className="text-[24px] font-semibold text-[#1C1C1A] tracking-[-0.01em] mb-2 leading-tight">
                   {p.name}
                 </div>
-                <p className="text-[14px] text-[#6B6B65] font-light leading-snug">
+                <p className="text-[15px] text-[#6B6B65] font-light leading-snug">
                   {p.full}
                 </p>
               </div>
-              <p className="text-[14px] text-[#6B6B65] font-light leading-snug mt-4 pt-4 border-t border-[#DDDBD6]">
+              <p className="text-[15px] text-[#6B6B65] font-light leading-snug mt-4 pt-4 border-t border-[#DDDBD6]">
                 {p.role}
               </p>
             </div>
@@ -82,7 +82,7 @@ export default function AcademyPartners() {
 
           {/* Spacer cell to complete visual row */}
           <div className="bg-[#F9F8F6] p-8 flex items-center justify-center">
-            <p className="text-[14px] text-[#DDDBD6] font-light text-center">
+            <p className="text-[15px] text-[#DDDBD6] font-light text-center">
               Additional partnerships<br />available on request
             </p>
           </div>

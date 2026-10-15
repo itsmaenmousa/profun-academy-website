@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="max-w-[1100px]">
           {/* Eyebrow */}
           <p
-            className="text-[18px] font-medium text-white/85 mb-8 transition-opacity duration-700"
+            className="text-[19px] font-medium text-white/85 mb-8 transition-opacity duration-700"
             style={{ opacity: ready ? 1 : 0, transitionDelay: '0.35s' }}
           >
             The ProFun Academy
@@ -58,7 +58,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="text-[17px] sm:text-[clamp(17px,1.6vw,22px)] leading-relaxed text-white/70 mb-12 max-w-[520px] md:max-w-none md:whitespace-nowrap font-light transition-all duration-700"
+            className="text-[18px] sm:text-[clamp(17px,1.6vw,22px)] leading-relaxed text-white/70 mb-12 max-w-[520px] md:max-w-none md:whitespace-nowrap font-light transition-all duration-700"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(16px)',
@@ -78,7 +78,7 @@ export default function Hero() {
           >
             <a
               href="#services"
-              className="inline-flex items-center gap-3 text-[16px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#FC026F] hover:gap-5"
+              className="inline-flex items-center gap-3 text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#FC026F] hover:gap-5"
             >
               Explore our services
               <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
@@ -87,7 +87,7 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 text-[16px] font-medium text-white border border-white/30 px-8 py-4 transition-all duration-300 hover:border-white/70 hover:bg-white/8"
+              className="inline-flex items-center gap-3 text-[17px] font-medium text-white border border-white/30 px-8 py-4 transition-all duration-300 hover:border-white/70 hover:bg-white/8"
             >
               Start a conversation
             </a>

@@ -41,13 +41,13 @@ export default function Leadership() {
           className={`grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
         >
           <div className="lg:col-span-4">
-            <p className="text-[17px] font-medium text-[#F85707] mb-4">Leadership</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">Leadership</p>
             <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">
               The people who lead our practice
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-[18px] text-[#6B6B65] leading-relaxed font-light">
+            <p className="text-[19px] text-[#6B6B65] leading-relaxed font-light">
               ProFun's senior team combines academic rigour with extensive hands-on experience across every discipline relevant to the leisure and attractions industry.
             </p>
           </div>
@@ -76,8 +76,8 @@ export default function Leadership() {
               {/* Info */}
               <div className="p-8">
                 <h3 className="font-serif text-[24px] text-[#1C1C1A] leading-tight mb-1">{member.name}</h3>
-                <p className="text-[14px] text-[#F85707] font-medium mb-4">{member.role}</p>
-                <p className="text-[16px] text-[#6B6B65] leading-relaxed font-light max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
+                <p className="text-[15px] text-[#F85707] font-medium mb-4">{member.role}</p>
+                <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
                   {member.bio}
                 </p>
               </div>

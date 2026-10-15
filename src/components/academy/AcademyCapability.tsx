@@ -26,7 +26,7 @@ export default function AcademyCapability() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Capability model</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Capability model</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
         </div>
 
@@ -37,7 +37,7 @@ export default function AcademyCapability() {
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">
+            <p className="text-[18px] text-[#6B6B65] font-light leading-relaxed">
               Built differently, by design. Each element is intentional and grounded in what the attractions industry actually requires from its people, at every level of the organisation.
             </p>
           </div>
@@ -51,10 +51,10 @@ export default function AcademyCapability() {
               className={`bg-[#F9F8F6] p-8 hover:bg-[#F2F1EF] transition-colors duration-300 reveal reveal-delay-${Math.min(i % 3 + 1, 5)} ${inView ? 'visible' : ''}`}
             >
               <div className="flex items-start gap-4 mb-4">
-                <span className="text-[#F85707] text-[12px] font-medium mt-0.5">{c.n}</span>
-                <h3 className="text-[17px] font-semibold text-[#1C1C1A] leading-snug">{c.title}</h3>
+                <span className="text-[#F85707] text-[13px] font-medium mt-0.5">{c.n}</span>
+                <h3 className="text-[18px] font-semibold text-[#1C1C1A] leading-snug">{c.title}</h3>
               </div>
-              <p className="text-[14px] text-[#6B6B65] font-light leading-relaxed pl-8">{c.desc}</p>
+              <p className="text-[15px] text-[#6B6B65] font-light leading-relaxed pl-8">{c.desc}</p>
             </div>
           ))}
         </div>

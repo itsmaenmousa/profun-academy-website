@@ -80,7 +80,7 @@ export default function VideoReel() {
         className={`max-w-[1920px] mx-auto px-6 sm:px-12 pt-20 pb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 reveal ${inView ? 'visible' : ''}`}
       >
         <div>
-          <p className="text-[17px] font-medium text-[#F85707] mb-4">How we deliver</p>
+          <p className="text-[20px] font-semibold text-[#F85707] mb-4">How we deliver</p>
           <h2 className="font-serif text-[clamp(36px,3.4vw,56px)] text-white leading-tight tracking-[-0.01em] max-w-[620px]">
             Five learning channels.<br /> One seamless experience.
           </h2>
@@ -93,7 +93,7 @@ export default function VideoReel() {
               role="tab"
               aria-selected={i === active}
               onClick={() => { setActive(i); setPaused(true) }}
-              className={`relative overflow-hidden px-5 py-3 text-[14px] font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
+              className={`relative overflow-hidden px-5 py-3 text-[15px] font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
                 i === active ? 'text-white bg-white/10' : 'text-white/40 hover:text-white/80'
               }`}
             >
@@ -135,10 +135,10 @@ export default function VideoReel() {
             <h3 className="font-serif text-[clamp(32px,3.6vw,60px)] text-white leading-[1.05] tracking-[-0.01em] mb-5 max-w-[640px]">
               {c.title}
             </h3>
-            <p className="text-[17px] sm:text-[19px] text-white/70 font-light leading-relaxed max-w-[560px] mb-6">
+            <p className="text-[18px] sm:text-[20px] text-white/70 font-light leading-relaxed max-w-[560px] mb-6">
               {c.desc}
             </p>
-            <p className="text-[15px] text-white/60 max-w-[640px] leading-relaxed">
+            <p className="text-[16px] text-white/60 max-w-[640px] leading-relaxed">
               {c.tags.join(' · ')}
             </p>
           </div>
@@ -155,12 +155,13 @@ export default function VideoReel() {
                 'Cultural Institutions', '·', 'Brand Centres', '·', 'World Expos', '·',
                 'Zoos & Aquariums', '·', 'Family Entertainment Centres', '·', 'Stadiums & Arenas', '·',
               ].map((item, j) => (
-                <span
-                  key={j}
-                  className={`text-[14px] font-light ${item === '·' ? 'text-[#F85707]' : 'text-white/25'} tracking-wide`}
-                >
-                  {item}
-                </span>
+                item === '·' ? (
+                  <span key={j} className="w-2.5 h-2.5 rounded-full bg-[#F85707] flex-shrink-0" aria-hidden="true" />
+                ) : (
+                  <span key={j} className="text-[18px] font-normal text-white/85">
+                    {item}
+                  </span>
+                )
               ))}
             </div>
           ))}

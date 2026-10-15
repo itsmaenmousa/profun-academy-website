@@ -34,7 +34,7 @@ export default function AcademyCredentials() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Standards & accreditation</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Standards & accreditation</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
         </div>
 
@@ -45,7 +45,7 @@ export default function AcademyCredentials() {
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">
+            <p className="text-[18px] text-[#6B6B65] font-light leading-relaxed">
               ProFun Academy programs carry accreditation from globally recognised bodies, ensuring credentials that hold weight with employers, regulators and industry peers worldwide.
             </p>
           </div>
@@ -56,19 +56,19 @@ export default function AcademyCredentials() {
           <div className={`bg-[#F2F1EF] p-10 reveal ${inView ? 'visible' : ''}`}>
             <div className="flex items-start justify-between mb-8">
               <div>
-                <p className="text-[15px] text-[#F85707] font-medium mb-2">Accreditor</p>
-                <h3 className="text-[20px] font-semibold text-[#1C1C1A]">Jeff Ellis & Associates</h3>
-                <p className="text-[14px] text-[#6B6B65] font-light mt-1">International aquatics safety & attraction operations</p>
+                <p className="text-[16px] text-[#F85707] font-medium mb-2">Accreditor</p>
+                <h3 className="text-[21px] font-semibold text-[#1C1C1A]">Jeff Ellis & Associates</h3>
+                <p className="text-[15px] text-[#6B6B65] font-light mt-1">International aquatics safety & attraction operations</p>
               </div>
-              <span className="text-[#6B6B65] text-[14px] font-light border border-[#DDDBD6] px-3 py-1">{jeffEllis.length} programs</span>
+              <span className="text-[#6B6B65] text-[15px] font-light border border-[#DDDBD6] px-3 py-1">{jeffEllis.length} programs</span>
             </div>
             <ol className="space-y-3" aria-label="Jeff Ellis & Associates programs">
               {jeffEllis.map((p, i) => (
                 <li key={p} className="flex items-start gap-4">
-                  <span className="text-[12px] text-[#F85707] font-medium w-5 flex-shrink-0 mt-0.5 tabular-nums">
+                  <span className="text-[13px] text-[#F85707] font-medium w-5 flex-shrink-0 mt-0.5 tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-[16px] text-[#1C1C1A] font-light leading-snug">{p}</span>
+                  <span className="text-[17px] text-[#1C1C1A] font-light leading-snug">{p}</span>
                 </li>
               ))}
             </ol>
@@ -78,25 +78,25 @@ export default function AcademyCredentials() {
           <div className={`bg-[#F9F8F6] p-10 reveal reveal-delay-1 ${inView ? 'visible' : ''}`}>
             <div className="flex items-start justify-between mb-8">
               <div>
-                <p className="text-[15px] text-[#F85707] font-medium mb-2">Accreditor</p>
-                <h3 className="text-[20px] font-semibold text-[#1C1C1A]">TVTC</h3>
-                <p className="text-[14px] text-[#6B6B65] font-light mt-1">Technical and Vocational Training Corporation, Kingdom of Saudi Arabia</p>
+                <p className="text-[16px] text-[#F85707] font-medium mb-2">Accreditor</p>
+                <h3 className="text-[21px] font-semibold text-[#1C1C1A]">TVTC</h3>
+                <p className="text-[15px] text-[#6B6B65] font-light mt-1">Technical and Vocational Training Corporation, Kingdom of Saudi Arabia</p>
               </div>
-              <span className="text-[#6B6B65] text-[14px] font-light border border-[#DDDBD6] px-3 py-1">{tvtc.length} programs</span>
+              <span className="text-[#6B6B65] text-[15px] font-light border border-[#DDDBD6] px-3 py-1">{tvtc.length} programs</span>
             </div>
             <ol className="space-y-3 mb-10" aria-label="TVTC accredited programs">
               {tvtc.map((p, i) => (
                 <li key={p} className="flex items-start gap-4">
-                  <span className="text-[12px] text-[#F85707] font-medium w-5 flex-shrink-0 mt-0.5 tabular-nums">
+                  <span className="text-[13px] text-[#F85707] font-medium w-5 flex-shrink-0 mt-0.5 tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-[16px] text-[#1C1C1A] font-light leading-snug">{p}</span>
+                  <span className="text-[17px] text-[#1C1C1A] font-light leading-snug">{p}</span>
                 </li>
               ))}
             </ol>
 
             <div className="border-t border-[#DDDBD6] pt-8">
-              <p className="text-[14px] text-[#6B6B65] font-light leading-relaxed">
+              <p className="text-[15px] text-[#6B6B65] font-light leading-relaxed">
                 TVTC accreditation ensures ProFun Academy vocational programs meet national standards for workforce qualification in the Kingdom of Saudi Arabia, supporting Saudisation and national capability development objectives.
               </p>
             </div>

@@ -28,7 +28,7 @@ export default function AcademyHero() {
           className="flex items-center gap-4 mb-16 transition-all duration-700"
           style={{ opacity: ready ? 1 : 0, transitionDelay: '0.2s' }}
         >
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Academy</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Academy</span>
           <span className="w-8 h-px bg-[#F85707]" />
         </div>
 
@@ -45,7 +45,7 @@ export default function AcademyHero() {
             </h1>
 
             <p
-              className="text-[19px] text-white/55 font-light leading-relaxed max-w-[580px] mb-12 transition-all duration-700"
+              className="text-[20px] text-white/55 font-light leading-relaxed max-w-[580px] mb-12 transition-all duration-700"
               style={{ opacity: ready ? 1 : 0, transform: ready ? 'translateY(0)' : 'translateY(16px)', transitionDelay: '0.6s' }}
             >
               Industry-specific learning, capability development and accredited programs for the attractions industry, from frontline staff to senior leadership.
@@ -57,7 +57,7 @@ export default function AcademyHero() {
             >
               <a
                 href="#capability"
-                className="inline-flex items-center gap-3 text-[14px] font-medium text-white border border-white/25 px-7 py-3.5 hover:border-white/60 hover:bg-white/5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#111110]"
+                className="inline-flex items-center gap-3 text-[15px] font-medium text-white border border-white/25 px-7 py-3.5 hover:border-white/60 hover:bg-white/5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#111110]"
               >
                 Explore capabilities
                 <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
@@ -66,7 +66,7 @@ export default function AcademyHero() {
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-3 text-[14px] font-medium text-white bg-[#F85707] px-7 py-3.5 hover:bg-[#D94A05] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#F85707] focus:ring-offset-2 focus:ring-offset-[#111110]"
+                className="inline-flex items-center gap-3 text-[15px] font-medium text-white bg-[#F85707] px-7 py-3.5 hover:bg-[#D94A05] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#F85707] focus:ring-offset-2 focus:ring-offset-[#111110]"
               >
                 Discuss your learning strategy
               </a>
@@ -80,16 +80,16 @@ export default function AcademyHero() {
           >
             <div className="border-l border-white/15 pl-8 space-y-5">
               <div>
-                <p className="text-[15px] text-white/60 mb-1.5 font-medium">Division of</p>
-                <p className="text-[16px] text-white/75 font-light">ProFun</p>
+                <p className="text-[16px] text-white/60 mb-1.5 font-medium">Division of</p>
+                <p className="text-[17px] text-white/75 font-light">ProFun</p>
               </div>
               <div>
-                <p className="text-[15px] text-white/60 mb-1.5 font-medium">Est.</p>
-                <p className="text-[16px] text-white/75 font-light">1980</p>
+                <p className="text-[16px] text-white/60 mb-1.5 font-medium">Est.</p>
+                <p className="text-[17px] text-white/75 font-light">1980</p>
               </div>
               <div>
-                <p className="text-[15px] text-white/60 mb-1.5 font-medium">Specialisation</p>
-                <p className="text-[16px] text-white/75 font-light">Attraction operations training</p>
+                <p className="text-[16px] text-white/60 mb-1.5 font-medium">Specialisation</p>
+                <p className="text-[17px] text-white/75 font-light">Attraction operations training</p>
               </div>
             </div>
           </div>

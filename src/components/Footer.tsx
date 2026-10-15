@@ -70,10 +70,10 @@ export default function Footer() {
             <Link to="/" className="inline-block mb-8" aria-label="The ProFun Academy home">
               <img src="./profun-academy-white.svg" alt="The ProFun Academy" className="h-20 sm:h-24 w-auto" />
             </Link>
-            <p className="text-[17px] text-white/55 leading-relaxed font-light max-w-[320px] mb-8">
+            <p className="text-[18px] text-white/55 leading-relaxed font-light max-w-[320px] mb-8">
               Tailored learning and capability development for the attractions industry. Riyadh, Kingdom of Saudi Arabia.
             </p>
-            <p className="text-[16px] font-medium text-white/75 mb-4">Follow the Academy</p>
+            <p className="text-[17px] font-medium text-white/75 mb-4">Follow the Academy</p>
             <ul className="flex items-center gap-7" aria-label="The ProFun Academy on social media">
               {SOCIALS.map(s => (
                 <li key={s.name}>
@@ -97,7 +97,7 @@ export default function Footer() {
           <div className="lg:col-span-7 lg:col-start-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {cols.map((col, i) => (
               <div key={col.title}>
-                <p className="text-[16px] font-medium mb-5" style={{ color: ['#15D2A4', '#FFCA03', '#00AFDC'][i] }}>
+                <p className="text-[17px] font-medium mb-5" style={{ color: ['#15D2A4', '#FFCA03', '#00AFDC'][i] }}>
                   {col.title}
                 </p>
                 <ul className="space-y-3">
@@ -105,7 +105,7 @@ export default function Footer() {
                     <li key={link}>
                       <Link
                         to={to}
-                        className="text-[16px] text-white/60 hover:text-white transition-colors duration-200 font-light"
+                        className="text-[17px] text-white/60 hover:text-white transition-colors duration-200 font-light"
                       >
                         {link}
                       </Link>
@@ -119,12 +119,12 @@ export default function Footer() {
 
         {/* Bottom row */}
         <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p className="text-[14px] text-white/35 font-light">
+          <p className="text-[15px] text-white/35 font-light">
             © {new Date().getFullYear()} ProFun. All rights reserved. The ProFun Academy is a division of ProFun International.
           </p>
           <a
             href="mailto:info@theprofunacademy.com"
-            className="text-[14px] text-white/55 hover:text-[#FFCA03] transition-colors duration-200"
+            className="text-[15px] text-white/55 hover:text-[#FFCA03] transition-colors duration-200"
           >
             info@theprofunacademy.com
           </a>

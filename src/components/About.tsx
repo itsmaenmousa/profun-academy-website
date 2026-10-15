@@ -14,19 +14,19 @@ export default function About() {
         >
           {/* Text column */}
           <div className={`lg:col-span-5 reveal ${inView ? 'visible' : ''}`}>
-            <p className="text-[17px] font-medium text-[#F85707] mb-6">About the Academy</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-6">About the Academy</p>
             <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#1C1C1A] leading-tight mb-8 tracking-[-0.01em]">
               The people behind{' '}<br className="hidden lg:block" />great experiences.
             </h2>
-            <p className="text-[19px] text-[#6B6B65] leading-relaxed font-light mb-6">
+            <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-6">
               The ProFun Academy is a division of ProFun, a company dedicated exclusively to operations advisory, training and management for the visitor attractions industry. Since 1980, ProFun has advised on, trained for and managed projects globally, working alongside theme parks, waterparks, museums, cultural institutions, brand centres and world-class events.
             </p>
-            <p className="text-[19px] text-[#6B6B65] leading-relaxed font-light mb-12">
+            <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-12">
               The Academy brings that operational depth directly into the learning room. Every program is built from real industry experience and delivered by people who have worked at the highest levels of the attractions world.
             </p>
             <a
               href="#services"
-              className="inline-flex items-center gap-3 text-[16px] font-medium text-[#1C1C1A] hover:text-[#F85707] hover:gap-5 transition-all duration-300"
+              className="inline-flex items-center gap-3 text-[17px] font-medium text-[#1C1C1A] hover:text-[#F85707] hover:gap-5 transition-all duration-300"
             >
               Explore our services
               <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
@@ -45,10 +45,10 @@ export default function About() {
               />
             </div>
             <div className="mt-4 flex items-start justify-between">
-              <p className="text-[14px] text-[#6B6B65] font-light">In-person learning, facilitated by industry practitioners</p>
+              <p className="text-[15px] text-[#6B6B65] font-light">In-person learning, facilitated by industry practitioners</p>
               <div className="flex items-center gap-1">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#F85707]" />
-                <p className="text-[14px] text-[#6B6B65] font-light">Est. 1980</p>
+                <p className="text-[15px] text-[#6B6B65] font-light">Est. 1980</p>
               </div>
             </div>
           </div>
@@ -61,10 +61,10 @@ export default function About() {
         >
           <div className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 reveal ${inView2 ? 'visible' : ''}`}>
             <div>
-              <p className="text-[17px] font-medium text-[#F85707] mb-4">What sets us apart</p>
+              <p className="text-[20px] font-semibold text-[#F85707] mb-4">What sets us apart</p>
               <h3 className="font-serif text-[clamp(32px,3vw,48px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">Built Differently, By Design.</h3>
             </div>
-            <p className="max-w-[460px] text-[17px] text-[#6B6B65] leading-relaxed font-light">
+            <p className="max-w-[460px] text-[18px] text-[#6B6B65] leading-relaxed font-light">
               Every aspect of the ProFun Academy experience is shaped by the realities of working in visitor attractions, not adapted from another sector.
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function About() {
             >
               <div className="w-8 h-[3px]" style={{ background: ['#3985FD', '#15D2A4', '#99CA32', '#FFCA03', '#FC026F', '#8238EB', '#00AFDC', '#F85707'][i] }} />
               <h4 className="font-serif text-[23px] text-[#000050] leading-tight">{v.title}</h4>
-              <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light">{v.desc}</p>
+              <p className="text-[18px] text-[#6B6B65] leading-relaxed font-light">{v.desc}</p>
             </div>
           ))}
           </div>

@@ -55,7 +55,7 @@ export default function AcademyServices() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Services</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Services</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
         </div>
 
@@ -66,7 +66,7 @@ export default function AcademyServices() {
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">
+            <p className="text-[18px] text-[#6B6B65] font-light leading-relaxed">
               Each service is designed to address a specific operational learning need. They can be engaged independently or combined as part of an integrated capability program.
             </p>
           </div>
@@ -84,10 +84,10 @@ export default function AcademyServices() {
                   aria-expanded={isOpen}
                   aria-controls={`service-panel-${s.n}`}
                 >
-                  <span className={`text-[13px] font-medium w-6 flex-shrink-0 transition-colors duration-200 ${isOpen ? 'text-[#F85707]' : 'text-[#6B6B65]'}`}>
+                  <span className={`text-[14px] font-medium w-6 flex-shrink-0 transition-colors duration-200 ${isOpen ? 'text-[#F85707]' : 'text-[#6B6B65]'}`}>
                     {s.n}
                   </span>
-                  <span className={`flex-1 text-[19px] font-medium transition-colors duration-200 ${isOpen ? 'text-[#1C1C1A]' : 'text-[#1C1C1A] group-hover:text-[#F85707]'}`}>
+                  <span className={`flex-1 text-[20px] font-medium transition-colors duration-200 ${isOpen ? 'text-[#1C1C1A]' : 'text-[#1C1C1A] group-hover:text-[#F85707]'}`}>
                     {s.title}
                   </span>
                   <span
@@ -107,10 +107,10 @@ export default function AcademyServices() {
                   style={{ maxHeight: isOpen ? '300px' : '0', opacity: isOpen ? 1 : 0 }}
                 >
                   <div className="pb-8 pl-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">{s.desc}</p>
+                    <p className="text-[18px] text-[#6B6B65] font-light leading-relaxed">{s.desc}</p>
                     <div className="bg-[#F9F8F6] p-5 border-l-2 border-[#F85707]">
-                      <p className="text-[15px] text-[#F85707] font-medium mb-2">Typical use</p>
-                      <p className="text-[14px] text-[#6B6B65] font-light leading-relaxed">{s.context}</p>
+                      <p className="text-[16px] text-[#F85707] font-medium mb-2">Typical use</p>
+                      <p className="text-[15px] text-[#6B6B65] font-light leading-relaxed">{s.context}</p>
                     </div>
                   </div>
                 </div>

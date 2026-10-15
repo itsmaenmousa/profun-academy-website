@@ -15,24 +15,24 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Left */}
           <div className="lg:col-span-4">
-            <p className="text-[17px] font-medium text-[#F85707] mb-6">Get started</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-6">Get started</p>
             <h2 className="font-serif text-[clamp(38px,3.3vw,52px)] text-[#000050] leading-tight mb-8 tracking-[-0.01em]">
               Build capability<br className="hidden sm:block" /> that lasts.
             </h2>
-            <p className="text-[19px] text-[#6B6B65] leading-relaxed font-light mb-12">
+            <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-12">
               Whether you need a single program or a full learning strategy, tell us about your team and we will shape the right approach with you.
             </p>
 
             <div className="space-y-8">
               <div>
-                <p className="text-[15px] font-medium text-[#000050] mb-1.5">Location</p>
-                <p className="text-[17px] text-[#1C1C1A] font-light leading-relaxed">
+                <p className="text-[16px] font-medium text-[#000050] mb-1.5">Location</p>
+                <p className="text-[18px] text-[#1C1C1A] font-light leading-relaxed">
                   Riyadh, Kingdom of Saudi Arabia
                 </p>
               </div>
               <div>
-                <p className="text-[15px] font-medium text-[#000050] mb-1.5">Get in touch</p>
-                <a href="mailto:info@theprofunacademy.com" className="text-[17px] text-[#F85707] hover:text-[#D94A05] transition-colors">
+                <p className="text-[16px] font-medium text-[#000050] mb-1.5">Get in touch</p>
+                <a href="mailto:info@theprofunacademy.com" className="text-[18px] text-[#F85707] hover:text-[#D94A05] transition-colors">
                   info@theprofunacademy.com
                 </a>
               </div>
@@ -44,7 +44,7 @@ export default function Contact() {
             {sent ? (
               <div className="flex flex-col items-start justify-center h-full py-16">
                 <h3 className="font-serif text-[36px] text-[#1C1C1A] mb-4">Thank you</h3>
-                <p className="text-[19px] text-[#6B6B65] font-light leading-relaxed">
+                <p className="text-[20px] text-[#6B6B65] font-light leading-relaxed">
                   We have received your message and will be in touch shortly.
                 </p>
               </div>
@@ -52,7 +52,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[15px] font-medium text-[#000050] mb-1">
+                    <label className="block text-[16px] font-medium text-[#000050] mb-1">
                       Full name
                     </label>
                     <input
@@ -60,25 +60,25 @@ export default function Contact() {
                       required
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className="w-full bg-transparent border-b border-[#E2E0DB] py-3 text-[17px] text-[#1C1C1A] placeholder:text-[#C0BDB8] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200"
+                      className="w-full bg-transparent border-b border-[#E2E0DB] py-3 text-[18px] text-[#1C1C1A] placeholder:text-[#C0BDB8] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label className="block text-[15px] font-medium text-[#000050] mb-1">
+                    <label className="block text-[16px] font-medium text-[#000050] mb-1">
                       Organisation
                     </label>
                     <input
                       type="text"
                       value={form.organisation}
                       onChange={(e) => setForm({ ...form, organisation: e.target.value })}
-                      className="w-full bg-transparent border-b border-[#E2E0DB] py-3 text-[17px] text-[#1C1C1A] placeholder:text-[#C0BDB8] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200"
+                      className="w-full bg-transparent border-b border-[#E2E0DB] py-3 text-[18px] text-[#1C1C1A] placeholder:text-[#C0BDB8] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200"
                       placeholder="Your organisation"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-[15px] font-medium text-[#000050] mb-1">
+                  <label className="block text-[16px] font-medium text-[#000050] mb-1">
                     Email address
                   </label>
                   <input
@@ -86,12 +86,12 @@ export default function Contact() {
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full bg-transparent border-b border-[#E2E0DB] py-3 text-[17px] text-[#1C1C1A] placeholder:text-[#C0BDB8] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200"
+                    className="w-full bg-transparent border-b border-[#E2E0DB] py-3 text-[18px] text-[#1C1C1A] placeholder:text-[#C0BDB8] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-[15px] font-medium text-[#000050] mb-1">
+                  <label className="block text-[16px] font-medium text-[#000050] mb-1">
                     How can we help?
                   </label>
                   <textarea
@@ -99,14 +99,14 @@ export default function Contact() {
                     required
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full bg-transparent border-b border-[#E2E0DB] py-3 text-[17px] text-[#1C1C1A] placeholder:text-[#C0BDB8] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200 resize-none"
+                    className="w-full bg-transparent border-b border-[#E2E0DB] py-3 text-[18px] text-[#1C1C1A] placeholder:text-[#C0BDB8] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200 resize-none"
                     placeholder="Tell us about your team, your learning challenge and the outcome you are working towards"
                   />
                 </div>
                 <div className="pt-4">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-3 text-[16px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#000050]"
+                    className="inline-flex items-center gap-3 text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#000050]"
                   >
                     Send message
                     <svg width="14" height="10" viewBox="0 0 14 10" fill="none">

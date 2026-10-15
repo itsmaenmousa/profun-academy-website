@@ -141,7 +141,7 @@ export default function Projects() {
             inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          <p className="mb-5 text-[17px] font-medium text-[#F85707]">Selected work</p>
+          <p className="mb-5 text-[20px] font-semibold text-[#F85707]">Selected work</p>
 
           <div className="flex items-end justify-between gap-8">
             <h2
@@ -150,7 +150,7 @@ export default function Projects() {
             >
               Projects that define categories
             </h2>
-            <p className="hidden shrink-0 pb-2 text-[15px] font-medium text-white/50 lg:block">
+            <p className="hidden shrink-0 pb-2 text-[16px] font-medium text-white/50 lg:block">
               Drag to explore
             </p>
           </div>
@@ -191,19 +191,19 @@ export default function Projects() {
             <div className="absolute inset-0 bg-black/20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
 
-            <span className="absolute right-5 top-5 text-[13px] font-medium tabular-nums text-white/60 drop-shadow-sm">
+            <span className="absolute right-5 top-5 text-[14px] font-medium tabular-nums text-white/60 drop-shadow-sm">
               {String(index + 1).padStart(2, '0')}
             </span>
 
             <div className="absolute inset-x-0 bottom-0 p-6">
-              <p className="mb-2 text-[14px] font-medium text-white/75">
+              <p className="mb-2 text-[15px] font-medium text-white/75">
                 {project.category}
               </p>
               <h3 className="font-serif text-[clamp(24px,2.4vw,32px)] leading-[1.08] text-white">
                 {project.title}
               </h3>
               {'location' in project && (
-                <p className="mt-3 text-[14px] font-light text-white/45">{project.location}</p>
+                <p className="mt-3 text-[15px] font-light text-white/45">{project.location}</p>
               )}
             </div>
           </article>

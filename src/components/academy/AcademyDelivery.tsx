@@ -89,7 +89,7 @@ export default function AcademyDelivery() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Delivery model</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Delivery model</span>
           <span className="flex-1 h-px bg-white/10" />
         </div>
 
@@ -113,7 +113,7 @@ export default function AcademyDelivery() {
               aria-controls={`mode-panel-${m.id}`}
               id={`mode-tab-${m.id}`}
               onClick={() => setActive(m.id)}
-              className={`flex items-center gap-2.5 px-5 py-3 text-[14px] font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
+              className={`flex items-center gap-2.5 px-5 py-3 text-[15px] font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
                 active === m.id
                   ? 'bg-[#F85707] text-white'
                   : 'text-white/40 border border-white/10 hover:text-white/70 hover:border-white/25'
@@ -148,16 +148,16 @@ export default function AcademyDelivery() {
 
           {/* Content */}
           <div className="lg:col-span-6 lg:col-start-7 flex flex-col justify-center">
-            <p className="text-[15px] text-[#F85707] font-medium mb-4">{mode.label}</p>
+            <p className="text-[16px] text-[#F85707] font-medium mb-4">{mode.label}</p>
             <h3 className="font-serif text-[clamp(24px,2.4vw,36px)] text-white leading-tight mb-5">
               {mode.headline}
             </h3>
-            <p className="text-[17px] text-white/55 font-light leading-relaxed mb-8">
+            <p className="text-[18px] text-white/55 font-light leading-relaxed mb-8">
               {mode.desc}
             </p>
             <ul className="space-y-2.5" aria-label={`${mode.label} features`}>
               {mode.features.map(f => (
-                <li key={f} className="flex items-center gap-3 text-[14px] text-white/55 font-light">
+                <li key={f} className="flex items-center gap-3 text-[15px] text-white/55 font-light">
                   <span className="w-1 h-1 rounded-full bg-[#F85707] flex-shrink-0" aria-hidden="true" />
                   {f}
                 </li>

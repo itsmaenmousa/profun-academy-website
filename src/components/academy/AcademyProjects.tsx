@@ -29,7 +29,7 @@ export default function AcademyProjects() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Applied experience</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Applied experience</span>
           <span className="flex-1 h-px bg-white/10" />
         </div>
 
@@ -40,7 +40,7 @@ export default function AcademyProjects() {
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-[17px] text-white/45 font-light leading-relaxed">
+            <p className="text-[18px] text-white/45 font-light leading-relaxed">
               Select past and present L&D projects where The ProFun Academy has designed and delivered training, pre-opening programs and capability development.
             </p>
           </div>
@@ -50,10 +50,10 @@ export default function AcademyProjects() {
         <div className={`divide-y divide-white/8 reveal reveal-delay-1 ${inView ? 'visible' : ''}`}>
           {/* Header row */}
           <div className="grid grid-cols-12 gap-4 pb-4">
-            <span className="col-span-1 text-[15px] text-white/60 font-medium">#</span>
-            <span className="col-span-4 text-[15px] text-white/60 font-medium">Project</span>
-            <span className="col-span-4 text-[15px] text-white/60 font-medium">Location</span>
-            <span className="col-span-3 text-[15px] text-white/60 font-medium">Focus area</span>
+            <span className="col-span-1 text-[16px] text-white/60 font-medium">#</span>
+            <span className="col-span-4 text-[16px] text-white/60 font-medium">Project</span>
+            <span className="col-span-4 text-[16px] text-white/60 font-medium">Location</span>
+            <span className="col-span-3 text-[16px] text-white/60 font-medium">Focus area</span>
           </div>
 
           {projects.map((p, i) => (
@@ -61,16 +61,16 @@ export default function AcademyProjects() {
               key={p.name}
               className="grid grid-cols-12 gap-4 py-5 group hover:bg-white/3 transition-colors duration-200"
             >
-              <span className="col-span-1 text-[14px] text-[#F85707] font-medium tabular-nums self-center">
+              <span className="col-span-1 text-[15px] text-[#F85707] font-medium tabular-nums self-center">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <span className="col-span-4 text-[18px] font-medium text-white self-center group-hover:text-white transition-colors">
+              <span className="col-span-4 text-[19px] font-medium text-white self-center group-hover:text-white transition-colors">
                 {p.name}
               </span>
-              <span className="col-span-4 text-[16px] text-white/45 font-light self-center">
+              <span className="col-span-4 text-[17px] text-white/45 font-light self-center">
                 {p.location}
               </span>
-              <span className="col-span-3 text-[14px] text-white/30 font-light self-center leading-snug">
+              <span className="col-span-3 text-[15px] text-white/30 font-light self-center leading-snug">
                 {p.category}
               </span>
             </div>

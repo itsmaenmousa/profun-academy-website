@@ -84,7 +84,7 @@ export default function AcademyNav() {
               key={l.label}
               href={l.href}
               role="listitem"
-              className={`text-[14px] font-medium whitespace-nowrap transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] focus-visible:ring-offset-2 ${
+              className={`text-[15px] font-medium whitespace-nowrap transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] focus-visible:ring-offset-2 ${
                 scrolled
                   ? 'text-[#6B6B65] hover:text-[#1C1C1A]'
                   : 'text-white/70 hover:text-white'
@@ -107,7 +107,7 @@ export default function AcademyNav() {
             href="https://profun.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-[14px] font-medium whitespace-nowrap transition-all duration-200 hover:text-[#F85707] ${
+            className={`text-[15px] font-medium whitespace-nowrap transition-all duration-200 hover:text-[#F85707] ${
               scrolled
                 ? 'opacity-100 pointer-events-auto text-[#6B6B65]'
                 : 'opacity-0 pointer-events-none text-[#6B6B65]'
@@ -120,7 +120,7 @@ export default function AcademyNav() {
 
           <a
             href="#contact"
-            className={`text-[14px] font-medium text-white bg-[#F85707] px-5 py-2.5 whitespace-nowrap transition-all duration-200 hover:bg-[#D94A05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] focus-visible:ring-offset-2 ${
+            className={`text-[15px] font-medium text-white bg-[#F85707] px-5 py-2.5 whitespace-nowrap transition-all duration-200 hover:bg-[#D94A05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] focus-visible:ring-offset-2 ${
               scrolled
                 ? 'opacity-100 pointer-events-auto'
                 : 'opacity-0 pointer-events-none'
@@ -189,7 +189,7 @@ export default function AcademyNav() {
               key={l.label}
               href={l.href}
               onClick={() => setMobileOpen(false)}
-              className={`block py-3 text-[17px] font-medium border-b transition-colors duration-200 hover:text-[#F85707] ${
+              className={`block py-3 text-[18px] font-medium border-b transition-colors duration-200 hover:text-[#F85707] ${
                 scrolled
                   ? 'text-[#1C1C1A] border-[#DDDBD6]'
                   : 'text-white/80 border-white/8'
@@ -202,7 +202,7 @@ export default function AcademyNav() {
             <a
               href="#contact"
               onClick={() => setMobileOpen(false)}
-              className="inline-flex items-center gap-3 text-[14px] font-medium text-white bg-[#F85707] px-6 py-3 hover:bg-[#D94A05] transition-colors duration-200"
+              className="inline-flex items-center gap-3 text-[15px] font-medium text-white bg-[#F85707] px-6 py-3 hover:bg-[#D94A05] transition-colors duration-200"
             >
               Discuss your learning strategy
             </a>

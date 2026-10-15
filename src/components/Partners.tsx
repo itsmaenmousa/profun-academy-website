@@ -20,12 +20,12 @@ export default function Partners() {
         className={`max-w-[1920px] mx-auto px-6 sm:px-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
       >
         <div>
-          <p className="text-[17px] font-medium text-[#F85707] mb-4">Partners & affiliations</p>
+          <p className="text-[20px] font-semibold text-[#F85707] mb-4">Partners & affiliations</p>
           <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#000050] leading-tight tracking-[-0.01em] max-w-[920px]">
             Connected to the institutions<br className="hidden md:block" /> that set the standard.
           </h2>
         </div>
-        <p className="max-w-[420px] text-[18px] text-[#6B6B65] leading-relaxed font-light">
+        <p className="max-w-[420px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
           Accreditation partners, delivery partners and industry bodies that keep every Academy program aligned with global best practice.
         </p>
       </div>
@@ -54,9 +54,9 @@ export default function Partners() {
                   </h3>
                   <span className="partner-dot mt-2 w-3 h-3 rounded-full flex-shrink-0 transition-transform duration-500" style={{ background: p.color }} aria-hidden="true" />
                 </div>
-                <p className="partner-sub text-[14px] text-[#6B6B65] font-medium transition-colors duration-500">{p.full}</p>
+                <p className="partner-sub text-[15px] text-[#6B6B65] font-medium transition-colors duration-500">{p.full}</p>
               </div>
-              <p className={`partner-sub relative text-[15px] text-[#6B6B65] font-light leading-relaxed mt-auto pt-6 ${p.wide ? 'max-w-[620px]' : 'max-w-[360px]'} transition-colors duration-500`}>
+              <p className={`partner-sub relative text-[16px] text-[#6B6B65] font-light leading-relaxed mt-auto pt-6 ${p.wide ? 'max-w-[620px]' : 'max-w-[360px]'} transition-colors duration-500`}>
                 {p.role}
               </p>
             </div>

@@ -61,7 +61,7 @@ export default function AcademyLeadership() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[17px] font-medium text-[#F85707] whitespace-nowrap">Leadership & delivery</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Leadership & delivery</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
         </div>
 
@@ -72,7 +72,7 @@ export default function AcademyLeadership() {
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed">
+            <p className="text-[18px] text-[#6B6B65] font-light leading-relaxed">
               Our partners and leadership are supported by subject matter experts, learning designers and a multilingual facilitation team, all drawn from active attractions and hospitality careers.
             </p>
           </div>
@@ -100,8 +100,8 @@ export default function AcademyLeadership() {
               <div className="p-7 bg-[#F9F8F6] border-t border-[#DDDBD6]">
                 <div className="flex items-baseline justify-between mb-4">
                   <div>
-                    <h3 className="text-[18px] font-semibold text-[#1C1C1A] leading-tight">{l.name}</h3>
-                    <p className="text-[14px] text-[#F85707] font-medium mt-0.5 tracking-[0.02em]">{l.title}</p>
+                    <h3 className="text-[19px] font-semibold text-[#1C1C1A] leading-tight">{l.name}</h3>
+                    <p className="text-[15px] text-[#F85707] font-medium mt-0.5 tracking-[0.02em]">{l.title}</p>
                   </div>
                 </div>
 
@@ -111,7 +111,7 @@ export default function AcademyLeadership() {
                   aria-label={`${l.name} areas of expertise`}
                 >
                   {l.expertise.map(e => (
-                    <li key={e} className="flex items-center gap-2.5 text-[14px] text-[#6B6B65] font-light">
+                    <li key={e} className="flex items-center gap-2.5 text-[15px] text-[#6B6B65] font-light">
                       <span className="w-1 h-1 bg-[#F85707] flex-shrink-0 rounded-full" aria-hidden="true" />
                       {e}
                     </li>
@@ -124,7 +124,7 @@ export default function AcademyLeadership() {
 
         {/* Delivery streams */}
         <div className={`mt-16 reveal reveal-delay-2 ${inView ? 'visible' : ''}`}>
-          <p className="text-[15px] text-[#6B6B65] font-medium mb-6">
+          <p className="text-[16px] text-[#6B6B65] font-medium mb-6">
             Delivery infrastructure
           </p>
           <div
@@ -154,10 +154,10 @@ export default function AcademyLeadership() {
                       />
                     </svg>
                   </span>
-                  <span className={`text-[18px] font-medium transition-colors duration-200 ${activeStream === s.id ? 'text-[#F85707]' : 'text-[#1C1C1A] group-hover:text-[#F85707]'}`}>
+                  <span className={`text-[19px] font-medium transition-colors duration-200 ${activeStream === s.id ? 'text-[#F85707]' : 'text-[#1C1C1A] group-hover:text-[#F85707]'}`}>
                     {s.label}
                   </span>
-                  <span className="text-[14px] text-[#6B6B65] font-light ml-auto pr-4 hidden lg:inline">
+                  <span className="text-[15px] text-[#6B6B65] font-light ml-auto pr-4 hidden lg:inline">
                     {activeStream === s.id ? 'Close' : 'Learn more'}
                   </span>
                 </button>
@@ -170,7 +170,7 @@ export default function AcademyLeadership() {
                     opacity: activeStream === s.id ? 1 : 0,
                   }}
                 >
-                  <p className="pb-7 pl-10 text-[17px] text-[#6B6B65] font-light leading-relaxed max-w-[640px]">
+                  <p className="pb-7 pl-10 text-[18px] text-[#6B6B65] font-light leading-relaxed max-w-[640px]">
                     {s.desc}
                   </p>
                 </div>
