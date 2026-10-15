@@ -15,6 +15,12 @@ const team = [
     bio: 'Michael brings extensive experience in global attractions operations, safety management systems and training architecture, underpinning ProFun\'s accreditation standards worldwide.',
   },
   {
+    name: 'Brad Merriman',
+    photo: './team-brad-merriman-bw.jpg',
+    role: 'Partner',
+    bio: 'Brad brings deep experience in global attractions operations and advisory, shaping ProFun\'s training architecture, safety standards and senior leadership program design across its international portfolio.',
+  },
+  {
     name: 'Ryan Phillips',
     photo: './team-ryan-phillips-bw.jpg',
     role: 'General Manager',
@@ -49,12 +55,6 @@ const team = [
     photo: '',
     role: 'Director, Operations',
     bio: 'Peter directs operations at ProFun, with previous roles as General Manager at Qiddiya Investment Company and at Universal Studios Florida and the Walt Disney Company. Projects include Qiddiya, Doha QUEST and The RIG.',
-  },
-  {
-    name: 'Brad',
-    photo: '',
-    role: 'Role to be confirmed',
-    bio: '',
   },
   {
     name: 'Samir Bubic',
