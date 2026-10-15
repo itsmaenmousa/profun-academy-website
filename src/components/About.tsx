@@ -61,7 +61,7 @@ export default function About() {
         >
           <div className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 reveal ${inView2 ? 'visible' : ''}`}>
             <div>
-              <p className="text-[20px] font-semibold text-[#F85707] mb-4">What sets us apart</p>
+              <p className="text-[20px] font-semibold text-[#F85707] mb-4">What Sets Us Apart</p>
               <h3 className="font-serif text-[clamp(32px,3vw,48px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">Built Differently, By Design.</h3>
             </div>
             <p className="max-w-[460px] text-[18px] text-[#6B6B65] leading-relaxed font-light">

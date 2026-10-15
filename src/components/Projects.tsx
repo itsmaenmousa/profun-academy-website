@@ -141,7 +141,7 @@ export default function Projects() {
             inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          <p className="mb-5 text-[20px] font-semibold text-[#F85707]">Selected work</p>
+          <p className="mb-5 text-[20px] font-semibold text-[#F85707]">Selected Work</p>
 
           <div className="flex items-end justify-between gap-8">
             <h2

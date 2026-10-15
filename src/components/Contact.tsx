@@ -15,7 +15,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Left */}
           <div className="lg:col-span-4">
-            <p className="text-[20px] font-semibold text-[#F85707] mb-6">Get started</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-6">Get Started</p>
             <h2 className="font-serif text-[clamp(38px,3.3vw,52px)] text-[#000050] leading-tight mb-8 tracking-[-0.01em]">
               Build capability<br className="hidden sm:block" /> that lasts.
             </h2>

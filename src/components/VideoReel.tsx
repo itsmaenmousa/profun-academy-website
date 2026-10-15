@@ -80,7 +80,7 @@ export default function VideoReel() {
         className={`max-w-[1920px] mx-auto px-6 sm:px-12 pt-20 pb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 reveal ${inView ? 'visible' : ''}`}
       >
         <div>
-          <p className="text-[20px] font-semibold text-[#F85707] mb-4">How we deliver</p>
+          <p className="text-[20px] font-semibold text-[#F85707] mb-4">How We Deliver</p>
           <h2 className="font-serif text-[clamp(36px,3.4vw,56px)] text-white leading-tight tracking-[-0.01em] max-w-[620px]">
             Five learning channels.<br /> One seamless experience.
           </h2>

@@ -29,7 +29,7 @@ export default function AcademyProjects() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Applied experience</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Applied Experience</span>
           <span className="flex-1 h-px bg-white/10" />
         </div>
 

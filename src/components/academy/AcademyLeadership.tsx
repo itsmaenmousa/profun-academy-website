@@ -61,7 +61,7 @@ export default function AcademyLeadership() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}
         <div className={`flex items-center gap-4 mb-16 reveal ${inView ? 'visible' : ''}`}>
-          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Leadership & delivery</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Leadership & Delivery</span>
           <span className="flex-1 h-px bg-[#DDDBD6]" />
         </div>
 

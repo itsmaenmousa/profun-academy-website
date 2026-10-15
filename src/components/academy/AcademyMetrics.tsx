@@ -39,7 +39,7 @@ export default function AcademyMetrics() {
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter strip */}
         <div className="flex items-center gap-4 py-8 border-b border-white/10">
-          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Proven scale</span>
+          <span className="text-[20px] font-semibold text-[#F85707] whitespace-nowrap">Proven Scale</span>
           <span className="flex-1 h-px bg-white/10" />
         </div>
 

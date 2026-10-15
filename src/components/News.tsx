@@ -34,7 +34,7 @@ export default function News() {
         {/* Header */}
         <div className={`flex items-end justify-between mb-16 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}>
           <div>
-            <p className="text-[20px] font-semibold text-[#F85707] mb-4">Accredited & certified</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">Accredited & Certified</p>
             <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">
               Industry-recognised certification, built in.
             </h2>
