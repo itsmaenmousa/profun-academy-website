@@ -4,25 +4,25 @@ import { useInView } from '../hooks/useInView'
 const team = [
   {
     name: 'Salah Elatrash',
-    photo: './team-salah-elatrash.jpg',
+    photo: './team-salah-elatrash-bw.jpg',
     role: 'Partner',
     bio: 'Salah leads ProFun\'s operations advisory practice across the Middle East and Africa, with deep expertise in workforce capability development and senior leadership program design.',
   },
   {
     name: 'Michael Oswald',
-    photo: './team-michael-oswald.jpg',
+    photo: './team-michael-oswald-bw.jpg',
     role: 'Partner',
     bio: 'Michael brings extensive experience in global attractions operations, safety management systems and training architecture, underpinning ProFun\'s accreditation standards worldwide.',
   },
   {
     name: 'Ryan Phillips',
-    photo: './team-ryan-phillips.jpg',
+    photo: './team-ryan-phillips-bw.jpg',
     role: 'General Manager',
     bio: 'Ryan oversees program management and client delivery, with a focus on learning systems design and regional business development across ProFun\'s international portfolio.',
   },
   {
     name: 'Ludwig Louw',
-    photo: './team-ludwig-louw.jpg',
+    photo: './team-ludwig-louw-bw.jpg',
     role: 'Director',
     bio: 'Ludwig leads curriculum development and facilitation excellence, bringing a rigorous approach to experiential learning design and subject matter expert networks.',
   },
@@ -146,7 +146,7 @@ export default function Leadership() {
                     alt={`${member.name}, ${member.role}`}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    className="w-full h-full object-cover object-top grayscale transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                 ) : (
                   <div
