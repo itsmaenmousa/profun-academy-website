@@ -26,7 +26,82 @@ const team = [
     role: 'Director',
     bio: 'Ludwig leads curriculum development and facilitation excellence, bringing a rigorous approach to experiential learning design and subject matter expert networks.',
   },
+  {
+    name: 'Joel Ward',
+    photo: '',
+    role: 'Senior Vice President, Head of Delivery',
+    bio: 'Joel leads delivery at ProFun, drawing on senior roles as Global Head of Theme Parks at DreamWorks and in brand marketing and operations at Universal Studios. Key projects include Doha QUEST, Qiddiya and Genting SkyWorlds.',
+  },
+  {
+    name: 'Ron Merriman',
+    photo: '',
+    role: 'Senior Vice President, Strategy',
+    bio: 'Ron leads strategy at ProFun after serving as General Manager of ProFun China, working in media and entertainment at Accenture and sitting on the TEA Asia-Pacific board. Projects include Qiddiya, Shanghai World Expo and Ocean Park Hong Kong.',
+  },
+  {
+    name: 'Chris Van Der Merwe',
+    photo: '',
+    role: 'Vice President, MENA',
+    bio: 'Chris leads ProFun across MENA, having run Meryal Waterpark and Saraya Aqaba as General Manager and headed operations at Riverland Dubai. Projects include Qiddiya, Mahanakhon SkyWalk and Ferrari World Abu Dhabi.',
+  },
+  {
+    name: 'Peter Stapp',
+    photo: '',
+    role: 'Director, Operations',
+    bio: 'Peter directs operations at ProFun, with previous roles as General Manager at Qiddiya Investment Company and at Universal Studios Florida and the Walt Disney Company. Projects include Qiddiya, Doha QUEST and The RIG.',
+  },
+  {
+    name: 'Brad',
+    photo: '',
+    role: 'Role to be confirmed',
+    bio: '',
+  },
+  {
+    name: 'Samir Bubic',
+    photo: '',
+    role: 'Director, MENA',
+    bio: 'Samir is a Director for ProFun in the MENA region, supporting the Academy\'s regional client engagements.',
+  },
+  {
+    name: 'Lester Silverio',
+    photo: '',
+    role: 'Revenue Director, KSA',
+    bio: 'Lester leads revenue for ProFun in Saudi Arabia.',
+  },
+  {
+    name: 'Ibtisam Alotaibi',
+    photo: '',
+    role: 'Senior Finance Director, KSA',
+    bio: 'Ibtisam leads finance for ProFun in Saudi Arabia.',
+  },
+  {
+    name: 'Burhan Hanif',
+    photo: '',
+    role: 'Finance Director, KSA',
+    bio: 'Burhan oversees finance for ProFun\'s operations in Saudi Arabia.',
+  },
+  {
+    name: 'Raju Lama',
+    photo: '',
+    role: 'Delivery Excellence Manager, KSA',
+    bio: 'Raju looks after delivery standards across ProFun\'s projects in Saudi Arabia.',
+  },
+  {
+    name: 'Jhumur Jha',
+    photo: '',
+    role: 'QHSE Specialist, KSA',
+    bio: 'Jhumur supports quality, health, safety and environment standards across ProFun\'s work in Saudi Arabia.',
+  },
+  {
+    name: 'Joann Reyes',
+    photo: '',
+    role: 'Document Controller, KSA',
+    bio: 'Joann manages document control for ProFun in Saudi Arabia.',
+  },
 ]
+
+const PLACEHOLDER_TINTS = ['#3985FD', '#15D2A4', '#8238EB', '#F85707', '#00AFDC', '#FC026F', '#99CA32', '#000050']
+const initials = (name: string) => name.split(' ').filter(Boolean).map(w => w[0]).slice(0, 2).join('')
 
 export default function Leadership() {
   const { ref, inView } = useInView()
@@ -61,23 +136,38 @@ export default function Leadership() {
           {team.map((member, i) => (
             <div
               key={member.name}
-              className={`bg-[#F9F8F6] group reveal reveal-delay-${i + 1} ${inView2 ? 'visible' : ''}`}
+              className={`bg-[#F9F8F6] group reveal reveal-delay-${(i % 4) + 1} ${inView2 ? 'visible' : ''}`}
             >
               {/* Portrait — empty */}
               <div className="aspect-[3/4] bg-white overflow-hidden">
-                <img
-                  src={member.photo}
-                  alt={`${member.name}, ${member.role}`}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                />
+                {member.photo ? (
+                  <img
+                    src={member.photo}
+                    alt={`${member.name}, ${member.role}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                ) : (
+                  <div
+                    className="w-full h-full flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    style={{ background: `${PLACEHOLDER_TINTS[i % PLACEHOLDER_TINTS.length]}14` }}
+                    aria-hidden="true"
+                  >
+                    <span
+                      className="font-serif text-[clamp(56px,6vw,88px)] leading-none tracking-[-0.02em]"
+                      style={{ color: PLACEHOLDER_TINTS[i % PLACEHOLDER_TINTS.length] }}
+                    >
+                      {initials(member.name)}
+                    </span>
+                  </div>
+                )}
               </div>
               {/* Info */}
               <div className="p-8">
                 <h3 className="font-serif text-[24px] text-[#1C1C1A] leading-tight mb-1">{member.name}</h3>
                 <p className="text-[15px] text-[#F85707] font-medium mb-4">{member.role}</p>
-                <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
+                <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light max-h-0 group-hover:max-h-56 overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
                   {member.bio}
                 </p>
               </div>
