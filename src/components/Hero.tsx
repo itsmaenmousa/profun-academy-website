@@ -25,9 +25,9 @@ export default function Hero() {
           loop
           playsInline
           preload="auto"
-          poster="./hero-academy-poster.jpg"
+          poster="./hero-academy-v2-poster.jpg"
         >
-          <source src="./hero-academy.mp4" type="video/mp4" />
+          <source src="./hero-academy-v2.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1A]/85 via-[#1C1C1A]/30 to-[#1C1C1A]/20" />
       </div>
