@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import type React from 'react'
-import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 
 const services = [
@@ -68,16 +67,16 @@ export default function Services() {
                 <button
                   onClick={() => setActive(i)}
                   aria-expanded={on}
-                  className="relative w-full text-left grid grid-cols-[auto_1fr_auto] items-center gap-5 sm:gap-10 px-2 sm:px-6 py-7 sm:py-9 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
+                  className="relative w-full text-left grid grid-cols-[auto_1fr_auto] items-center gap-4 sm:gap-10 px-5 sm:px-8 lg:px-10 py-7 sm:py-9 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
                 >
-                  <span className="service-num text-[16px] sm:text-[18px] font-medium w-8 sm:w-12" style={{ color: on ? '#fff' : s.color }}>
+                  <span className="service-num text-[16px] sm:text-[18px] font-medium w-7 sm:w-12" style={{ color: on ? '#fff' : s.color }}>
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className={`service-title font-serif text-[clamp(24px,2.6vw,44px)] leading-tight tracking-[-0.01em] ${on ? 'text-white' : 'text-[#000050]'}`}>
                     {s.title}
                   </span>
                   <span
-                    className={`service-icon w-11 h-11 sm:w-14 sm:h-14 rounded-full border flex items-center justify-center flex-shrink-0 ${on ? 'border-white/60 text-white rotate-45' : 'border-[#D4D2CC] text-[#000050]'}`}
+                    className={`service-icon w-10 h-10 sm:w-14 sm:h-14 rounded-full border flex items-center justify-center flex-shrink-0 ${on ? 'border-white/60 text-white rotate-45' : 'border-[#D4D2CC] text-[#000050]'}`}
                     aria-hidden="true"
                   >
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
@@ -86,21 +85,10 @@ export default function Services() {
 
                 <div className={`relative grid transition-[grid-template-rows] duration-500 ease-out ${on ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                   <div className="overflow-hidden">
-                    <div className="grid grid-cols-[auto_1fr] gap-5 sm:gap-10 px-2 sm:px-6 pb-9 sm:pb-11">
-                      <span className="w-8 sm:w-12" aria-hidden="true" />
-                      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-                        <p className="text-[18px] sm:text-[20px] text-white/90 font-light leading-relaxed max-w-[680px]">{s.desc}</p>
-                        <Link
-                          to="/contact"
-                          tabIndex={on ? 0 : -1}
-                          className="inline-flex items-center gap-2 self-start lg:self-auto text-[15px] font-medium text-[#000050] bg-white px-5 py-3 hover:bg-[#000050] hover:text-white transition-colors duration-300 whitespace-nowrap"
-                        >
-                          Start a conversation
-                          <svg width="12" height="9" viewBox="0 0 12 9" fill="none" aria-hidden="true">
-                            <path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </Link>
-                      </div>
+                    <div className="grid grid-cols-[auto_1fr_auto] gap-4 sm:gap-10 px-5 sm:px-8 lg:px-10 pb-8 sm:pb-10">
+                      <span className="w-7 sm:w-12" aria-hidden="true" />
+                      <p className="text-[18px] sm:text-[20px] text-white/90 font-light leading-relaxed max-w-[720px]">{s.desc}</p>
+                      <span className="w-10 sm:w-14" aria-hidden="true" />
                     </div>
                   </div>
                 </div>

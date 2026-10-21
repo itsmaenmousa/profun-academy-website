@@ -13,7 +13,7 @@ function Metric({ m, active }: { m: typeof metrics[0]; active: boolean }) {
   const count = useCounter(m.value, 1600, active)
   const display = m.format ? m.format(count) : `${count}`
   return (
-    <div className="py-10 px-8 border-r border-[#DDDBD6] last:border-r-0 flex flex-col justify-between min-h-[160px]">
+    <div className="py-10 px-4 sm:px-8 min-w-0 border-r border-[#DDDBD6] last:border-r-0 flex flex-col justify-between min-h-[160px]">
       <div>
         <span className="font-serif text-[clamp(48px,4.5vw,72px)] text-[#1C1C1A] leading-none tabular-nums">
           {display}{m.suffix}
@@ -48,9 +48,9 @@ export default function AcademyMetrics() {
           {metrics.map((m) => (
             <div
               key={m.label}
-              className="py-12 px-8 flex flex-col justify-between"
+              className="py-10 sm:py-12 px-4 sm:px-8 flex flex-col justify-between min-w-0"
             >
-              <span className="font-serif text-[clamp(44px,4.4vw,68px)] text-white leading-none tabular-nums">
+              <span className="font-serif text-[clamp(36px,4.4vw,68px)] text-white leading-none tabular-nums">
                 <CounterDisplay m={m} active={inView} />
               </span>
               <div className="mt-6">

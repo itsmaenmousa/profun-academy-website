@@ -30,7 +30,7 @@ const RELEASES: Release[] = [
     summary: 'A new home for the Academy, bringing its programs, delivery channels, projects and team together in one place.',
     body: [
       'The ProFun Academy, the learning and capability development division of ProFun, has launched its new website, theprofunacademy.com.',
-      'The site brings together the Academy’s full offer for the attractions industry: tailored learning design, accredited certification, five learning channels from in-person to eLearning, and the projects and people behind its work across the region.',
+      'The site brings together the Academy’s full offer for the attractions industry: tailored learning design, accredited certification, four delivery formats with experiential learning built in, and the projects and people behind its work across the region.',
       'Operators can explore programs, meet the team and start a conversation about building capability across their own venues.',
     ],
     image: './hero-academy-v2-poster.jpg',

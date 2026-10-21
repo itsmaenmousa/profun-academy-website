@@ -59,18 +59,18 @@ export default function AcademyProjects() {
           {projects.map((p, i) => (
             <div
               key={p.name}
-              className="grid grid-cols-12 gap-4 py-5 group hover:bg-white/3 transition-colors duration-200"
+              className="grid grid-cols-[auto_1fr] sm:grid-cols-12 gap-x-4 gap-y-1 sm:gap-4 py-5 group hover:bg-white/3 transition-colors duration-200"
             >
-              <span className="col-span-1 text-[15px] text-[#F85707] font-medium tabular-nums self-center">
+              <span className="row-span-3 sm:row-span-1 sm:col-span-1 text-[15px] text-[#F85707] font-medium tabular-nums self-start sm:self-center pt-1 sm:pt-0">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <span className="col-span-4 text-[19px] font-medium text-white self-center group-hover:text-white transition-colors">
+              <span className="sm:col-span-4 text-[19px] font-medium text-white self-center group-hover:text-white transition-colors">
                 {p.name}
               </span>
-              <span className="col-span-4 text-[17px] text-white/45 font-light self-center">
+              <span className="sm:col-span-4 text-[17px] text-white/45 font-light self-center">
                 {p.location}
               </span>
-              <span className="col-span-3 text-[15px] text-white/30 font-light self-center leading-snug">
+              <span className="sm:col-span-3 text-[15px] text-white/30 font-light self-center leading-snug">
                 {p.category}
               </span>
             </div>
