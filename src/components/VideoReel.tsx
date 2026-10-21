@@ -139,35 +139,36 @@ export default function VideoReel() {
       </div>
 
       {/* Experiential learning, built into every format */}
-      <div className="max-w-[1920px] mx-auto px-6 sm:px-12 py-20 sm:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          <div className="lg:col-span-6 relative">
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <img src="./academy-experiential.jpg" alt="Participants in a hands-on experiential learning session" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]" style={{ objectPosition: '50% 40%' }} />
-              <span className="absolute bottom-0 left-0 right-0 h-1 flex" aria-hidden="true">
-                {['#3985FD', '#FC026F', '#00AFDC', '#15D2A4'].map(c => <span key={c} className="flex-1" style={{ background: c }} />)}
-              </span>
-            </div>
+      <div className="max-w-[1920px] mx-auto px-6 sm:px-12 py-16 sm:py-24">
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 bg-[#262624] overflow-hidden">
+          <span className="absolute top-0 left-0 right-0 h-1 z-10 bg-[#8238EB]" aria-hidden="true" />
+          <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[480px] overflow-hidden">
+            <img
+              src="./academy-experiential.jpg"
+              alt="Participants in a hands-on experiential learning session"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+              style={{ objectPosition: '50% 40%' }}
+            />
           </div>
-          <div className="lg:col-span-6">
+          <div className="p-8 sm:p-12 xl:p-16 flex flex-col justify-center">
             <p className="text-[20px] font-semibold text-[#8238EB] mb-4">Experiential Learning</p>
-            <h3 className="font-serif text-[clamp(32px,3vw,52px)] text-white leading-tight tracking-[-0.01em] mb-6">
+            <h3 className="font-serif text-[clamp(30px,2.8vw,46px)] text-white leading-[1.1] tracking-[-0.01em] mb-6">
               Practical experience.<br className="hidden sm:block" /> Lasting application.
             </h3>
-            <p className="text-[19px] text-white/70 font-light leading-relaxed max-w-[560px] mb-10">
+            <p className="text-[18px] sm:text-[19px] text-white/70 font-light leading-relaxed max-w-[540px] mb-10">
               Learning through realistic scenarios, simulations, and workplace practice helps your teams connect knowledge to their roles and apply skills with confidence.
             </p>
-            <div className="border-t border-white/10 pt-6">
-              <p className="text-[15px] text-white/50 mb-4">Built into every format</p>
-              <div className="flex flex-wrap gap-2">
-                {channels.map(ch => (
-                  <span key={ch.id} className="inline-flex items-center gap-2 text-[15px] text-white/85 border border-white/15 px-3.5 py-2">
-                    <span className="w-2 h-2 rounded-full" style={{ background: ch.color }} aria-hidden="true" />
-                    {ch.label}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <p className="text-[15px] text-white/45 mb-3">Built into every format</p>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+              {channels.map(ch => (
+                <li key={ch.id} className="inline-flex items-center gap-2 text-[16px] text-white/85">
+                  <span className="w-2 h-2 rounded-full" style={{ background: ch.color }} aria-hidden="true" />
+                  {ch.label}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

@@ -33,21 +33,27 @@ const cols: { title: string; links: [string, string][] }[] = [
     title: 'Services',
     links: [
       ['Learning Strategy', '/services'], ['Workforce Capability', '/services'], ['Program Design', '/services'],
-      ['Training Delivery', '/services'], ['Operational Readiness', '/services'], ['Accredited Programs', '/programs'],
+      ['Training Delivery', '/services'], ['Operational Readiness', '/services'],
     ],
   },
   {
     title: 'Learning',
     links: [
       ['In-Person', '/learning'], ['Virtual', '/learning'], ['eLearning', '/learning'],
-      ['Experiential', '/learning'], ['Blended', '/learning'], ['Training Programs', '/programs'],
+      ['Blended', '/learning'], ['Experiential', '/learning'],
+    ],
+  },
+  {
+    title: 'Programs',
+    links: [
+      ['Tailored Training', '/programs'], ['Accredited & Certified', '/programs'],
     ],
   },
   {
     title: 'Academy',
     links: [
-      ['About', '/about'], ['Programs & Courses', '/programs'], ['Projects', '/projects'],
-      ['Team', '/team'], ['News', '/news'], ['Full Academy profile', '/academy'], ['Contact', '/contact'],
+      ['About', '/about'], ['Projects', '/projects'], ['Team', '/team'],
+      ['News', '/news'], ['Contact', '/contact'], ['Full Academy Profile', '/academy'],
     ],
   },
 ]
@@ -94,10 +100,10 @@ export default function Footer() {
           </div>
 
           {/* Nav columns */}
-          <div className="lg:col-span-7 lg:col-start-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-10">
             {cols.map((col, i) => (
               <div key={col.title}>
-                <p className="text-[17px] font-medium mb-5" style={{ color: ['#15D2A4', '#FFCA03', '#00AFDC'][i] }}>
+                <p className="text-[17px] font-medium mb-5" style={{ color: ['#15D2A4', '#FFCA03', '#FC026F', '#00AFDC'][i] }}>
                   {col.title}
                 </p>
                 <ul className="space-y-3">
@@ -120,14 +126,14 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <p className="text-[15px] text-white/35 font-light">
-            © {new Date().getFullYear()} ProFun. All rights reserved. The ProFun Academy is a division of ProFun International.
+            © {new Date().getFullYear()} ProFun. All rights reserved. The ProFun Academy is a division of ProFun.
           </p>
           <div className="flex items-center gap-6">
           <Link
             to="/courses"
             className="text-[15px] text-white/35 hover:text-[#FFCA03] transition-colors duration-200"
           >
-            Courses & booking
+            Courses & Booking
           </Link>
           <a
             href="mailto:info@theprofunacademy.com"

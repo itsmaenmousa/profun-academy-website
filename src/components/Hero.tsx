@@ -53,11 +53,11 @@ export default function Hero() {
             className="mb-8 transition-opacity duration-700"
             style={{ opacity: ready ? 1 - fade : 0, transform: `translateY(${-fade * 12}px)`, transitionDelay: ready && fade === 0 ? '0.35s' : '0s' }}
           >
-            <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-16 sm:h-20 w-auto" />
+            <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-14 sm:h-16 w-auto" />
           </div>
 
           {/* Staggered headline */}
-          <h1 className="font-serif text-[clamp(26px,7.2vw,96px)] leading-[1.04] text-white mb-8 tracking-[-0.01em]">
+          <h1 className="font-serif text-[clamp(28px,5.4vw,76px)] leading-[1.06] text-white mb-8 tracking-[-0.01em]">
             {LINES.map((line, i) => (
               <span key={i} className="hero-line block whitespace-nowrap">
                 <span
