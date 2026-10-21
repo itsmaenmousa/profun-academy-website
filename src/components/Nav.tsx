@@ -24,6 +24,8 @@ export default function Nav() {
   const [scrolledY, setScrolledY] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const scrolled = scrolledY || !isHome
+  // Open mobile menu always uses the solid white bar
+  const solid = scrolled || mobileOpen
 
   useEffect(() => {
     const h = () => setScrolledY(window.scrollY > 40)
@@ -44,8 +46,8 @@ export default function Nav() {
       role="navigation"
       aria-label="The ProFun Academy main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-400 ${
-        scrolled
-          ? 'bg-white/95 backdrop-blur-md border-b border-[#E2E0DB]'
+        solid
+          ? `${mobileOpen ? 'bg-white' : 'bg-white/95'} backdrop-blur-md border-b border-[#E2E0DB]`
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -112,14 +114,14 @@ export default function Nav() {
             src="./academy-full-color.svg"
             alt="The ProFun Academy"
             className="h-12 w-auto transition-opacity duration-300"
-            style={{ opacity: scrolled ? 1 : 0 }}
+            style={{ opacity: solid ? 1 : 0 }}
           />
           <img
             src="./academy-symbol.svg"
             alt=""
             aria-hidden="true"
             className="absolute left-0 top-1/2 -translate-y-1/2 h-12 w-auto transition-opacity duration-300"
-            style={{ opacity: scrolled ? 0 : 1 }}
+            style={{ opacity: solid ? 0 : 1 }}
           />
         </Link>
 
@@ -127,19 +129,19 @@ export default function Nav() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
-          className="p-2 flex flex-col justify-center gap-[5px]"
+          className="p-2 flex flex-col justify-center gap-[5px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
         >
-          <span className={`block w-6 h-px transition-all duration-300 origin-center ${mobileOpen ? 'rotate-45 translate-y-[6px]' : ''} ${scrolled ? 'bg-[#000050]' : 'bg-white'}`} />
-          <span className={`block w-6 h-px transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''} ${scrolled ? 'bg-[#000050]' : 'bg-white'}`} />
-          <span className={`block w-4 h-px transition-all duration-300 origin-center ${mobileOpen ? '-rotate-45 -translate-y-[6px] w-6' : ''} ${scrolled ? 'bg-[#000050]' : 'bg-white'}`} />
+          <span className={`block w-6 h-px transition-all duration-300 origin-center ${mobileOpen ? 'rotate-45 translate-y-[6px]' : ''} ${solid ? 'bg-[#000050]' : 'bg-white'}`} />
+          <span className={`block w-6 h-px transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''} ${solid ? 'bg-[#000050]' : 'bg-white'}`} />
+          <span className={`block w-4 h-px transition-all duration-300 origin-center ${mobileOpen ? '-rotate-45 -translate-y-[6px] w-6' : ''} ${solid ? 'bg-[#000050]' : 'bg-white'}`} />
         </button>
       </div>
 
       {/* Mobile panel */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-350 ${
-          mobileOpen ? 'max-h-[640px] opacity-100' : 'max-h-0 opacity-0'
-        } ${scrolled ? 'bg-white border-t border-[#E2E0DB]' : 'bg-[#000050] border-t border-white/10'}`}
+          mobileOpen ? 'max-h-[calc(100dvh-72px)] h-[calc(100dvh-72px)] overflow-y-auto opacity-100' : 'max-h-0 opacity-0'
+        } bg-white border-t border-[#E2E0DB]`}
       >
         <div className="px-6 py-8 space-y-1">
           {PAGES.map(([label, to]) => (
@@ -148,8 +150,8 @@ export default function Nav() {
               to={to}
               className={({ isActive }) =>
                 `block py-3 text-[18px] font-medium border-b transition-colors hover:text-[#F85707] ${
-                  isActive ? 'text-[#F85707]' : scrolled ? 'text-[#000050]' : 'text-white/85'
-                } ${scrolled ? 'border-[#E2E0DB]' : 'border-white/10'}`
+                  isActive ? 'text-[#F85707]' : 'text-[#000050]'
+                } border-[#E2E0DB]`
               }
             >
               {label}
