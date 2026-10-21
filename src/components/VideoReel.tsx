@@ -7,7 +7,7 @@ const channels = [
     color: '#3985FD',
     label: 'In-Person',
     title: 'In-Person Learning.',
-    desc: 'Facilitated by industry practitioners in your workplace or a dedicated venue. High-energy, hands-on sessions that build cohesion and embed learning fast.',
+    desc: 'Practical sessions led by experienced facilitators at your workplace or a dedicated venue, using discussion, activities, and realistic scenarios to build skills and confidence.',
     tags: ['Workshops', 'Seminars', 'Site Visits', 'Role-Play Simulations', 'Train-the-Trainer'],
     image: './academy-in-person.jpg',
     pos: '55% 24%',
@@ -17,7 +17,7 @@ const channels = [
     color: '#FC026F',
     label: 'Virtual',
     title: 'Virtual Learning.',
-    desc: 'Live instructor-led sessions over video. Structured, participatory and designed for distributed teams across time zones.',
+    desc: 'Live, facilitator-led online sessions that bring teams together through interactive discussions, group activities, and guided practice.',
     tags: ['Live Webinars', 'Virtual Cohorts', 'Remote Coaching', 'Group Breakouts'],
     image: './academy-virtual.jpg',
     pos: '50% 38%',
@@ -27,27 +27,17 @@ const channels = [
     color: '#00AFDC',
     label: 'eLearning',
     title: 'eLearning.',
-    desc: 'Self-paced digital modules built for attractions professionals. Accessible on any device, trackable via LMS and available in multiple languages.',
+    desc: 'Self-paced digital learning that helps employees build knowledge and reinforce skills, with language options and progress tracking based on program requirements.',
     tags: ['SCORM Modules', 'Microlearning', 'Video-Based Learning', 'Knowledge Assessments'],
     image: './academy-elearning.jpg',
     pos: '50% 45%',
-  },
-  {
-    id: 'experiential',
-    color: '#8238EB',
-    label: 'Experiential',
-    title: 'Experiential Learning.',
-    desc: 'Learning through doing. On-ride, on-floor and on-site immersive experiences that embed skills in real operational environments.',
-    tags: ['On-Site Coaching', 'Live Scenario Training', 'Job Shadowing', 'Operational Immersion'],
-    image: './academy-experiential.jpg',
-    pos: '50% 40%',
   },
   {
     id: 'blended',
     color: '#15D2A4',
     label: 'Blended',
     title: 'Blended Learning.',
-    desc: 'The most effective approach for lasting behavioral change, combining digital, live and on-the-job components into a single coherent program.',
+    desc: 'A tailored combination of in-person, virtual, and self-paced learning, supported by workplace practice to reinforce application over time.',
     tags: ['Pre-Work', 'Live Session', 'Sustained Follow-Through', 'Spaced Learning Design'],
     image: './academy-blended.jpg',
     pos: '50% 42%',
@@ -81,9 +71,12 @@ export default function VideoReel() {
       >
         <div>
           <p className="text-[20px] font-semibold text-[#F85707] mb-4">How We Deliver</p>
-          <h2 className="font-serif text-[clamp(36px,3.4vw,56px)] text-white leading-tight tracking-[-0.01em] max-w-[620px]">
-            Five learning channels.<br /> One seamless experience.
+          <h2 className="font-serif text-[clamp(36px,3.4vw,56px)] text-white leading-tight tracking-[-0.01em] max-w-[680px] mb-6">
+            Learning that fits your teams and operations.
           </h2>
+          <p className="text-[19px] text-white/65 font-light leading-relaxed max-w-[640px]">
+            We combine delivery formats to suit your workforce, operational priorities, and learning goals; with experienced facilitators, practical activities, and content tailored to your cultural context.
+          </p>
         </div>
         {/* Channel tabs */}
         <div className="flex flex-wrap gap-1" role="tablist" aria-label="Learning delivery channels">
@@ -141,6 +134,40 @@ export default function VideoReel() {
             <p className="text-[16px] text-white/60 max-w-[640px] leading-relaxed">
               {c.tags.join(' · ')}
             </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Experiential learning, built into every format */}
+      <div className="max-w-[1920px] mx-auto px-6 sm:px-12 py-20 sm:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-6 relative">
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <img src="./academy-experiential.jpg" alt="Participants in a hands-on experiential learning session" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]" style={{ objectPosition: '50% 40%' }} />
+              <span className="absolute bottom-0 left-0 right-0 h-1 flex" aria-hidden="true">
+                {['#3985FD', '#FC026F', '#00AFDC', '#15D2A4'].map(c => <span key={c} className="flex-1" style={{ background: c }} />)}
+              </span>
+            </div>
+          </div>
+          <div className="lg:col-span-6">
+            <p className="text-[20px] font-semibold text-[#8238EB] mb-4">Experiential Learning</p>
+            <h3 className="font-serif text-[clamp(32px,3vw,52px)] text-white leading-tight tracking-[-0.01em] mb-6">
+              Practical experience.<br className="hidden sm:block" /> Lasting application.
+            </h3>
+            <p className="text-[19px] text-white/70 font-light leading-relaxed max-w-[560px] mb-10">
+              Learning through realistic scenarios, simulations, and workplace practice helps your teams connect knowledge to their roles and apply skills with confidence.
+            </p>
+            <div className="border-t border-white/10 pt-6">
+              <p className="text-[15px] text-white/50 mb-4">Built into every format</p>
+              <div className="flex flex-wrap gap-2">
+                {channels.map(ch => (
+                  <span key={ch.id} className="inline-flex items-center gap-2 text-[15px] text-white/85 border border-white/15 px-3.5 py-2">
+                    <span className="w-2 h-2 rounded-full" style={{ background: ch.color }} aria-hidden="true" />
+                    {ch.label}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

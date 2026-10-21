@@ -1,6 +1,17 @@
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
 
+const VALUES = [
+  { title: 'Shaped by operational experience', desc: 'Learning shaped by attractions professionals who understand the realities of opening, operating, and leading visitor experiences.', color: '#3985FD' },
+  { title: 'Practical learning, real-world application', desc: 'Scenarios, simulations, and practical activities connect learning to the workplace, with on-site delivery where the brief requires it.', color: '#15D2A4' },
+  { title: 'Built around each role', desc: 'Programs tailored to specific responsibilities and career stages, from frontline operations to management and leadership.', color: '#99CA32' },
+  { title: 'Culturally grounded, in design and delivery', desc: 'Learning shaped around local cultures, values, and workplace expectations, with delivery that connects with diverse teams across regions.', color: '#FFCA03' },
+  { title: 'Learning that speaks your team\u2019s language', desc: 'Programs delivered in Arabic, English, and other languages to suit your workforce, helping participants understand, engage, and apply their learning.', color: '#FC026F' },
+  { title: 'From frontline to senior leadership', desc: 'Development that supports capability at every level, helping organizations prepare teams, strengthen managers, and develop leaders.', color: '#8238EB' },
+  { title: 'Capability that stays with your team', desc: 'On-site coaching and train-the-trainer options help your people reinforce learning and sustain standards over time.', color: '#00AFDC' },
+  { title: 'Recognized training and specialist partnerships', desc: 'Programs supported by recognized accreditations, certifications, and specialist partnerships, with the applicable recognition specified for each program.', color: '#F85707' },
+]
+
 export default function About() {
   const { ref, inView } = useInView()
   const { ref: ref2, inView: inView2 } = useInView()
@@ -68,27 +79,23 @@ export default function About() {
               We help operators and project teams build the capability to open, operate and lead exceptional visitor attractions, with learning shaped around their people, operational priorities and regional context.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-14">
-          {[
-            { title: 'Innovative experiential delivery', desc: 'We design learning experiences that are active, immersive and memorable, grounded in how adults actually learn in operational environments.' },
-            { title: 'Tailored role-based learning', desc: 'Programs are built around specific roles, responsibilities and career stages, never one-size-fits-all content.' },
-            { title: 'From frontline to senior leadership', desc: 'We support development at every level of an organization, from first-day colleagues to C-suite executives.' },
-            { title: 'Culturally aware delivery', desc: 'Our facilitators work across diverse cultural contexts with sensitivity, respect and genuine international experience.' },
-            { title: 'Multilingual options', desc: 'Key programs are available in multiple languages to ensure learning reaches every team member effectively.' },
-            { title: 'On-site coaching and train-the-trainer', desc: 'We embed capability within your organization, equipping your own people to sustain and scale learning over time.' },
-            { title: 'Interactive and engaging', desc: 'Role-play simulations, scenario-based challenges and reflective practice keep participants engaged and accelerate skill transfer.' },
-            { title: 'Industry-specific content', desc: 'Every case study, scenario and example comes from the attractions world, so learning lands with immediate relevance.' },
-          ].map((v, i) => (
-            <div
-              key={v.title}
-              className={`flex flex-col gap-4 reveal reveal-delay-${(i % 4) + 1} ${inView2 ? 'visible' : ''}`}
-            >
-              <div className="w-8 h-[3px]" style={{ background: ['#3985FD', '#15D2A4', '#99CA32', '#FFCA03', '#FC026F', '#8238EB', '#00AFDC', '#F85707'][i] }} />
-              <h4 className="font-serif text-[23px] text-[#000050] leading-tight">{v.title}</h4>
-              <p className="text-[18px] text-[#6B6B65] leading-relaxed font-light">{v.desc}</p>
-            </div>
-          ))}
-          </div>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
+            {VALUES.map((v, i) => (
+              <li
+                key={v.title}
+                className={`value-card group relative bg-white p-8 sm:p-9 min-h-[300px] flex flex-col overflow-hidden reveal reveal-delay-${(i % 4) + 1} ${inView2 ? 'visible' : ''}`}
+                style={{ ['--brand' as string]: v.color }}
+              >
+                <span className="value-fill" aria-hidden="true" />
+                <span className="value-bar absolute top-0 left-0 right-0 h-1" style={{ background: v.color }} aria-hidden="true" />
+                <span className="value-num relative font-serif text-[64px] leading-none tracking-[-0.03em] mb-auto" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h4 className="value-title relative font-serif text-[23px] text-[#000050] leading-snug mt-10 mb-3">{v.title}</h4>
+                <p className="value-copy relative text-[17px] text-[#6B6B65] leading-relaxed font-light">{v.desc}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

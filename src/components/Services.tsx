@@ -1,85 +1,113 @@
+import { useState } from 'react'
 import type React from 'react'
+import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 
 const services = [
   {
-    number: '01',
-    title: 'Tailored Learning Experiences Design & Delivery',
-    desc: 'Custom-built programs developed from scratch around your organization\'s specific roles, culture and strategic objectives.',
+    title: 'Learning Strategy and Management',
+    desc: 'Align learning with business priorities through needs analysis, planning, governance, and performance measurement.',
+    color: '#3985FD',
   },
   {
-    number: '02',
-    title: 'In-Person Learning',
-    desc: 'Facilitated workshops, seminars and hands-on sessions delivered on-site, at your venue or at partner facilities.',
+    title: 'Workforce Capability Development',
+    desc: 'Define role competencies, career pathways, and leadership development priorities to build a capable workforce.',
+    color: '#15D2A4',
   },
   {
-    number: '03',
-    title: 'Blended or Online Learning',
-    desc: 'Hybrid programs combining structured digital content with live touchpoints to suit distributed or part-time workforces.',
+    title: 'Program Design and Content Development',
+    desc: 'Create customized programs, materials, and assessments shaped around your operations, culture, and workforce needs.',
+    color: '#8238EB',
   },
   {
-    number: '04',
-    title: 'Accredited & Certified Learning Experiences',
-    desc: 'Industry-recognized certification pathways with Ellis & Associates, plus IBCCES-certified accessibility training.',
+    title: 'Training Delivery and Facilitation',
+    desc: 'Build practical skills through facilitated training, on-site coaching, and train-the-trainer programs tailored to your teams.',
+    color: '#FC026F',
   },
   {
-    number: '05',
-    title: 'Human Capital & Capability Development',
-    desc: 'Strategic frameworks for building lasting organizational capability, from workforce planning to leadership pipelines.',
-  },
-  {
-    number: '06',
-    title: 'Learning Strategy Formulation & Management',
-    desc: 'End-to-end learning strategy design: needs analysis, program architecture, governance, measurement and continuous improvement.',
+    title: 'Pre-Opening and Operational Readiness Training',
+    desc: 'Prepare teams for opening through role-specific training, operational simulations, and readiness assessments.',
+    color: '#F85707',
   },
 ]
 
-const ACCENTS = ['#3985FD', '#15D2A4', '#99CA32', '#FFCA03', '#FC026F', '#8238EB']
-
 export default function Services() {
   const { ref, inView } = useInView()
+  const [active, setActive] = useState(0)
+
   return (
     <section id="services" className="bg-[#F9F8F6] py-24 sm:py-32 px-6 sm:px-12">
       <div className="max-w-[1920px] mx-auto">
         {/* Header */}
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
-          className={`flex items-end justify-between mb-20 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
+          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16 sm:mb-20 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
         >
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">What We Offer</p>
-            <h2 className="font-serif text-[clamp(40px,4vw,64px)] text-[#1C1C1A] leading-tight max-w-[520px] tracking-[-0.01em]">
-              Six ways we work with you.
+            <h2 className="font-serif text-[clamp(40px,4vw,64px)] text-[#000050] leading-tight max-w-[760px] tracking-[-0.01em]">
+              From individual skills to operational readiness.
             </h2>
           </div>
-          <div className="hidden lg:block max-w-[400px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
-            From tailored learning design to full capability strategy, the Academy partners with organizations at every stage of their learning journey.
-          </div>
+          <p className="max-w-[460px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
+            From tailored training to comprehensive learning strategies, we help organizations build workforce capability at every stage, from pre-opening to ongoing operations.
+          </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E2E0DB]">
-          {services.map((s, i) => (
-            <div
-              key={s.number}
-              className={`relative bg-[#F9F8F6] p-10 group hover:bg-white transition-all duration-500 cursor-pointer reveal reveal-delay-${Math.min(i + 1, 5)} ${inView ? 'visible' : ''}`}
-              style={{ ['--accent' as string]: ACCENTS[i] }}
-            >
-              <span className="absolute top-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-500" style={{ background: ACCENTS[i] }} aria-hidden="true" />
-              <div className="text-[15px] mb-8 font-medium tracking-wide" style={{ color: ACCENTS[i] }}>{s.number}</div>
-              <h3 className="font-serif text-[28px] text-[#000050] mb-4 transition-colors duration-300 leading-tight">
-                {s.title}
-              </h3>
-              <p className="text-[18px] text-[#6B6B65] leading-relaxed font-light">{s.desc}</p>
-              <a href="#contact" className="mt-8 flex items-center gap-2 text-[15px] font-medium text-[#F85707] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Start a conversation
-                <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
-                  <path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          ))}
-        </div>
+        {/* Service rows */}
+        <ol className="border-t border-[#E2E0DB]">
+          {services.map((s, i) => {
+            const on = active === i
+            return (
+              <li
+                key={s.title}
+                className={`service-row relative border-b border-[#E2E0DB] overflow-hidden reveal reveal-delay-${Math.min(i + 1, 5)} ${on ? 'is-active' : ''} ${inView ? 'visible' : ''}`}
+                style={{ ['--brand' as string]: s.color }}
+              >
+                <span className="service-fill" aria-hidden="true" />
+                <button
+                  onClick={() => setActive(i)}
+                  aria-expanded={on}
+                  className="relative w-full text-left grid grid-cols-[auto_1fr_auto] items-center gap-5 sm:gap-10 px-2 sm:px-6 py-7 sm:py-9 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
+                >
+                  <span className="service-num text-[16px] sm:text-[18px] font-medium w-8 sm:w-12" style={{ color: on ? '#fff' : s.color }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className={`service-title font-serif text-[clamp(24px,2.6vw,44px)] leading-tight tracking-[-0.01em] ${on ? 'text-white' : 'text-[#000050]'}`}>
+                    {s.title}
+                  </span>
+                  <span
+                    className={`service-icon w-11 h-11 sm:w-14 sm:h-14 rounded-full border flex items-center justify-center flex-shrink-0 ${on ? 'border-white/60 text-white rotate-45' : 'border-[#D4D2CC] text-[#000050]'}`}
+                    aria-hidden="true"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+                  </span>
+                </button>
+
+                <div className={`relative grid transition-[grid-template-rows] duration-500 ease-out ${on ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                  <div className="overflow-hidden">
+                    <div className="grid grid-cols-[auto_1fr] gap-5 sm:gap-10 px-2 sm:px-6 pb-9 sm:pb-11">
+                      <span className="w-8 sm:w-12" aria-hidden="true" />
+                      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+                        <p className="text-[18px] sm:text-[20px] text-white/90 font-light leading-relaxed max-w-[680px]">{s.desc}</p>
+                        <Link
+                          to="/contact"
+                          tabIndex={on ? 0 : -1}
+                          className="inline-flex items-center gap-2 self-start lg:self-auto text-[15px] font-medium text-[#000050] bg-white px-5 py-3 hover:bg-[#000050] hover:text-white transition-colors duration-300 whitespace-nowrap"
+                        >
+                          Start a conversation
+                          <svg width="12" height="9" viewBox="0 0 12 9" fill="none" aria-hidden="true">
+                            <path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            )
+          })}
+        </ol>
       </div>
     </section>
   )
