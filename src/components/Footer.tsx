@@ -40,7 +40,7 @@ const cols: { title: string; links: [string, string][] }[] = [
     title: 'Learning',
     links: [
       ['In-Person', '/learning'], ['Virtual', '/learning'], ['eLearning', '/learning'],
-      ['Experiential', '/learning'], ['Blended', '/learning'], ['Training Topics', '/programs'],
+      ['Experiential', '/learning'], ['Blended', '/learning'], ['Training Programs', '/programs'],
     ],
   },
   {
