@@ -47,28 +47,37 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-[1920px] mx-auto px-6 sm:px-12 pb-20 sm:pb-24 w-full">
-        <div className="max-w-[1100px]">
-          {/* Academy logo, fades out on scroll */}
+        <div className="max-w-[1400px]">
+          {/* Mobile: logo above the headline */}
           <div
-            className="mb-8 transition-opacity duration-700"
-            style={{ opacity: ready ? 1 - fade : 0, transform: `translateY(${-fade * 12}px)`, transitionDelay: ready && fade === 0 ? '0.35s' : '0s' }}
+            className="sm:hidden mb-6 transition-opacity duration-700"
+            style={{ opacity: ready ? 1 - fade : 0, transitionDelay: ready && fade === 0 ? '0.35s' : '0s' }}
           >
-            <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-14 sm:h-16 w-auto" />
+            <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-12 w-auto" />
           </div>
 
-          {/* Staggered headline */}
-          <h1 className="font-serif text-[clamp(28px,5.4vw,76px)] leading-[1.06] text-white mb-8 tracking-[-0.01em]">
-            {LINES.map((line, i) => (
-              <span key={i} className="hero-line block whitespace-nowrap">
-                <span
-                  className={`hero-line-inner ${ready ? 'visible' : ''}`}
-                  style={{ transitionDelay: `${0.4 + i * 0.14}s` }}
-                >
-                  {line}
+          {/* Headline + logo lockup: the logo matches the three lines in height */}
+          <div className="flex items-stretch gap-8 lg:gap-12 mb-8">
+            <h1 className="font-serif text-[clamp(28px,4.2vw,62px)] leading-[1.06] text-white tracking-[-0.01em]">
+              {LINES.map((line, i) => (
+                <span key={i} className="hero-line block whitespace-nowrap">
+                  <span
+                    className={`hero-line-inner ${ready ? 'visible' : ''}`}
+                    style={{ transitionDelay: `${0.4 + i * 0.14}s` }}
+                  >
+                    {line}
+                  </span>
                 </span>
-              </span>
-            ))}
-          </h1>
+              ))}
+            </h1>
+            <div
+              className="hidden sm:flex items-stretch gap-8 lg:gap-12 flex-shrink-0 py-[0.4%] transition-opacity duration-700"
+              style={{ opacity: ready ? 1 - fade : 0, transitionDelay: ready && fade === 0 ? '0.7s' : '0s' }}
+            >
+              <span className="block w-px flex-none self-stretch bg-white/35" aria-hidden="true" />
+              <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-full w-auto max-w-none self-center object-contain" style={{ height: '100%' }} />
+            </div>
+          </div>
 
           <p
             className="text-[18px] sm:text-[clamp(17px,1.6vw,22px)] leading-relaxed text-white/70 mb-12 max-w-[520px] md:max-w-none md:whitespace-nowrap font-light transition-all duration-700"
