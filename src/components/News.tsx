@@ -5,8 +5,8 @@ const articles = [
   {
     category: 'Accredited',
     date: '11 programs',
-    title: 'Ellis & Associates + SST',
-    desc: 'Through SST (Safety Skills Training DMCC), the international arm of Ellis & Associates, the Academy is an authorized delivery partner for the full Ellis portfolio, the gold standard in aquatic safety and attractions operations certification. From the International Lifeguard Training Program and vanGUARD Aquatics Leadership to Water Slide Dispatch Operator and Attraction Operator.',
+    title: 'Ellis & Associates',
+    desc: 'The Academy delivers Ellis & Associates certification, the gold standard in first aid, CPR and safety training for attractions teams. The portfolio also covers lifeguard and aquatic programs, including the International Lifeguard Training Program and vanGUARD Aquatics Leadership.',
     image: './grand-hyatt-waterpark.jpg',
   },
   {

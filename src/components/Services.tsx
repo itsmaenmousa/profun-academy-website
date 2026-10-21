@@ -20,7 +20,7 @@ const services = [
   {
     number: '04',
     title: 'Accredited & Certified Learning Experiences',
-    desc: 'Industry-recognized certification pathways with Ellis & Associates and SST, plus IBCCES-certified accessibility training.',
+    desc: 'Industry-recognized certification pathways with Ellis & Associates, plus IBCCES-certified accessibility training.',
   },
   {
     number: '05',

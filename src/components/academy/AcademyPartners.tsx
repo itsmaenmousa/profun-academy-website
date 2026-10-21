@@ -18,9 +18,9 @@ const partners = [
     role: 'Industry body for waterpark operators and suppliers',
   },
   {
-    name: 'Ellis & Associates + SST',
-    full: 'Ellis & Associates and Safety Skills Training DMCC',
-    role: 'Aquatic safety and attraction operations certification, delivered through SST, E&A\'s international arm',
+    name: 'Ellis & Associates',
+    full: 'Ellis & Associates',
+    role: 'First aid, CPR and safety certification, plus lifeguard and aquatic programs',
   },
   {
     name: 'TEA',

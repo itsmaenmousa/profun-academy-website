@@ -65,7 +65,7 @@ export default function About() {
               <h3 className="font-serif text-[clamp(32px,3vw,48px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">Built Differently, By Design.</h3>
             </div>
             <p className="max-w-[460px] text-[18px] text-[#6B6B65] leading-relaxed font-light">
-              Every aspect of the ProFun Academy experience is shaped by the realities of working in visitor attractions, not adapted from another sector.
+              We help operators and project teams build the capability to open, operate and lead exceptional visitor attractions, with learning shaped around their people, operational priorities and regional context.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-14">
