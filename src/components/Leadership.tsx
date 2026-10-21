@@ -89,7 +89,7 @@ const team = [
   {
     name: 'Jhumur Jha',
     photo: './team-jhumur-jha-bw.jpg',
-    role: 'QHSE Specialist, KSA',
+    role: 'QHSE Specializt, KSA',
     bio: 'Jhumur supports quality, health, safety and environment standards across ProFun\'s work in Saudi Arabia.',
   },
   {
@@ -123,7 +123,7 @@ export default function Leadership() {
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
             <p className="text-[19px] text-[#6B6B65] leading-relaxed font-light">
-              ProFun's senior team combines academic rigour with extensive hands-on experience across every discipline relevant to the leisure and attractions industry.
+              ProFun's senior team combines academic rigor with extensive hands-on experience across every discipline relevant to the leisure and attractions industry.
             </p>
           </div>
         </div>

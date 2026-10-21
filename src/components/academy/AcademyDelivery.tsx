@@ -14,7 +14,7 @@ const modes = [
     ),
     headline: 'On-site. Immersive. Practitioner-led.',
     desc: 'In-person delivery brings our facilitators, experienced attractions operators, directly into your environment. Sessions are run in context: on the ride platform, in the control room, in the briefing space. Learning is calibrated to your specific team, guest mix and operating procedures.',
-    features: ['On-site or designated facility', 'Facilitated by industry practitioners', 'Customised to your operational context', 'Integrated with live operations', 'Suitable for all levels'],
+    features: ['On-site or designated facility', 'Facilitated by industry practitioners', 'Customized to your operational context', 'Integrated with live operations', 'Suitable for all levels'],
     image: './academy-in-person.jpg',
   },
   {
@@ -27,7 +27,7 @@ const modes = [
       </svg>
     ),
     headline: 'Live facilitation. Global reach.',
-    desc: 'Virtual live sessions preserve the interaction, challenge and accountability of in-person delivery while enabling access across time zones and multi-site organisations. Our virtual design standards ensure engagement remains high and passive observation is minimised.',
+    desc: 'Virtual live sessions preserve the interaction, challenge and accountability of in-person delivery while enabling access across time zones and multi-site organizations. Our virtual design standards ensure engagement remains high and passive observation is minimized.',
     features: ['Live facilitated sessions', 'Breakout group work', 'Multi-time-zone compatible', 'Recorded for asynchronous review', 'Suitable for supervisory and leadership levels'],
     image: './academy-virtual.jpg',
   },
@@ -68,7 +68,7 @@ const modes = [
       </svg>
     ),
     headline: 'The most effective programs use all modes.',
-    desc: 'Blended pathways sequence digital pre-learning, live facilitation, on-site practicals and post-program coaching into a coherent experience. They are the standard for our flagship capability programs where depth, retention and behaviour change are the measurable outcomes.',
+    desc: 'Blended pathways sequence digital pre-learning, live facilitation, on-site practicals and post-program coaching into a coherent experience. They are the standard for our flagship capability programs where depth, retention and behavior change are the measurable outcomes.',
     features: ['Structured multi-modal pathways', 'Pre-work, live sessions, practicals', 'Coaching and follow-up', 'Competency-based assessment', 'Recommended for all leadership programs'],
     image: './academy-blended.jpg',
   },

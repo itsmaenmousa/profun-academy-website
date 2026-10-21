@@ -75,11 +75,11 @@ export default function AcademyContact() {
                   <div className="w-8 h-px bg-[#F85707]" />
                   <h3 className="font-serif text-[36px] text-white leading-tight">Thank you.</h3>
                   <p className="text-[19px] text-white/50 font-light max-w-[400px] leading-relaxed">
-                    Your enquiry has been received. A member of the ProFun Academy team will be in touch shortly.
+                    Your inquiry has been received. A member of the ProFun Academy team will be in touch shortly.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handle} noValidate aria-label="Learning strategy enquiry form">
+                <form onSubmit={handle} noValidate aria-label="Learning strategy inquiry form">
                   <p className="text-[16px] text-white/60 mb-8 font-medium">
                     Start the conversation
                   </p>
@@ -103,7 +103,7 @@ export default function AcademyContact() {
                       </div>
                       <div>
                         <label htmlFor="ac-org" className="block text-[16px] text-white/60 mb-2 font-medium">
-                          Organisation
+                          Organization
                         </label>
                         <input
                           id="ac-org"
@@ -112,7 +112,7 @@ export default function AcademyContact() {
                           value={form.org}
                           onChange={e => setForm({ ...form, org: e.target.value })}
                           className="w-full bg-transparent border-b border-white/15 py-3 text-[18px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200"
-                          placeholder="Your organisation"
+                          placeholder="Your organization"
                         />
                       </div>
                     </div>
@@ -160,7 +160,7 @@ export default function AcademyContact() {
                         className="w-full bg-transparent border-b border-white/15 py-3 text-[18px] text-white/70 focus:outline-none focus:border-white/50 transition-colors duration-200 cursor-pointer"
                       >
                         <option value="" className="bg-[#111110]">Select a service area</option>
-                        <option value="bespoke" className="bg-[#111110]">Bespoke learning experience design</option>
+                        <option value="tailored" className="bg-[#111110]">Tailored learning experience design</option>
                         <option value="inperson" className="bg-[#111110]">In-person learning</option>
                         <option value="blended" className="bg-[#111110]">Blended or online learning</option>
                         <option value="accredited" className="bg-[#111110]">Accredited programs</option>
@@ -179,7 +179,7 @@ export default function AcademyContact() {
                         value={form.message}
                         onChange={e => setForm({ ...form, message: e.target.value })}
                         className="w-full bg-transparent border-b border-white/15 py-3 text-[18px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/50 transition-colors duration-200 resize-none"
-                        placeholder="Describe your team, your challenge and the outcome you're working towards"
+                        placeholder="Describe your team, your challenge and the outcome you're working toward"
                       />
                     </div>
 
@@ -187,7 +187,7 @@ export default function AcademyContact() {
                       type="submit"
                       className="inline-flex items-center gap-3 text-[15px] font-medium text-white bg-[#F85707] px-8 py-4 hover:bg-[#D94A05] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111110]"
                     >
-                      Send enquiry
+                      Send inquiry
                       <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
                         <path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>

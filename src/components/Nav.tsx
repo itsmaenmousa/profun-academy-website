@@ -8,14 +8,15 @@ export const PAGES: [string, string][] = [
   ['Programs', '/programs'],
   ['Projects', '/projects'],
   ['Team', '/team'],
+  ['News', '/news'],
   ['Contact', '/contact'],
 ]
 
 /*
   Three-column stable grid.
   [logo 1fr]  [nav auto]  [ctas 1fr]
-  Home: transparent over the hero video with the colour flare, then a white bar
-  with the full-colour logo once scrolled. Inner pages: always the white bar.
+  Home: transparent over the hero video with the color flare, then a white bar
+  with the full-color logo once scrolled. Inner pages: always the white bar.
 */
 export default function Nav() {
   const { pathname } = useLocation()
@@ -54,14 +55,14 @@ export default function Nav() {
         {/* LEFT: Logo */}
         <div className="flex items-center">
           <Link to="/" aria-label="The ProFun Academy home" className="relative flex items-center h-14">
-            {/* Full colour logo, shown on the white bar */}
+            {/* Full color logo, shown on the white bar */}
             <img
               src="./academy-full-color.svg"
               alt="The ProFun Academy"
               className="h-14 w-auto max-w-none transition-opacity duration-300"
               style={{ opacity: scrolled ? 1 : 0 }}
             />
-            {/* Colour flare, shown over the hero */}
+            {/* Color flare, shown over the hero */}
             <img
               src="./academy-symbol.svg"
               alt=""
@@ -72,7 +73,7 @@ export default function Nav() {
           </Link>
         </div>
 
-        {/* CENTRE: Navigation */}
+        {/* CENTER: Navigation */}
         <div className="flex items-center gap-5 xl:gap-8">
           {PAGES.map(([label, to]) => (
             <NavLink key={to} to={to} className={linkCls}>

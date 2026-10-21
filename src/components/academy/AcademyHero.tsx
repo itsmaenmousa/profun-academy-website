@@ -88,7 +88,7 @@ export default function AcademyHero() {
                 <p className="text-[17px] text-white/75 font-light">1980</p>
               </div>
               <div>
-                <p className="text-[16px] text-white/60 mb-1.5 font-medium">Specialisation</p>
+                <p className="text-[16px] text-white/60 mb-1.5 font-medium">Specialization</p>
                 <p className="text-[17px] text-white/75 font-light">Attraction operations training</p>
               </div>
             </div>

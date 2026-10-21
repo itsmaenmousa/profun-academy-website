@@ -19,7 +19,7 @@ export default function About() {
               The people behind{' '}<br className="hidden lg:block" />great experiences.
             </h2>
             <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-6">
-              The ProFun Academy is a division of ProFun, a company dedicated exclusively to operations advisory, training and management for the visitor attractions industry. Since 1980, ProFun has advised on, trained for and managed projects globally, working alongside theme parks, waterparks, museums, cultural institutions, brand centres and world-class events.
+              The ProFun Academy is a division of ProFun, a company dedicated exclusively to operations advisory, training and management for the visitor attractions industry. Since 1980, ProFun has advised on, trained for and managed projects globally, working alongside theme parks, waterparks, museums, cultural institutions, brand centers and world-class events.
             </p>
             <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-12">
               The Academy brings that operational depth directly into the learning room. Every program is built from real industry experience and delivered by people who have worked at the highest levels of the attractions world.
@@ -72,10 +72,10 @@ export default function About() {
           {[
             { title: 'Innovative experiential delivery', desc: 'We design learning experiences that are active, immersive and memorable, grounded in how adults actually learn in operational environments.' },
             { title: 'Tailored role-based learning', desc: 'Programs are built around specific roles, responsibilities and career stages, never one-size-fits-all content.' },
-            { title: 'From frontline to senior leadership', desc: 'We support development at every level of an organisation, from first-day colleagues to C-suite executives.' },
+            { title: 'From frontline to senior leadership', desc: 'We support development at every level of an organization, from first-day colleagues to C-suite executives.' },
             { title: 'Culturally aware delivery', desc: 'Our facilitators work across diverse cultural contexts with sensitivity, respect and genuine international experience.' },
             { title: 'Multilingual options', desc: 'Key programs are available in multiple languages to ensure learning reaches every team member effectively.' },
-            { title: 'On-site coaching and train-the-trainer', desc: 'We embed capability within your organisation, equipping your own people to sustain and scale learning over time.' },
+            { title: 'On-site coaching and train-the-trainer', desc: 'We embed capability within your organization, equipping your own people to sustain and scale learning over time.' },
             { title: 'Interactive and engaging', desc: 'Role-play simulations, scenario-based challenges and reflective practice keep participants engaged and accelerate skill transfer.' },
             { title: 'Industry-specific content', desc: 'Every case study, scenario and example comes from the attractions world, so learning lands with immediate relevance.' },
           ].map((v, i) => (

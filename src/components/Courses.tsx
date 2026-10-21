@@ -74,7 +74,7 @@ const COURSES: Course[] = [
   {
     id: 'gse', title: 'Guest Service Excellence', category: 'Guest Experience', format: 'In-Person',
     duration: '2 days', price: 1450,
-    desc: 'The behaviours, scripts and standards behind world-class guest experiences.',
+    desc: 'The behaviors, scripts and standards behind world-class guest experiences.',
     dates: ['10 Nov 2026 · Riyadh', '8 Dec 2026 · Riyadh', '12 Jan 2027 · Jeddah'],
   },
   {
@@ -140,7 +140,7 @@ export default function Courses() {
             </h1>
           </div>
           <p className="max-w-[440px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
-            Open-enrolment programs from the Academy, including accredited certifications delivered with Ellis & Associates. For tailored team programs, <Link to="/contact" className="text-[#F85707] hover:underline">get in touch</Link>.
+            Open-enrollment programs from the Academy, including accredited certifications delivered with Ellis & Associates. For tailored team programs, <Link to="/contact" className="text-[#F85707] hover:underline">get in touch</Link>.
           </p>
         </div>
 
@@ -185,7 +185,7 @@ export default function Courses() {
                       onClick={() => setActive(c)}
                       className="text-[15px] font-medium text-white bg-[#F85707] px-5 py-2.5 hover:bg-[#000050] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
                     >
-                      {c.format === 'eLearning' ? 'Enrol' : 'Book'}
+                      {c.format === 'eLearning' ? 'Enroll' : 'Book'}
                     </button>
                   </div>
                 </div>

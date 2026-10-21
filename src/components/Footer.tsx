@@ -32,7 +32,7 @@ const cols: { title: string; links: [string, string][] }[] = [
   {
     title: 'Services',
     links: [
-      ['Bespoke Learning Design', '/services'], ['In-Person Learning', '/services'], ['Blended & Online', '/services'],
+      ['Tailored Learning Design', '/services'], ['In-Person Learning', '/services'], ['Blended & Online', '/services'],
       ['Accredited Programs', '/programs'], ['Capability Development', '/services'], ['Learning Strategy', '/services'],
     ],
   },
@@ -47,7 +47,7 @@ const cols: { title: string; links: [string, string][] }[] = [
     title: 'Academy',
     links: [
       ['About', '/about'], ['Programs & Courses', '/programs'], ['Projects', '/projects'],
-      ['Team', '/team'], ['Full Academy profile', '/academy'], ['Contact', '/contact'],
+      ['Team', '/team'], ['News', '/news'], ['Full Academy profile', '/academy'], ['Contact', '/contact'],
     ],
   },
 ]
@@ -57,7 +57,7 @@ const BRAND_BAR = ['#3985FD', '#15D2A4', '#99CA32', '#FFCA03', '#FC026F', '#8238
 export default function Footer() {
   return (
     <footer className="bg-[#111110] pt-16 sm:pt-20 pb-10 px-6 sm:px-12 relative overflow-hidden">
-      {/* Brand colour strip */}
+      {/* Brand color strip */}
       <div className="absolute top-0 left-0 right-0 flex h-1" aria-hidden="true">
         {BRAND_BAR.map(c => <span key={c} className="flex-1" style={{ background: c }} />)}
       </div>

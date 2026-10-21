@@ -10,8 +10,8 @@ const projects = [
     image: './grand-hyatt-waterpark.jpg',
   },
   {
-    title: 'Qiddiya Entertainment City',
-    category: 'Masterplanning',
+    title: 'Qiddiya City',
+    category: 'Leisure destination',
     location: 'Riyadh, Saudi Arabia',
     image: './qiddiya-entertainment-city.jpg',
   },

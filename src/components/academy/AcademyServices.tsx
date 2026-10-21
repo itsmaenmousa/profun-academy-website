@@ -5,8 +5,8 @@ import { useInView } from '../../hooks/useInView'
 const services = [
   {
     n: '01',
-    title: 'Bespoke Learning Experience Design & Delivery',
-    desc: 'We design and deliver learning experiences built entirely from the ground up for your organisation, your roles and your operational context. No off-the-shelf content. Every program reflects your brand, your standards and your workforce.',
+    title: 'Tailored Learning Experience Design & Delivery',
+    desc: 'We design and deliver learning experiences built entirely from the ground up for your organization, your roles and your operational context. No off-the-shelf content. Every program reflects your brand, your standards and your workforce.',
     context: 'From individual modules to multi-month capability programs. Suitable for pre-opening, post-acquisition or performance improvement contexts.',
   },
   {
@@ -18,7 +18,7 @@ const services = [
   {
     n: '03',
     title: 'Blended or Online Learning',
-    desc: 'Learning pathways that combine structured digital content with live facilitation, coaching or assessment. Built for distributed workforces, shift-pattern environments and multi-site organisations.',
+    desc: 'Learning pathways that combine structured digital content with live facilitation, coaching or assessment. Built for distributed workforces, shift-pattern environments and multi-site organizations.',
     context: 'Effective for onboarding, compliance training and knowledge-building at scale across multiple locations.',
   },
   {
@@ -30,13 +30,13 @@ const services = [
   {
     n: '05',
     title: 'Human Capital & Capability Development',
-    desc: 'Strategic consultancy and program design to build organisation-wide capability. Includes competency framework development, succession planning support, talent identification and structured development pathways.',
+    desc: 'Strategic consultancy and program design to build organization-wide capability. Includes competency framework development, succession planning support, talent identification and structured development pathways.',
     context: 'Typically engaged as part of a wider workforce transformation or pre-opening capability build for large-scale attractions.',
   },
   {
     n: '06',
     title: 'Learning Strategy Formulation & Management',
-    desc: 'We work with senior leadership to define, sequence and manage a learning strategy aligned with operational objectives. Includes learning needs analysis, annual planning, budget modelling and ongoing program governance.',
+    desc: 'We work with senior leadership to define, sequence and manage a learning strategy aligned with operational objectives. Includes learning needs analysis, annual planning, budget modeling and ongoing program governance.',
     context: 'Best suited to operators with multiple venues, high workforce volumes or significant annual training investment.',
   },
 ]

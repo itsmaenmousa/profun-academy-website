@@ -16,10 +16,10 @@ const LINKS = [
     [logo — 1fr]  [nav — auto]  [ctas — 1fr]
 
   Equal 1fr side columns guarantee the auto-width nav is
-  always mathematically centred against the full viewport —
+  always mathematically centerd against the full viewport —
   regardless of logo or CTA widths.
 
-  The logo area always occupies its widest state (full colour
+  The logo area always occupies its widest state (full color
   logo + Academy label) so no layout shift occurs during the
   symbol → full-logo crossfade. Only opacity changes.
 
@@ -77,7 +77,7 @@ export default function AcademyNav() {
           </a>
         </div>
 
-        {/* ── CENTRE: Navigation ─────────────────────────────── */}
+        {/* ── CENTER: Navigation ─────────────────────────────── */}
         <div className="flex items-center gap-7" role="list">
           {LINKS.map(l => (
             <a
@@ -101,7 +101,7 @@ export default function AcademyNav() {
             Both CTAs are always rendered — the column is always
             1fr wide. In the hero state they are invisible so the
             right 1fr still mirrors the left 1fr and keeps the
-            nav truly centred.
+            nav truly centerd.
           */}
           <a
             href="https://profun.com"

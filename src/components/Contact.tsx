@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', organisation: '', email: '', message: '' })
+  const [form, setForm] = useState({ name: '', organization: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -66,14 +66,14 @@ export default function Contact() {
                   </div>
                   <div>
                     <label className="block text-[16px] font-medium text-[#000050] mb-1">
-                      Organisation
+                      Organization
                     </label>
                     <input
                       type="text"
-                      value={form.organisation}
-                      onChange={(e) => setForm({ ...form, organisation: e.target.value })}
+                      value={form.organization}
+                      onChange={(e) => setForm({ ...form, organization: e.target.value })}
                       className="w-full bg-transparent border-b border-[#E2E0DB] py-3 text-[18px] text-[#1C1C1A] placeholder:text-[#C0BDB8] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200"
-                      placeholder="Your organisation"
+                      placeholder="Your organization"
                     />
                   </div>
                 </div>
@@ -100,7 +100,7 @@ export default function Contact() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     className="w-full bg-transparent border-b border-[#E2E0DB] py-3 text-[18px] text-[#1C1C1A] placeholder:text-[#C0BDB8] focus:outline-none focus:border-[#1C1C1A] transition-colors duration-200 resize-none"
-                    placeholder="Tell us about your team, your learning challenge and the outcome you are working towards"
+                    placeholder="Tell us about your team, your learning challenge and the outcome you are working toward"
                   />
                 </div>
                 <div className="pt-4">

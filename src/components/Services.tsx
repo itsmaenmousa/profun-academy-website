@@ -4,8 +4,8 @@ import { useInView } from '../hooks/useInView'
 const services = [
   {
     number: '01',
-    title: 'Bespoke Learning Experiences Design & Delivery',
-    desc: 'Custom-built programs developed from scratch around your organisation\'s specific roles, culture and strategic objectives.',
+    title: 'Tailored Learning Experiences Design & Delivery',
+    desc: 'Custom-built programs developed from scratch around your organization\'s specific roles, culture and strategic objectives.',
   },
   {
     number: '02',
@@ -20,12 +20,12 @@ const services = [
   {
     number: '04',
     title: 'Accredited & Certified Learning Experiences',
-    desc: 'Industry-recognised certification pathways with Ellis & Associates and SST, plus IBCCES-certified accessibility training.',
+    desc: 'Industry-recognized certification pathways with Ellis & Associates and SST, plus IBCCES-certified accessibility training.',
   },
   {
     number: '05',
     title: 'Human Capital & Capability Development',
-    desc: 'Strategic frameworks for building lasting organisational capability, from workforce planning to leadership pipelines.',
+    desc: 'Strategic frameworks for building lasting organizational capability, from workforce planning to leadership pipelines.',
   },
   {
     number: '06',
@@ -53,7 +53,7 @@ export default function Services() {
             </h2>
           </div>
           <div className="hidden lg:block max-w-[400px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
-            From bespoke learning design to full capability strategy, the Academy partners with organisations at every stage of their learning journey.
+            From tailored learning design to full capability strategy, the Academy partners with organizations at every stage of their learning journey.
           </div>
         </div>
 

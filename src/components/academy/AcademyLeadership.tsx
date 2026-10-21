@@ -68,7 +68,7 @@ export default function AcademyLeadership() {
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16 reveal ${inView ? 'visible' : ''}`}>
           <div className="lg:col-span-5">
             <h2 id="team-heading" className="font-serif text-[clamp(32px,3.4vw,52px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">
-              Expertise at every level of the organisation.
+              Expertise at every level of the organization.
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">

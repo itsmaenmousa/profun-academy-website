@@ -8,10 +8,23 @@ const LINES = [
 
 export default function Hero() {
   const [ready, setReady] = useState(false)
+  const [fade, setFade] = useState(0)
 
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 200)
     return () => clearTimeout(t)
+  }, [])
+
+  // Logo fades away as soon as the visitor starts scrolling
+  useEffect(() => {
+    let raf = 0
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => setFade(Math.min(1, window.scrollY / 160)))
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('scroll', onScroll) }
   }, [])
 
   return (
@@ -35,13 +48,13 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-[1920px] mx-auto px-6 sm:px-12 pb-20 sm:pb-24 w-full">
         <div className="max-w-[1100px]">
-          {/* Eyebrow */}
-          <p
-            className="text-[19px] font-medium text-white/85 mb-8 transition-opacity duration-700"
-            style={{ opacity: ready ? 1 : 0, transitionDelay: '0.35s' }}
+          {/* Academy logo, fades out on scroll */}
+          <div
+            className="mb-8 transition-opacity duration-700"
+            style={{ opacity: ready ? 1 - fade : 0, transform: `translateY(${-fade * 12}px)`, transitionDelay: ready && fade === 0 ? '0.35s' : '0s' }}
           >
-            The ProFun Academy
-          </p>
+            <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-16 sm:h-20 w-auto" />
+          </div>
 
           {/* Staggered headline */}
           <h1 className="font-serif text-[clamp(26px,7.2vw,96px)] leading-[1.04] text-white mb-8 tracking-[-0.01em]">

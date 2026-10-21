@@ -9,7 +9,7 @@ const projects = [
   { name: 'Desert Falls Water & Adventure Park', location: 'Qatar', category: 'Pre-opening programs incl. lifeguard training' },
   { name: 'Farah Experiences', location: 'UAE', category: 'Full pre-opening programs for Ferrari World & Yas WaterWorld' },
   { name: 'Grand Hyatt Dubai Waterpark', location: 'UAE', category: 'Park-wide training & operational readiness' },
-  { name: 'Makkah Royal Clock Tower', location: 'Saudi Arabia', category: 'Bespoke training programs' },
+  { name: 'Makkah Royal Clock Tower', location: 'Saudi Arabia', category: 'Tailored training programs' },
   { name: 'Mahanakhon SkyWalk', location: 'Bangkok, Thailand', category: 'Attraction-wide training & opening readiness' },
   { name: 'Guggenheim Abu Dhabi', location: 'UAE', category: 'Pre-opening & HR support, 200+ job descriptions' },
   { name: 'Stratosphere', location: 'Las Vegas, USA', category: 'Pre-opening support & staff training design' },

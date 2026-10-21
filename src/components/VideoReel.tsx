@@ -47,7 +47,7 @@ const channels = [
     color: '#15D2A4',
     label: 'Blended',
     title: 'Blended Learning.',
-    desc: 'The most effective approach for lasting behavioural change, combining digital, live and on-the-job components into a single coherent program.',
+    desc: 'The most effective approach for lasting behavioral change, combining digital, live and on-the-job components into a single coherent program.',
     tags: ['Pre-Work', 'Live Session', 'Sustained Follow-Through', 'Spaced Learning Design'],
     image: './academy-blended.jpg',
     pos: '50% 42%',
@@ -152,8 +152,8 @@ export default function VideoReel() {
             <div key={i} className="flex items-center gap-12 pr-12" aria-hidden={i === 1}>
               {[
                 'Theme Parks', '·', 'Waterparks', '·', 'Museums', '·',
-                'Cultural Institutions', '·', 'Brand Centres', '·', 'World Expos', '·',
-                'Zoos & Aquariums', '·', 'Family Entertainment Centres', '·', 'Stadiums & Arenas', '·',
+                'Cultural Institutions', '·', 'Brand Centers', '·', 'World Expos', '·',
+                'Zoos & Aquariums', '·', 'Family Entertainment Centers', '·', 'Stadiums & Arenas', '·',
               ].map((item, j) => (
                 item === '·' ? (
                   <span key={j} className="w-2.5 h-2.5 rounded-full bg-[#F85707] flex-shrink-0" aria-hidden="true" />

@@ -13,7 +13,7 @@ const articles = [
     category: 'IBCCES Certified',
     date: 'Accessibility & inclusion',
     title: 'Accessibility and inclusion, built into every program.',
-    desc: 'Our team is certified by IBCCES, the International Board of Credentialing and Continuing Education Standards, bringing recognised accessibility and neurodiversity best practice into guest service and frontline training.',
+    desc: 'Our team is certified by IBCCES, the International Board of Credentialing and Continuing Education Standards, bringing recognized accessibility and neurodiversity best practice into guest service and frontline training.',
     image: './ibcces-card.jpg',
   },
   {
@@ -36,7 +36,7 @@ export default function News() {
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">Accredited & Certified</p>
             <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">
-              Industry-recognised certification, built in.
+              Industry-recognized certification, built in.
             </h2>
           </div>
           <a

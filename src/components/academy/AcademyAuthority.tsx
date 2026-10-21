@@ -36,7 +36,7 @@ export default function AcademyAuthority() {
                 Since 1980, we have advised on, trained for and managed projects on every continent. Our work spans more than 500 projects across 50 countries, a record unmatched in the attractions industry, from theme parks and water parks to museums, brand centers and world expos.
               </p>
               <p>
-                Our team combines seasoned international executives with regional specialists. From our offices in Los Angeles, USA, and Riyadh, KSA, we pair global experience with local know-how to give clients a “best of both worlds” service, and to make sure concepts thrive long after opening day.
+                Our team combines seasoned international executives with regional specializts. From our offices in Los Angeles, USA, and Riyadh, KSA, we pair global experience with local know-how to give clients a “best of both worlds” service, and to make sure concepts thrive long after opening day.
               </p>
             </div>
           </div>

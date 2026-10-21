@@ -9,7 +9,7 @@ const capabilities = [
   { n: '05', title: 'Culturally Aware Approach', desc: 'Facilitation and content adapted to local cultural and operational contexts across the region.' },
   { n: '06', title: 'Multilingual Learning Options', desc: 'Programs delivered in English and Arabic, with further languages available across our facilitation team.' },
   { n: '07', title: 'On-Site Coaching', desc: 'Embedded coaching alongside live operations, not separate from the work environment.' },
-  { n: '08', title: 'Train-the-Trainer Development', desc: 'Building internal capability so organisations sustain learning momentum independently.' },
+  { n: '08', title: 'Train-the-Trainer Development', desc: 'Building internal capability so organizations sustain learning momentum independently.' },
   { n: '09', title: 'Industry-Specific Content', desc: 'Every module is written for the attractions industry, not adapted from generic HR frameworks.' },
 ]
 
@@ -38,7 +38,7 @@ export default function AcademyCapability() {
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
             <p className="text-[18px] text-[#6B6B65] font-light leading-relaxed">
-              Built differently, by design. Each element is intentional and grounded in what the attractions industry actually requires from its people, at every level of the organisation.
+              Built differently, by design. Each element is intentional and grounded in what the attractions industry actually requires from its people, at every level of the organization.
             </p>
           </div>
         </div>
