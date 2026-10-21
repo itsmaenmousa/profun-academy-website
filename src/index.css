@@ -210,3 +210,8 @@ body {
 .service-icon { transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .4s, color .4s, background-color .4s; }
 .service-row:not(.is-active):hover .service-icon { background: var(--brand); border-color: var(--brand); color: #fff; }
 @media (prefers-reduced-motion: reduce) { .service-fill, .service-icon { transition: none; } }
+
+/* Experiential band: photo fades into the navy on desktop */
+@media (min-width: 1024px) {
+  .exp-image { -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 38%); mask-image: linear-gradient(to right, transparent 0%, #000 38%); }
+}

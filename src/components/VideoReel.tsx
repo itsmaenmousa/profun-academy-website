@@ -138,37 +138,44 @@ export default function VideoReel() {
         </div>
       </div>
 
-      {/* Experiential learning, built into every format */}
-      <div className="max-w-[1920px] mx-auto px-6 sm:px-12 py-16 sm:py-24">
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 bg-[#262624] overflow-hidden">
-          <span className="absolute top-0 left-0 right-0 h-1 z-10 bg-[#8238EB]" aria-hidden="true" />
-          <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[480px] overflow-hidden">
-            <img
-              src="./academy-experiential.jpg"
-              alt="Participants in a hands-on experiential learning session"
-              loading="lazy"
-              decoding="async"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-              style={{ objectPosition: '50% 40%' }}
-            />
-          </div>
-          <div className="p-8 sm:p-12 xl:p-16 flex flex-col justify-center">
-            <p className="text-[20px] font-semibold text-[#8238EB] mb-4">Experiential Learning</p>
-            <h3 className="font-serif text-[clamp(30px,2.8vw,46px)] text-white leading-[1.1] tracking-[-0.01em] mb-6">
-              Practical experience.<br className="hidden sm:block" /> Lasting application.
+      {/* Experiential learning, built into every format: a featured full-bleed band */}
+      <div id="experiential" className="relative overflow-hidden bg-[#000050]">
+        <div className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full bg-[#8238EB]/35 blur-[140px] quote-glow" aria-hidden="true" />
+        <div className="absolute -bottom-48 left-1/3 w-[520px] h-[520px] rounded-full bg-[#FC026F]/15 blur-[140px] quote-glow quote-glow-2" aria-hidden="true" />
+
+        {/* Image: top on mobile, right half bleeding off the edge on desktop */}
+        <div className="exp-image relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-[56%] aspect-[16/10] lg:aspect-auto overflow-hidden">
+          <img
+            src="./academy-experiential.jpg"
+            alt="Participants in a hands-on experiential learning session"
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: '50% 40%' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000050] via-[#000050]/20 to-transparent lg:hidden" aria-hidden="true" />
+        </div>
+
+        <div className="relative max-w-[1920px] mx-auto px-6 sm:px-12 py-16 sm:py-20 lg:py-32">
+          <div className="lg:w-[46%] lg:pr-8">
+            <p className="text-[20px] font-semibold text-[#FFCA03] mb-4">Experiential Learning</p>
+            <h3 className="font-serif text-[clamp(34px,3.6vw,60px)] text-white leading-[1.06] tracking-[-0.01em] mb-6">
+              Practical experience.<br /> Lasting application.
             </h3>
-            <p className="text-[18px] sm:text-[19px] text-white/70 font-light leading-relaxed max-w-[540px] mb-10">
+            <p className="text-[18px] sm:text-[20px] text-white/80 font-light leading-relaxed max-w-[560px] mb-12">
               Learning through realistic scenarios, simulations, and workplace practice helps your teams connect knowledge to their roles and apply skills with confidence.
             </p>
-            <p className="text-[15px] text-white/45 mb-3">Built into every format</p>
-            <ul className="flex flex-wrap gap-x-6 gap-y-2">
-              {channels.map(ch => (
-                <li key={ch.id} className="inline-flex items-center gap-2 text-[16px] text-white/85">
-                  <span className="w-2 h-2 rounded-full" style={{ background: ch.color }} aria-hidden="true" />
-                  {ch.label}
-                </li>
-              ))}
-            </ul>
+            <div className="inline-flex flex-col gap-4 bg-white/[0.06] border border-white/10 backdrop-blur-sm px-6 py-5">
+              <p className="text-[15px] font-medium text-white/60">Built into every format</p>
+              <ul className="flex flex-wrap gap-x-6 gap-y-2">
+                {channels.map(ch => (
+                  <li key={ch.id} className="inline-flex items-center gap-2 text-[16px] text-white">
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ background: ch.color }} aria-hidden="true" />
+                    {ch.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
