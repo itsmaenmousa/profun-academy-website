@@ -6,12 +6,12 @@ const services = [
   {
     title: 'Learning Strategy and Management',
     desc: 'Align learning with business priorities through needs analysis, planning, governance, and performance measurement.',
-    color: '#3985FD',
+    color: '#000050',
   },
   {
     title: 'Workforce Capability Development',
     desc: 'Define role competencies, career pathways, and leadership development priorities to build a capable workforce.',
-    color: '#15D2A4',
+    color: '#3985FD',
   },
   {
     title: 'Program Design and Content Development',
@@ -87,7 +87,7 @@ export default function Services() {
                   <div className="overflow-hidden">
                     <div className="grid grid-cols-[auto_1fr_auto] gap-4 sm:gap-10 px-5 sm:px-8 lg:px-10 pb-8 sm:pb-10">
                       <span className="w-7 sm:w-12" aria-hidden="true" />
-                      <p className="text-[18px] sm:text-[20px] text-white/90 font-light leading-relaxed max-w-[720px]">{s.desc}</p>
+                      <p className="text-[18px] sm:text-[20px] text-white font-normal leading-relaxed max-w-[720px]">{s.desc}</p>
                       <span className="w-10 sm:w-14" aria-hidden="true" />
                     </div>
                   </div>

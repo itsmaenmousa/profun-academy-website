@@ -1,6 +1,9 @@
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
 
+// Light palette colors take Midnight Blue text on hover; darker ones take white
+const LIGHT = ['#15D2A4', '#99CA32', '#FFCA03', '#00AFDC']
+
 const VALUES = [
   { title: 'Shaped by operational experience', desc: 'Learning shaped by attractions professionals who understand the realities of opening, operating, and leading visitor experiences.', color: '#3985FD' },
   { title: 'Practical learning, real-world application', desc: 'Scenarios, simulations, and practical activities connect learning to the workplace, with on-site delivery where the brief requires it.', color: '#15D2A4' },
@@ -84,7 +87,7 @@ export default function About() {
               <li
                 key={v.title}
                 className={`value-card group relative bg-white p-8 sm:p-9 min-h-[300px] flex flex-col overflow-hidden reveal reveal-delay-${(i % 4) + 1} ${inView2 ? 'visible' : ''}`}
-                style={{ ['--brand' as string]: v.color }}
+                style={{ ['--brand' as string]: v.color, ['--ink' as string]: LIGHT.includes(v.color) ? '#000050' : '#ffffff' }}
               >
                 <span className="value-fill" aria-hidden="true" />
                 <span className="value-bar absolute top-0 left-0 right-0 h-1" style={{ background: v.color }} aria-hidden="true" />

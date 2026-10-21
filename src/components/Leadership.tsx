@@ -100,7 +100,6 @@ const team = [
   },
 ]
 
-const PLACEHOLDER_TINTS = ['#3985FD', '#15D2A4', '#8238EB', '#F85707', '#00AFDC', '#FC026F', '#99CA32', '#000050']
 const initials = (name: string) => name.split(' ').filter(Boolean).map(w => w[0]).slice(0, 2).join('')
 
 export default function Leadership() {
@@ -108,7 +107,7 @@ export default function Leadership() {
   const { ref: ref2, inView: inView2 } = useInView()
 
   return (
-    <section id="team" className="bg-[#F9F8F6] py-32 px-12">
+    <section id="team" className="bg-[#F9F8F6] py-24 sm:py-32 px-6 sm:px-12">
       <div className="max-w-[1920px] mx-auto">
         {/* Header */}
         <div
@@ -151,12 +150,12 @@ export default function Leadership() {
                 ) : (
                   <div
                     className="w-full h-full flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                    style={{ background: `${PLACEHOLDER_TINTS[i % PLACEHOLDER_TINTS.length]}14` }}
+                    style={{ background: '#EEEDEA' }}
                     aria-hidden="true"
                   >
                     <span
                       className="font-serif text-[clamp(56px,6vw,88px)] leading-none tracking-[-0.02em]"
-                      style={{ color: PLACEHOLDER_TINTS[i % PLACEHOLDER_TINTS.length] }}
+                      style={{ color: '#000050' }}
                     >
                       {initials(member.name)}
                     </span>
