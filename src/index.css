@@ -269,3 +269,7 @@ body {
   .hc-par { transition: none; transform: none; }
   .hc-cell, .hc-fill { transition: none; }
 }
+
+/* Experiential chips */
+.exp-chip { box-shadow: 0 1px 2px rgba(0,0,80,.05), 0 10px 24px -16px rgba(0,0,80,.25); transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s; }
+.exp-chip:hover { transform: translate3d(0,-3px,0); box-shadow: 0 2px 4px rgba(0,0,80,.06), 0 18px 32px -16px rgba(0,0,80,.35); }
