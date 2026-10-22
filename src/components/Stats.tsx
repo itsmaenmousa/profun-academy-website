@@ -15,7 +15,7 @@ function StatItem({ s, active }: { s: typeof stats[0]; active: boolean }) {
       <div className="font-serif font-medium text-[clamp(44px,4.5vw,72px)] leading-none tracking-[-0.02em] tabular-nums" style={{ color: s.color }}>
         {count}{s.suffix}
       </div>
-      <div className="text-[17px] leading-snug text-white/45 font-light max-w-[180px]">
+      <div className="text-[18px] leading-snug text-white/90 font-normal max-w-[220px]">
         {s.label}
       </div>
     </div>

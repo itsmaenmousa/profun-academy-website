@@ -54,8 +54,8 @@ export default function AcademyMetrics() {
                 <CounterDisplay m={m} active={inView} />
               </span>
               <div className="mt-6">
-                <p className="text-[17px] font-medium text-white/80 mb-1">{m.label}</p>
-                <p className="text-[15px] text-white/35 font-light">{m.sub}</p>
+                <p className="text-[17px] font-medium text-white mb-1">{m.label}</p>
+                <p className="text-[15px] text-white/70 font-light">{m.sub}</p>
               </div>
             </div>
           ))}
