@@ -8,14 +8,15 @@ const stats = [
   { numeric: 10, suffix: 'K+', label: 'Trainees developed, and growing', color: '#FC026F' },
 ]
 
-function StatItem({ s, active }: { s: typeof stats[0]; active: boolean }) {
+function StatItem({ s, active, i }: { s: typeof stats[0]; active: boolean; i: number }) {
   const count = useCounter(s.numeric, 1800, active)
   return (
-    <div className="bg-[#000050] px-4 sm:px-10 py-7 sm:py-8 flex flex-col gap-3 group hover:bg-[#00006a] transition-colors duration-300 cursor-default">
-      <div className="font-serif font-medium text-[clamp(40px,3.8vw,60px)] leading-none tracking-[-0.02em] tabular-nums" style={{ color: s.color }}>
+    <div className={`bg-[#F2F1EF] ${i % 2 === 0 ? 'pl-0' : 'pl-5 sm:pl-8'} ${i === 0 ? 'lg:pl-0' : 'lg:pl-10'} pr-4 sm:pr-8 py-6 sm:py-7 flex flex-col gap-3 cursor-default`}>
+      <span className="block w-8 h-1 rounded-full mb-2" style={{ background: s.color }} aria-hidden="true" />
+      <div className="font-serif font-medium text-[clamp(38px,3.4vw,54px)] leading-none tracking-[-0.02em] tabular-nums text-[#000050]">
         {count}{s.suffix}
       </div>
-      <div className="text-[16px] sm:text-[17px] leading-snug text-white/90 font-normal max-w-[260px] text-balance">
+      <div className="text-[16px] sm:text-[17px] leading-snug text-[#6B6B65] font-light max-w-[260px] text-balance">
         {s.label}
       </div>
     </div>
@@ -27,10 +28,10 @@ export default function Stats() {
 
   return (
     <section ref={ref as React.RefObject<HTMLElement>} className="bg-[#F2F1EF] pt-16 sm:pt-20 px-6 sm:px-12">
-      <div className="max-w-[1920px] mx-auto bg-[#000050] py-6 sm:py-8 px-0 sm:px-4">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/8">
-          {stats.map((s) => (
-            <StatItem key={s.label} s={s} active={inView} />
+      <div className="max-w-[1920px] mx-auto border-y border-[#E2E0DB]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#E2E0DB]">
+          {stats.map((s, i) => (
+            <StatItem key={s.label} s={s} i={i} active={inView} />
           ))}
         </div>
       </div>
