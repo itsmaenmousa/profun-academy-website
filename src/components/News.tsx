@@ -21,7 +21,7 @@ const ACCREDITED: Program[] = [
     date: '11 programs',
     title: 'Ellis & Associates',
     desc: 'The Academy delivers Ellis & Associates certification, the gold standard in first aid, CPR and safety training for attractions teams. The portfolio also covers lifeguard and aquatic programs, including the International Lifeguard Training Program and vanGUARD Aquatics Leadership.',
-    image: './grand-hyatt-waterpark.jpg',
+    image: './ellis-first-aid.jpg',
     color: '#00AFDC',
   },
   {

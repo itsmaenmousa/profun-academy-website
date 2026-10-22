@@ -60,7 +60,7 @@ const RELEASES: Release[] = [
       'The ProFun Academy delivers Ellis & Associates certification for attractions teams across the region, led by first aid, CPR and AED training.',
       'The portfolio also covers lifeguard and aquatic programs, including the International Lifeguard Training Program and vanGUARD Aquatics Leadership, plus Water Slide Dispatch Operator and Attraction Operator, delivered in-person, blended or fully online.',
     ],
-    image: './grand-hyatt-waterpark.jpg',
+    image: './ellis-first-aid.jpg',
   },
 ]
 
