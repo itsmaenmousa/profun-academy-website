@@ -4,37 +4,37 @@ import { useInView } from '../hooks/useInView'
 const team = [
   {
     name: 'Salah Elatrash',
-    photo: './team-salah-elatrash-bw.jpg',
+    photo: './team-salah-elatrash-v2.jpg',
     role: 'Partner',
     bio: 'Salah leads ProFun\'s operations advisory practice across the Middle East and Africa, with deep expertise in workforce capability development and senior leadership program design.',
   },
   {
     name: 'Michael Oswald',
-    photo: './team-michael-oswald-bw.jpg',
+    photo: './team-michael-oswald-v2.jpg',
     role: 'Partner',
     bio: 'Michael brings extensive experience in global attractions operations, safety management systems and training architecture, underpinning ProFun\'s accreditation standards worldwide.',
   },
   {
     name: 'Brad Merriman',
-    photo: './team-brad-merriman-bw.jpg',
+    photo: './team-brad-merriman-v2.jpg',
     role: 'Partner',
     bio: 'Brad brings deep experience in global attractions operations and advisory, shaping ProFun\'s training architecture, safety standards and senior leadership program design across its international portfolio.',
   },
   {
     name: 'Ryan Phillips',
-    photo: './team-ryan-phillips-bw.jpg',
+    photo: './team-ryan-phillips-v2.jpg',
     role: 'General Manager',
     bio: 'Ryan oversees program management and client delivery, with a focus on learning systems design and regional business development across ProFun\'s international portfolio.',
   },
   {
     name: 'Ludwig Louw',
-    photo: './team-ludwig-louw-bw.jpg',
+    photo: './team-ludwig-louw-v2.jpg',
     role: 'Director',
     bio: 'Ludwig leads curriculum development and facilitation excellence, bringing a rigorous approach to experiential learning design and subject matter expert networks.',
   },
   {
     name: 'Joel Ward',
-    photo: './team-joel-ward-bw.jpg',
+    photo: './team-joel-ward-v2.jpg',
     role: 'Senior Vice President, Head of Delivery',
     bio: 'Joel leads delivery at ProFun, drawing on senior roles as Global Head of Theme Parks at DreamWorks and in brand marketing and operations at Universal Studios. Key projects include Doha QUEST, Qiddiya and Genting SkyWorlds.',
   },
@@ -58,45 +58,51 @@ const team = [
   },
   {
     name: 'Samir Bubic',
-    photo: './team-samir-bubic-bw.jpg',
+    photo: './team-samir-bubic-v2.jpg',
     role: 'Director, MENA',
     bio: 'Samir is a Director for ProFun in the MENA region, supporting the Academy\'s regional client engagements.',
   },
   {
     name: 'Lester Silverio',
-    photo: './team-lester-silverio-bw.jpg',
+    photo: './team-lester-silverio-v2.jpg',
     role: 'Revenue Director, KSA',
     bio: 'Lester leads revenue for ProFun in Saudi Arabia.',
   },
   {
     name: 'Ibtisam Alotaibi',
-    photo: './team-ibtisam-alotaibi-bw.jpg',
+    photo: './team-ibtisam-alotaibi-v2.jpg',
     role: 'Senior Finance Director, KSA',
     bio: 'Ibtisam leads finance for ProFun in Saudi Arabia.',
   },
   {
     name: 'Burhan Hanif',
-    photo: './team-burhan-hanif-bw.jpg',
+    photo: './team-burhan-hanif-v2.jpg',
     role: 'Finance Director, KSA',
     bio: 'Burhan oversees finance for ProFun\'s operations in Saudi Arabia.',
   },
   {
     name: 'Raju Lama',
-    photo: './team-raju-lama-bw.jpg',
+    photo: './team-raju-lama-v2.jpg',
     role: 'Delivery Excellence Manager, KSA',
     bio: 'Raju looks after delivery standards across ProFun\'s projects in Saudi Arabia.',
   },
   {
     name: 'Jhumur Jha',
-    photo: './team-jhumur-jha-bw.jpg',
-    role: 'QHSE Specializt, KSA',
+    photo: './team-jhumur-jha-v2.jpg',
+    role: 'QHSE Specialist, KSA',
     bio: 'Jhumur supports quality, health, safety and environment standards across ProFun\'s work in Saudi Arabia.',
   },
   {
     name: 'Joann Reyes',
-    photo: './team-joann-reyes-bw.jpg',
+    photo: './team-joann-reyes-v2.jpg',
     role: 'Document Controller, KSA',
     bio: 'Joann manages document control for ProFun in Saudi Arabia.',
+  },
+  {
+    name: 'Maen Mousa',
+    photo: './team-maen-mousa-v2.jpg',
+    role: 'Marketing',
+    bio: 'Maen leads digital marketing and communications for the Academy, building lasting relationships with clients and partners across the Middle East and Europe.',
   },
 ]
 
@@ -130,7 +136,7 @@ export default function Leadership() {
         {/* Team grid */}
         <div
           ref={ref2 as React.RefObject<HTMLDivElement>}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E2E0DB]"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px"
         >
           {team.map((member, i) => (
             <div
