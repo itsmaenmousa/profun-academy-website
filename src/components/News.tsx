@@ -1,17 +1,20 @@
 import type React from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { useInView } from '../hooks/useInView'
 
-type Program = { category: string; date: string; title: string; desc: string; image: string; color: string }
+type Program = { category: string; date: string; title: string; desc: string; image: string; color: string; pos?: string; label: string; items: string[] }
 
 const TAILORED: Program[] = [
   {
     category: 'Training Programs',
     date: '13 program areas',
     title: 'Thirteen program areas. Hundreds of programs.',
-    desc: 'Leadership & Management, Industry Experience, Safety & Security, Rides & Attractions, Frontline Colleagues, Human Resources, Guest Service Excellence, Sales & Marketing, Food & Beverage, Retail, Engineering & Technical Services, Information Technology and Housekeeping.',
-    image: './news-2.jpg',
+    desc: 'Tailored training across every part of an attraction, shaped around your people, culture and operations.',
+    image: './training-programs.jpg',
+    pos: '50% 35%',
     color: '#8238EB',
+    label: 'Explore program areas',
+    items: ['Leadership & Management', 'Industry Experience', 'Safety & Security', 'Rides & Attractions', 'Frontline Colleagues', 'Human Resources', 'Guest Service Excellence', 'Sales & Marketing', 'Food & Beverage', 'Retail', 'Engineering & Technical Services', 'Information Technology', 'Housekeeping'],
   },
 ]
 
@@ -20,17 +23,21 @@ const ACCREDITED: Program[] = [
     category: 'Accredited',
     date: '11 programs',
     title: 'Ellis & Associates',
-    desc: 'The Academy delivers Ellis & Associates certification, the gold standard in first aid, CPR and safety training for attractions teams. The portfolio also covers lifeguard and aquatic programs, including the International Lifeguard Training Program and vanGUARD Aquatics Leadership.',
+    desc: 'The gold standard in first aid, CPR and safety certification for attractions teams, plus lifeguard and aquatic programs.',
     image: './ellis-first-aid.jpg',
     color: '#00AFDC',
+    label: 'Explore courses',
+    items: ['CPR & First Aid', 'Preventing Bloodborne & Airborne Pathogens', 'Supplemental Oxygen Support', 'Active Shooter Assailant Safety', 'Attraction Operator', 'Water Slide Dispatch Operator', 'International Lifeguard Training Program', 'vanGUARD Aquatics Leadership', 'Water Safety Plus', 'Jeff Ellis Swimming', 'Train the Trainer'],
   },
   {
     category: 'IBCCES Certified',
     date: 'Accessibility & inclusion',
     title: 'Accessibility and inclusion, built into every program.',
-    desc: 'Our team is certified by IBCCES, the International Board of Credentialing and Continuing Education Standards, bringing recognized accessibility and neurodiversity best practice into guest service and frontline training.',
+    desc: 'Our team is IBCCES certified, bringing recognized accessibility and neurodiversity best practice into guest service and frontline training.',
     image: './ibcces-card.jpg',
     color: '#15D2A4',
+    label: 'Explore focus areas',
+    items: ['Accessibility Awareness', 'Neurodiversity Best Practice', 'Inclusive Guest Service', 'Frontline Training'],
   },
 ]
 
@@ -91,26 +98,54 @@ function GroupLabel({ color, children }: { color: string; children: React.ReactN
 }
 
 function Card({ a, i, inView }: { a: Program; i: number; inView: boolean }) {
+  const [open, setOpen] = useState(false)
+  const PREVIEW = 3
+  const rest = a.items.length - PREVIEW
   return (
-    <article className={`h-full bg-[#F2F1EF] group hover:bg-[#F9F8F6] transition-colors duration-300 reveal reveal-delay-${i + 1} ${inView ? 'visible' : ''}`}>
-      <div className="relative aspect-[16/10] overflow-hidden bg-[#E2E0DB]">
+    <article className={`h-full bg-[#F2F1EF] group flex flex-col transition-colors duration-300 hover:bg-[#F9F8F6] reveal reveal-delay-${i + 1} ${inView ? 'visible' : ''}`}>
+      <div className="relative aspect-[16/9] overflow-hidden bg-[#E2E0DB]">
         <span className="absolute bottom-0 left-0 right-0 h-1 z-10" style={{ background: a.color }} aria-hidden="true" />
-        <img src={a.image} alt={a.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" />
+        <img src={a.image} alt={a.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" style={{ objectPosition: a.pos ?? '50% 50%' }} />
       </div>
-      <div className="p-8">
-        <div className="flex items-center gap-3 mb-5">
+      <div className="p-6 sm:p-8 flex flex-col flex-1">
+        <div className="flex items-center gap-3 mb-4">
           <span className="text-[16px] font-medium" style={{ color: a.color }}>{a.category}</span>
-          <span className="text-[#E2E0DB]">·</span>
+          <span className="text-[#C9C7C1]">·</span>
           <span className="text-[15px] text-[#6B6B65] font-light">{a.date}</span>
         </div>
-        <h4 className="font-serif text-[24px] text-[#1C1C1A] leading-tight mb-4 group-hover:text-[#000050] transition-colors duration-300">{a.title}</h4>
-        <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light mb-6">{a.desc}</p>
-        <Link to="/contact" className="flex items-center gap-2 text-[15px] font-medium text-[#1C1C1A] group-hover:text-[#F85707] group-hover:gap-4 transition-all duration-200">
-          Start a conversation
-          <svg width="12" height="9" viewBox="0 0 12 9" fill="none" aria-hidden="true">
-            <path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </Link>
+        <h4 className="font-serif text-[clamp(22px,1.8vw,26px)] text-[#000050] leading-tight mb-3">{a.title}</h4>
+        <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light mb-5">{a.desc}</p>
+
+        {/* Tags: preview, expand to see all */}
+        <ul className="flex flex-wrap gap-2" aria-label={`${a.title} list`}>
+          {(open ? a.items : a.items.slice(0, PREVIEW)).map((t, k) => (
+            <li
+              key={t}
+              className={`prog-tag inline-flex items-center gap-2 bg-white text-[14px] sm:text-[15px] text-[#000050] px-3 py-1.5`}
+              style={{ animationDelay: k >= PREVIEW ? `${(k - PREVIEW) * 35}ms` : '0ms' }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: a.color }} aria-hidden="true" />
+              {t}
+            </li>
+          ))}
+          {!open && rest > 0 && (
+            <li className="inline-flex items-center text-[14px] sm:text-[15px] text-[#6B6B65] px-2 py-1.5">+{rest} more</li>
+          )}
+        </ul>
+
+        <div className="mt-auto pt-6">
+          <button
+            type="button"
+            onClick={() => setOpen(o => !o)}
+            aria-expanded={open}
+            className="inline-flex items-center gap-2 text-[15px] font-medium text-[#000050] hover:text-[#F85707] transition-colors duration-200"
+          >
+            {open ? 'Show less' : a.label}
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" className={`transition-transform duration-300 ${open ? 'rotate-180' : ''}`}>
+              <path d="M2 4.5L6 8.5L10 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
       </div>
     </article>
   )
