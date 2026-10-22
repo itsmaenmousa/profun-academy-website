@@ -122,6 +122,8 @@ export default function VideoReel() {
           />
         ))}
         <div className="absolute inset-0 bg-gradient-to-r from-[#1C1C1A]/90 via-[#1C1C1A]/45 to-transparent" />
+        {/* Soft fade into the Experiential band below */}
+        <div className="absolute inset-x-0 bottom-0 h-28 sm:h-40 bg-gradient-to-b from-transparent to-[#1C1C1A] pointer-events-none" aria-hidden="true" />
 
         <div className="absolute inset-0 flex items-end">
           <div key={c.id} className="max-w-[1920px] w-full mx-auto px-6 sm:px-12 pb-12 sm:pb-16 reel-copy">
