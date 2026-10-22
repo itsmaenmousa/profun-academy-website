@@ -101,7 +101,7 @@ const team = [
   {
     name: 'Maen Mousa',
     photo: './team-maen-mousa-v3.jpg',
-    role: 'Marketing',
+    role: 'Marketing & Communications',
     bio: 'Maen leads digital marketing and communications for the Academy, building lasting relationships with clients and partners across the business.',
   },
 ]
