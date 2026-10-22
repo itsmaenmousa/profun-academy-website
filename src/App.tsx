@@ -106,7 +106,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<Layout><About /><Stats /></Layout>} />
+        <Route path="/about" element={<Layout><Stats /><About /></Layout>} />
         <Route path="/services" element={<Layout><Services /></Layout>} />
         <Route path="/learning" element={<Layout><VideoReel /></Layout>} />
         <Route path="/programs" element={<Layout><News /></Layout>} />

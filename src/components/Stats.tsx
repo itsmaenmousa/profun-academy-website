@@ -11,11 +11,11 @@ const stats = [
 function StatItem({ s, active }: { s: typeof stats[0]; active: boolean }) {
   const count = useCounter(s.numeric, 1800, active)
   return (
-    <div className="bg-[#000050] px-6 sm:px-10 py-10 sm:py-12 flex flex-col gap-4 group hover:bg-[#00006a] transition-colors duration-300 cursor-default">
-      <div className="font-serif font-medium text-[clamp(44px,4.5vw,72px)] leading-none tracking-[-0.02em] tabular-nums" style={{ color: s.color }}>
+    <div className="bg-[#000050] px-4 sm:px-10 py-7 sm:py-8 flex flex-col gap-3 group hover:bg-[#00006a] transition-colors duration-300 cursor-default">
+      <div className="font-serif font-medium text-[clamp(40px,3.8vw,60px)] leading-none tracking-[-0.02em] tabular-nums" style={{ color: s.color }}>
         {count}{s.suffix}
       </div>
-      <div className="text-[18px] leading-snug text-white/90 font-normal max-w-[220px]">
+      <div className="text-[16px] sm:text-[17px] leading-snug text-white/90 font-normal max-w-[260px] text-balance">
         {s.label}
       </div>
     </div>
@@ -26,7 +26,7 @@ export default function Stats() {
   const { ref, inView } = useInView()
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="bg-[#000050] py-16 sm:py-20 px-6 sm:px-12">
+    <section ref={ref as React.RefObject<HTMLElement>} className="bg-[#000050] py-6 sm:py-8 px-6 sm:px-12">
       <div className="max-w-[1920px] mx-auto">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/8">
           {stats.map((s) => (
