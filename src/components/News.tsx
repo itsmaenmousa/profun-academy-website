@@ -33,7 +33,7 @@ const ACCREDITED: Program[] = [
     category: 'IBCCES Certified',
     date: 'Accessibility & inclusion',
     title: 'Accessibility and inclusion, built into every program.',
-    desc: 'Our team is IBCCES certified, bringing recognized accessibility and neurodiversity best practice into guest service and frontline training.',
+    desc: 'Our IBCCES certified team brings accessibility and neurodiversity best practice into guest service and frontline training.',
     image: './ibcces-card.jpg',
     color: '#15D2A4',
     label: 'Explore focus areas',
@@ -70,17 +70,21 @@ export default function News() {
           </a>
         </div>
 
-        {/* Program groups */}
-        <div ref={ref as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
-          <div>
+        {/* Program groups: one aligned row of cards */}
+        <div ref={ref as React.RefObject<HTMLDivElement>}>
+          <div className="hidden lg:grid grid-cols-3 gap-6 mb-6">
             <GroupLabel color="#8238EB">Tailored Training Programs</GroupLabel>
-            {TAILORED.map((a, i) => <Card key={a.title} a={a} i={i} inView={inView} />)}
+            <div className="col-span-2"><GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel></div>
           </div>
-          <div className="lg:col-span-2">
-            <GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E2E0DB]">
-              {ACCREDITED.map((a, i) => <Card key={a.title} a={a} i={i + 1} inView={inView} />)}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            {[...TAILORED, ...ACCREDITED].map((a, i) => (
+              <div key={a.title} className="flex flex-col">
+                {i === 0 && <div className="lg:hidden mb-5"><GroupLabel color="#8238EB">Tailored Training Programs</GroupLabel></div>}
+                {i === 1 && <div className="lg:hidden mb-5"><GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel></div>}
+                {i === 2 && <div className="hidden md:block lg:hidden mb-5 h-[27px]" aria-hidden="true" />}
+                <Card a={a} i={i} inView={inView} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -90,7 +94,7 @@ export default function News() {
 
 function GroupLabel({ color, children }: { color: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 mb-6">
+    <div className="flex items-center gap-3">
       <span className="w-8 h-[3px]" style={{ background: color }} aria-hidden="true" />
       <h3 className="text-[19px] font-semibold text-[#000050]">{children}</h3>
     </div>
@@ -102,22 +106,22 @@ function Card({ a, i, inView }: { a: Program; i: number; inView: boolean }) {
   const PREVIEW = 3
   const rest = a.items.length - PREVIEW
   return (
-    <article className={`h-full bg-[#F2F1EF] group flex flex-col transition-colors duration-300 hover:bg-[#F9F8F6] reveal reveal-delay-${i + 1} ${inView ? 'visible' : ''}`}>
+    <article className={`flex-1 bg-[#F9F8F6] group flex flex-col transition-colors duration-300 hover:bg-white reveal reveal-delay-${i + 1} ${inView ? 'visible' : ''}`}>
       <div className="relative aspect-[16/9] overflow-hidden bg-[#E2E0DB]">
         <span className="absolute bottom-0 left-0 right-0 h-1 z-10" style={{ background: a.color }} aria-hidden="true" />
         <img src={a.image} alt={a.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" style={{ objectPosition: a.pos ?? '50% 50%' }} />
       </div>
       <div className="p-6 sm:p-8 flex flex-col flex-1">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4 lg:max-[1399px]:min-h-[3.2em]">
           <span className="text-[16px] font-medium" style={{ color: a.color }}>{a.category}</span>
           <span className="text-[#C9C7C1]">·</span>
           <span className="text-[15px] text-[#6B6B65] font-light">{a.date}</span>
         </div>
-        <h4 className="font-serif text-[clamp(22px,1.8vw,26px)] text-[#000050] leading-tight mb-3">{a.title}</h4>
-        <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light mb-5">{a.desc}</p>
+        <h4 className="font-serif text-[clamp(22px,1.8vw,26px)] text-[#000050] leading-tight mb-3 lg:max-[1279px]:min-h-[3.75em] min-[1280px]:min-h-[2.5em]">{a.title}</h4>
+        <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light mb-5 lg:min-h-[6.6em]">{a.desc}</p>
 
         {/* Tags: preview, expand to see all */}
-        <ul className="flex flex-wrap gap-2" aria-label={`${a.title} list`}>
+        <ul className="flex flex-wrap content-start gap-2 lg:min-h-[5.5rem]" aria-label={`${a.title} list`}>
           {(open ? a.items : a.items.slice(0, PREVIEW)).map((t, k) => (
             <li
               key={t}
