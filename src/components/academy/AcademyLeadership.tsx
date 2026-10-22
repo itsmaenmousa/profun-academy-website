@@ -5,25 +5,25 @@ import { useInView } from '../../hooks/useInView'
 const leadership = [
   {
     name: 'Salah Elatrash',
-    photo: './team-salah-elatrash-v2.jpg',
+    photo: './team-salah-elatrash-v3.jpg',
     title: 'Partner',
     expertise: ['Qiddiya', 'SEVEN', 'At The Top, Burj Khalifa', 'Shindagha Museum', 'Languages: Arabic, English'],
   },
   {
     name: 'Michael Oswald',
-    photo: './team-michael-oswald-v2.jpg',
+    photo: './team-michael-oswald-v3.jpg',
     title: 'Partner',
     expertise: ['Ferrari World Abu Dhabi', 'Yas Waterworld', 'Doha QUEST', 'Mahanakhon Skywalk', 'Sony Wonderverse'],
   },
   {
     name: 'Ryan Phillips',
-    photo: './team-ryan-phillips-v2.jpg',
+    photo: './team-ryan-phillips-v3.jpg',
     title: 'General Manager',
     expertise: ['Yas Waterworld, Abu Dhabi', 'Aquarabia, Qiddiya City', 'Atlantis Aquaventure Dubai', 'Grand Hyatt Dubai Waterpark', 'IAAPA MENA Regional Advisory Board'],
   },
   {
     name: 'Ludwig Louw',
-    photo: './team-ludwig-louw-v2.jpg',
+    photo: './team-ludwig-louw-v3.jpg',
     title: 'Director',
     expertise: ['Qiddiya Capability Program', 'SEVEN', 'Leadership & Capability Frameworks', 'Languages: English, Afrikaans'],
   },
@@ -92,7 +92,7 @@ export default function AcademyLeadership() {
                   alt={`${l.name}, ${l.title}`}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover object-top grayscale transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
               </div>
 
