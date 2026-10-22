@@ -60,10 +60,6 @@ export default function About() {
             </div>
             <div className="mt-4 flex items-start justify-between">
               <p className="text-[15px] text-[#6B6B65] font-light">In-person learning, facilitated by industry practitioners</p>
-              <div className="flex items-center gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#F85707]" />
-                <p className="text-[15px] text-[#6B6B65] font-light">Est. 1980</p>
-              </div>
             </div>
           </div>
         </div>

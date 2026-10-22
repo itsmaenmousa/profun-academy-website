@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
 
@@ -53,8 +53,11 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Service rows */}
-        <ol className="border-t border-[#E2E0DB]">
+        {/* Desktop: honeycomb around the Academy flare */}
+        <Honeycomb inView={inView} />
+
+        {/* Mobile and tablet: expanding rows */}
+        <ol className="lg:hidden border-t border-[#E2E0DB]">
           {services.map((s, i) => {
             const on = active === i
             return (
@@ -96,5 +99,97 @@ export default function Services() {
         </ol>
       </div>
     </section>
+  )
+}
+
+/* ── Honeycomb (desktop) ─────────────────────────────────────── */
+
+// Pointy-top hex grid, positions in units of the hex width.
+// Services sit in the ring around the center; a few ghost cells add texture.
+const RING: [number, number][] = [
+  [0.5, -1], [1, 0], [0.5, 1], [-0.5, 1], [-1, 0],
+]
+const GHOSTS: [number, number][] = [
+  [-0.5, -1], [1.5, -1], [1.5, 1], [-1.5, -1], [-1.5, 1], [2, 0], [-2, 0],
+]
+
+function cellStyle([x, y]: [number, number], delay = 0): React.CSSProperties {
+  return {
+    left: `calc(50% + ${x} * var(--step-x) - var(--hex-w) / 2)`,
+    top: `calc(50% + ${y} * var(--step-y) - var(--hex-h) / 2)`,
+    transitionDelay: `${delay}ms`,
+  }
+}
+
+function Honeycomb({ inView }: { inView: boolean }) {
+  const [active, setActive] = useState(0)
+  const [touched, setTouched] = useState(false)
+  const s = services[active]
+
+  // Gently cycle through the services until the visitor interacts
+  useEffect(() => {
+    if (touched || !inView) return
+    const t = setTimeout(() => setActive(a => (a + 1) % services.length), 4200)
+    return () => clearTimeout(t)
+  }, [active, touched, inView])
+
+  const pick = (i: number) => { setTouched(true); setActive(i) }
+
+  return (
+    <div className="hidden lg:grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_auto] items-center gap-12 xl:gap-16">
+      {/* Active service */}
+      <div className="max-w-[640px] xl:max-w-[460px] order-2 xl:order-1 mx-auto xl:mx-0 text-center xl:text-left" aria-live="polite">
+        <div key={active} className="hc-copy">
+          <span className="block w-12 h-1 mb-8 mx-auto xl:mx-0" style={{ background: s.color }} aria-hidden="true" />
+          <h3 className="font-serif text-[clamp(30px,2.6vw,44px)] text-[#000050] leading-[1.1] tracking-[-0.01em] mb-6">{s.title}</h3>
+          <p className="text-[19px] text-[#4A4A45] leading-relaxed font-light">{s.desc}</p>
+        </div>
+        <div className="flex items-center justify-center xl:justify-start gap-2 mt-10" aria-hidden="true">
+          {services.map((x, i) => (
+            <span key={x.title} className="h-1 rounded-full transition-all duration-500" style={{ width: i === active ? 32 : 10, background: i === active ? x.color : '#D4D2CC' }} />
+          ))}
+        </div>
+      </div>
+
+      {/* Honeycomb */}
+      <div className="honeycomb relative order-1 xl:order-2 mx-auto" onMouseLeave={() => setTouched(false)}>
+        {GHOSTS.map((g, i) => (
+          <span key={i} className={`hc-cell hc-ghost ${inView ? 'is-in' : ''}`} style={cellStyle(g, 300 + i * 60)} aria-hidden="true">
+            <span className="hc-face" />
+          </span>
+        ))}
+
+        {/* Center flare */}
+        <span className={`hc-cell hc-center ${inView ? 'is-in' : ''}`} style={{ ...cellStyle([0, 0]), ['--glow' as string]: s.color }} aria-hidden="true">
+          <span className="hc-face flex items-center justify-center">
+            <img src="./academy-symbol.svg" alt="" className="hc-flare w-[46%] h-auto" />
+          </span>
+        </span>
+
+        {services.map((x, i) => {
+          const on = i === active
+          return (
+            <button
+              key={x.title}
+              type="button"
+              onMouseEnter={() => pick(i)}
+              onFocus={() => pick(i)}
+              onClick={() => pick(i)}
+              aria-pressed={on}
+              className={`hc-cell hc-service ${on ? 'is-active' : ''} ${inView ? 'is-in' : ''}`}
+              style={{ ...cellStyle(RING[i], 120 + i * 90), ['--brand' as string]: x.color }}
+            >
+              <span className="hc-face">
+                <span className="hc-fill" aria-hidden="true" />
+                <span className="relative flex flex-col items-center justify-center h-full px-[16%] text-center">
+                  <span className="hc-dot w-6 h-1 rounded-full mb-3" style={{ background: x.color }} aria-hidden="true" />
+                  <span className="hc-title font-serif text-[clamp(15px,1.25vw,19px)] leading-snug">{x.title}</span>
+                </span>
+              </span>
+            </button>
+          )
+        })}
+      </div>
+    </div>
   )
 }
