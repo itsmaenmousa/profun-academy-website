@@ -7,7 +7,7 @@ const partners = [
   { name: 'IBCCES', logo: './partner-ibcces-hd.png', color: '#15D2A4' },
   { name: 'American Alliance of Museums', logo: './partner-aam.png', color: '#000050' },
   { name: 'World Waterpark Association', logo: './partner-wwa-hd.png', color: '#F85707', big: true },
-  { name: 'Themed Entertainment Association', logo: './partner-tea-hd.png', color: '#8238EB', big: true },
+  { name: 'Themed Entertainment Association', logo: './partner-tea-v2.png', color: '#8238EB', big: true },
 ]
 
 export default function Partners() {
