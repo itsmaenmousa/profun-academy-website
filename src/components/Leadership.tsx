@@ -40,7 +40,7 @@ const team = [
   },
   {
     name: 'Ron Merriman',
-    photo: '',
+    photo: './team-ron-merriman-v5.jpg',
     role: 'Senior Vice President, Strategy',
     bio: 'Ron leads strategy at ProFun after serving as General Manager of ProFun China, working in media and entertainment at Accenture and sitting on the TEA Asia-Pacific board. Projects include Qiddiya, Shanghai World Expo and Ocean Park Hong Kong.',
   },
