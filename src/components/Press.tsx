@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import type React from 'react'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useEqualize } from '../hooks/useEqualize'
 import { useInView } from '../hooks/useInView'
 
 /*
@@ -23,6 +25,22 @@ type Release = {
 }
 
 const RELEASES: Release[] = [
+  {
+    id: 'website',
+    date: 'October 2026',
+    tag: 'Announcement',
+    color: '#F85707',
+    title: 'Introducing the new home of The ProFun Academy.',
+    summary: 'A new website bringing our programs, learning formats, projects and people together in one place.',
+    body: [
+      'The ProFun Academy has launched its new website, theprofunacademy.com, a single destination for operators, project teams and professionals across the attractions industry.',
+      'Visitors can explore our tailored and accredited programs, see how we deliver learning in person, virtually, online and blended, browse selected work from landmark destinations, and meet the team behind it.',
+      'It is also where we will share Academy news, certifications, events and featured courses, so the industry can follow our work as it grows across Saudi Arabia and the wider region.',
+    ],
+    image: './news-website.jpg',
+    pos: '30% 50%',
+    cta: { label: 'Start a conversation', to: '/contact' },
+  },
   {
     id: 'iaapa-provider',
     date: 'October 2026',
@@ -50,31 +68,18 @@ const RELEASES: Release[] = [
     image: './news-ibcces-cac.jpg',
   },
   {
-    id: 'iaapa-dubai',
-    date: '29 October 2026',
+    id: 'iaapa-events',
+    date: 'Oct – Nov 2026',
     tag: 'Industry Events',
     color: '#FC026F',
-    title: 'Meet the ProFun team at IAAPA Presents Dubai.',
-    summary: 'Dubai, United Arab Emirates. Join us at Deep Dive Dubai and Atlantis The Palm.',
+    title: 'Meet the ProFun team at IAAPA Dubai and Orlando.',
+    summary: 'IAAPA Presents Dubai on 29 October, then IAAPA Expo Orlando on 16–20 November.',
     body: [
-      'The ProFun team will be attending IAAPA Presents Dubai on 29 October, joining attractions professionals at Deep Dive Dubai and Atlantis The Palm for education, behind-the-scenes access and networking.',
-      'If you’re attending, we’d welcome the opportunity to connect and exchange insights on the industry’s latest developments.',
+      'IAAPA Presents Dubai, 29 October 2026. The ProFun team will join attractions professionals at Deep Dive Dubai and Atlantis The Palm for education, behind-the-scenes access and networking.',
+      'IAAPA Expo 2026, Orlando, Florida, 16–20 November 2026. The team will be attending alongside visitor attractions professionals from around the world.',
+      'If you’re attending either event, we’d welcome the opportunity to connect and exchange insights on the industry’s latest developments.',
     ],
     image: './news-iaapa-dubai.jpg',
-    cta: { label: 'Connect with our team', to: '/contact' },
-  },
-  {
-    id: 'iaapa-orlando',
-    date: '16–20 November 2026',
-    tag: 'Industry Events',
-    color: '#FC026F',
-    title: 'Meet the ProFun team at IAAPA Expo Orlando.',
-    summary: 'Orlando, Florida. Joining visitor attractions professionals from around the world.',
-    body: [
-      'The ProFun team will be attending IAAPA Expo 2026 in Orlando, Florida, joining visitor attractions professionals from around the world.',
-      'If you’re attending, we’d welcome the opportunity to connect and exchange insights on the industry’s latest developments.',
-    ],
-    image: './news-iaapa-orlando.jpg',
     cta: { label: 'Connect with our team', to: '/contact' },
   },
   {
@@ -165,10 +170,14 @@ const RELEASES: Release[] = [
   },
 ]
 
+const EQ_KEYS = ['meta', 'title', 'desc']
+
 export default function Press() {
   const { ref, inView } = useInView()
   const [open, setOpen] = useState<string | null>(null)
   const [lead, ...rest] = RELEASES
+  const gridRef = useRef<HTMLDivElement>(null)
+  useEqualize(gridRef, EQ_KEYS)
 
   return (
     <section id="news" className="bg-[#F9F8F6] py-24 sm:py-32 px-6 sm:px-12">
@@ -193,7 +202,7 @@ export default function Press() {
         <ReleaseCard r={lead} open={open === lead.id} onToggle={() => setOpen(open === lead.id ? null : lead.id)} lead />
 
         {/* Others */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E2E0DB] border border-[#E2E0DB] border-t-0">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E2E0DB] border border-[#E2E0DB] border-t-0">
           {rest.map(r => (
             <ReleaseCard key={r.id} r={r} open={open === r.id} onToggle={() => setOpen(open === r.id ? null : r.id)} />
           ))}
@@ -235,15 +244,15 @@ function ReleaseCard({ r, open, onToggle, lead }: { r: Release; open: boolean; o
         />
       </div>
       <div className={`p-8 ${lead ? 'sm:p-12 flex flex-col justify-center' : 'flex-1 flex flex-col'}`}>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">
+        <div data-eq="meta" className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">
           <span className="text-[16px] font-medium whitespace-nowrap" style={{ color: r.color }}>{r.tag}</span>
           <span className="text-[#C9C7C1]" aria-hidden="true">·</span>
           <span className="text-[15px] text-[#6B6B65] font-light whitespace-nowrap">{r.date}</span>
         </div>
-        <h2 className={`font-serif text-[#000050] leading-snug tracking-[-0.01em] mb-4 ${lead ? 'text-[clamp(26px,2.6vw,42px)]' : 'text-[clamp(22px,1.7vw,28px)]'}`}>
+        <h2 data-eq="title" className={`font-serif text-[#000050] leading-snug tracking-[-0.01em] mb-4 ${lead ? 'text-[clamp(26px,2.6vw,42px)]' : 'text-[clamp(22px,1.7vw,28px)]'}`}>
           {r.title}
         </h2>
-        <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed mb-6">{r.summary}</p>
+        <p data-eq="desc" className="text-[17px] text-[#6B6B65] font-light leading-relaxed mb-6">{r.summary}</p>
 
         <div className={`grid transition-[grid-template-rows] duration-500 ease-out ${open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
           <div className="overflow-hidden">
