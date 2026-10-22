@@ -152,18 +152,32 @@ function Honeycomb({ inView }: { inView: boolean }) {
       </div>
 
       {/* Honeycomb */}
-      <div className="honeycomb relative order-1 xl:order-2 mx-auto" onMouseLeave={() => setTouched(false)}>
+      <div
+        className="honeycomb relative order-1 xl:order-2 mx-auto"
+        onMouseMove={e => {
+          const r = e.currentTarget.getBoundingClientRect()
+          e.currentTarget.style.setProperty('--px', String(((e.clientX - r.left) / r.width - 0.5) * 2))
+          e.currentTarget.style.setProperty('--py', String(((e.clientY - r.top) / r.height - 0.5) * 2))
+        }}
+        onMouseLeave={e => {
+          setTouched(false)
+          e.currentTarget.style.setProperty('--px', '0')
+          e.currentTarget.style.setProperty('--py', '0')
+        }}
+      >
         {GHOSTS.map((g, i) => (
-          <span key={i} className={`hc-cell hc-ghost ${inView ? 'is-in' : ''}`} style={cellStyle(g, 300 + i * 60)} aria-hidden="true">
-            <span className="hc-face" />
+          <span key={i} className={`hc-cell hc-ghost ${inView ? 'is-in' : ''}`} style={{ ...cellStyle(g, 300 + i * 60), ['--depth' as string]: 1.8, ['--float-delay' as string]: `${-i * 0.9}s`, ['--tint' as string]: s.color }} aria-hidden="true">
+            <span className="hc-par"><span className="hc-float"><span className="hc-face" /></span></span>
           </span>
         ))}
 
         {/* Center flare */}
-        <span className={`hc-cell hc-center ${inView ? 'is-in' : ''}`} style={{ ...cellStyle([0, 0]), ['--glow' as string]: s.color }} aria-hidden="true">
-          <span className="hc-face flex items-center justify-center">
-            <img src="./academy-symbol.svg" alt="" className="hc-flare w-[46%] h-auto" />
-          </span>
+        <span className={`hc-cell hc-center ${inView ? 'is-in' : ''}`} style={{ ...cellStyle([0, 0]), ['--glow' as string]: s.color, ['--depth' as string]: 0.35, ['--float-delay' as string]: '-1.2s' }} aria-hidden="true">
+          <span className="hc-par"><span className="hc-float">
+            <span className="hc-face flex items-center justify-center">
+              <img key={active} src="./academy-symbol.svg" alt="" className="hc-flare w-[46%] h-auto" />
+            </span>
+          </span></span>
         </span>
 
         {services.map((x, i) => {
@@ -177,8 +191,9 @@ function Honeycomb({ inView }: { inView: boolean }) {
               onClick={() => pick(i)}
               aria-pressed={on}
               className={`hc-cell hc-service ${on ? 'is-active' : ''} ${inView ? 'is-in' : ''}`}
-              style={{ ...cellStyle(RING[i], 120 + i * 90), ['--brand' as string]: x.color }}
+              style={{ ...cellStyle(RING[i], 120 + i * 90), ['--brand' as string]: x.color, ['--depth' as string]: 1, ['--float-delay' as string]: `${-i * 1.3}s` }}
             >
+              <span className="hc-par"><span className="hc-float">
               <span className="hc-face">
                 <span className="hc-fill" aria-hidden="true" />
                 <span className="relative flex flex-col items-center justify-center h-full px-[16%] text-center">
@@ -186,6 +201,7 @@ function Honeycomb({ inView }: { inView: boolean }) {
                   <span className="hc-title font-serif text-[clamp(15px,1.25vw,19px)] leading-snug">{x.title}</span>
                 </span>
               </span>
+              </span></span>
             </button>
           )
         })}
