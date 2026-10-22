@@ -64,7 +64,7 @@ const team = [
   },
   {
     name: 'Lester Silverio',
-    photo: './team-lester-silverio-v4.jpg',
+    photo: './team-lester-silverio-v5.jpg',
     role: 'Revenue Director, KSA',
     bio: 'Lester leads revenue for ProFun in Saudi Arabia.',
   },
