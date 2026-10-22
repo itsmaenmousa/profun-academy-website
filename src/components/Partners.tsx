@@ -4,10 +4,10 @@ import { useInView } from '../hooks/useInView'
 const partners = [
   { name: 'Ellis & Associates', logo: './partner-ellis-sst.png', color: '#00AFDC' },
   { name: 'IAAPA', logo: './partner-iaapa.png', color: '#3985FD' },
-  { name: 'IBCCES', logo: './partner-ibcces.png', color: '#15D2A4' },
+  { name: 'IBCCES', logo: './partner-ibcces-hd.png', color: '#15D2A4' },
   { name: 'American Alliance of Museums', logo: './partner-aam.png', color: '#000050' },
-  { name: 'World Waterpark Association', logo: './partner-wwa.png', color: '#F85707' },
-  { name: 'Themed Entertainment Association', logo: './partner-tea.png', color: '#8238EB' },
+  { name: 'World Waterpark Association', logo: './partner-wwa-hd.png', color: '#F85707', big: true },
+  { name: 'Themed Entertainment Association', logo: './partner-tea-hd.png', color: '#8238EB', big: true },
 ]
 
 export default function Partners() {
@@ -42,7 +42,7 @@ export default function Partners() {
             >
               <span className="partner-fill" aria-hidden="true" />
               <div className="partner-plate relative w-full max-w-[340px] h-28 sm:h-32 bg-white flex items-center justify-center px-6 sm:px-8 transition-shadow duration-500">
-                <img src={p.logo} alt={p.name} title={p.name} loading="lazy" decoding="async" className="max-h-14 sm:max-h-16 max-w-full w-auto object-contain" />
+                <img src={p.logo} alt={p.name} title={p.name} loading="lazy" decoding="async" className={`${p.big ? 'max-h-[76px] sm:max-h-[92px]' : 'max-h-14 sm:max-h-16'} max-w-full w-auto object-contain`} />
               </div>
             </li>
           ))}
