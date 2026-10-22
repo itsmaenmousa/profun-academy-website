@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', organization: '', email: '', message: '' })
+  const [form, setForm] = useState({ name: '', organization: '', email: '', message: '', newsletter: false })
   const [sent, setSent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -43,10 +43,13 @@ export default function Contact() {
           <div className="lg:col-span-6 lg:col-start-7">
             {sent ? (
               <div className="flex flex-col items-start justify-center h-full py-16">
-                <h3 className="font-serif text-[36px] text-[#1C1C1A] mb-4">Thank you</h3>
+                <h3 className="font-serif text-[36px] text-[#000050] mb-4">Thank you</h3>
                 <p className="text-[20px] text-[#6B6B65] font-light leading-relaxed">
                   We have received your message and will be in touch shortly.
                 </p>
+                {form.newsletter && (
+                  <p className="mt-4 text-[17px] text-[#6B6B65] font-light">You are also subscribed to our newsletter.</p>
+                )}
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -103,6 +106,25 @@ export default function Contact() {
                     placeholder="Tell us about your team, your learning challenge and the outcome you are working toward"
                   />
                 </div>
+                <label className="flex items-start gap-3 cursor-pointer select-none group pt-2">
+                  <input
+                    type="checkbox"
+                    checked={form.newsletter}
+                    onChange={(e) => setForm({ ...form, newsletter: e.target.checked })}
+                    className="peer sr-only"
+                  />
+                  <span
+                    className="mt-0.5 w-5 h-5 flex-shrink-0 border border-[#C9C7C1] bg-white flex items-center justify-center transition-colors duration-200 peer-checked:bg-[#000050] peer-checked:border-[#000050] peer-focus-visible:ring-2 peer-focus-visible:ring-[#F85707] group-hover:border-[#000050]"
+                    aria-hidden="true"
+                  >
+                    <svg width="12" height="10" viewBox="0 0 12 10" fill="none" className={form.newsletter ? 'opacity-100' : 'opacity-0'}>
+                      <path d="M1 5l3.5 3.5L11 1.5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  <span className="text-[16px] text-[#4A4A45] leading-relaxed">
+                    Subscribe to The ProFun Academy newsletter for news, programs and industry updates.
+                  </span>
+                </label>
                 <div className="pt-4">
                   <button
                     type="submit"

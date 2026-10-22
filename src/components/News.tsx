@@ -1,5 +1,5 @@
 import type React from 'react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useInView } from '../hooks/useInView'
 
 type Program = { category: string; date: string; title: string; desc: string; image: string; color: string; pos?: string; label: string; items: string[] }
@@ -33,16 +33,51 @@ const ACCREDITED: Program[] = [
     category: 'IBCCES Certified',
     date: 'Accessibility & inclusion',
     title: 'Accessibility and inclusion, built into every program.',
-    desc: 'Our IBCCES certified team brings accessibility and neurodiversity best practice into guest service and frontline training.',
+    desc: 'A Certified Autism Center™ recognized by IBCCES, bringing autism awareness and inclusive guest experience into every program.',
     image: './ibcces-card.jpg',
     color: '#15D2A4',
     label: 'Explore focus areas',
-    items: ['Accessibility Awareness', 'Neurodiversity Best Practice', 'Inclusive Guest Service', 'Frontline Training'],
+    items: ['Autism Awareness', 'Inclusive Guest Experience', 'Accessibility Best Practice', 'Frontline Training'],
   },
 ]
 
+/* Keep card rows aligned: equalize matching parts across cards that share a row */
+function useEqualize(root: React.RefObject<HTMLElement | null>) {
+  useEffect(() => {
+    const el = root.current
+    if (!el) return
+    const keys = ['meta', 'title', 'desc', 'tags']
+    let raf = 0
+    const run = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const cards = [...el.querySelectorAll('article')] as HTMLElement[]
+        keys.forEach(k => cards.forEach(c => { const n = c.querySelector(`[data-eq="${k}"]`) as HTMLElement | null; if (n) n.style.minHeight = '' }))
+        const rows = new Map<number, HTMLElement[]>()
+        cards.forEach(c => { const top = c.getBoundingClientRect().top; const key = [...rows.keys()].find(t => Math.abs(t - top) < 40) ?? top; rows.set(key, [...(rows.get(key) ?? []), c]) })
+        const anyOpen = !!el.querySelector('button[aria-expanded="true"]')
+        rows.forEach(row => {
+          if (row.length < 2) return
+          keys.filter(k => !(anyOpen && k === 'tags')).forEach(k => {
+            const ns = row.map(c => c.querySelector(`[data-eq="${k}"]`) as HTMLElement | null).filter(Boolean) as HTMLElement[]
+            const h = Math.max(...ns.map(n => n.getBoundingClientRect().height))
+            ns.forEach(n => { n.style.minHeight = `${h}px` })
+          })
+        })
+      })
+    }
+    run()
+    const ro = new ResizeObserver(run)
+    ro.observe(el)
+    document.fonts?.ready.then(run)
+    return () => { cancelAnimationFrame(raf); ro.disconnect() }
+  }, [root])
+}
+
 export default function News() {
   const { ref, inView } = useInView()
+  const cardsRef = useRef<HTMLDivElement>(null)
+  useEqualize(cardsRef)
   const { ref: headRef, inView: headIn } = useInView()
 
   return (
@@ -76,12 +111,12 @@ export default function News() {
             <GroupLabel color="#8238EB">Tailored Training Programs</GroupLabel>
             <div className="col-span-2"><GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {[...TAILORED, ...ACCREDITED].map((a, i) => (
               <div key={a.title} className="flex flex-col">
-                {i === 0 && <div className="lg:hidden mb-5"><GroupLabel color="#8238EB">Tailored Training Programs</GroupLabel></div>}
-                {i === 1 && <div className="lg:hidden mb-5"><GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel></div>}
-                {i === 2 && <div className="hidden md:block lg:hidden mb-5 h-[27px]" aria-hidden="true" />}
+                {i === 0 && <div className="lg:hidden mb-5 md:min-h-[56px] flex items-end"><GroupLabel color="#8238EB">Tailored Training Programs</GroupLabel></div>}
+                {i === 1 && <div className="lg:hidden mb-5 md:min-h-[56px] flex items-end"><GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel></div>}
+                {i === 2 && <div className="hidden md:block lg:hidden mb-5 h-[56px]" aria-hidden="true" />}
                 <Card a={a} i={i} inView={inView} />
               </div>
             ))}
@@ -112,16 +147,16 @@ function Card({ a, i, inView }: { a: Program; i: number; inView: boolean }) {
         <img src={a.image} alt={a.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" style={{ objectPosition: a.pos ?? '50% 50%' }} />
       </div>
       <div className="p-6 sm:p-8 flex flex-col flex-1">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4 lg:max-[1399px]:min-h-[3.2em]">
+        <div data-eq="meta" className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
           <span className="text-[16px] font-medium" style={{ color: a.color }}>{a.category}</span>
           <span className="text-[#C9C7C1]">·</span>
           <span className="text-[15px] text-[#6B6B65] font-light">{a.date}</span>
         </div>
-        <h4 className="font-serif text-[clamp(22px,1.8vw,26px)] text-[#000050] leading-tight mb-3 lg:max-[1279px]:min-h-[3.75em] min-[1280px]:min-h-[2.5em]">{a.title}</h4>
-        <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light mb-5 lg:min-h-[6.6em]">{a.desc}</p>
+        <h4 data-eq="title" className="font-serif text-[clamp(22px,1.8vw,26px)] text-[#000050] leading-tight mb-3">{a.title}</h4>
+        <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light mb-5" data-eq="desc">{a.desc}</p>
 
         {/* Tags: preview, expand to see all */}
-        <ul className="flex flex-wrap content-start gap-2 lg:min-h-[5.5rem]" aria-label={`${a.title} list`}>
+        <ul data-eq="tags" className="flex flex-wrap content-start gap-2" aria-label={`${a.title} list`}>
           {(open ? a.items : a.items.slice(0, PREVIEW)).map((t, k) => (
             <li
               key={t}

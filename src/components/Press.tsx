@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type React from 'react'
+import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 
 /*
@@ -18,49 +19,149 @@ type Release = {
   body: string[]
   image: string
   pos?: string
+  cta?: { label: string; to: string }
 }
 
 const RELEASES: Release[] = [
   {
-    id: 'website',
-    date: '2026',
-    tag: 'Announcement',
-    color: '#F85707',
-    title: 'The ProFun Academy launches its new website.',
-    summary: 'A new home for the Academy, bringing its programs, delivery channels, projects and team together in one place.',
+    id: 'iaapa-provider',
+    date: 'October 2026',
+    tag: 'Industry Recognition',
+    color: '#3985FD',
+    title: 'The ProFun Academy recognized by IAAPA.',
+    summary: 'The ProFun Academy is an IAAPA Education Pre-Approved Provider.',
     body: [
-      'The ProFun Academy, the learning and capability development division of ProFun, has launched its new website, theprofunacademy.com.',
-      'The site brings together the Academy’s full offer for the attractions industry: tailored learning design, accredited certification, four delivery formats with experiential learning built in, and the projects and people behind its work across the region.',
-      'Operators can explore programs, meet the team and start a conversation about building capability across their own venues.',
+      'The ProFun Academy is an IAAPA Education Pre-Approved Provider.',
+      'This recognition reflects our commitment to delivering training programs tailored to the attractions industry, with a focus on operational standards, guest experience and the skills teams need on the job.',
     ],
-    image: './hero-academy-v2-poster.jpg',
+    image: './news-iaapa-provider.jpg',
+  },
+  {
+    id: 'ibcces-cac',
+    date: 'October 2026',
+    tag: 'Inclusion & Accessibility',
+    color: '#15D2A4',
+    title: 'Advancing autism awareness with IBCCES.',
+    summary: 'The ProFun Academy has achieved Certified Autism Center™ (CAC) recognition with IBCCES.',
+    body: [
+      'The ProFun Academy has partnered with the International Board of Credentialing and Continuing Education Standards (IBCCES) to achieve Certified Autism Center™ (CAC) recognition.',
+      'This partnership supports our work to build autism awareness, understanding and more inclusive guest experiences across the attractions industry.',
+    ],
+    image: './news-ibcces-cac.jpg',
+  },
+  {
+    id: 'iaapa-dubai',
+    date: '29 October 2026',
+    tag: 'Industry Events',
+    color: '#FC026F',
+    title: 'Meet the ProFun team at IAAPA Presents Dubai.',
+    summary: 'Dubai, United Arab Emirates. Join us at Deep Dive Dubai and Atlantis The Palm.',
+    body: [
+      'The ProFun team will be attending IAAPA Presents Dubai on 29 October, joining attractions professionals at Deep Dive Dubai and Atlantis The Palm for education, behind-the-scenes access and networking.',
+      'If you’re attending, we’d welcome the opportunity to connect and exchange insights on the industry’s latest developments.',
+    ],
+    image: './news-iaapa-dubai.jpg',
+    cta: { label: 'Connect with our team', to: '/contact' },
+  },
+  {
+    id: 'iaapa-orlando',
+    date: '16–20 November 2026',
+    tag: 'Industry Events',
+    color: '#FC026F',
+    title: 'Meet the ProFun team at IAAPA Expo Orlando.',
+    summary: 'Orlando, Florida. Joining visitor attractions professionals from around the world.',
+    body: [
+      'The ProFun team will be attending IAAPA Expo 2026 in Orlando, Florida, joining visitor attractions professionals from around the world.',
+      'If you’re attending, we’d welcome the opportunity to connect and exchange insights on the industry’s latest developments.',
+    ],
+    image: './news-iaapa-orlando.jpg',
+    cta: { label: 'Connect with our team', to: '/contact' },
+  },
+  {
+    id: 'first-aid',
+    date: 'October 2026',
+    tag: 'Featured Course',
+    color: '#00AFDC',
+    title: 'First Aid, CPR & AED Training.',
+    summary: 'Essential skills when every second counts, delivered with Ellis & Associates.',
+    body: [
+      'Through our partnership with Ellis & Associates, The ProFun Academy offers First Aid, CPR (Cardiopulmonary Resuscitation) and AED (Automated External Defibrillator) training built for the attractions industry.',
+      'The course helps professionals develop practical emergency response skills, supporting safer environments for guests and employees.',
+    ],
+    image: './news-first-aid.jpg',
+    cta: { label: 'Explore programs', to: '/programs' },
+  },
+  {
+    id: 'merdeka',
+    date: 'October 2026',
+    tag: 'Project Spotlight',
+    color: '#8238EB',
+    title: 'Merdeka 118: training for a landmark destination.',
+    summary: 'Over 130 hours of training content for The View at 118, across three phases.',
+    body: [
+      'ProFun has developed a comprehensive training program for The View at 118, comprising over 130 hours of training content across three phases: Induction, Core Skills Development, and Role-Based On-the-Job Training.',
+      'The program covers workplace standards, guest experience excellence, operational procedures, safety awareness and practical simulations. Supported by dedicated training presentation decks and facilitator guides, it provides a structured approach to developing a competent, confident and service-focused workforce, ensuring operational readiness and consistent guest experience standards.',
+    ],
+    image: './news-merdeka.jpg',
     pos: '50% 40%',
   },
   {
-    id: 'ibcces',
-    date: '2026',
-    tag: 'Certification',
-    color: '#15D2A4',
-    title: 'Academy team achieves IBCCES certification.',
-    summary: 'Accessibility and neurodiversity best practice, now built into the Academy’s guest service and frontline training.',
-    body: [
-      'Members of The ProFun Academy team have been certified by IBCCES, the International Board of Credentialing and Continuing Education Standards.',
-      'The certification strengthens the Academy’s approach to accessibility and inclusion, helping attractions welcome every guest with confidence. IBCCES best practice is now integrated into the Academy’s guest service and frontline programs.',
-    ],
-    image: './ibcces-card.jpg',
-  },
-  {
-    id: 'ellis',
-    date: '2026',
+    id: 'ellis-sst',
+    date: 'June 2026',
     tag: 'Partnership',
     color: '#00AFDC',
-    title: 'Ellis & Associates first aid and safety certification, delivered across the region.',
-    summary: 'The Academy delivers Ellis & Associates first aid, CPR and safety certification, alongside lifeguard and aquatic programs.',
+    title: 'A new partnership for the region with SST and Ellis & Associates.',
+    summary: 'The ProFun Academy becomes an authorized delivery partner for the Ellis portfolio of internationally recognized training and certification programs.',
     body: [
-      'The ProFun Academy delivers Ellis & Associates certification for attractions teams across the region, led by first aid, CPR and AED training.',
-      'The portfolio also covers lifeguard and aquatic programs, including the International Lifeguard Training Program and vanGUARD Aquatics Leadership, plus Water Slide Dispatch Operator and Attraction Operator, delivered in-person, blended or fully online.',
+      'The ProFun Academy has announced a strategic partnership with Safety Skills Training (SST) and Ellis & Associates (E&A), global leaders in aquatic safety, lifeguard training and attractions operations.',
+      'Through this partnership, the Academy becomes an authorized delivery partner for the Ellis portfolio of internationally recognized training and certification programs, helping make world-class learning opportunities more accessible across Saudi Arabia and the wider region.',
+      'At the heart of the partnership is a shared belief that well-trained professionals create safer environments, stronger operations and better guest experiences.',
+      '“As the attractions industry continues to grow across the region, investing in people has never been more important. We’re excited to work alongside SST and Ellis & Associates to help make world-class learning opportunities more accessible.” Ryan Phillips, General Manager, The ProFun Academy.',
     ],
-    image: './ellis-first-aid.jpg',
+    image: './news-partnership.jpg',
+  },
+  {
+    id: 'ryan',
+    date: 'June 2026',
+    tag: 'Leadership',
+    color: '#8238EB',
+    title: 'Ryan Phillips joins The ProFun Academy as General Manager.',
+    summary: 'Nearly two decades of international experience across waterparks, resorts and visitor attractions.',
+    body: [
+      'The ProFun Academy has appointed Ryan Phillips as General Manager. Ryan brings nearly two decades of international experience across waterparks, resorts and visitor attractions in the Americas, Asia and the Middle East.',
+      'His background spans operational leadership, pre-opening, safety and large-scale workforce development, alongside extensive work in training and certification across the global attractions industry. He has supported projects and operators in more than 40 countries and contributed to the certification of thousands of professionals each year.',
+      'Ryan’s appointment further strengthens ProFun’s ability to support visitor attractions through training, readiness and long-term operational excellence across Saudi Arabia and international markets.',
+    ],
+    image: './team-ryan-phillips-v4.jpg',
+    pos: '50% 18%',
+  },
+  {
+    id: 'graduates',
+    date: 'June 2026',
+    tag: 'Training Highlight',
+    color: '#F85707',
+    title: '56 graduates complete the Visitor Attractions Operator Course.',
+    summary: 'Delivered for SEVEN in Madinah, another step toward the skilled workforce behind Saudi Arabia’s visitor experiences.',
+    body: [
+      'Congratulations to the 56 graduates who successfully completed the Visitor Attractions Operator Course delivered by The ProFun Academy for SEVEN in Madinah.',
+      'Every graduate represents another step toward building the skilled workforce that powers exceptional visitor experiences across Saudi Arabia. We wish all graduates continued success in their careers.',
+    ],
+    image: './news-graduates.jpg',
+    pos: '50% 30%',
+  },
+  {
+    id: 'spoc',
+    date: 'June 2026',
+    tag: 'ProFun News',
+    color: '#3985FD',
+    title: 'Seder Group and ProFun launch SPOC.',
+    summary: 'A Saudi-born turnkey operator for entertainment, culture, tourism and sports destinations.',
+    body: [
+      'Established through a strategic joint venture between ProFun and SEDER GROUP, SPOC is a Saudi-born turnkey operating company for entertainment, culture, tourism and sports destinations.',
+      'SPOC combines ProFun’s global attractions operations expertise with SEDER GROUP’s operational, facilities management and workforce capabilities.',
+    ],
+    image: './news-spoc.jpg',
+    pos: '50% 45%',
   },
 ]
 
@@ -92,7 +193,7 @@ export default function Press() {
         <ReleaseCard r={lead} open={open === lead.id} onToggle={() => setOpen(open === lead.id ? null : lead.id)} lead />
 
         {/* Others */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E2E0DB] border border-[#E2E0DB] border-t-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E2E0DB] border border-[#E2E0DB] border-t-0">
           {rest.map(r => (
             <ReleaseCard key={r.id} r={r} open={open === r.id} onToggle={() => setOpen(open === r.id ? null : r.id)} />
           ))}
@@ -104,12 +205,15 @@ export default function Press() {
             <p className="text-[20px] font-semibold text-[#FFCA03] mb-2">Media Inquiries</p>
             <p className="text-[19px] text-white/70 font-light">For interviews, images and press information, contact the Academy team.</p>
           </div>
-          <a
-            href="mailto:info@theprofunacademy.com"
-            className="text-[16px] font-medium text-white bg-[#F85707] px-6 py-3.5 hover:bg-white hover:text-[#000050] transition-colors duration-300 whitespace-nowrap self-start md:self-auto"
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-3 text-[16px] font-medium text-white bg-[#F85707] px-6 py-3.5 hover:bg-white hover:text-[#000050] transition-colors duration-300 whitespace-nowrap self-start md:self-auto"
           >
-            info@theprofunacademy.com
-          </a>
+            Contact the team
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+              <path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
         </div>
       </div>
     </section>
@@ -123,7 +227,7 @@ function ReleaseCard({ r, open, onToggle, lead }: { r: Release; open: boolean; o
         <span className="absolute bottom-0 left-0 right-0 h-1 z-10" style={{ background: r.color }} aria-hidden="true" />
         <img
           src={r.image}
-          alt=""
+          alt={r.title}
           loading="lazy"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
@@ -131,12 +235,12 @@ function ReleaseCard({ r, open, onToggle, lead }: { r: Release; open: boolean; o
         />
       </div>
       <div className={`p-8 ${lead ? 'sm:p-12 flex flex-col justify-center' : 'flex-1 flex flex-col'}`}>
-        <div className="flex items-center gap-3 mb-5">
-          <span className="text-[16px] font-medium" style={{ color: r.color }}>{r.tag}</span>
-          <span className="text-[#E2E0DB]">·</span>
-          <span className="text-[15px] text-[#6B6B65] font-light">{r.date}</span>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">
+          <span className="text-[16px] font-medium whitespace-nowrap" style={{ color: r.color }}>{r.tag}</span>
+          <span className="text-[#C9C7C1]" aria-hidden="true">·</span>
+          <span className="text-[15px] text-[#6B6B65] font-light whitespace-nowrap">{r.date}</span>
         </div>
-        <h2 className={`font-serif text-[#000050] leading-snug tracking-[-0.01em] mb-4 ${lead ? 'text-[clamp(28px,2.6vw,42px)]' : 'text-[clamp(24px,1.9vw,30px)]'}`}>
+        <h2 className={`font-serif text-[#000050] leading-snug tracking-[-0.01em] mb-4 ${lead ? 'text-[clamp(26px,2.6vw,42px)]' : 'text-[clamp(22px,1.7vw,28px)]'}`}>
           {r.title}
         </h2>
         <p className="text-[17px] text-[#6B6B65] font-light leading-relaxed mb-6">{r.summary}</p>
@@ -145,6 +249,12 @@ function ReleaseCard({ r, open, onToggle, lead }: { r: Release; open: boolean; o
           <div className="overflow-hidden">
             <div className="space-y-4 pb-6 text-[17px] text-[#1C1C1A] font-light leading-relaxed">
               {r.body.map((para, i) => <p key={i}>{para}</p>)}
+              {r.cta && (
+                <Link to={r.cta.to} tabIndex={open ? 0 : -1} className="inline-flex items-center gap-2 text-[15px] font-medium text-[#F85707] hover:gap-3 transition-all duration-200">
+                  {r.cta.label}
+                  <svg width="12" height="9" viewBox="0 0 12 9" fill="none" aria-hidden="true"><path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -154,7 +264,7 @@ function ReleaseCard({ r, open, onToggle, lead }: { r: Release; open: boolean; o
           aria-expanded={open}
           className={`${lead ? '' : 'mt-auto'} self-start inline-flex items-center gap-2 text-[15px] font-medium text-[#000050] hover:text-[#F85707] transition-colors duration-200`}
         >
-          {open ? 'Close' : 'Read the release'}
+          {open ? 'Close' : 'Read more'}
           <svg width="12" height="9" viewBox="0 0 12 9" fill="none" className={`transition-transform duration-300 ${open ? '-rotate-90' : 'rotate-90'}`} aria-hidden="true">
             <path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
