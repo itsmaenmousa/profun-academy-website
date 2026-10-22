@@ -136,8 +136,8 @@ const RELEASES: Release[] = [
       'His background spans operational leadership, pre-opening, safety and large-scale workforce development, alongside extensive work in training and certification across the global attractions industry. He has supported projects and operators in more than 40 countries and contributed to the certification of thousands of professionals each year.',
       'Ryan’s appointment further strengthens ProFun’s ability to support visitor attractions through training, readiness and long-term operational excellence across Saudi Arabia and international markets.',
     ],
-    image: './team-ryan-phillips-v4.jpg',
-    pos: '50% 18%',
+    image: './news-ryan-wide.jpg',
+    pos: '50% 50%',
   },
   {
     id: 'graduates',
