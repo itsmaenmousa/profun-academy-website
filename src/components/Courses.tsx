@@ -135,7 +135,7 @@ export default function Courses() {
         >
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">Courses & Booking</p>
-            <h1 className="font-serif text-[clamp(40px,4vw,60px)] text-[#000050] leading-tight tracking-[-0.01em] max-w-[820px]">
+            <h1 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-tight tracking-[-0.01em] max-w-[820px]">
               Book a program.<br className="hidden md:block" /> Build your team's capability.
             </h1>
           </div>

@@ -10,13 +10,13 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-[#F9F8F6] py-32 px-6 sm:px-12">
+    <section id="contact" className="bg-[#F9F8F6] py-24 sm:py-32 px-6 sm:px-12">
       <div className="max-w-[1920px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Left */}
           <div className="lg:col-span-4">
             <p className="text-[20px] font-semibold text-[#F85707] mb-6">Get Started</p>
-            <h2 className="font-serif text-[clamp(38px,3.3vw,52px)] text-[#000050] leading-tight mb-8 tracking-[-0.01em]">
+            <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-tight mb-8 tracking-[-0.01em]">
               Build capability<br className="hidden sm:block" /> that lasts.
             </h2>
             <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-12">

@@ -211,12 +211,12 @@ body {
 .service-row:not(.is-active):hover .service-icon { background: var(--brand); border-color: var(--brand); color: #fff; }
 @media (prefers-reduced-motion: reduce) { .service-fill, .service-icon { transition: none; } }
 
-/* Experiential band: photo fades into its surroundings */
+/* Experiential: photo fades into the charcoal */
 @media (max-width: 1023px) {
-  .exp-image { -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 55%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 55%, transparent 100%); }
+  .exp-image { -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%); mask-image: linear-gradient(to bottom, #000 55%, transparent 100%); }
 }
 @media (min-width: 1024px) {
-  .exp-image { -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 38%); mask-image: linear-gradient(to right, transparent 0%, #000 38%); }
+  .exp-image { -webkit-mask-image: linear-gradient(to right, #000 45%, transparent 100%); mask-image: linear-gradient(to right, #000 45%, transparent 100%); }
 }
 
 /* ── Services honeycomb ─────────────────────────────────────── */

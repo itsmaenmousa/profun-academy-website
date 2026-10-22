@@ -29,7 +29,7 @@ export default function About() {
           {/* Text column */}
           <div className={`lg:col-span-5 reveal ${inView ? 'visible' : ''}`}>
             <p className="text-[20px] font-semibold text-[#F85707] mb-6">About the Academy</p>
-            <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#1C1C1A] leading-tight mb-8 tracking-[-0.01em]">
+            <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-tight mb-8 tracking-[-0.01em]">
               The people behind{' '}<br className="hidden lg:block" />great experiences.
             </h2>
             <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-6">

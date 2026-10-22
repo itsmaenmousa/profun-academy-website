@@ -67,14 +67,14 @@ export default function VideoReel() {
     >
       {/* Top label */}
       <div
-        className={`max-w-[1920px] mx-auto px-6 sm:px-12 pt-20 pb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 reveal ${inView ? 'visible' : ''}`}
+        className={`max-w-[1920px] mx-auto px-6 sm:px-12 pt-16 sm:pt-20 lg:pt-14 pb-10 sm:pb-12 lg:pb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8 reveal ${inView ? 'visible' : ''}`}
       >
         <div>
           <p className="text-[20px] font-semibold text-[#F85707] mb-4">How We Deliver</p>
-          <h2 className="font-serif text-[clamp(36px,3.4vw,56px)] text-white leading-tight tracking-[-0.01em] max-w-[680px] mb-6">
+          <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-white leading-[1.08] tracking-[-0.01em] max-w-[720px] mb-6">
             Learning that fits your teams and operations.
           </h2>
-          <p className="text-[19px] text-white/65 font-light leading-relaxed max-w-[640px]">
+          <p className="text-[18px] sm:text-[19px] text-white/65 font-light leading-relaxed max-w-[640px]">
             We combine delivery formats to suit your workforce, operational priorities, and learning goals; with experienced facilitators, practical activities, and content tailored to your cultural context.
           </p>
         </div>
@@ -106,7 +106,7 @@ export default function VideoReel() {
 
       {/* Stage */}
       <div
-        className="relative aspect-[4/5] sm:aspect-[16/9] lg:aspect-[16/7] overflow-hidden"
+        className="relative aspect-[4/5] sm:aspect-[16/9] lg:aspect-auto lg:h-[clamp(320px,calc(100svh-372px),620px)] overflow-hidden"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
@@ -123,30 +123,28 @@ export default function VideoReel() {
         ))}
         <div className="absolute inset-0 bg-gradient-to-r from-[#1C1C1A]/90 via-[#1C1C1A]/45 to-transparent" />
         {/* Soft fade into the Experiential band below */}
-        <div className="absolute inset-x-0 bottom-0 h-28 sm:h-40 bg-gradient-to-b from-transparent to-[#1C1C1A] pointer-events-none" aria-hidden="true" />
+        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-[#1C1C1A] pointer-events-none" aria-hidden="true" />
 
-        <div className="absolute inset-0 flex items-end">
-          <div key={c.id} className="max-w-[1920px] w-full mx-auto px-6 sm:px-12 pb-12 sm:pb-16 reel-copy">
-            <h3 className="font-serif text-[clamp(32px,3.6vw,60px)] text-white leading-[1.05] tracking-[-0.01em] mb-5 max-w-[640px]">
+        <div className="absolute inset-0 flex items-end lg:items-start">
+          <div key={c.id} className="max-w-[1920px] w-full mx-auto px-6 sm:px-12 pb-12 sm:pb-16 lg:pb-0 lg:pt-[clamp(28px,6vh,72px)] reel-copy">
+            <h3 className="font-serif text-[clamp(28px,2.8vw,48px)] text-white leading-[1.06] tracking-[-0.01em] mb-4 max-w-[640px]">
               {c.title}
             </h3>
-            <p className="text-[18px] sm:text-[20px] text-white/70 font-light leading-relaxed max-w-[560px] mb-6">
+            <p className="text-[17px] sm:text-[19px] text-white/80 font-light leading-relaxed max-w-[540px] mb-5">
               {c.desc}
             </p>
-            <p className="text-[16px] text-white/60 max-w-[640px] leading-relaxed">
+            <p className="text-[15px] sm:text-[16px] text-white/60 max-w-[600px] leading-relaxed">
               {c.tags.join(' · ')}
             </p>
           </div>
         </div>
       </div>
 
-      {/* Experiential learning, built into every format: a featured full-bleed band */}
-      <div id="experiential" className="relative overflow-hidden bg-[#000050]">
-        <div className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full bg-[#8238EB]/35 blur-[140px] quote-glow" aria-hidden="true" />
-        <div className="absolute -bottom-48 left-1/3 w-[520px] h-[520px] rounded-full bg-[#FC026F]/15 blur-[140px] quote-glow quote-glow-2" aria-hidden="true" />
+      {/* Experiential learning: mirrors the stage, image left, copy right */}
+      <div id="experiential" className="relative overflow-hidden bg-[#1C1C1A] mt-10 sm:mt-16">
+        <div className="absolute top-1/2 -translate-y-1/2 right-[5%] w-[420px] h-[420px] rounded-full bg-[#8238EB]/20 blur-[140px] quote-glow" aria-hidden="true" />
 
-        {/* Image: top on mobile, right half bleeding off the edge on desktop */}
-        <div className="exp-image relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-[56%] aspect-[16/10] lg:aspect-auto overflow-hidden">
+        <div className="exp-image relative lg:absolute lg:inset-y-0 lg:left-0 lg:w-[60%] aspect-[16/10] lg:aspect-auto overflow-hidden">
           <img
             src="./academy-experiential.jpg"
             alt="Participants in a hands-on experiential learning session"
@@ -155,22 +153,23 @@ export default function VideoReel() {
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: '50% 40%' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#000050] via-[#000050]/20 to-transparent lg:hidden" aria-hidden="true" />
+          <div className="hidden lg:block absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#1C1C1A] to-transparent" aria-hidden="true" />
+          <div className="hidden lg:block absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#1C1C1A] to-transparent" aria-hidden="true" />
         </div>
 
-        {/* Blend the navy band into the charcoal above and below */}
-        <div className="absolute inset-x-0 top-0 h-40 sm:h-56 bg-gradient-to-t from-transparent to-[#1C1C1A] pointer-events-none z-[1]" aria-hidden="true" />
-        <div className="absolute inset-x-0 bottom-0 h-40 sm:h-56 bg-gradient-to-b from-transparent to-[#1C1C1A] pointer-events-none z-[1]" aria-hidden="true" />
-
-        <div className="relative z-[2] max-w-[1920px] mx-auto px-6 sm:px-12 pt-12 sm:pt-16 lg:pt-44 pb-24 sm:pb-32 lg:pb-44">
-          <div className="lg:w-[46%] lg:pr-8">
-            <p className="text-[20px] font-semibold text-[#FFCA03] mb-4">Experiential Learning</p>
-            <h3 className="font-serif text-[clamp(34px,3.6vw,60px)] text-white leading-[1.06] tracking-[-0.01em] mb-6">
+        <div className="relative max-w-[1920px] mx-auto px-6 sm:px-12 lg:min-h-[clamp(440px,60vh,600px)] flex items-center lg:justify-end pb-16 sm:pb-20 lg:py-20">
+          <div className="lg:w-[42%] -mt-10 sm:-mt-16 lg:mt-0">
+            <p className="flex items-center gap-3 text-[20px] font-semibold text-[#B48CF5] mb-4">
+              <span className="w-8 h-[3px] bg-[#8238EB]" aria-hidden="true" />
+              Experiential Learning
+            </p>
+            <h3 className="font-serif text-[clamp(30px,3.2vw,52px)] text-white leading-[1.06] tracking-[-0.01em] mb-6">
               Practical experience.<br /> Lasting application.
             </h3>
-            <p className="text-[18px] sm:text-[20px] text-white/80 font-light leading-relaxed max-w-[560px]">
+            <p className="text-[17px] sm:text-[19px] text-white/80 font-light leading-relaxed max-w-[520px] mb-5">
               Learning through realistic scenarios, simulations, and workplace practice helps your teams connect knowledge to their roles and apply skills with confidence.
             </p>
+            <p className="text-[15px] sm:text-[16px] text-white/55">Built into every delivery format.</p>
           </div>
         </div>
       </div>

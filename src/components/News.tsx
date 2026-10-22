@@ -45,7 +45,7 @@ export default function News() {
         <div ref={headRef as React.RefObject<HTMLDivElement>} className={`flex items-end justify-between gap-8 mb-16 border-b border-[#E2E0DB] pb-12 reveal ${headIn ? 'visible' : ''}`}>
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">Our Programs</p>
-            <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#1C1C1A] leading-tight tracking-[-0.01em] max-w-[760px] mb-6">
+            <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-tight tracking-[-0.01em] max-w-[900px] mb-6">
               Industry expertise. Programs shaped around you.
             </h2>
             <p className="text-[19px] text-[#6B6B65] leading-relaxed font-light max-w-[640px]">

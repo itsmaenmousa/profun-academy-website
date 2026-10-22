@@ -14,7 +14,7 @@ export default function Partners() {
   const { ref, inView } = useInView()
 
   return (
-    <section id="partners" className="bg-[#F9F8F6] py-28 sm:py-32 overflow-hidden">
+    <section id="partners" className="bg-[#F9F8F6] py-24 sm:py-32 overflow-hidden">
       {/* Header */}
       <div
         ref={ref as React.RefObject<HTMLDivElement>}
@@ -22,7 +22,7 @@ export default function Partners() {
       >
         <div>
           <p className="text-[20px] font-semibold text-[#F85707] mb-4">Partners & Affiliations</p>
-          <h2 className="font-serif text-[clamp(40px,4vw,60px)] text-[#000050] leading-tight tracking-[-0.01em] max-w-[920px]">
+          <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-tight tracking-[-0.01em] max-w-[920px]">
             Connected to the institutions<br className="hidden md:block" /> that set the standard.
           </h2>
         </div>

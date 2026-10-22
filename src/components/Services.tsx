@@ -44,7 +44,7 @@ export default function Services() {
         >
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">What We Offer</p>
-            <h2 className="font-serif text-[clamp(40px,4vw,64px)] text-[#000050] leading-tight max-w-[760px] tracking-[-0.01em]">
+            <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-tight max-w-[760px] tracking-[-0.01em]">
               From individual skills to operational readiness.
             </h2>
           </div>

@@ -146,7 +146,7 @@ export default function Projects() {
           <div className="flex items-end justify-between gap-8">
             <h2
               id="projects-heading"
-              className="max-w-[900px] font-serif text-[clamp(40px,4vw,64px)] leading-[1.04] tracking-[-0.01em] text-white"
+              className="max-w-[900px] font-serif text-balance text-[clamp(38px,4vw,60px)] leading-[1.04] tracking-[-0.01em] text-white"
             >
               Projects that define categories
             </h2>
