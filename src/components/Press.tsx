@@ -37,7 +37,7 @@ const RELEASES: Release[] = [
       'Visitors can explore our tailored and accredited programs, see how we deliver learning in person, virtually, online and blended, browse selected work from landmark destinations, and meet the team behind it.',
       'It is also where we will share Academy news, certifications, events and featured courses, so the industry can follow our work as it grows across Saudi Arabia and the wider region.',
     ],
-    image: './news-website-v2.jpg',
+    image: './news-website-v3.jpg',
     cta: { label: 'Start a conversation', to: '/contact' },
   },
   {
