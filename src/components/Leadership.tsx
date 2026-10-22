@@ -102,7 +102,7 @@ const team = [
     name: 'Maen Mousa',
     photo: './team-maen-mousa-v2.jpg',
     role: 'Marketing',
-    bio: 'Maen leads digital marketing and communications for the Academy, building lasting relationships with clients and partners across the Middle East and Europe.',
+    bio: 'Maen leads digital marketing and communications for the Academy, building lasting relationships with clients and partners across the business.',
   },
 ]
 
