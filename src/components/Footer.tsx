@@ -99,7 +99,7 @@ export default function Footer() {
           </div>
 
           {/* Nav columns */}
-          <div className="lg:col-span-8 grid grid-cols-2 gap-x-8 gap-y-10 sm:flex sm:justify-start sm:gap-x-16 lg:justify-end lg:gap-x-[clamp(56px,5.5vw,112px)]">
+          <div className="lg:col-span-8 grid grid-cols-2 gap-x-8 gap-y-10 sm:flex sm:justify-end sm:gap-x-12 lg:gap-x-[clamp(44px,4vw,80px)]">
             {cols.map((col, i) => (
               <div key={col.title}>
                 <p className="text-[17px] font-medium mb-5" style={{ color: ['#15D2A4', '#FFCA03', '#FC026F', '#00AFDC'][i] }}>
@@ -127,7 +127,7 @@ export default function Footer() {
           <p className="text-[15px] text-white/35 font-light">
             © {new Date().getFullYear()} ProFun. All rights reserved. The ProFun Academy is a division of ProFun.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 shrink-0 whitespace-nowrap">
           <Link
             to="/courses"
             className="text-[15px] text-white/35 hover:text-[#FFCA03] transition-colors duration-200"
