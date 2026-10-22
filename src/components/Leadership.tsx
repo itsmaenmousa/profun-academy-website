@@ -95,8 +95,8 @@ const team = [
   {
     name: 'Joann Reyes',
     photo: './team-joann-reyes-v2.jpg',
-    role: 'Document Controller, KSA',
-    bio: 'Joann manages document control for ProFun in Saudi Arabia.',
+    role: 'Office Manager, KSA',
+    bio: 'Joann manages office operations for ProFun in Saudi Arabia.',
   },
   {
     name: 'Maen Mousa',
