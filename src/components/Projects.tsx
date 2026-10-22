@@ -190,12 +190,14 @@ export default function Projects() {
             />
             <div className="absolute inset-0 bg-black/20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/45 to-transparent" />
 
+            {/* Category, pinned top-left on every card */}
+            <p className="absolute left-6 top-6 text-[14px] font-medium text-white bg-black/30 backdrop-blur-sm px-3 py-1.5 leading-none">
+              {project.category}
+            </p>
 
             <div className="absolute inset-x-0 bottom-0 p-6">
-              <p className="mb-2 text-[15px] font-medium text-white/75">
-                {project.category}
-              </p>
               <h3 className="font-serif text-[clamp(24px,2.4vw,32px)] leading-[1.08] text-white">
                 {project.title}
               </h3>
