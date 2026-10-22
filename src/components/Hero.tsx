@@ -48,7 +48,8 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-[1920px] mx-auto px-6 sm:px-12 pt-20 w-full">
-        <div className="flex flex-col items-center text-center">
+        <div className="flex justify-center">
+        <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
           {/* Mobile: logo above the headline */}
           <div
             className="sm:hidden mb-7 transition-opacity duration-700"
@@ -81,7 +82,7 @@ export default function Hero() {
           </div>
 
           <p
-            className="text-[17px] sm:text-[clamp(17px,1.5vw,21px)] leading-relaxed text-white/85 mb-9 sm:mb-10 max-w-[340px] sm:max-w-[560px] lg:max-w-none lg:whitespace-nowrap font-light transition-all duration-700 mx-auto"
+            className="text-[17px] sm:text-[clamp(17px,1.5vw,21px)] leading-relaxed text-white/85 mb-9 sm:mb-10 max-w-[340px] sm:max-w-[560px] lg:max-w-none lg:whitespace-nowrap font-light transition-all duration-700 mx-auto sm:mx-0"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(16px)',
@@ -92,7 +93,7 @@ export default function Hero() {
           </p>
 
           <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 w-full sm:w-auto transition-all duration-700"
+            className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-3 sm:gap-4 w-full sm:w-auto transition-all duration-700"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(16px)',
@@ -117,6 +118,7 @@ export default function Hero() {
           </div>
         </div>
 
+        </div>
       </div>
 
       {/* Scroll cue, pinned to the bottom of the screen */}

@@ -45,7 +45,7 @@ const team = [
     bio: 'Ron leads strategy at ProFun after serving as General Manager of ProFun China, working in media and entertainment at Accenture and sitting on the TEA Asia-Pacific board. Projects include Qiddiya, Shanghai World Expo and Ocean Park Hong Kong.',
   },
   {
-    name: 'Chris Van Der Merwe',
+    name: 'Chris van der Merwe',
     photo: './team-chris-van-der-merwe-v4.jpg',
     role: 'Vice President, MENA',
     bio: 'Chris leads ProFun across MENA, having run Meryal Waterpark and Saraya Aqaba as General Manager and headed operations at Riverland Dubai. Projects include Qiddiya, Mahanakhon SkyWalk and Ferrari World Abu Dhabi.',
