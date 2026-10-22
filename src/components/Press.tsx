@@ -27,7 +27,7 @@ type Release = {
 const RELEASES: Release[] = [
   {
     id: 'website',
-    date: 'October 2026',
+    date: 'November 2026',
     tag: 'Announcement',
     color: '#F85707',
     title: 'Introducing the new home of The ProFun Academy.',
@@ -37,8 +37,7 @@ const RELEASES: Release[] = [
       'Visitors can explore our tailored and accredited programs, see how we deliver learning in person, virtually, online and blended, browse selected work from landmark destinations, and meet the team behind it.',
       'It is also where we will share Academy news, certifications, events and featured courses, so the industry can follow our work as it grows across Saudi Arabia and the wider region.',
     ],
-    image: './news-website.jpg',
-    pos: '30% 50%',
+    image: './news-website-v2.jpg',
     cta: { label: 'Start a conversation', to: '/contact' },
   },
   {
