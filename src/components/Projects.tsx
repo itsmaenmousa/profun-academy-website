@@ -83,6 +83,16 @@ const revealDelays = [
 export default function Projects() {
   const [openCard, setOpenCard] = useState<number | null>(null)
   const { ref, inView } = useInView()
+
+  // Close an open summary when tapping anywhere outside the cards
+  useEffect(() => {
+    if (openCard === null) return
+    const close = (e: PointerEvent) => {
+      if (!(e.target as Element).closest?.('.proj-card')) setOpenCard(null)
+    }
+    document.addEventListener('pointerdown', close)
+    return () => document.removeEventListener('pointerdown', close)
+  }, [openCard])
   const railRef = useRef<HTMLDivElement>(null)
   const dragRef = useRef({ active: false, startX: 0, scrollLeft: 0 })
   const [isDragging, setIsDragging] = useState(false)
@@ -189,6 +199,7 @@ export default function Projects() {
           <article
             key={project.title}
             data-open={openCard === index}
+            onPointerLeave={e => { if (e.pointerType === 'mouse') setOpenCard(o => (o === index ? null : o)) }}
             className={`group proj-card relative aspect-[3/4] w-[clamp(240px,22vw,300px)] shrink-0 snap-start overflow-hidden bg-[#111110] transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none lg:hover:-translate-y-1.5 ${revealDelays[index]} ${
               inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}
@@ -212,7 +223,11 @@ export default function Projects() {
             <button
               type="button"
               onMouseDown={e => e.stopPropagation()}
-              onClick={() => setOpenCard(o => (o === index ? null : index))}
+              onClick={e => {
+                setOpenCard(o => (o === index ? null : index))
+                // Drop focus after a mouse or touch click so the card never stays stuck open
+                if (e.detail > 0) e.currentTarget.blur()
+              }}
               aria-expanded={openCard === index}
               aria-label={`About ${project.title}`}
               className="proj-info absolute right-5 top-5 z-10 w-9 h-9 rounded-full border border-white/40 bg-black/25 backdrop-blur-sm text-white flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-[#000050] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
