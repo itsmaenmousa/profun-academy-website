@@ -105,12 +105,12 @@ export default function Footer() {
                 <p className="text-[17px] font-medium mb-5" style={{ color: ['#15D2A4', '#FFCA03', '#FC026F', '#00AFDC'][i] }}>
                   {col.title}
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-1">
                   {col.links.map(([link, to]) => (
                     <li key={link}>
                       <Link
                         to={to}
-                        className="text-[17px] text-white/60 hover:text-white transition-colors duration-200 font-light"
+                        className="inline-block py-1.5 text-[17px] text-white/60 hover:text-white transition-colors duration-200 font-light"
                       >
                         {link}
                       </Link>

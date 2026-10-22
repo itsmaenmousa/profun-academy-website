@@ -37,7 +37,7 @@ export default function Nav() {
   useEffect(() => { setMobileOpen(false) }, [pathname])
 
   const linkCls = ({ isActive }: { isActive: boolean }) =>
-    `relative text-[13px] xl:text-[15px] font-medium tracking-wide uppercase whitespace-nowrap transition-colors duration-200 hover:text-[#F85707] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
+    `relative before:absolute before:-inset-x-2 before:-inset-y-3 before:content-[''] text-[13px] xl:text-[15px] font-medium tracking-wide uppercase whitespace-nowrap transition-colors duration-200 hover:text-[#F85707] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
       isActive ? 'text-[#F85707]' : scrolled ? 'text-[#000050]' : 'text-white/85'
     }`
 

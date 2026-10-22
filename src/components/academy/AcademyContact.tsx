@@ -211,12 +211,12 @@ export default function AcademyContact() {
 
             {/* Footer nav */}
             <nav aria-label="Footer navigation">
-              <ul className="flex flex-wrap gap-x-8 gap-y-3">
+              <ul className="flex flex-wrap gap-x-8 gap-y-1">
                 {['About', 'Services', 'Programs', 'Projects', 'Team', 'Contact'].map(l => (
                   <li key={l}>
                     <a
                       href={`#${l.toLowerCase()}`}
-                      className="text-[15px] font-medium text-white/30 hover:text-white/70 transition-colors duration-200"
+                      className="inline-block py-2 text-[15px] font-medium text-white/50 hover:text-white/80 transition-colors duration-200"
                     >
                       {l}
                     </a>
