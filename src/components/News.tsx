@@ -10,7 +10,7 @@ const TAILORED: Program[] = [
     date: '13 program areas',
     title: 'Thirteen program areas. Hundreds of programs.',
     desc: 'Tailored training across every part of an attraction, shaped around your people, culture and operations.',
-    image: './training-programs.jpg',
+    image: './training-programs-v2.jpg',
     pos: '50% 35%',
     color: '#8238EB',
     label: 'Explore program areas',
