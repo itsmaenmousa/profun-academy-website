@@ -28,7 +28,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative w-full h-screen min-h-[700px] flex items-end overflow-hidden bg-[#1C1C1A]">
+    <section className="relative w-full h-[100svh] min-h-[640px] flex items-center overflow-hidden bg-[#1C1C1A]">
       {/* Video background with fallback image */}
       <div className="absolute inset-0">
         <video
@@ -42,23 +42,24 @@ export default function Hero() {
         >
           <source src="./hero-academy-v2.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1A]/85 via-[#1C1C1A]/30 to-[#1C1C1A]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1A]/70 via-[#1C1C1A]/30 to-[#1C1C1A]/40" />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 52%, rgba(28,28,26,0.55), transparent 70%)' }} aria-hidden="true" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1920px] mx-auto px-6 sm:px-12 pb-20 sm:pb-24 w-full">
-        <div className="max-w-[1400px]">
+      <div className="relative z-10 max-w-[1920px] mx-auto px-6 sm:px-12 pt-20 w-full">
+        <div className="flex flex-col items-center text-center">
           {/* Mobile: logo above the headline */}
           <div
-            className="sm:hidden mb-6 transition-opacity duration-700"
+            className="sm:hidden mb-7 transition-opacity duration-700"
             style={{ opacity: ready ? 1 - fade : 0, transitionDelay: ready && fade === 0 ? '0.35s' : '0s' }}
           >
-            <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-12 w-auto" />
+            <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-14 w-auto mx-auto" />
           </div>
 
           {/* Headline + logo lockup: the logo matches the three lines in height */}
-          <div className="flex items-stretch gap-8 lg:gap-12 mb-8">
-            <h1 className="font-serif text-[clamp(28px,4.2vw,62px)] leading-[1.06] text-white tracking-[-0.01em]">
+          <div className="inline-flex items-stretch gap-8 lg:gap-12 mb-8 sm:mb-10">
+            <h1 className="font-serif text-[clamp(30px,4.2vw,62px)] leading-[1.06] text-white tracking-[-0.01em] text-center sm:text-left">
               {LINES.map((line, i) => (
                 <span key={i} className="hero-line block whitespace-nowrap">
                   <span
@@ -71,16 +72,16 @@ export default function Hero() {
               ))}
             </h1>
             <div
-              className="hidden sm:flex items-stretch gap-8 lg:gap-12 flex-shrink-0 py-[0.4%] transition-opacity duration-700"
+              className="hidden sm:flex items-stretch gap-8 lg:gap-12 flex-shrink-0 transition-opacity duration-700"
               style={{ opacity: ready ? 1 - fade : 0, transitionDelay: ready && fade === 0 ? '0.7s' : '0s' }}
             >
               <span className="block w-px flex-none self-stretch bg-white/35" aria-hidden="true" />
-              <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-full w-auto max-w-none self-center object-contain" style={{ height: '100%' }} />
+              <img src="./academy-logo-white.svg" alt="The ProFun Academy" width={807} height={422} className="block self-center text-[clamp(30px,4.2vw,62px)] h-[3.1em] w-auto max-w-none" />
             </div>
           </div>
 
           <p
-            className="text-[18px] sm:text-[clamp(17px,1.6vw,22px)] leading-relaxed text-white/70 mb-12 max-w-[520px] md:max-w-none md:whitespace-nowrap font-light transition-all duration-700"
+            className="text-[17px] sm:text-[clamp(17px,1.5vw,21px)] leading-relaxed text-white/80 mb-10 sm:mb-12 max-w-[340px] sm:max-w-[560px] lg:max-w-none lg:whitespace-nowrap font-light transition-all duration-700"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(16px)',
@@ -91,7 +92,7 @@ export default function Hero() {
           </p>
 
           <div
-            className="flex items-center gap-6 flex-wrap transition-all duration-700"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 w-full sm:w-auto transition-all duration-700"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(16px)',
@@ -100,7 +101,7 @@ export default function Hero() {
           >
             <a
               href="#services"
-              className="inline-flex items-center gap-3 text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#FC026F] hover:gap-5"
+              className="inline-flex items-center justify-center gap-3 w-full max-w-[300px] sm:w-auto text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#FC026F] hover:gap-5"
             >
               Explore our services
               <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
@@ -109,7 +110,7 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 text-[17px] font-medium text-white border border-white/30 px-8 py-4 transition-all duration-300 hover:border-white/70 hover:bg-white/8"
+              className="inline-flex items-center justify-center gap-3 w-full max-w-[300px] sm:w-auto text-[17px] font-medium text-white border border-white/40 px-8 py-4 transition-all duration-300 hover:border-white/70 hover:bg-white/8"
             >
               Start a conversation
             </a>
@@ -118,7 +119,7 @@ export default function Hero() {
 
         {/* Scroll indicator */}
         <div
-          className="absolute bottom-24 right-12 flex flex-col items-center gap-3 transition-all duration-700"
+          className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 transition-all duration-700"
           style={{ opacity: ready ? 1 : 0, transitionDelay: '1.4s' }}
         >
           <div className="w-px h-16 bg-white/15 relative overflow-hidden mt-2">

@@ -99,7 +99,7 @@ export default function Footer() {
           </div>
 
           {/* Nav columns */}
-          <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-10">
+          <div className="lg:col-span-8 grid grid-cols-2 gap-x-8 gap-y-10 sm:flex sm:justify-between sm:gap-x-10">
             {cols.map((col, i) => (
               <div key={col.title}>
                 <p className="text-[17px] font-medium mb-5" style={{ color: ['#15D2A4', '#FFCA03', '#FC026F', '#00AFDC'][i] }}>
