@@ -58,7 +58,7 @@ export default function Hero() {
           </div>
 
           {/* Headline + logo lockup: the logo matches the three lines in height */}
-          <div className="inline-flex items-stretch gap-8 lg:gap-12 mb-8 sm:mb-10">
+          <div className="inline-flex items-stretch gap-8 lg:gap-12 mb-7 sm:mb-9">
             <h1 className="font-serif text-[clamp(30px,4.2vw,62px)] leading-[1.06] text-white tracking-[-0.01em] text-center sm:text-left">
               {LINES.map((line, i) => (
                 <span key={i} className="hero-line block whitespace-nowrap">
@@ -81,7 +81,7 @@ export default function Hero() {
           </div>
 
           <p
-            className="text-[17px] sm:text-[clamp(17px,1.5vw,21px)] leading-relaxed text-white/80 mb-10 sm:mb-12 max-w-[340px] sm:max-w-[560px] lg:max-w-none lg:whitespace-nowrap font-light transition-all duration-700"
+            className="text-[17px] sm:text-[clamp(17px,1.5vw,21px)] leading-relaxed text-white/85 mb-9 sm:mb-10 max-w-[340px] sm:max-w-[560px] lg:max-w-none lg:whitespace-nowrap font-light transition-all duration-700 mx-auto"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(16px)',
@@ -117,19 +117,21 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div
-          className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 transition-all duration-700"
-          style={{ opacity: ready ? 1 : 0, transitionDelay: '1.4s' }}
-        >
-          <div className="w-px h-16 bg-white/15 relative overflow-hidden mt-2">
-            <div
-              className="absolute top-0 left-0 w-full bg-white/60"
-              style={{ height: '40%', animation: 'scrollLine 2.2s ease-in-out infinite' }}
-            />
-          </div>
-        </div>
       </div>
+
+      {/* Scroll cue, pinned to the bottom of the screen */}
+      <a
+        href="#projects"
+        onClick={e => { e.preventDefault(); window.scrollBy({ top: window.innerHeight * 0.9, behavior: 'smooth' }) }}
+        aria-label="Scroll down"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 [@media(max-height:700px)]:hidden flex flex-col items-center gap-2 text-white/60 hover:text-white transition-all duration-700"
+        style={{ opacity: ready ? 1 - fade : 0, transitionDelay: ready && fade === 0 ? '1.4s' : '0s' }}
+      >
+        <span className="text-[12px] tracking-[0.2em] font-medium">SCROLL</span>
+        <span className="w-px h-10 sm:h-12 bg-white/20 relative overflow-hidden">
+          <span className="absolute top-0 left-0 w-full bg-white/80" style={{ height: '40%', animation: 'scrollLine 2.2s ease-in-out infinite' }} />
+        </span>
+      </a>
     </section>
   )
 }
