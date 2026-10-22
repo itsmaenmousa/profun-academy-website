@@ -11,12 +11,12 @@ const stats = [
 function StatItem({ s, active, i }: { s: typeof stats[0]; active: boolean; i: number }) {
   const count = useCounter(s.numeric, 1800, active)
   return (
-    <div className={`bg-[#F2F1EF] ${i % 2 === 0 ? 'pl-0' : 'pl-5 sm:pl-8'} ${i === 0 ? 'lg:pl-0' : 'lg:pl-10'} pr-4 sm:pr-8 py-6 sm:py-7 flex flex-col gap-3 cursor-default`}>
-      <span className="block w-8 h-1 rounded-full mb-2" style={{ background: s.color }} aria-hidden="true" />
-      <div className="font-serif font-medium text-[clamp(38px,3.4vw,54px)] leading-none tracking-[-0.02em] tabular-nums text-[#000050]">
+    <div className={`bg-[#F2F1EF] ${i % 2 === 0 ? 'pl-0' : 'pl-5 sm:pl-8'} ${i === 0 ? 'lg:pl-0' : 'lg:pl-10'} pr-4 sm:pr-8 py-6 sm:py-7 flex flex-col gap-3 cursor-default group`}>
+      <span className="block w-8 h-1 rounded-full mb-2 transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-16" style={{ background: s.color }} aria-hidden="true" />
+      <div className="font-serif font-medium text-[clamp(38px,3.4vw,54px)] leading-none tracking-[-0.02em] tabular-nums text-[#000050] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1 motion-reduce:transform-none">
         {count}{s.suffix}
       </div>
-      <div className="text-[16px] sm:text-[17px] leading-snug text-[#6B6B65] font-light max-w-[260px] text-balance">
+      <div className="text-[16px] sm:text-[17px] leading-snug text-[#3F3F3A] font-normal max-w-[260px] text-balance">
         {s.label}
       </div>
     </div>
