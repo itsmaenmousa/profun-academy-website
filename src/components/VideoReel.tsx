@@ -65,6 +65,48 @@ export default function VideoReel() {
       ref={ref as React.RefObject<HTMLElement>}
       className="bg-[#1C1C1A] relative overflow-hidden"
     >
+      {/* Experiential learning, built into every format: a featured full-bleed band */}
+      <div id="experiential" className="relative overflow-hidden bg-[#000050]">
+        <div className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full bg-[#8238EB]/35 blur-[140px] quote-glow" aria-hidden="true" />
+        <div className="absolute -bottom-48 left-1/3 w-[520px] h-[520px] rounded-full bg-[#FC026F]/15 blur-[140px] quote-glow quote-glow-2" aria-hidden="true" />
+
+        {/* Image: top on mobile, right half bleeding off the edge on desktop */}
+        <div className="exp-image relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-[56%] aspect-[16/10] lg:aspect-auto overflow-hidden">
+          <img
+            src="./academy-experiential.jpg"
+            alt="Participants in a hands-on experiential learning session"
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: '50% 40%' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000050] via-[#000050]/20 to-transparent lg:hidden" aria-hidden="true" />
+        </div>
+
+        <div className="relative max-w-[1920px] mx-auto px-6 sm:px-12 py-16 sm:py-20 lg:py-32">
+          <div className="lg:w-[46%] lg:pr-8">
+            <p className="text-[20px] font-semibold text-[#FFCA03] mb-4">Experiential Learning</p>
+            <h3 className="font-serif text-[clamp(34px,3.6vw,60px)] text-white leading-[1.06] tracking-[-0.01em] mb-6">
+              Practical experience.<br /> Lasting application.
+            </h3>
+            <p className="text-[18px] sm:text-[20px] text-white/80 font-light leading-relaxed max-w-[560px] mb-12">
+              Learning through realistic scenarios, simulations, and workplace practice helps your teams connect knowledge to their roles and apply skills with confidence.
+            </p>
+            <div className="inline-flex flex-col gap-4 bg-white/[0.06] border border-white/10 backdrop-blur-sm px-6 py-5">
+              <p className="text-[15px] font-medium text-white/60">Built into every format</p>
+              <ul className="flex flex-wrap gap-x-6 gap-y-2">
+                {channels.map(ch => (
+                  <li key={ch.id} className="inline-flex items-center gap-2 text-[16px] text-white">
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ background: ch.color }} aria-hidden="true" />
+                    {ch.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Top label */}
       <div
         className={`max-w-[1920px] mx-auto px-6 sm:px-12 pt-20 pb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 reveal ${inView ? 'visible' : ''}`}
@@ -134,48 +176,6 @@ export default function VideoReel() {
             <p className="text-[16px] text-white/60 max-w-[640px] leading-relaxed">
               {c.tags.join(' · ')}
             </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Experiential learning, built into every format: a featured full-bleed band */}
-      <div id="experiential" className="relative overflow-hidden bg-[#000050]">
-        <div className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full bg-[#8238EB]/35 blur-[140px] quote-glow" aria-hidden="true" />
-        <div className="absolute -bottom-48 left-1/3 w-[520px] h-[520px] rounded-full bg-[#FC026F]/15 blur-[140px] quote-glow quote-glow-2" aria-hidden="true" />
-
-        {/* Image: top on mobile, right half bleeding off the edge on desktop */}
-        <div className="exp-image relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-[56%] aspect-[16/10] lg:aspect-auto overflow-hidden">
-          <img
-            src="./academy-experiential.jpg"
-            alt="Participants in a hands-on experiential learning session"
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: '50% 40%' }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#000050] via-[#000050]/20 to-transparent lg:hidden" aria-hidden="true" />
-        </div>
-
-        <div className="relative max-w-[1920px] mx-auto px-6 sm:px-12 py-16 sm:py-20 lg:py-32">
-          <div className="lg:w-[46%] lg:pr-8">
-            <p className="text-[20px] font-semibold text-[#FFCA03] mb-4">Experiential Learning</p>
-            <h3 className="font-serif text-[clamp(34px,3.6vw,60px)] text-white leading-[1.06] tracking-[-0.01em] mb-6">
-              Practical experience.<br /> Lasting application.
-            </h3>
-            <p className="text-[18px] sm:text-[20px] text-white/80 font-light leading-relaxed max-w-[560px] mb-12">
-              Learning through realistic scenarios, simulations, and workplace practice helps your teams connect knowledge to their roles and apply skills with confidence.
-            </p>
-            <div className="inline-flex flex-col gap-4 bg-white/[0.06] border border-white/10 backdrop-blur-sm px-6 py-5">
-              <p className="text-[15px] font-medium text-white/60">Built into every format</p>
-              <ul className="flex flex-wrap gap-x-6 gap-y-2">
-                {channels.map(ch => (
-                  <li key={ch.id} className="inline-flex items-center gap-2 text-[16px] text-white">
-                    <span className="w-2.5 h-2.5 rounded-full" style={{ background: ch.color }} aria-hidden="true" />
-                    {ch.label}
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </div>
       </div>

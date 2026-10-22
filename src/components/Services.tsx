@@ -67,11 +67,9 @@ export default function Services() {
                 <button
                   onClick={() => setActive(i)}
                   aria-expanded={on}
-                  className="relative w-full text-left grid grid-cols-[auto_1fr_auto] items-center gap-4 sm:gap-10 px-5 sm:px-8 lg:px-10 py-7 sm:py-9 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
+                  className="relative w-full text-left grid grid-cols-[auto_1fr_auto] items-center gap-5 sm:gap-8 px-5 sm:px-8 lg:px-10 py-7 sm:py-9 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
                 >
-                  <span className="service-num text-[16px] sm:text-[18px] font-medium w-7 sm:w-12" style={{ color: on ? '#fff' : s.color }}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
+                  <span className="service-num block w-1 h-8 sm:h-11 rounded-full" style={{ background: on ? 'rgba(255,255,255,.7)' : s.color }} aria-hidden="true" />
                   <span className={`service-title font-serif text-[clamp(24px,2.6vw,44px)] leading-tight tracking-[-0.01em] ${on ? 'text-white' : 'text-[#000050]'}`}>
                     {s.title}
                   </span>
@@ -85,8 +83,8 @@ export default function Services() {
 
                 <div className={`relative grid transition-[grid-template-rows] duration-500 ease-out ${on ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                   <div className="overflow-hidden">
-                    <div className="grid grid-cols-[auto_1fr_auto] gap-4 sm:gap-10 px-5 sm:px-8 lg:px-10 pb-8 sm:pb-10">
-                      <span className="w-7 sm:w-12" aria-hidden="true" />
+                    <div className="grid grid-cols-[auto_1fr_auto] gap-5 sm:gap-8 px-5 sm:px-8 lg:px-10 pb-8 sm:pb-10">
+                      <span className="w-1" aria-hidden="true" />
                       <p className="text-[18px] sm:text-[20px] text-white font-normal leading-relaxed max-w-[720px]">{s.desc}</p>
                       <span className="w-10 sm:w-14" aria-hidden="true" />
                     </div>

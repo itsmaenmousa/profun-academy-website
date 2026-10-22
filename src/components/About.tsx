@@ -86,15 +86,12 @@ export default function About() {
             {VALUES.map((v, i) => (
               <li
                 key={v.title}
-                className={`value-card group relative bg-white p-8 sm:p-9 min-h-[300px] flex flex-col overflow-hidden reveal reveal-delay-${(i % 4) + 1} ${inView2 ? 'visible' : ''}`}
+                className={`value-card group relative bg-white p-8 sm:p-9 min-h-[240px] flex flex-col overflow-hidden reveal reveal-delay-${(i % 4) + 1} ${inView2 ? 'visible' : ''}`}
                 style={{ ['--brand' as string]: v.color, ['--ink' as string]: LIGHT.includes(v.color) ? '#000050' : '#ffffff' }}
               >
                 <span className="value-fill" aria-hidden="true" />
                 <span className="value-bar absolute top-0 left-0 right-0 h-1" style={{ background: v.color }} aria-hidden="true" />
-                <span className="value-num relative font-serif text-[64px] leading-none tracking-[-0.03em] mb-auto" aria-hidden="true">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h4 className="value-title relative font-serif text-[23px] text-[#000050] leading-snug mt-10 mb-3">{v.title}</h4>
+                <h4 className="value-title relative font-serif text-[23px] text-[#000050] leading-snug mt-4 mb-3">{v.title}</h4>
                 <p className="value-copy relative text-[17px] text-[#6B6B65] leading-relaxed font-light">{v.desc}</p>
               </li>
             ))}

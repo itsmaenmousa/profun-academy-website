@@ -191,9 +191,6 @@ export default function Projects() {
             <div className="absolute inset-0 bg-black/20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
 
-            <span className="absolute right-5 top-5 text-[14px] font-medium tabular-nums text-white/60 drop-shadow-sm">
-              {String(index + 1).padStart(2, '0')}
-            </span>
 
             <div className="absolute inset-x-0 bottom-0 p-6">
               <p className="mb-2 text-[15px] font-medium text-white/75">
