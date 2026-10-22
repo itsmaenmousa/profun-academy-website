@@ -33,7 +33,7 @@ export default function Partners() {
 
       {/* Logo grid */}
       <div className="max-w-[1920px] mx-auto px-6 sm:px-12">
-        <ul className="grid grid-cols-2 lg:grid-cols-3 gap-px bg-[#E2E0DB] border border-[#E2E0DB]">
+        <ul className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
           {partners.map((p, i) => (
             <li
               key={p.name}
