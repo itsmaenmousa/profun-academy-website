@@ -83,26 +83,18 @@ export default function VideoReel() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#000050] via-[#000050]/20 to-transparent lg:hidden" aria-hidden="true" />
         </div>
 
-        <div className="relative max-w-[1920px] mx-auto px-6 sm:px-12 py-16 sm:py-20 lg:py-32">
+        {/* Blend the navy band into the charcoal section below */}
+        <div className="absolute inset-x-0 bottom-0 h-40 sm:h-56 bg-gradient-to-b from-transparent to-[#1C1C1A] pointer-events-none z-[1]" aria-hidden="true" />
+
+        <div className="relative z-[2] max-w-[1920px] mx-auto px-6 sm:px-12 pt-16 sm:pt-20 lg:pt-32 pb-24 sm:pb-32 lg:pb-44">
           <div className="lg:w-[46%] lg:pr-8">
             <p className="text-[20px] font-semibold text-[#FFCA03] mb-4">Experiential Learning</p>
             <h3 className="font-serif text-[clamp(34px,3.6vw,60px)] text-white leading-[1.06] tracking-[-0.01em] mb-6">
               Practical experience.<br /> Lasting application.
             </h3>
-            <p className="text-[18px] sm:text-[20px] text-white/80 font-light leading-relaxed max-w-[560px] mb-12">
+            <p className="text-[18px] sm:text-[20px] text-white/80 font-light leading-relaxed max-w-[560px]">
               Learning through realistic scenarios, simulations, and workplace practice helps your teams connect knowledge to their roles and apply skills with confidence.
             </p>
-            <div className="inline-flex flex-col gap-4 bg-white/[0.06] border border-white/10 backdrop-blur-sm px-6 py-5">
-              <p className="text-[15px] font-medium text-white/60">Built into every format</p>
-              <ul className="flex flex-wrap gap-x-6 gap-y-2">
-                {channels.map(ch => (
-                  <li key={ch.id} className="inline-flex items-center gap-2 text-[16px] text-white">
-                    <span className="w-2.5 h-2.5 rounded-full" style={{ background: ch.color }} aria-hidden="true" />
-                    {ch.label}
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </div>
       </div>
