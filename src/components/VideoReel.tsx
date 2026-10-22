@@ -104,75 +104,75 @@ export default function VideoReel() {
         </div>
       </div>
 
-      {/* Stage */}
-      <div
-        className="relative aspect-[4/5] sm:aspect-[16/9] lg:aspect-auto lg:h-[clamp(320px,calc(100svh-372px),620px)] overflow-hidden"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        {channels.map((ch, i) => (
-          <img
-            key={ch.id}
-            src={ch.image}
-            alt={ch.title}
-            loading={i === 0 ? 'eager' : 'lazy'}
-            decoding="async"
-            className={`absolute inset-0 w-full h-full object-cover reel-slide ${i === active ? 'is-active' : ''}`}
-            style={{ objectPosition: ch.pos }}
-          />
-        ))}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1C1C1A]/90 via-[#1C1C1A]/45 to-transparent" />
-        {/* Soft fade into the Experiential band below */}
-        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-[#1C1C1A] pointer-events-none" aria-hidden="true" />
+      {/* Stage: copy beside the image so both are visible together */}
+      <div className="max-w-[1920px] mx-auto px-6 sm:px-12">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          {/* Copy */}
+          <div className="order-2 lg:order-1 lg:col-span-5 min-h-[260px] flex flex-col justify-center">
+            <div key={c.id} className="reel-copy">
+              <span className="block w-10 h-1 mb-6" style={{ background: c.color }} aria-hidden="true" />
+              <h3 className="font-serif text-[clamp(28px,2.8vw,46px)] text-white leading-[1.08] tracking-[-0.01em] mb-5">
+                {c.title}
+              </h3>
+              <p className="text-[17px] sm:text-[19px] text-white/80 font-light leading-relaxed max-w-[520px] mb-6">
+                {c.desc}
+              </p>
+              <ul className="flex flex-wrap gap-2 max-w-[560px]">
+                {c.tags.map(t => (
+                  <li key={t} className="text-[14px] sm:text-[15px] text-white/75 border border-white/15 px-3 py-1.5">{t}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
-        <div className="absolute inset-0 flex items-end lg:items-start">
-          <div key={c.id} className="max-w-[1920px] w-full mx-auto px-6 sm:px-12 pb-12 sm:pb-16 lg:pb-0 lg:pt-[clamp(28px,6vh,72px)] reel-copy">
-            <h3 className="font-serif text-[clamp(28px,2.8vw,48px)] text-white leading-[1.06] tracking-[-0.01em] mb-4 max-w-[640px]">
-              {c.title}
-            </h3>
-            <p className="text-[17px] sm:text-[19px] text-white/80 font-light leading-relaxed max-w-[540px] mb-5">
-              {c.desc}
-            </p>
-            <p className="text-[15px] sm:text-[16px] text-white/60 max-w-[600px] leading-relaxed">
-              {c.tags.join(' · ')}
-            </p>
+          {/* Image */}
+          <div className="order-1 lg:order-2 lg:col-span-7 relative overflow-hidden aspect-[16/10] lg:aspect-auto lg:h-[clamp(340px,calc(100svh-400px),560px)]">
+            {channels.map((ch, i) => (
+              <img
+                key={ch.id}
+                src={ch.image}
+                alt={ch.title}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                className={`absolute inset-0 w-full h-full object-cover reel-slide ${i === active ? 'is-active' : ''}`}
+                style={{ objectPosition: ch.pos }}
+              />
+            ))}
+            <span className="absolute bottom-0 left-0 right-0 h-1 z-10 transition-colors duration-700" style={{ background: c.color }} aria-hidden="true" />
           </div>
         </div>
-      </div>
 
-      {/* Experiential learning: mirrors the stage, image left, copy right */}
-      <div id="experiential" className="relative overflow-hidden bg-[#1C1C1A] mt-10 sm:mt-16">
-        <div className="absolute top-1/2 -translate-y-1/2 right-[5%] w-[420px] h-[420px] rounded-full bg-[#8238EB]/20 blur-[140px] quote-glow" aria-hidden="true" />
-
-        <div className="exp-image relative lg:absolute lg:inset-y-0 lg:left-0 lg:w-[60%] aspect-[16/10] lg:aspect-auto overflow-hidden">
-          <img
-            src="./academy-experiential.jpg"
-            alt="Participants in a hands-on experiential learning session"
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: '50% 40%' }}
-          />
-          <div className="hidden lg:block absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#1C1C1A] to-transparent" aria-hidden="true" />
-          <div className="hidden lg:block absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#1C1C1A] to-transparent" aria-hidden="true" />
-        </div>
-
-        <div className="relative max-w-[1920px] mx-auto px-6 sm:px-12 lg:min-h-[clamp(440px,60vh,600px)] flex items-center lg:justify-end pb-16 sm:pb-20 lg:py-20">
-          <div className="lg:w-[42%] -mt-10 sm:-mt-16 lg:mt-0">
-            <p className="flex items-center gap-3 text-[20px] font-semibold text-[#B48CF5] mb-4">
-              <span className="w-8 h-[3px] bg-[#8238EB]" aria-hidden="true" />
-              Experiential Learning
-            </p>
-            <h3 className="font-serif text-[clamp(30px,3.2vw,52px)] text-white leading-[1.06] tracking-[-0.01em] mb-6">
+        {/* Experiential learning: same layout, built into every format */}
+        <div id="experiential" className="mt-16 sm:mt-24 pt-16 sm:pt-24 border-t border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="order-2 lg:order-1 lg:col-span-5">
+            <p className="text-[20px] font-semibold text-[#B48CF5] mb-4">Experiential Learning</p>
+            <h3 className="font-serif text-[clamp(28px,2.8vw,46px)] text-white leading-[1.08] tracking-[-0.01em] mb-5">
               Practical experience.<br /> Lasting application.
             </h3>
-            <p className="text-[17px] sm:text-[19px] text-white/80 font-light leading-relaxed max-w-[520px] mb-5">
+            <p className="text-[17px] sm:text-[19px] text-white/80 font-light leading-relaxed max-w-[520px] mb-6">
               Learning through realistic scenarios, simulations, and workplace practice helps your teams connect knowledge to their roles and apply skills with confidence.
             </p>
-            <p className="text-[15px] sm:text-[16px] text-white/55">Built into every delivery format.</p>
+            <p className="text-[15px] text-white/55">Built into every delivery format.</p>
+          </div>
+          <div className="order-1 lg:order-2 lg:col-span-7 relative overflow-hidden aspect-[16/10] lg:aspect-auto lg:h-[clamp(320px,44vh,480px)]">
+            <img
+              src="./academy-experiential.jpg"
+              alt="Participants in a hands-on experiential learning session"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+              style={{ objectPosition: '50% 40%' }}
+            />
+            <span className="absolute bottom-0 left-0 right-0 h-1 bg-[#8238EB]" aria-hidden="true" />
           </div>
         </div>
       </div>
+
+      <div className="h-16 sm:h-24" aria-hidden="true" />
 
       {/* Bottom strip */}
       <div className="overflow-hidden py-6 border-t border-white/8">
