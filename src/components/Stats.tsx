@@ -26,8 +26,8 @@ export default function Stats() {
   const { ref, inView } = useInView()
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="bg-[#000050] py-6 sm:py-8 px-6 sm:px-12">
-      <div className="max-w-[1920px] mx-auto">
+    <section ref={ref as React.RefObject<HTMLElement>} className="bg-[#F2F1EF] pt-16 sm:pt-20 px-6 sm:px-12">
+      <div className="max-w-[1920px] mx-auto bg-[#000050] py-6 sm:py-8 px-0 sm:px-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/8">
           {stats.map((s) => (
             <StatItem key={s.label} s={s} active={inView} />

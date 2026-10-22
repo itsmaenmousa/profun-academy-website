@@ -20,7 +20,7 @@ export default function About() {
   const { ref: ref2, inView: inView2 } = useInView()
 
   return (
-    <section id="about" className="bg-[#F2F1EF] py-24 sm:py-32 px-6 sm:px-12">
+    <section id="about" className="bg-[#F2F1EF] pt-16 sm:pt-20 pb-24 sm:pb-32 px-6 sm:px-12">
       <div className="max-w-[1920px] mx-auto">
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
