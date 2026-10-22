@@ -278,3 +278,15 @@ body {
 .prog-tag { box-shadow: 0 1px 2px rgba(0,0,80,.06); animation: progTagIn .35s cubic-bezier(.16,1,.3,1) both; }
 @keyframes progTagIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .prog-tag { animation: none; } }
+
+/* Selected Work: project summary reveal */
+.proj-about { grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .5s cubic-bezier(.16,1,.3,1), opacity .4s; }
+.proj-card[data-open="true"] .proj-about { grid-template-rows: 1fr; opacity: 1; }
+.proj-card[data-open="true"] .proj-info { transform: rotate(45deg); background: #fff; color: #000050; }
+@media (hover: hover) {
+  .proj-card:hover .proj-about, .proj-card:focus-within .proj-about { grid-template-rows: 1fr; opacity: 1; }
+  .proj-card:hover .proj-info { transform: rotate(45deg); }
+}
+.proj-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.2) 75%); opacity: 0; transition: opacity .4s; pointer-events: none; }
+.proj-card[data-open="true"]::before { opacity: 1; }
+@media (hover: hover) { .proj-card:hover::before { opacity: 1; } }

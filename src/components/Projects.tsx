@@ -5,54 +5,63 @@ import { useInView } from '../hooks/useInView'
 const projects = [
   {
     title: 'Grand Hyatt',
+    about: "A resort waterpark at Grand Hyatt Dubai, with slides, pools and water play for the whole family.",
     category: 'Waterparks',
     location: 'Dubai, UAE',
     image: './grand-hyatt-waterpark.jpg',
   },
   {
     title: 'Qiddiya City',
+    about: "Saudi Arabia's future capital of entertainment, sports and culture, rising just outside Riyadh.",
     category: 'Leisure Destination',
     location: 'Riyadh, Saudi Arabia',
     image: './qiddiya-entertainment-city.jpg',
   },
   {
     title: 'Ferrari World Abu Dhabi',
+    about: "The world's first Ferrari-branded theme park, home to Formula Rossa, one of the fastest coasters.",
     category: 'Theme Park',
     location: 'Abu Dhabi, UAE',
     image: './ferrari-world-abu-dhabi.jpg',
   },
   {
     title: 'Doha Quest',
+    about: "An indoor theme park at Doha Oasis, home to record-breaking rides and immersive themed zones.",
     category: 'Indoor Theme Park',
     location: 'Doha, Qatar',
     image: './doha-quest.jpg',
   },
   {
     title: 'Merdeka 118',
+    about: "Malaysia's tallest tower, home to The View at 118, one of the highest observation decks on Earth.",
     category: 'Mixed-Use Destination',
     location: 'Kuala Lumpur, Malaysia',
     image: './merdeka-118.jpg',
   },
   {
     title: 'Expo 2020',
+    about: "The first World Expo in the Middle East, welcoming millions of visitors to Dubai over six months.",
     category: 'Expos',
     location: 'Dubai, UAE',
     image: './expo-2020-dubai.jpg',
   },
   {
     title: 'Makkah Clock Royal Tower',
+    about: "A landmark hotel tower beside the Grand Mosque in Makkah, crowned by its iconic clock and museum.",
     category: 'Hospitality Destination',
     location: 'Makkah, Kingdom of Saudi Arabia',
     image: './makkah-clock-royal-tower.jpg',
   },
   {
     title: 'Natural History Museum',
+    about: "The largest natural and historical museum in the western US, with over 35 million specimens.",
     category: 'Cultural Destination',
     location: 'Los Angeles, USA',
     image: './natural-history-museum-los-angeles.jpg',
   },
   {
     title: 'Dubai Parks & Resorts',
+    about: "The region's largest integrated leisure destination, with theme parks, a waterpark and a resort.",
     category: 'Leisure Destination',
     location: 'Dubai, UAE',
     image: './dubai-parks-resorts.jpg',
@@ -72,6 +81,7 @@ const revealDelays = [
 ]
 
 export default function Projects() {
+  const [openCard, setOpenCard] = useState<number | null>(null)
   const { ref, inView } = useInView()
   const railRef = useRef<HTMLDivElement>(null)
   const dragRef = useRef({ active: false, startX: 0, scrollLeft: 0 })
@@ -178,7 +188,8 @@ export default function Projects() {
         {projects.map((project, index) => (
           <article
             key={project.title}
-            className={`group relative aspect-[3/4] w-[clamp(240px,22vw,300px)] shrink-0 snap-start overflow-hidden bg-[#111110] transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none lg:hover:-translate-y-1.5 ${revealDelays[index]} ${
+            data-open={openCard === index}
+            className={`group proj-card relative aspect-[3/4] w-[clamp(240px,22vw,300px)] shrink-0 snap-start overflow-hidden bg-[#111110] transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none lg:hover:-translate-y-1.5 ${revealDelays[index]} ${
               inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}
           >
@@ -197,13 +208,31 @@ export default function Projects() {
               {project.category}
             </p>
 
+            {/* Info toggle (tap on touch screens) */}
+            <button
+              type="button"
+              onMouseDown={e => e.stopPropagation()}
+              onClick={() => setOpenCard(o => (o === index ? null : index))}
+              aria-expanded={openCard === index}
+              aria-label={`About ${project.title}`}
+              className="proj-info absolute right-5 top-5 z-10 w-9 h-9 rounded-full border border-white/40 bg-black/25 backdrop-blur-sm text-white flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-[#000050] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1.5v11M1.5 7h11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
+            </button>
+
             <div className="absolute inset-x-0 bottom-0 p-6">
               <h3 className="font-serif text-[clamp(24px,2.4vw,32px)] leading-[1.08] text-white">
                 {project.title}
               </h3>
               {'location' in project && (
-                <p className="mt-3 text-[15px] font-light text-white/45">{project.location}</p>
+                <p className="mt-3 text-[15px] font-light text-white/60">{project.location}</p>
               )}
+              {/* About: revealed on hover, focus or tap */}
+              <div className="proj-about grid">
+                <div className="overflow-hidden">
+                  <p className="pt-4 mt-4 border-t border-white/20 text-[15px] leading-relaxed text-white/90">{project.about}</p>
+                </div>
+              </div>
             </div>
           </article>
         ))}
