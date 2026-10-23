@@ -122,7 +122,7 @@ const RELEASES: Release[] = [
       'At the heart of the partnership is a shared belief that well-trained professionals create safer environments, stronger operations and better guest experiences.',
       '“As the attractions industry continues to grow across the region, investing in people has never been more important. We’re excited to work alongside SST and Ellis & Associates to help make world-class learning opportunities more accessible.” Ryan Phillips, General Manager, The ProFun Academy.',
     ],
-    image: './news-partnership.jpg',
+    image: './news-partnership-v2.jpg',
   },
   {
     id: 'ryan',
@@ -179,12 +179,12 @@ export default function Press() {
   useEqualize(gridRef, EQ_KEYS)
 
   return (
-    <section id="news" className="bg-[#F9F8F6] py-24 sm:py-32 px-6 sm:px-12">
+    <section id="news" className="bg-[#F9F8F6] py-16 sm:py-24 lg:py-32 px-6 sm:px-12">
       <div className="max-w-[1920px] mx-auto">
         {/* Header */}
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
-          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
+          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12 reveal ${inView ? 'visible' : ''}`}
         >
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">Press Releases</p>

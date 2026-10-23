@@ -35,7 +35,8 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: auto; }
+html { scroll-behavior: auto; color-scheme: light only; background-color: #F9F8F6; }
+input, textarea, select, button { color-scheme: light; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
@@ -224,6 +225,11 @@ body {
   --hex-w: clamp(150px, 12.5vw, 210px);
 }
 @media (max-width: 1279px) { .honeycomb { --hex-w: 168px; } }
+@media (max-width: 1023px) {
+  .honeycomb { --hex-w: min(150px, calc((100vw - 48px - 20px) / 3)); --gap: 8px; width: calc(var(--step-x) * 2 + var(--hex-w)) !important; }
+  .hc-ghost-far { display: none; }
+  .hc-service .hc-face > span.relative { padding-left: 10%; padding-right: 10%; }
+}
 .honeycomb {
   --hex-h: calc(var(--hex-w) * 1.1547);
   --gap: 10px;
@@ -292,3 +298,14 @@ body {
 .proj-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.2) 75%); opacity: 0; transition: opacity .4s; pointer-events: none; }
 .proj-card[data-open="true"]::before { opacity: 1; }
 @media (hover: hover) { .proj-card:hover::before { opacity: 1; } }
+
+/* Team: bio reveal (hover on desktop, tap on touch) */
+.team-bio { max-height: 0; opacity: 0; transition: max-height .5s cubic-bezier(.16,1,.3,1), opacity .4s, margin .4s; }
+.team-card { cursor: pointer; }
+.team-card.is-open .team-bio { max-height: 20rem; opacity: 1; margin-top: .75rem; }
+.team-more { transition: transform .35s, background-color .35s, color .35s; }
+.team-card.is-open .team-more { transform: rotate(45deg); background: #000050; color: #fff; border-color: #000050; }
+@media (hover: hover) and (min-width: 1024px) {
+  .team-card { cursor: default; }
+  .team-card:hover .team-bio { max-height: 14rem; opacity: 1; }
+}

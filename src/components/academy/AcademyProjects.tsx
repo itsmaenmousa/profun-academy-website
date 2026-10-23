@@ -24,7 +24,7 @@ export default function AcademyProjects() {
       id="projects"
       ref={ref as React.RefObject<HTMLElement>}
       aria-labelledby="projects-heading"
-      className="bg-[#1C1C1A] py-28 px-10"
+      className="bg-[#1C1C1A] py-16 sm:py-24 lg:py-28 px-6 sm:px-10"
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}

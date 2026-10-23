@@ -6,7 +6,7 @@ export default function Testimonial() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="relative bg-[#000050] py-28 sm:py-32 px-6 sm:px-12 overflow-hidden"
+      className="relative bg-[#000050] py-16 sm:py-24 lg:py-32 px-6 sm:px-12 overflow-hidden"
     >
       {/* Soft brand glows */}
       <div className="absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full bg-[#3985FD]/20 blur-[120px] quote-glow" aria-hidden="true" />

@@ -14,11 +14,11 @@ export default function Partners() {
   const { ref, inView } = useInView()
 
   return (
-    <section id="partners" className="bg-[#F9F8F6] py-24 sm:py-32 overflow-hidden">
+    <section id="partners" className="bg-[#F9F8F6] py-16 sm:py-24 lg:py-32 overflow-hidden">
       {/* Header */}
       <div
         ref={ref as React.RefObject<HTMLDivElement>}
-        className={`max-w-[1920px] mx-auto px-6 sm:px-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
+        className={`max-w-[1920px] mx-auto px-6 sm:px-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12 reveal ${inView ? 'visible' : ''}`}
       >
         <div>
           <p className="text-[20px] font-semibold text-[#F85707] mb-4">Partners & Affiliations</p>

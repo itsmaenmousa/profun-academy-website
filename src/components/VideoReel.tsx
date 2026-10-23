@@ -166,7 +166,7 @@ export default function VideoReel() {
     </section>
 
     {/* Experiential Learning: its own light section */}
-    <section id="experiential" className="relative bg-[#F9F8F6] py-24 sm:py-32 px-6 sm:px-12 overflow-hidden">
+    <section id="experiential" className="relative bg-[#F9F8F6] py-16 sm:py-24 lg:py-32 px-6 sm:px-12 overflow-hidden">
       <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div className="lg:col-span-6 xl:col-span-5">
           <p className="text-[20px] font-semibold text-[#8238EB] mb-4">Experiential Learning</p>

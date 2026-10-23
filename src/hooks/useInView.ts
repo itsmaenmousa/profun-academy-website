@@ -14,7 +14,7 @@ export function useInView(options?: IntersectionObserverInit) {
           obs.unobserve(el)
         }
       },
-      { threshold: 0.12, ...options }
+      { threshold: 0, rootMargin: '0px 0px -12% 0px', ...options }
     )
     obs.observe(el)
     return () => obs.disconnect()

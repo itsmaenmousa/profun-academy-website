@@ -153,7 +153,7 @@ export default function Projects() {
       id="projects"
       ref={ref as React.RefObject<HTMLElement>}
       aria-labelledby="projects-heading"
-      className="overflow-hidden bg-[#1C1C1C] py-28 lg:py-44"
+      className="overflow-hidden bg-[#1C1C1C] py-16 sm:py-24 lg:py-44"
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-14">
         <div

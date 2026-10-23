@@ -120,7 +120,7 @@ export default function Courses() {
   const list = useMemo(() => (filter === 'All' ? COURSES : COURSES.filter(c => c.category === filter)), [filter])
 
   return (
-    <section id="courses" className="bg-[#F9F8F6] py-24 sm:py-32 px-6 sm:px-12 min-h-screen">
+    <section id="courses" className="bg-[#F9F8F6] py-16 sm:py-24 lg:py-32 px-6 sm:px-12 min-h-screen">
       <div className="max-w-[1920px] mx-auto">
         {/* Preview notice */}
         <div className="mb-12 inline-flex items-center gap-3 bg-[#FFCA03]/20 text-[#000050] text-[15px] px-4 py-2.5">
@@ -131,7 +131,7 @@ export default function Courses() {
         {/* Header */}
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
-          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 border-b border-[#E2E0DB] pb-12 reveal ${inView ? 'visible' : ''}`}
+          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12 border-b border-[#E2E0DB] pb-8 sm:pb-12 reveal ${inView ? 'visible' : ''}`}
         >
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">Courses & Booking</p>
