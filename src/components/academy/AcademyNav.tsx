@@ -156,15 +156,23 @@ export default function AcademyNav() {
 
         {/* Hamburger */}
         <button
-          className="p-2 flex flex-col justify-center gap-[5px]"
+          className="p-2 -mr-1 flex items-center justify-center"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
         >
-          <span className={`block w-6 h-px transition-all duration-300 origin-center ${mobileOpen ? 'rotate-45 translate-y-[6px]' : ''} ${scrolled ? 'bg-[#1C1C1A]' : 'bg-white'}`} />
-          <span className={`block w-6 h-px transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''} ${scrolled ? 'bg-[#1C1C1A]' : 'bg-white'}`} />
-          <span className={`block w-4 h-px transition-all duration-300 origin-center ${mobileOpen ? '-rotate-45 -translate-y-[6px] w-6' : ''} ${scrolled ? 'bg-[#1C1C1A]' : 'bg-white'}`} />
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true" className={`transition-colors duration-300 ${scrolled ? 'text-[#1C1C1A]' : 'text-white'}`}>
+            <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="transition-opacity duration-300" style={{ opacity: mobileOpen ? 0 : 1 }}>
+              <line x1="3" y1="7.5" x2="23" y2="7.5" />
+              <line x1="3" y1="13" x2="23" y2="13" />
+              <line x1="3" y1="18.5" x2="16" y2="18.5" />
+            </g>
+            <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="transition-opacity duration-300" style={{ opacity: mobileOpen ? 1 : 0 }}>
+              <line x1="6" y1="6" x2="20" y2="20" />
+              <line x1="20" y1="6" x2="6" y2="20" />
+            </g>
+          </svg>
         </button>
       </div>
 

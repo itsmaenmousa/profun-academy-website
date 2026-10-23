@@ -129,11 +129,20 @@ export default function Nav() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
-          className="p-2 flex flex-col justify-center gap-[5px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
+          className="p-2 -mr-1 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
         >
-          <span className={`block w-6 h-px transition-all duration-300 origin-center ${mobileOpen ? 'rotate-45 translate-y-[6px]' : ''} ${solid ? 'bg-[#000050]' : 'bg-white'}`} />
-          <span className={`block w-6 h-px transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''} ${solid ? 'bg-[#000050]' : 'bg-white'}`} />
-          <span className={`block w-4 h-px transition-all duration-300 origin-center ${mobileOpen ? '-rotate-45 -translate-y-[6px] w-6' : ''} ${solid ? 'bg-[#000050]' : 'bg-white'}`} />
+          {/* One icon element, so every line always shares the same colour */}
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true" className={`transition-colors duration-300 ${solid ? 'text-[#000050]' : 'text-white'}`}>
+            <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="transition-opacity duration-300" style={{ opacity: mobileOpen ? 0 : 1 }}>
+              <line x1="3" y1="7.5" x2="23" y2="7.5" />
+              <line x1="3" y1="13" x2="23" y2="13" />
+              <line x1="3" y1="18.5" x2="16" y2="18.5" />
+            </g>
+            <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="transition-opacity duration-300" style={{ opacity: mobileOpen ? 1 : 0 }}>
+              <line x1="6" y1="6" x2="20" y2="20" />
+              <line x1="20" y1="6" x2="6" y2="20" />
+            </g>
+          </svg>
         </button>
       </div>
 
