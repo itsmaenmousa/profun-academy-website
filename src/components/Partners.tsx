@@ -35,17 +35,17 @@ export default function Partners() {
 
       {/* Logo grid */}
       <div className="max-w-[1920px] mx-auto px-6 sm:px-12">
-        <ul className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
+        <ul className="grid grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-2 lg:gap-4">
           {partners.map((p, i) => (
             <li
               key={p.name}
-              className={`partner-card group relative bg-[#F9F8F6] p-4 sm:p-8 lg:p-10 flex items-center justify-center min-h-[176px] sm:min-h-[208px] lg:min-h-[260px] overflow-hidden reveal reveal-delay-${(i % 3) + 1} ${inView ? 'visible' : ''} ${tapped === i ? 'is-on' : ''}`}
+              className={`partner-card group relative bg-[#F9F8F6] p-3 sm:p-5 lg:p-10 flex items-center justify-center lg:min-h-[260px] overflow-hidden reveal reveal-delay-${(i % 3) + 1} ${inView ? 'visible' : ''} ${tapped === i ? 'is-on' : ''}`}
               style={{ ['--brand' as string]: p.color }}
               onClick={() => setTapped(t => (t === i ? null : i))}
             >
               <span className="partner-fill" aria-hidden="true" />
-              <div className="partner-plate relative w-full lg:max-w-[340px] h-28 sm:h-32 bg-white flex items-center justify-center px-4 sm:px-8 transition-shadow duration-500">
-                <img src={p.logo} alt={p.name} title={p.name} loading="lazy" decoding="async" className={`${p.big ? 'max-h-[80px] sm:max-h-[96px] lg:max-h-[92px]' : 'max-h-[60px] sm:max-h-[68px] lg:max-h-16'} max-w-full w-auto object-contain`} />
+              <div className="partner-plate relative w-full lg:max-w-[340px] h-[124px] sm:h-36 lg:h-32 bg-white flex items-center justify-center px-4 sm:px-8 transition-shadow duration-500">
+                <img src={p.logo} alt={p.name} title={p.name} loading="lazy" decoding="async" className={`${p.big ? 'max-h-[84px] sm:max-h-[100px] lg:max-h-[92px]' : 'max-h-[64px] sm:max-h-[72px] lg:max-h-16'} max-w-full w-auto object-contain`} />
               </div>
             </li>
           ))}
