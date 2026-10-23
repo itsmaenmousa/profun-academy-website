@@ -39,12 +39,12 @@ export default function Services() {
   const { ref, inView } = useInView()
 
   return (
-    <section id="services" className="bg-[#F9F8F6] py-16 sm:py-24 lg:py-32 px-6 sm:px-12">
+    <section id="services" className="bg-[#F9F8F6] py-16 sm:py-20 lg:py-24 px-6 sm:px-12">
       <div className="max-w-[1920px] mx-auto">
         {/* Header */}
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
-          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-16 lg:mb-20 border-b border-[#E2E0DB] pb-8 sm:pb-12 reveal ${inView ? 'visible' : ''}`}
+          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12 reveal ${inView ? 'visible' : ''}`}
         >
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">What We Offer</p>

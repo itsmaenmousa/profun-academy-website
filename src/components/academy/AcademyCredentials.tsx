@@ -29,7 +29,7 @@ export default function AcademyCredentials() {
       id="credentials"
       ref={ref as React.RefObject<HTMLElement>}
       aria-labelledby="credentials-heading"
-      className="bg-[#F2F1EF] py-16 sm:py-24 lg:py-28 px-6 sm:px-10"
+      className="bg-[#F2F1EF] py-16 sm:py-20 lg:py-24 px-6 sm:px-10"
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter rule */}

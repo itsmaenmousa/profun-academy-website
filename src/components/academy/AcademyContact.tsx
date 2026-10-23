@@ -29,7 +29,7 @@ export default function AcademyContact() {
         id="contact"
         ref={ref as React.RefObject<HTMLElement>}
         aria-labelledby="contact-heading"
-        className="bg-[#111110] py-16 sm:py-24 lg:py-28 px-6 sm:px-10"
+        className="bg-[#111110] py-16 sm:py-20 lg:py-24 px-6 sm:px-10"
       >
         <div className="max-w-[1440px] mx-auto">
           {/* Chapter rule */}

@@ -179,7 +179,7 @@ export default function Press() {
   useEqualize(gridRef, EQ_KEYS)
 
   return (
-    <section id="news" className="bg-[#F9F8F6] py-16 sm:py-24 lg:py-32 px-6 sm:px-12">
+    <section id="news" className="bg-[#F9F8F6] py-16 sm:py-20 lg:py-24 px-6 sm:px-12">
       <div className="max-w-[1920px] mx-auto">
         {/* Header */}
         <div
@@ -208,7 +208,7 @@ export default function Press() {
         </div>
 
         {/* Media inquiries */}
-        <div className="mt-16 bg-[#000050] text-white p-8 sm:p-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="mt-10 sm:mt-16 bg-[#000050] text-white p-8 sm:p-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <p className="text-[20px] font-semibold text-[#FFCA03] mb-2">Media Inquiries</p>
             <p className="text-[19px] text-white/70 font-light">For interviews, images and press information, contact the Academy team.</p>

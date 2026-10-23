@@ -49,7 +49,7 @@ export default function News() {
   const { ref: headRef, inView: headIn } = useInView()
 
   return (
-    <section id="programs" className="bg-[#F2F1EF] py-16 sm:py-24 lg:py-32 px-6 sm:px-12">
+    <section id="programs" className="bg-[#F2F1EF] py-16 sm:py-20 lg:py-24 px-6 sm:px-12">
       <div className="max-w-[1920px] mx-auto">
         {/* Header */}
         <div ref={headRef as React.RefObject<HTMLDivElement>} className={`flex items-end justify-between gap-8 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12 reveal ${headIn ? 'visible' : ''}`}>

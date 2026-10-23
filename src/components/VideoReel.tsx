@@ -80,14 +80,14 @@ export default function VideoReel() {
           </p>
         </div>
         {/* Channel tabs */}
-        <div className="flex flex-wrap gap-1" role="tablist" aria-label="Learning delivery channels">
+        <div className="grid grid-cols-4 gap-1 w-full lg:flex lg:w-auto" role="tablist" aria-label="Learning delivery channels">
           {channels.map((ch, i) => (
             <button
               key={ch.id}
               role="tab"
               aria-selected={i === active}
               onClick={() => { setActive(i); setPaused(true) }}
-              className={`relative overflow-hidden px-5 py-3 text-[15px] font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
+              className={`relative overflow-hidden px-1 sm:px-5 py-3 text-[13px] min-[380px]:text-[14px] sm:text-[15px] text-center whitespace-nowrap font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
                 i === active ? 'text-white bg-white/10' : 'text-white/40 hover:text-white/80'
               }`}
             >
@@ -166,7 +166,7 @@ export default function VideoReel() {
     </section>
 
     {/* Experiential Learning: its own light section */}
-    <section id="experiential" className="relative bg-[#F9F8F6] py-16 sm:py-24 lg:py-32 px-6 sm:px-12 overflow-hidden">
+    <section id="experiential" className="relative bg-[#F9F8F6] py-16 sm:py-20 lg:py-24 px-6 sm:px-12 overflow-hidden">
       <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div className="lg:col-span-6 xl:col-span-5">
           <p className="text-[20px] font-semibold text-[#8238EB] mb-4">Experiential Learning</p>

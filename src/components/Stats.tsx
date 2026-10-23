@@ -43,7 +43,7 @@ export default function Stats() {
   const { ref, inView } = useInView()
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="bg-[#F2F1EF] pt-16 sm:pt-20 px-6 sm:px-12">
+    <section ref={ref as React.RefObject<HTMLElement>} className="bg-[#F2F1EF] pt-16 sm:pt-20 lg:pt-24 px-6 sm:px-12">
       <div className="max-w-[1920px] mx-auto border-y border-[#E2E0DB]">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#E2E0DB]">
           {stats.map((s, i) => (

@@ -120,7 +120,7 @@ export default function Courses() {
   const list = useMemo(() => (filter === 'All' ? COURSES : COURSES.filter(c => c.category === filter)), [filter])
 
   return (
-    <section id="courses" className="bg-[#F9F8F6] py-16 sm:py-24 lg:py-32 px-6 sm:px-12 min-h-screen">
+    <section id="courses" className="bg-[#F9F8F6] py-16 sm:py-20 lg:py-24 px-6 sm:px-12 min-h-screen">
       <div className="max-w-[1920px] mx-auto">
         {/* Preview notice */}
         <div className="mb-12 inline-flex items-center gap-3 bg-[#FFCA03]/20 text-[#000050] text-[15px] px-4 py-2.5">

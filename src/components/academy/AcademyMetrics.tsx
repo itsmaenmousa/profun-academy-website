@@ -34,7 +34,7 @@ export default function AcademyMetrics() {
     <section
       ref={ref as React.RefObject<HTMLElement>}
       aria-label="Key metrics"
-      className="bg-[#1C1C1A] py-0 px-10"
+      className="bg-[#1C1C1A] py-0 px-6 sm:px-10"
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Chapter strip */}

@@ -153,7 +153,7 @@ export default function Projects() {
       id="projects"
       ref={ref as React.RefObject<HTMLElement>}
       aria-labelledby="projects-heading"
-      className="overflow-hidden bg-[#1C1C1C] py-16 sm:py-24 lg:py-44"
+      className="overflow-hidden bg-[#1C1C1C] py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-14">
         <div
@@ -191,7 +191,7 @@ export default function Projects() {
         tabIndex={0}
         onMouseDown={startDragging}
         onScroll={updateProgress}
-        className={`mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pl-6 pr-6 md:mt-20 md:pl-14 md:pr-14 min-[1440px]:pl-[calc((100vw-1440px)/2+56px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+        className={`mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pl-6 pr-6 md:mt-14 md:pl-14 md:pr-14 min-[1440px]:pl-[calc((100vw-1440px)/2+56px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
           isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
         }`}
       >

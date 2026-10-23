@@ -14,7 +14,7 @@ export default function Partners() {
   const { ref, inView } = useInView()
 
   return (
-    <section id="partners" className="bg-[#F9F8F6] py-16 sm:py-24 lg:py-32 overflow-hidden">
+    <section id="partners" className="bg-[#F9F8F6] py-16 sm:py-20 lg:py-24 overflow-hidden">
       {/* Header */}
       <div
         ref={ref as React.RefObject<HTMLDivElement>}
@@ -49,7 +49,7 @@ export default function Partners() {
         </ul>
 
         {/* IAAPA Education Pre-Approved Provider */}
-        <div className={`mt-16 bg-white border border-[#E2E0DB] grid grid-cols-1 md:grid-cols-[minmax(0,320px)_1fr] items-center gap-8 md:gap-14 p-8 sm:p-12 reveal ${inView ? 'visible' : ''}`}>
+        <div className={`mt-10 sm:mt-16 bg-white border border-[#E2E0DB] grid grid-cols-1 md:grid-cols-[minmax(0,320px)_1fr] items-center gap-8 md:gap-14 p-8 sm:p-12 reveal ${inView ? 'visible' : ''}`}>
           <img src="./iaapa-pre-approved.png" alt="IAAPA Education Pre-Approved Provider" loading="lazy" decoding="async" className="w-full max-w-[280px] h-auto" />
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-3">IAAPA Education Pre-Approved Provider</p>
