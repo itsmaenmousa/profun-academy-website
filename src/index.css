@@ -174,7 +174,7 @@ body {
 
 /* ── Partner cards: colour rises from below ─────────────── */
 .partner-fill { position: absolute; inset: 0; background: var(--brand); transform: translate3d(0, 101%, 0); transition: transform .6s cubic-bezier(.16,1,.3,1); }
-.partner-card:hover .partner-fill { transform: none; }
+.partner-card:hover .partner-fill, .partner-card.is-on .partner-fill { transform: none; }
 .partner-card:hover .partner-name { color: #fff; }
 .partner-card:hover .partner-sub { color: rgba(255,255,255,.85); }
 .partner-card:hover .partner-dot { transform: scale(1.6); background: #fff !important; }
@@ -184,7 +184,7 @@ body {
 .quote-glow { animation: glowDrift 16s ease-in-out infinite; will-change: transform; }
 .quote-glow-2 { animation-duration: 20s; animation-direction: reverse; }
 .partner-plate { box-shadow: 0 1px 2px rgba(0,0,80,.06), 0 12px 28px -14px rgba(0,0,80,.28); transition: box-shadow .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1) !important; }
-.partner-card:hover .partner-plate { transform: translate3d(0,-4px,0); box-shadow: 0 2px 4px rgba(0,0,80,.08), 0 24px 48px -16px rgba(0,0,80,.5); }
+.partner-card:hover .partner-plate, .partner-card.is-on .partner-plate { transform: translate3d(0,-4px,0); box-shadow: 0 2px 4px rgba(0,0,80,.08), 0 24px 48px -16px rgba(0,0,80,.5); }
 
 /* Booking side panel */
 .booking-panel { animation: booking-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both; }
