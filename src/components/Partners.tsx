@@ -22,7 +22,7 @@ export default function Partners() {
       >
         <div>
           <p className="text-[20px] font-semibold text-[#F85707] mb-4">Partners & Affiliations</p>
-          <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-tight tracking-[-0.01em] max-w-[920px]">
+          <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] max-w-[920px]">
             Connected to the institutions<br className="hidden md:block" /> that set the standard.
           </h2>
         </div>

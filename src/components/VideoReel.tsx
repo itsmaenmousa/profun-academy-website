@@ -72,7 +72,7 @@ export default function VideoReel() {
       >
         <div>
           <p className="text-[20px] font-semibold text-[#F85707] mb-4">How We Deliver</p>
-          <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-white leading-[1.08] tracking-[-0.01em] max-w-[720px] mb-6">
+          <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-white leading-[1.1] tracking-[-0.01em] max-w-[720px] mb-6">
             Learning that fits your teams and operations.
           </h2>
           <p className="text-[18px] sm:text-[19px] text-white/65 font-light leading-relaxed max-w-[640px]">
@@ -170,7 +170,7 @@ export default function VideoReel() {
       <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div className="lg:col-span-6 xl:col-span-5">
           <p className="text-[20px] font-semibold text-[#8238EB] mb-4">Experiential Learning</p>
-          <h2 className="font-serif text-[clamp(34px,3.4vw,56px)] text-[#000050] leading-[1.08] tracking-[-0.01em] mb-6">
+          <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] mb-6">
             Practical experience.<br className="hidden sm:block" /> Lasting application.
           </h2>
           <p className="text-[18px] sm:text-[19px] text-[#6B6B65] font-light leading-relaxed max-w-[540px] mb-10">

@@ -124,7 +124,7 @@ export default function Leadership() {
         >
           <div className="lg:col-span-4">
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">Leadership</p>
-            <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-tight tracking-[-0.01em]">
+            <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em]">
               The people who lead our practice
             </h2>
           </div>

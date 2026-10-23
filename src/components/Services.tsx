@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
 
@@ -48,7 +48,7 @@ export default function Services() {
         >
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">What We Offer</p>
-            <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-tight max-w-[760px] tracking-[-0.01em]">
+            <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] max-w-[760px] tracking-[-0.01em]">
               From individual skills to operational readiness.
             </h2>
           </div>
@@ -85,16 +85,25 @@ function cellStyle([x, y]: [number, number], delay = 0): React.CSSProperties {
 }
 
 function Honeycomb({ inView }: { inView: boolean }) {
+  const combRef = useRef<HTMLDivElement>(null)
+  const [onScreen, setOnScreen] = useState(true)
+  useEffect(() => {
+    const el = combRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(([e]) => setOnScreen(e.isIntersecting))
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
   const [active, setActive] = useState(0)
   const [touched, setTouched] = useState(false)
   const s = services[active]
 
   // Gently cycle through the services until the visitor interacts
   useEffect(() => {
-    if (touched || !inView) return
+    if (touched || !inView || !onScreen) return
     const t = setTimeout(() => setActive(a => (a + 1) % services.length), 4200)
     return () => clearTimeout(t)
-  }, [active, touched, inView])
+  }, [active, touched, inView, onScreen])
 
   const pick = (i: number) => { setTouched(true); setActive(i) }
 
@@ -116,7 +125,8 @@ function Honeycomb({ inView }: { inView: boolean }) {
 
       {/* Honeycomb */}
       <div
-        className="honeycomb relative order-1 xl:order-2 mx-auto"
+        ref={combRef}
+        className={`honeycomb relative order-1 xl:order-2 mx-auto ${onScreen ? '' : 'is-paused'}`}
         onMouseMove={e => {
           const r = e.currentTarget.getBoundingClientRect()
           e.currentTarget.style.setProperty('--px', String(((e.clientX - r.left) / r.width - 0.5) * 2))

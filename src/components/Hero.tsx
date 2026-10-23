@@ -9,6 +9,8 @@ const LINES = [
 export default function Hero() {
   const [ready, setReady] = useState(false)
   const [fade, setFade] = useState(0)
+  // Lighter video and poster for phones and small tablets
+  const [small] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 900px)').matches)
 
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 200)
@@ -20,7 +22,7 @@ export default function Hero() {
     let raf = 0
     const onScroll = () => {
       cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(() => setFade(Math.min(1, window.scrollY / 160)))
+      raf = requestAnimationFrame(() => setFade(Math.round(Math.min(1, window.scrollY / 160) * 20) / 20))
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -38,9 +40,9 @@ export default function Hero() {
           loop
           playsInline
           preload="auto"
-          poster="./hero-academy-v2-poster.jpg"
+          poster={small ? './hero-academy-v2-poster-720.jpg' : './hero-academy-v2-poster.jpg'}
         >
-          <source src="./hero-academy-v2.mp4" type="video/mp4" />
+          <source src={small ? './hero-academy-v2-720.mp4' : './hero-academy-v2.mp4'} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1A]/70 via-[#1C1C1A]/30 to-[#1C1C1A]/40" />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 52%, rgba(28,28,26,0.55), transparent 70%)' }} aria-hidden="true" />

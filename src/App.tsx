@@ -1,23 +1,46 @@
-import { useEffect, type ReactNode } from 'react'
+import { useEffect, lazy, Suspense, type ReactNode } from 'react'
 import Lenis from 'lenis'
 import { setLenis, getLenis, resetScroll } from './lib/smooth'
 import { HashRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
-import Stats from './components/Stats'
-import Services from './components/Services'
-import VideoReel from './components/VideoReel'
 import Projects from './components/Projects'
-import About from './components/About'
 import Testimonial from './components/Testimonial'
 import Partners from './components/Partners'
-import Leadership from './components/Leadership'
-import News from './components/News'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
-import Courses from './components/Courses'
-import Press from './components/Press'
-import Academy from './pages/Academy'
+
+// Pages other than Home load on demand, then quietly prefetch once the browser is idle
+const loaders = {
+  Stats: () => import('./components/Stats'),
+  Services: () => import('./components/Services'),
+  VideoReel: () => import('./components/VideoReel'),
+  About: () => import('./components/About'),
+  Leadership: () => import('./components/Leadership'),
+  News: () => import('./components/News'),
+  Contact: () => import('./components/Contact'),
+  Courses: () => import('./components/Courses'),
+  Press: () => import('./components/Press'),
+  Academy: () => import('./pages/Academy'),
+}
+const Stats = lazy(loaders.Stats)
+const Services = lazy(loaders.Services)
+const VideoReel = lazy(loaders.VideoReel)
+const About = lazy(loaders.About)
+const Leadership = lazy(loaders.Leadership)
+const News = lazy(loaders.News)
+const Contact = lazy(loaders.Contact)
+const Courses = lazy(loaders.Courses)
+const Press = lazy(loaders.Press)
+const Academy = lazy(loaders.Academy)
+
+function usePrefetchPages() {
+  useEffect(() => {
+    const run = () => Object.values(loaders).forEach(load => { load().catch(() => {}) })
+    const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }
+    const t = window.setTimeout(() => (w.requestIdleCallback ? w.requestIdleCallback(run, { timeout: 4000 }) : run()), 2500)
+    return () => window.clearTimeout(t)
+  }, [])
+}
 
 // "#section" links: scroll if that section is on the current page, otherwise open its page.
 const SECTION_ALIASES: Record<string, string[]> = {
@@ -80,7 +103,7 @@ function Layout({ children, inner = true }: { children: ReactNode; inner?: boole
     <div className="min-h-screen bg-[#F9F8F6]">
       <Nav />
       <main id="main-content" className={inner ? 'pt-[72px] lg:pt-20 page-enter' : 'page-enter'}>
-        {children}
+        <Suspense fallback={<div className="min-h-[100svh]" />}>{children}</Suspense>
       </main>
       <Footer />
     </div>
@@ -100,6 +123,7 @@ function Home() {
 
 export default function App() {
   useSmoothScroll()
+  usePrefetchPages()
   return (
     <HashRouter>
       <LinkRouter />
@@ -113,7 +137,7 @@ export default function App() {
         <Route path="/projects" element={<Layout><Projects /></Layout>} />
         <Route path="/team" element={<Layout><Leadership /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
-        <Route path="/academy" element={<Academy />} />
+        <Route path="/academy" element={<Suspense fallback={<div className="min-h-[100svh] bg-[#F9F8F6]" />}><Academy /></Suspense>} />
         <Route path="/news" element={<Layout><Press /></Layout>} />
         <Route path="/courses" element={<Layout><Courses /></Layout>} />
         <Route path="*" element={<Home />} />

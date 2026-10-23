@@ -8,63 +8,63 @@ const projects = [
     about: "A resort waterpark at Grand Hyatt Dubai, with slides, pools and water play for the whole family.",
     category: 'Waterparks',
     location: 'Dubai, UAE',
-    image: './grand-hyatt-waterpark.jpg',
+    image: './grand-hyatt-waterpark-card.jpg',
   },
   {
     title: 'Qiddiya City',
     about: "Saudi Arabia's future capital of entertainment, sports and culture, rising just outside Riyadh.",
     category: 'Leisure Destination',
     location: 'Riyadh, Saudi Arabia',
-    image: './qiddiya-entertainment-city.jpg',
+    image: './qiddiya-entertainment-city-card.jpg',
   },
   {
     title: 'Ferrari World Abu Dhabi',
     about: "The world's first Ferrari-branded theme park, home to Formula Rossa, one of the fastest coasters.",
     category: 'Theme Park',
     location: 'Abu Dhabi, UAE',
-    image: './ferrari-world-abu-dhabi.jpg',
+    image: './ferrari-world-abu-dhabi-card.jpg',
   },
   {
     title: 'Doha Quest',
     about: "An indoor theme park at Doha Oasis, home to record-breaking rides and immersive themed zones.",
     category: 'Indoor Theme Park',
     location: 'Doha, Qatar',
-    image: './doha-quest.jpg',
+    image: './doha-quest-card.jpg',
   },
   {
     title: 'Merdeka 118',
     about: "Malaysia's tallest tower, home to The View at 118, one of the highest observation decks on Earth.",
     category: 'Mixed-Use Destination',
     location: 'Kuala Lumpur, Malaysia',
-    image: './merdeka-118.jpg',
+    image: './merdeka-118-card.jpg',
   },
   {
     title: 'Expo 2020',
     about: "The first World Expo in the Middle East, welcoming millions of visitors to Dubai over six months.",
     category: 'Expos',
     location: 'Dubai, UAE',
-    image: './expo-2020-dubai.jpg',
+    image: './expo-2020-dubai-card.jpg',
   },
   {
     title: 'Makkah Clock Royal Tower',
     about: "A landmark hotel tower beside the Grand Mosque in Makkah, crowned by its iconic clock and museum.",
     category: 'Hospitality Destination',
     location: 'Makkah, Kingdom of Saudi Arabia',
-    image: './makkah-clock-royal-tower.jpg',
+    image: './makkah-clock-royal-tower-card.jpg',
   },
   {
     title: 'Natural History Museum',
     about: "The largest natural and historical museum in the western US, with over 35 million specimens.",
     category: 'Cultural Destination',
     location: 'Los Angeles, USA',
-    image: './natural-history-museum-los-angeles.jpg',
+    image: './natural-history-museum-los-angeles-card.jpg',
   },
   {
     title: 'Dubai Parks & Resorts',
     about: "The region's largest integrated leisure destination, with theme parks, a waterpark and a resort.",
     category: 'Leisure Destination',
     location: 'Dubai, UAE',
-    image: './dubai-parks-resorts.jpg',
+    image: './dubai-parks-resorts-card.jpg',
   },
 ]
 
@@ -155,18 +155,18 @@ export default function Projects() {
       aria-labelledby="projects-heading"
       className="overflow-hidden bg-[#1C1C1C] py-16 sm:py-20 lg:py-24"
     >
-      <div className="mx-auto max-w-[1440px] px-6 md:px-14">
+      <div className="mx-auto max-w-[1920px] px-6 sm:px-12">
         <div
           className={`transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
             inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          <p className="mb-5 text-[20px] font-semibold text-[#F85707]">Selected Work</p>
+          <p className="mb-4 text-[20px] font-semibold text-[#F85707]">Selected Work</p>
 
           <div className="flex items-end justify-between gap-8">
             <h2
               id="projects-heading"
-              className="max-w-[900px] font-serif text-balance text-[clamp(38px,4vw,60px)] leading-[1.04] tracking-[-0.01em] text-white"
+              className="max-w-[900px] font-serif text-balance text-[clamp(38px,4vw,60px)] leading-[1.1] tracking-[-0.01em] text-white"
             >
               Projects that define categories
             </h2>
@@ -191,7 +191,7 @@ export default function Projects() {
         tabIndex={0}
         onMouseDown={startDragging}
         onScroll={updateProgress}
-        className={`mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pl-6 pr-6 md:mt-14 md:pl-14 md:pr-14 min-[1440px]:pl-[calc((100vw-1440px)/2+56px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+        className={`mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pl-6 pr-6 sm:pl-12 sm:pr-12 min-[1920px]:pl-[calc((100vw-1920px)/2+48px)] scroll-pl-6 sm:scroll-pl-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
           isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
         }`}
       >
@@ -215,7 +215,7 @@ export default function Projects() {
             <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/45 to-transparent" />
 
             {/* Category, pinned top-left on every card */}
-            <p className="absolute left-6 top-6 text-[14px] font-medium text-white bg-black/30 backdrop-blur-sm px-3 py-1.5 leading-none">
+            <p className="absolute left-6 top-6 text-[14px] font-medium text-white bg-black/45 px-3 py-1.5 leading-none">
               {project.category}
             </p>
 
@@ -230,7 +230,7 @@ export default function Projects() {
               }}
               aria-expanded={openCard === index}
               aria-label={`About ${project.title}`}
-              className="proj-info absolute right-5 top-5 z-10 w-9 h-9 rounded-full border border-white/40 bg-black/25 backdrop-blur-sm text-white flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-[#000050] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
+              className="proj-info absolute right-5 top-5 z-10 w-9 h-9 rounded-full border border-white/40 bg-black/40 text-white flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-[#000050] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1.5v11M1.5 7h11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
             </button>

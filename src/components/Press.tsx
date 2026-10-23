@@ -188,7 +188,7 @@ export default function Press() {
         >
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">Press Releases</p>
-            <h1 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-tight tracking-[-0.01em]">
+            <h1 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em]">
               News from the Academy.
             </h1>
           </div>

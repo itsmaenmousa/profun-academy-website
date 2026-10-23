@@ -138,7 +138,7 @@ body {
 
 
 /* ── Showcase polish: smooth, GPU-friendly motion ─────────── */
-.reveal, .hero-line-inner, .img-reveal { will-change: transform, opacity; backface-visibility: hidden; }
+.hero-line-inner, .img-reveal { will-change: transform, opacity; backface-visibility: hidden; }
 .reveal { transform: translate3d(0, 32px, 0); }
 .reveal.visible { transform: translate3d(0, 0, 0); }
 .ken-burns { animation: kenBurns 20s ease-out forwards; will-change: transform; }
@@ -152,8 +152,8 @@ body {
 .reel-copy > *:nth-child(2) { animation-delay: 0.08s; }
 .reel-copy > *:nth-child(3) { animation-delay: 0.16s; }
 .reel-copy > *:nth-child(4) { animation-delay: 0.24s; }
-@keyframes reelProgress { from { width: 0; } to { width: 100%; } }
-.reel-progress { animation: reelProgress linear forwards; }
+@keyframes reelProgress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.reel-progress { width: 100%; transform-origin: left; animation: reelProgress linear forwards; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
@@ -309,3 +309,6 @@ body {
   .team-card { cursor: default; }
   .team-card:hover .team-bio { max-height: 14rem; opacity: 1; }
 }
+
+/* Pause decorative loops while they are off screen */
+.honeycomb.is-paused .hc-float, .honeycomb.is-paused .hc-flare { animation-play-state: paused; }

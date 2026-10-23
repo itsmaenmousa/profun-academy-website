@@ -16,6 +16,8 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
+      // SINGLE_FILE=1 builds one bundle (used for the offline standalone copy)
+      ...(process.env.SINGLE_FILE ? { outDir: 'dist-single', rollupOptions: { output: { inlineDynamicImports: true } } } : {}),
     },
     plugins: [
 react(),
