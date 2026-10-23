@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const LINES = [
   'Training the people',
@@ -9,6 +9,28 @@ const LINES = [
 export default function Hero() {
   const [ready, setReady] = useState(false)
   const [fade, setFade] = useState(0)
+  // Only show the scroll cue when there is clear room under the buttons
+  const ctaRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  const cueRef = useRef<HTMLAnchorElement>(null)
+  const [cueRoom, setCueRoom] = useState(false)
+  useEffect(() => {
+    const check = () => {
+      const cta = ctaRef.current?.getBoundingClientRect()
+      const cue = cueRef.current?.getBoundingClientRect()
+      if (!cta || !cue) return
+      setCueRoom(cue.top - cta.bottom >= 56)
+    }
+    check()
+    // Re-check once the buttons have finished sliding in
+    const t = setTimeout(check, 2600)
+    const t2 = setTimeout(check, 4000)
+    document.fonts?.ready.then(check).catch(() => {})
+    const ro = new ResizeObserver(check)
+    if (ctaRef.current?.parentElement) ro.observe(ctaRef.current.parentElement)
+    window.addEventListener('resize', check)
+    return () => { clearTimeout(t); clearTimeout(t2); ro.disconnect(); window.removeEventListener('resize', check) }
+  }, [])
   // Lighter video and poster for phones and small tablets
   const [small] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 900px)').matches)
 
@@ -30,7 +52,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative w-full h-[100svh] min-h-[640px] flex items-center overflow-hidden bg-[#1C1C1A]">
+    <section ref={sectionRef} className="relative w-full h-[100svh] min-h-[640px] flex items-center overflow-hidden bg-[#1C1C1A]">
       {/* Video background with fallback image */}
       <div className="absolute inset-0">
         <video
@@ -95,6 +117,7 @@ export default function Hero() {
           </p>
 
           <div
+            ref={ctaRef}
             className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-3 sm:gap-4 w-full sm:w-auto transition-all duration-700"
             style={{
               opacity: ready ? 1 : 0,
@@ -125,14 +148,15 @@ export default function Hero() {
 
       {/* Scroll cue, pinned to the bottom of the screen */}
       <a
+        ref={cueRef}
         href="#projects"
         onClick={e => { e.preventDefault(); window.scrollBy({ top: window.innerHeight * 0.9, behavior: 'smooth' }) }}
         aria-label="Scroll down"
-        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 [@media(max-height:700px)]:hidden flex flex-col items-center gap-2 text-white/60 hover:text-white transition-all duration-700"
-        style={{ opacity: ready ? 1 - fade : 0, transitionDelay: ready && fade === 0 ? '1.4s' : '0s' }}
+        className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/60 hover:text-white transition-all duration-700 ${cueRoom ? '' : 'invisible'}`}
+        style={{ opacity: ready && cueRoom ? 1 - fade : 0, transitionDelay: ready && fade === 0 ? '1.4s' : '0s' }}
       >
-        <span className="text-[12px] tracking-[0.2em] font-medium">SCROLL</span>
-        <span className="w-px h-10 sm:h-12 bg-white/20 relative overflow-hidden">
+        <span className="hidden sm:block text-[12px] tracking-[0.2em] font-medium">SCROLL</span>
+        <span className="w-px h-9 sm:h-12 bg-white/20 relative overflow-hidden">
           <span className="absolute top-0 left-0 w-full bg-white/80" style={{ height: '40%', animation: 'scrollLine 2.2s ease-in-out infinite' }} />
         </span>
       </a>
