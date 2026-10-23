@@ -127,7 +127,7 @@ export default function Footer() {
           <p className="text-[15px] text-white/35 font-light">
             © {new Date().getFullYear()} ProFun. All rights reserved. The ProFun Academy is a division of ProFun.
           </p>
-          <div className="flex items-center gap-6 shrink-0 whitespace-nowrap">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 md:shrink-0 md:whitespace-nowrap">
           <Link
             to="/courses"
             className="text-[15px] text-white/35 hover:text-[#FFCA03] transition-colors duration-200"
