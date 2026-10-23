@@ -312,3 +312,11 @@ body {
 
 /* Pause decorative loops while they are off screen */
 .honeycomb.is-paused .hc-float, .honeycomb.is-paused .hc-flare { animation-play-state: paused; }
+
+/* Keep the designed light theme when the phone is in dark mode.
+   Some browsers (e.g. Samsung Internet) force their own dark colors
+   unless the site declares how it handles dark mode itself. */
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: light only; }
+  html, body { background-color: #F9F8F6; color: #1C1C1A; }
+}
