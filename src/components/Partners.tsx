@@ -33,16 +33,16 @@ export default function Partners() {
 
       {/* Logo grid */}
       <div className="max-w-[1920px] mx-auto px-6 sm:px-12">
-        <ul className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
+        <ul className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {partners.map((p, i) => (
             <li
               key={p.name}
-              className={`partner-card group relative bg-[#F9F8F6] p-6 sm:p-10 flex items-center justify-center min-h-[200px] sm:min-h-[260px] overflow-hidden reveal reveal-delay-${(i % 3) + 1} ${inView ? 'visible' : ''}`}
+              className={`partner-card group relative bg-[#F9F8F6] p-1 sm:p-5 lg:p-10 flex items-center justify-center min-h-[140px] sm:min-h-[220px] lg:min-h-[260px] overflow-hidden reveal reveal-delay-${(i % 3) + 1} ${inView ? 'visible' : ''}`}
               style={{ ['--brand' as string]: p.color }}
             >
               <span className="partner-fill" aria-hidden="true" />
-              <div className="partner-plate relative w-full max-w-[340px] h-28 sm:h-32 bg-white flex items-center justify-center px-6 sm:px-8 transition-shadow duration-500">
-                <img src={p.logo} alt={p.name} title={p.name} loading="lazy" decoding="async" className={`${p.big ? 'max-h-[76px] sm:max-h-[92px]' : 'max-h-14 sm:max-h-16'} max-w-full w-auto object-contain`} />
+              <div className="partner-plate relative w-full lg:max-w-[340px] h-32 sm:h-40 lg:h-32 bg-white flex items-center justify-center px-3 sm:px-8 transition-shadow duration-500">
+                <img src={p.logo} alt={p.name} title={p.name} loading="lazy" decoding="async" className={`${p.big ? 'max-h-[100px] sm:max-h-[112px] lg:max-h-[92px]' : 'max-h-[72px] sm:max-h-[84px] lg:max-h-16'} max-w-full w-auto object-contain`} />
               </div>
             </li>
           ))}

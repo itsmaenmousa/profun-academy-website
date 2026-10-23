@@ -19,11 +19,11 @@ export default function Contact() {
             <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] mb-8 tracking-[-0.01em]">
               Build capability<br className="hidden sm:block" /> that lasts.
             </h2>
-            <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-12">
+            <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light lg:mb-12">
               Whether you need a single program or a full learning strategy, tell us about your team and we will shape the right approach with you.
             </p>
 
-            <div className="border-t border-[#E2E0DB] divide-y divide-[#E2E0DB]">
+            <div className="hidden lg:block border-t border-[#E2E0DB] divide-y divide-[#E2E0DB]">
               <div className="py-5">
                 <p className="text-[15px] font-medium text-[#000050] mb-1.5">Location</p>
                 <p className="text-[18px] text-[#1C1C1A] font-light leading-relaxed">
@@ -146,6 +146,22 @@ export default function Contact() {
               </form>
             )}
           </div>
+
+          {/* Location and email: below the form on phones and tablets */}
+            <div className="lg:hidden border-t border-[#E2E0DB] divide-y divide-[#E2E0DB]">
+              <div className="py-5">
+                <p className="text-[15px] font-medium text-[#000050] mb-1.5">Location</p>
+                <p className="text-[18px] text-[#1C1C1A] font-light leading-relaxed">
+                  Riyadh, Kingdom of Saudi Arabia
+                </p>
+              </div>
+              <div className="py-5">
+                <p className="text-[15px] font-medium text-[#000050] mb-1.5">Get in touch</p>
+                <a href="mailto:info@theprofunacademy.com" className="text-[18px] text-[#F85707] hover:text-[#D94A05] transition-colors">
+                  info@theprofunacademy.com
+                </a>
+              </div>
+            </div>
         </div>
       </div>
     </section>
