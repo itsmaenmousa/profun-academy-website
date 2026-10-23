@@ -150,8 +150,8 @@ const RELEASES: Release[] = [
       'Congratulations to the 56 graduates who successfully completed the Visitor Attractions Operator Course delivered by The ProFun Academy for SEVEN in Madinah.',
       'Every graduate represents another step toward building the skilled workforce that powers exceptional visitor experiences across Saudi Arabia. We wish all graduates continued success in their careers.',
     ],
-    image: './news-graduates.jpg',
-    pos: '50% 30%',
+    image: './news-graduates-v2.jpg',
+    pos: '50% 40%',
   },
   {
     id: 'spoc',
