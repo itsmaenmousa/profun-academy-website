@@ -71,20 +71,20 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1920px] mx-auto px-6 sm:px-12 pt-20 w-full">
+      <div className="relative z-10 max-w-[1920px] mx-auto px-6 sm:px-12 pt-[72px] pb-[clamp(0px,calc(100svh_-_660px),16svh)] lg:landscape:pt-20 lg:landscape:pb-0 w-full">
         <div className="flex justify-center">
-        <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           {/* Mobile: logo above the headline */}
           <div
-            className="sm:hidden mb-7 transition-opacity duration-700"
+            className="lg:hidden mb-7 sm:mb-9 transition-opacity duration-700"
             style={{ opacity: ready ? 1 - fade : 0, transitionDelay: ready && fade === 0 ? '0.35s' : '0s' }}
           >
-            <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-14 w-auto mx-auto" />
+            <img src="./academy-logo-white.svg" alt="The ProFun Academy" className="h-14 sm:h-[72px] w-auto mx-auto" />
           </div>
 
           {/* Headline + logo lockup: the logo matches the three lines in height */}
-          <div className="inline-flex items-stretch gap-8 lg:gap-12 mb-7 sm:mb-9">
-            <h1 className="font-serif text-[clamp(30px,4.2vw,62px)] leading-[1.06] text-white tracking-[-0.01em] text-center sm:text-left">
+          <div className="inline-flex items-stretch gap-8 lg:gap-12 mb-7 sm:mb-8 lg:mb-9">
+            <h1 className="font-serif text-[clamp(30px,5.6vw,52px)] lg:text-[clamp(30px,4.2vw,62px)] leading-[1.06] text-white tracking-[-0.01em] text-center lg:text-left">
               {LINES.map((line, i) => (
                 <span key={i} className="hero-line block whitespace-nowrap">
                   <span
@@ -97,7 +97,7 @@ export default function Hero() {
               ))}
             </h1>
             <div
-              className="hidden sm:flex items-stretch gap-8 lg:gap-12 flex-shrink-0 transition-opacity duration-700"
+              className="hidden lg:flex items-stretch gap-8 lg:gap-12 flex-shrink-0 transition-opacity duration-700"
               style={{ opacity: ready ? 1 - fade : 0, transitionDelay: ready && fade === 0 ? '0.7s' : '0s' }}
             >
               <span className="block w-px flex-none self-stretch bg-white/35" aria-hidden="true" />
@@ -106,7 +106,7 @@ export default function Hero() {
           </div>
 
           <p
-            className="text-[17px] sm:text-[clamp(17px,1.5vw,21px)] leading-relaxed text-white/85 mb-9 sm:mb-10 max-w-[340px] sm:max-w-[560px] lg:max-w-none lg:whitespace-nowrap font-light transition-all duration-700 mx-auto sm:mx-0"
+            className="text-[17px] sm:text-[clamp(17px,1.5vw,21px)] leading-relaxed text-white/85 mb-9 sm:mb-10 max-w-[340px] sm:max-w-[520px] lg:max-w-none lg:whitespace-nowrap font-light transition-all duration-700 mx-auto lg:mx-0 text-balance"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(16px)',
@@ -118,7 +118,7 @@ export default function Hero() {
 
           <div
             ref={ctaRef}
-            className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-3 sm:gap-4 w-full sm:w-auto transition-all duration-700"
+            className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 sm:gap-4 w-full sm:w-auto transition-all duration-700"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(16px)',
