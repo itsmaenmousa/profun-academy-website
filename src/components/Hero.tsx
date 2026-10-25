@@ -56,7 +56,7 @@ export default function Hero() {
       {/* Video background with fallback image */}
       <div className="absolute inset-0">
         <video
-          className={`w-full h-full object-cover ken-burns ${ready ? 'opacity-[0.66]' : 'opacity-0'} transition-opacity duration-1000`}
+          className={`w-full h-full object-cover ken-burns ${ready ? 'opacity-[0.71]' : 'opacity-0'} transition-opacity duration-1000`}
           autoPlay
           muted
           loop
@@ -66,8 +66,8 @@ export default function Hero() {
         >
           <source src={small ? './hero-academy-v2-720.mp4' : './hero-academy-v2.mp4'} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1A]/60 via-[#1C1C1A]/25 to-[#1C1C1A]/34" />
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 52%, rgba(28,28,26,0.47), transparent 70%)' }} aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1A]/51 via-[#1C1C1A]/21 to-[#1C1C1A]/29" />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 52%, rgba(28,28,26,0.40), transparent 70%)' }} aria-hidden="true" />
       </div>
 
       {/* Content */}
