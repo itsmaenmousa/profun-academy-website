@@ -195,8 +195,14 @@ function Honeycomb({ inView }: { inView: boolean }) {
         }}
       >
         {GHOSTS.map((g, i) => (
-          <span key={i} className={`hc-cell hc-ghost ${inView ? 'is-in' : ''}`} style={{ ...cellStyle(g, 300 + i * 60), ['--depth' as string]: 1.8, ['--float-delay' as string]: `${-i * 0.9}s`, ['--tint' as string]: s.color }} aria-hidden="true">
-            <span className="hc-par"><span className="hc-float"><span className="hc-face" /></span></span>
+          <span key={i} className={`hc-cell hc-ghost ${inView ? 'is-in' : ''}`} style={{ ...cellStyle(g, 300 + i * 60), ['--depth' as string]: 1.8, ['--float-delay' as string]: `${-i * 0.9}s`, ['--tint' as string]: s.color }}>
+            <span className="hc-par"><span className="hc-float"><span className="hc-face">
+              <span className="relative flex flex-col items-center justify-center h-full px-[16%] text-center">
+                <span className="w-5 sm:w-6 h-1 rounded-full mb-2 sm:mb-3 bg-[#F85707]" aria-hidden="true" />
+                <span className="hidden sm:block font-serif italic text-[#000050] text-[16px] lg:text-[clamp(15px,1.25vw,19px)] leading-tight lg:leading-snug">Tailored to your people and operations.</span>
+                <span className="sm:hidden font-serif italic text-[#000050] text-[13px] leading-tight">Tailored to you.</span>
+              </span>
+            </span></span></span>
           </span>
         ))}
 
