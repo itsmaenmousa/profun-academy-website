@@ -61,43 +61,61 @@ export default function VideoReel() {
 
   return (
     <>
-    {/* Experiential Learning: its own light section, above How We Deliver */}
+    {/* How We Deliver intro + Experiential Learning (light) */}
     <section id="experiential" className="relative bg-[#F9F8F6] py-16 sm:py-20 lg:py-24 px-6 sm:px-12 overflow-hidden">
-      <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <div className="lg:col-span-6 xl:col-span-5">
-          <p className="text-[20px] font-semibold text-[#8238EB] mb-4">Experiential Learning</p>
-          <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] mb-6">
-            Practical experience.<br className="hidden sm:block" /> Lasting application.
-          </h2>
-          <p className="text-[18px] sm:text-[19px] text-[#6B6B65] font-light leading-relaxed max-w-[540px] mb-10">
-            Learning through realistic scenarios, simulations, and workplace practice helps your teams connect knowledge to their roles and apply skills with confidence.
+      <div className="max-w-[1920px] mx-auto">
+        {/* How We Deliver */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12">
+          <div>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">How We Deliver</p>
+            <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] max-w-[760px]">
+              Learning that fits your teams and operations.
+            </h2>
+          </div>
+          <p className="max-w-[520px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
+            We shape learning around your workforce, operational priorities, and learning goals, combining experienced facilitators, practical activities, and content tailored to your cultural context.
           </p>
-          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {[
-              ['Realistic scenarios', '#8238EB'],
-              ['Simulations', '#FC026F'],
-              ['Workplace practice', '#00AFDC'],
-            ].map(([t, col]) => (
-              <li key={t} className="exp-chip bg-white px-5 py-4 text-[16px] font-medium text-[#000050]" style={{ ['--brand' as string]: col }}>
-                <span className="block w-6 h-1 mb-3" style={{ background: col }} aria-hidden="true" />
-                {t}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 text-[15px] text-[#6B6B65]">Built into every delivery format.</p>
         </div>
 
-        <div className="lg:col-span-6 xl:col-span-7 relative">
-          <div className="absolute -top-5 -right-5 sm:-top-8 sm:-right-8 w-2/3 h-2/3 bg-[#8238EB]" aria-hidden="true" />
-          <div className="relative aspect-[16/11] overflow-hidden shadow-[0_30px_60px_-30px_rgba(0,0,80,0.45)]">
-            <img
-              src="./academy-experiential.jpg"
-              alt="Participants in a hands-on experiential learning session"
-              loading="lazy"
-              decoding="async"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-              style={{ objectPosition: '50% 40%' }}
-            />
+        {/* Experiential Learning */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-6 xl:col-span-5">
+            <p className="text-[20px] font-semibold text-[#8238EB] mb-4">Experiential Learning</p>
+            <h3 className="font-serif text-balance text-[clamp(30px,3vw,46px)] text-[#000050] leading-[1.1] tracking-[-0.01em] mb-6">
+              Practical experience.<br className="hidden sm:block" /> Lasting application.
+            </h3>
+            <p className="text-[18px] sm:text-[19px] text-[#6B6B65] font-light leading-relaxed max-w-[560px] mb-8">
+              Through realistic scenarios, simulations, and workplace practice, your teams connect knowledge to their roles and build the confidence to apply it.
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3">
+              {[
+                ['Realistic scenarios', 'Explore situations your teams encounter on the job.', '#8238EB'],
+                ['Simulations', 'Practice decisions and responses in a supported environment.', '#FC026F'],
+                ['Workplace practice', 'Apply skills within day-to-day operations.', '#00AFDC'],
+              ].map(([t, d, col]) => (
+                <li key={t} className="exp-chip bg-white px-5 py-4 lg:flex lg:items-start lg:gap-5" style={{ ['--brand' as string]: col }}>
+                  <span className="block w-6 h-1 mb-3 lg:mt-3 lg:mb-0 flex-shrink-0" style={{ background: col }} aria-hidden="true" />
+                  <span className="block">
+                    <span className="block text-[16px] font-medium text-[#000050]">{t}</span>
+                    <span className="block mt-1 text-[15px] text-[#6B6B65] font-light leading-snug">{d}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-6 xl:col-span-7 relative">
+            <div className="absolute -top-5 -right-5 sm:-top-8 sm:-right-8 w-2/3 h-2/3 bg-[#8238EB]" aria-hidden="true" />
+            <div className="relative aspect-[16/11] overflow-hidden shadow-[0_30px_60px_-30px_rgba(0,0,80,0.45)]">
+              <img
+                src="./academy-experiential.jpg"
+                alt="Participants in a hands-on experiential learning session"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                style={{ objectPosition: '50% 40%' }}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -110,15 +128,15 @@ export default function VideoReel() {
     >
       {/* Top label */}
       <div
-        className={`max-w-[1920px] mx-auto px-6 sm:px-12 pt-16 sm:pt-20 lg:pt-14 pb-10 sm:pb-12 lg:pb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8 reveal ${inView ? 'visible' : ''}`}
+        className={`max-w-[1920px] mx-auto px-6 sm:px-12 pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-12 lg:pb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-8 reveal ${inView ? 'visible' : ''}`}
       >
         <div>
-          <p className="text-[20px] font-semibold text-[#F85707] mb-4">How We Deliver</p>
+          <p className="text-[20px] font-semibold text-[#F85707] mb-4">Delivery Formats</p>
           <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-white leading-[1.1] tracking-[-0.01em] max-w-[720px] mb-6">
-            Learning that fits your teams and operations.
+            The right format for your team.
           </h2>
           <p className="text-[18px] sm:text-[19px] text-white/65 font-light leading-relaxed max-w-[640px]">
-            We combine delivery formats to suit your workforce, operational priorities, and learning goals; with experienced facilitators, practical activities, and content tailored to your cultural context.
+            We bring this practical approach into in-person, virtual, eLearning, and blended programs, choosing the right mix for your people and operations.
           </p>
         </div>
         {/* Channel tabs */}
