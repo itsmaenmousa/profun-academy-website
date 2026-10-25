@@ -31,9 +31,9 @@ const cols: { title: string; links: [string, string][] }[] = [
   {
     title: 'Services',
     links: [
-      ['Learning Strategy', '/services?go=strategy'], ['Workforce Capability', '/services?go=workforce'],
-      ['Program Design', '/services?go=design'], ['Training Delivery', '/services?go=delivery'],
-      ['Operational Readiness', '/services?go=readiness'],
+      ['Strategy', '/services?go=strategy'], ['Workforce', '/services?go=workforce'],
+      ['Content Design', '/services?go=design'], ['Facilitation', '/services?go=delivery'],
+      ['Readiness', '/services?go=readiness'],
     ],
   },
   {
