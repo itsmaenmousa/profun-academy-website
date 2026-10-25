@@ -44,7 +44,7 @@ export default function Services() {
         {/* Header */}
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
-          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12 reveal ${inView ? 'visible' : ''}`}
+          className={`mb-8 sm:mb-10 lg:mb-12 border-b border-[#E2E0DB] pb-8 sm:pb-10 reveal ${inView ? 'visible' : ''}`}
         >
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">What We Offer</p>
@@ -52,9 +52,6 @@ export default function Services() {
               From individual skills to operational readiness.
             </h2>
           </div>
-          <p className="max-w-[460px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
-            From tailored training to comprehensive learning strategies, we help organizations build workforce capability at every stage, from pre-opening to ongoing operations.
-          </p>
         </div>
 
         {/* Honeycomb around the Academy flare (all screen sizes) */}
@@ -97,18 +94,24 @@ function Honeycomb({ inView }: { inView: boolean }) {
   }, [])
   const [active, setActive] = useState(0)
   const [touched, setTouched] = useState(false)
-  // Collapsed: only the Academy flare shows. Hover (or tap) it to open the services
+  // Collapsed on the Academy flare; opens as it scrolls into the middle of the screen
+  // and folds back once the visitor scrolls past it
   const [open, setOpen] = useState(false)
-  const [canHover] = useState(() => typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches)
   const s = services[active]
 
-  // Tap anywhere outside the honeycomb to close it again (touch screens)
   useEffect(() => {
-    if (!open || canHover) return
-    const close = (e: PointerEvent) => { if (!combRef.current?.contains(e.target as Node)) setOpen(false) }
-    document.addEventListener('pointerdown', close)
-    return () => document.removeEventListener('pointerdown', close)
-  }, [open, canHover])
+    const el = combRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        setOpen(e.isIntersecting)
+        if (!e.isIntersecting) { setTouched(false); setActive(0) }
+      },
+      { rootMargin: '-30% 0px -30% 0px' }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
 
   // Gently cycle through the services while open, until the visitor picks one
   useEffect(() => {
@@ -120,7 +123,7 @@ function Honeycomb({ inView }: { inView: boolean }) {
   const pick = (i: number) => { setTouched(true); setActive(i) }
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_auto] items-center gap-8 sm:gap-12 xl:gap-16">
+    <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_auto] items-center gap-6 sm:gap-10 xl:gap-16">
       {/* Active service */}
       <div className="max-w-[640px] xl:max-w-[460px] order-2 xl:order-1 mx-auto xl:mx-0 text-center xl:text-left" aria-live="polite">
         {open ? (
@@ -132,8 +135,7 @@ function Honeycomb({ inView }: { inView: boolean }) {
         ) : (
           <div key="intro" className="hc-copy">
             <span className="block w-12 h-1 mb-8 mx-auto xl:mx-0 bg-[#F85707]" aria-hidden="true" />
-            <h3 className="font-serif text-[clamp(30px,2.6vw,44px)] text-[#000050] leading-[1.1] tracking-[-0.01em] mb-6">Five services, one integrated approach.</h3>
-            <p className="text-[19px] text-[#4A4A45] leading-relaxed font-light">{canHover ? 'Hover over the Academy symbol to explore each service.' : 'Tap the Academy symbol to explore each service.'}</p>
+            <p className="font-serif text-[clamp(22px,1.9vw,30px)] text-[#000050] leading-[1.3] tracking-[-0.01em]">From tailored training to comprehensive learning strategies, we help organizations build workforce capability at every stage, from pre-opening to ongoing operations.</p>
           </div>
         )}
         <div className={`flex items-center justify-center xl:justify-start gap-2 mt-10 transition-opacity duration-500 ${open ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true">
@@ -154,7 +156,6 @@ function Honeycomb({ inView }: { inView: boolean }) {
         }}
         onMouseLeave={e => {
           setTouched(false)
-          if (canHover) setOpen(false)
           e.currentTarget.style.setProperty('--px', '0')
           e.currentTarget.style.setProperty('--py', '0')
         }}
@@ -166,23 +167,17 @@ function Honeycomb({ inView }: { inView: boolean }) {
         ))}
 
         {/* Center flare: hover or tap to open the services */}
-        <button
-          type="button"
-          onMouseEnter={() => { if (canHover) setOpen(true) }}
-          onFocus={() => setOpen(true)}
-          onClick={() => { if (!canHover) setOpen(o => !o) }}
-          aria-expanded={open}
-          aria-label={open ? 'Hide services' : 'Show services'}
+        <span
+          aria-hidden="true"
           className={`hc-cell hc-center ${inView ? 'is-in' : ''}`}
           style={{ ...cellStyle([0, 0]), ['--glow' as string]: open ? s.color : '#F85707', ['--depth' as string]: 0.35, ['--float-delay' as string]: '-1.2s' }}
         >
           <span className="hc-par"><span className="hc-float">
-            <span className="hc-face flex flex-col items-center justify-center">
+            <span className="hc-face flex items-center justify-center">
               <img key={open ? active : 'idle'} src="./academy-symbol.svg" alt="" className="hc-flare w-[46%] h-auto" />
-              <span className="hc-hint mt-2 text-[10px] sm:text-[11px] font-semibold tracking-[0.14em] uppercase text-[#000050]/70">{canHover ? 'Hover here' : 'Tap here'}</span>
             </span>
           </span></span>
-        </button>
+        </span>
 
         {services.map((x, i) => {
           const on = i === active
@@ -191,10 +186,9 @@ function Honeycomb({ inView }: { inView: boolean }) {
               key={x.title}
               type="button"
               onMouseEnter={() => pick(i)}
-              onFocus={() => { setOpen(true); pick(i) }}
+              onFocus={() => pick(i)}
               onClick={() => pick(i)}
               aria-pressed={on}
-              tabIndex={open ? 0 : -1}
               className={`hc-cell hc-service ${on ? 'is-active' : ''} ${inView ? 'is-in' : ''}`}
               style={{ ...cellStyle(RING[i], 120 + i * 90), ['--brand' as string]: x.color, ['--depth' as string]: 1, ['--float-delay' as string]: `${-i * 1.3}s` }}
             >

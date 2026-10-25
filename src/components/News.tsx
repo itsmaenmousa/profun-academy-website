@@ -7,7 +7,7 @@ type Program = { category: string; date: string; title: string; desc: string; im
 
 const TAILORED: Program[] = [
   {
-    category: 'Training Programs',
+    category: 'Tailored Training Programs',
     date: '13 program areas',
     title: 'Thirteen program areas. Hundreds of programs.',
     desc: 'Tailored training across every part of an attraction, shaped around your people, culture and operations.',
@@ -21,7 +21,7 @@ const TAILORED: Program[] = [
 
 const ACCREDITED: Program[] = [
   {
-    category: 'Accredited',
+    category: 'Accredited and Certified Programs',
     date: '11 programs',
     title: 'Ellis & Associates',
     desc: 'The gold standard in first aid, CPR and safety certification for attractions teams, plus lifeguard and aquatic programs.',
@@ -65,15 +65,9 @@ export default function News() {
 
         {/* Program groups: one aligned row of cards */}
         <div ref={ref as React.RefObject<HTMLDivElement>}>
-          <div className="hidden md:grid grid-cols-2 gap-6 mb-6">
-            <GroupLabel color="#8238EB">Tailored Training Programs</GroupLabel>
-            <GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel>
-          </div>
-          <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+          <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
             {[...TAILORED, ...ACCREDITED].map((a, i) => (
               <div key={a.title} className="flex flex-col">
-                {i === 0 && <div className="md:hidden mb-5"><GroupLabel color="#8238EB">Tailored Training Programs</GroupLabel></div>}
-                {i === 1 && <div className="md:hidden mb-5"><GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel></div>}
                 <Card a={a} i={i} inView={inView} />
               </div>
             ))}
@@ -84,19 +78,9 @@ export default function News() {
   )
 }
 
-function GroupLabel({ color, children }: { color: string; children: React.ReactNode }) {
-  return (
-    <div className="flex items-center gap-3">
-      <span className="w-8 h-[3px]" style={{ background: color }} aria-hidden="true" />
-      <h3 className="text-[19px] font-semibold text-[#000050]">{children}</h3>
-    </div>
-  )
-}
 
 function Card({ a, i, inView }: { a: Program; i: number; inView: boolean }) {
   const [open, setOpen] = useState(false)
-  const PREVIEW = 3
-  const rest = a.items.length - PREVIEW
   return (
     <article className={`flex-1 bg-[#F9F8F6] group flex flex-col transition-colors duration-300 hover:bg-white reveal reveal-delay-${i + 1} ${inView ? 'visible' : ''}`}>
       <div className="relative aspect-[16/9] overflow-hidden bg-[#E2E0DB]">
@@ -104,32 +88,14 @@ function Card({ a, i, inView }: { a: Program; i: number; inView: boolean }) {
         <img src={a.image} alt={a.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" style={{ objectPosition: a.pos ?? '50% 50%' }} />
       </div>
       <div className="p-6 sm:p-8 flex flex-col flex-1">
-        <div data-eq="meta" className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
+        <div data-eq="meta" className="flex flex-col gap-1 mb-4">
           <span className="text-[16px] font-medium" style={{ color: a.color }}>{a.category}</span>
-          <span className="text-[#C9C7C1]">·</span>
           <span className="text-[15px] text-[#6B6B65] font-light">{a.date}</span>
         </div>
         <h4 data-eq="title" className="font-serif text-[clamp(22px,1.8vw,26px)] text-[#000050] leading-tight mb-3">{a.title}</h4>
-        <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light mb-5" data-eq="desc">{a.desc}</p>
+        <p className="text-[17px] text-[#6B6B65] leading-relaxed font-light mb-6" data-eq="desc">{a.desc}</p>
 
-        {/* Tags: preview, expand to see all */}
-        <ul data-eq="tags" className="flex flex-wrap content-start gap-2" aria-label={`${a.title} list`}>
-          {(open ? a.items : a.items.slice(0, PREVIEW)).map((t, k) => (
-            <li
-              key={t}
-              className={`prog-tag inline-flex items-center gap-2 bg-white text-[14px] sm:text-[15px] text-[#000050] px-3 py-1.5`}
-              style={{ animationDelay: k >= PREVIEW ? `${(k - PREVIEW) * 35}ms` : '0ms' }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: a.color }} aria-hidden="true" />
-              {t}
-            </li>
-          ))}
-          {!open && rest > 0 && (
-            <li className="inline-flex items-center text-[14px] sm:text-[15px] text-[#6B6B65] px-2 py-1.5">+{rest} more</li>
-          )}
-        </ul>
-
-        <div className="mt-auto pt-6">
+        <div className="pt-1">
           <button
             type="button"
             onClick={() => setOpen(o => !o)}
@@ -141,6 +107,24 @@ function Card({ a, i, inView }: { a: Program; i: number; inView: boolean }) {
               <path d="M2 4.5L6 8.5L10 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
+        </div>
+
+        {/* Full list, revealed on click */}
+        <div className={`grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+          <div className="overflow-hidden">
+            <ul className="flex flex-wrap content-start gap-2 pt-5" aria-label={`${a.title} list`}>
+              {open && a.items.map((t, k) => (
+                <li
+                  key={t}
+                  className="prog-tag inline-flex items-center gap-2 bg-white text-[14px] sm:text-[15px] text-[#000050] px-3 py-1.5"
+                  style={{ animationDelay: `${k * 30}ms` }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: a.color }} aria-hidden="true" />
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </article>

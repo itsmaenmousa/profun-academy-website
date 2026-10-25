@@ -38,8 +38,8 @@ const cols: { title: string; links: [string, string][] }[] = [
   {
     title: 'Learning',
     links: [
-      ['In-Person', '/learning'], ['Virtual', '/learning'], ['eLearning', '/learning'],
-      ['Blended', '/learning'], ['Experiential', '/learning'],
+      ['Experiential', '/learning'], ['In-Person', '/learning'], ['Virtual', '/learning'],
+      ['eLearning', '/learning'], ['Blended', '/learning'],
     ],
   },
   {
@@ -128,12 +128,14 @@ export default function Footer() {
             © {new Date().getFullYear()} ProFun. All rights reserved. The ProFun Academy is a division of ProFun.
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 md:shrink-0 md:whitespace-nowrap">
-          <Link
-            to="/courses"
-            className="text-[15px] text-white/35 hover:text-[#FFCA03] transition-colors duration-200"
+          {/* Courses & Booking: shown but switched off until bookings go live */}
+          <span
+            aria-disabled="true"
+            title="Coming soon"
+            className="text-[15px] text-white/20 cursor-default select-none"
           >
             Courses & Booking
-          </Link>
+          </span>
           <a
             href="mailto:info@theprofunacademy.com"
             className="text-[15px] text-white/55 hover:text-[#FFCA03] transition-colors duration-200"

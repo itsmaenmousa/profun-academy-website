@@ -324,12 +324,7 @@ body {
   html, body { background-color: #F9F8F6; color: #1C1C1A; }
 }
 
-/* Honeycomb collapse: only the flare shows until it is hovered or tapped */
-.hc-center { cursor: pointer; padding: 0; border: 0; background: none; }
-.hc-center:focus-visible { outline: none; }
-.hc-center:focus-visible .hc-face { box-shadow: inset 0 0 0 3px #F85707; }
-.hc-hint { transition: opacity .4s, max-height .4s; max-height: 2em; }
-.honeycomb.is-open .hc-hint { opacity: 0; max-height: 0; margin-top: 0; }
+/* Honeycomb collapse: only the flare shows until it scrolls into view */
 .honeycomb:not(.is-open) .hc-service.is-in,
 .honeycomb:not(.is-open) .hc-ghost.is-in {
   opacity: 0; pointer-events: none;
