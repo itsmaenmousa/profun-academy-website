@@ -225,9 +225,9 @@ body {
 
 /* ── Services honeycomb ─────────────────────────────────────── */
 .honeycomb {
-  --hex-w: clamp(150px, 12.5vw, 210px);
+  --hex-w: clamp(170px, 13vw, 220px);
 }
-@media (max-width: 1279px) { .honeycomb { --hex-w: 168px; } }
+@media (max-width: 1279px) { .honeycomb { --hex-w: 180px; } }
 @media (max-width: 1023px) {
   .honeycomb { --hex-w: min(150px, calc((100vw - 48px - 20px) / 3)); --gap: 8px; width: calc(var(--step-x) * 2 + var(--hex-w)) !important; }
   .hc-ghost-far { display: none; }
@@ -238,7 +238,7 @@ body {
   --gap: 10px;
   --step-x: calc(var(--hex-w) + var(--gap));
   --step-y: calc((var(--hex-h) * 0.75) + var(--gap) * 0.866);
-  width: calc(var(--step-x) * 4 + var(--hex-w));
+  width: calc(var(--step-x) * 2 + var(--hex-w));
   height: calc(var(--step-y) * 2 + var(--hex-h));
 }
 .hc-cell { position: absolute; width: var(--hex-w); height: var(--hex-h); opacity: 0; transform: scale(.85); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1), filter .5s; filter: drop-shadow(0 10px 18px rgba(0,0,80,.10)); }
@@ -323,3 +323,23 @@ body {
   :root { color-scheme: light only; }
   html, body { background-color: #F9F8F6; color: #1C1C1A; }
 }
+
+/* Honeycomb collapse: only the flare shows until it is hovered or tapped */
+.hc-center { cursor: pointer; padding: 0; border: 0; background: none; }
+.hc-center:focus-visible { outline: none; }
+.hc-center:focus-visible .hc-face { box-shadow: inset 0 0 0 3px #F85707; }
+.hc-hint { transition: opacity .4s, max-height .4s; max-height: 2em; }
+.honeycomb.is-open .hc-hint { opacity: 0; max-height: 0; margin-top: 0; }
+.honeycomb:not(.is-open) .hc-service.is-in,
+.honeycomb:not(.is-open) .hc-ghost.is-in {
+  opacity: 0; pointer-events: none;
+  transform: translate(calc(var(--cx) * -1 * var(--step-x)), calc(var(--cy) * -1 * var(--step-y))) scale(.35);
+}
+.honeycomb:not(.is-open) .hc-center.is-in { transform: scale(1.08); }
+.honeycomb:not(.is-open) .hc-center .hc-face::after {
+  content: ''; position: absolute; inset: 8%; clip-path: inherit; border-radius: 0;
+  background: radial-gradient(circle, color-mix(in srgb, var(--glow) 18%, transparent) 0%, transparent 70%);
+  animation: hc-ping 2.4s ease-out infinite; pointer-events: none;
+}
+@keyframes hc-ping { 0% { opacity: .9; transform: scale(.6); } 100% { opacity: 0; transform: scale(1.15); } }
+@media (prefers-reduced-motion: reduce) { .honeycomb:not(.is-open) .hc-center .hc-face::after { animation: none; } }
