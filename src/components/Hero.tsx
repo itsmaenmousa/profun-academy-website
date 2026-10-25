@@ -62,9 +62,9 @@ export default function Hero() {
           loop
           playsInline
           preload="auto"
-          poster={small ? './hero-academy-v2-poster-720.jpg' : './hero-academy-v2-poster.jpg'}
+          poster={small ? './hero-academy-v3-poster-720.jpg' : './hero-academy-v3-poster.jpg'}
         >
-          <source src={small ? './hero-academy-v2-720.mp4' : './hero-academy-v2.mp4'} type="video/mp4" />
+          <source src={small ? './hero-academy-v3-720.mp4' : './hero-academy-v3.mp4'} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1A]/42 via-[#1C1C1A]/15 to-[#1C1C1A]/22" />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 52%, rgba(28,28,26,0.34), transparent 70%)' }} aria-hidden="true" />
@@ -84,7 +84,7 @@ export default function Hero() {
 
           {/* Headline + logo lockup: the logo matches the three lines in height */}
           <div className="inline-flex items-stretch gap-8 lg:gap-12 mb-7 sm:mb-8 lg:mb-9">
-            <h1 className="font-serif text-[clamp(30px,5.6vw,52px)] lg:text-[clamp(30px,4.2vw,62px)] leading-[1.06] text-white tracking-[-0.01em] text-center lg:text-left">
+            <h1 className="[text-shadow:0_2px_18px_rgba(0,0,0,0.35)] font-serif text-[clamp(30px,5.6vw,52px)] lg:text-[clamp(30px,4.2vw,62px)] leading-[1.06] text-white tracking-[-0.01em] text-center lg:text-left">
               {LINES.map((line, i) => (
                 <span key={i} className="hero-line block whitespace-nowrap">
                   <span
@@ -106,7 +106,7 @@ export default function Hero() {
           </div>
 
           <p
-            className="text-[17px] sm:text-[clamp(17px,1.5vw,21px)] leading-relaxed text-white/85 mb-9 sm:mb-10 max-w-[340px] sm:max-w-[520px] lg:max-w-none lg:whitespace-nowrap font-light transition-all duration-700 mx-auto lg:mx-0 text-balance"
+            className="[text-shadow:0_1px_12px_rgba(0,0,0,0.4)] text-[17px] sm:text-[clamp(17px,1.5vw,21px)] leading-relaxed text-white/90 mb-9 sm:mb-10 max-w-[340px] sm:max-w-[520px] lg:max-w-none lg:whitespace-nowrap font-light transition-all duration-700 mx-auto lg:mx-0 text-balance"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? 'translateY(0)' : 'translateY(16px)',
