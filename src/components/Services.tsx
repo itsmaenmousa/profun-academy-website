@@ -94,23 +94,43 @@ function Honeycomb({ inView }: { inView: boolean }) {
   }, [])
   const [active, setActive] = useState(0)
   const [touched, setTouched] = useState(false)
-  // Collapsed on the Academy flare; opens as it scrolls into the middle of the screen
-  // and folds back once the visitor scrolls past it
+  // Starts folded on the Academy flare. It opens once the visitor scrolls (or hovers / taps
+  // the flare) while it is on screen, and folds back when they scroll it out of view.
   const [open, setOpen] = useState(false)
   const s = services[active]
 
   useEffect(() => {
     const el = combRef.current
     if (!el) return
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        setOpen(e.isIntersecting)
-        if (!e.isIntersecting) { setTouched(false); setActive(0) }
-      },
-      { rootMargin: '-30% 0px -30% 0px' }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
+    let scrolled = false
+    let startY = window.scrollY
+    const mountedAt = performance.now()
+    const visible = () => {
+      const r = el.getBoundingClientRect()
+      const vh = window.innerHeight
+      const seen = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0))
+      return seen / Math.min(r.height, vh)
+    }
+    const update = () => {
+      const v = visible()
+      if (v < 0.15) {
+        // Out of view: fold back and wait for the next scroll into view
+        setOpen(false); setTouched(false); setActive(0)
+        scrolled = false; startY = window.scrollY
+      } else if (scrolled && v >= 0.4) {
+        setOpen(true)
+      }
+    }
+    const onScroll = () => {
+      // Ignore the jump back to the top when the page first opens
+      if (performance.now() - mountedAt < 600) { startY = window.scrollY; return }
+      if (!scrolled && Math.abs(window.scrollY - startY) > 30) scrolled = true
+      update()
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', update)
+    update()
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', update) }
   }, [])
 
   // Gently cycle through the services while open, until the visitor picks one
@@ -166,10 +186,12 @@ function Honeycomb({ inView }: { inView: boolean }) {
           </span>
         ))}
 
-        {/* Center flare: hover or tap to open the services */}
+        {/* Center flare: hover or tap also opens the services */}
         <span
           aria-hidden="true"
-          className={`hc-cell hc-center ${inView ? 'is-in' : ''}`}
+          onMouseEnter={() => setOpen(true)}
+          onClick={() => setOpen(true)}
+          className={`hc-cell hc-center cursor-pointer ${inView ? 'is-in' : ''}`}
           style={{ ...cellStyle([0, 0]), ['--glow' as string]: open ? s.color : '#F85707', ['--depth' as string]: 0.35, ['--float-delay' as string]: '-1.2s' }}
         >
           <span className="hc-par"><span className="hc-float">
