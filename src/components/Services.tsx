@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useDeepLink, scrollToId } from '../lib/deeplink'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
 
@@ -98,11 +99,23 @@ function Honeycomb({ inView }: { inView: boolean }) {
   // the flare) while it is on screen, and folds back when they scroll it out of view.
   const [open, setOpen] = useState(false)
   const s = services[active]
+  const scrolledRef = useRef(false)
+  const pendingRef = useRef<number | null>(null)
+  const updateRef = useRef<() => void>(() => {})
+
+  // Footer links: scroll to the honeycomb, open it and show the chosen service
+  useDeepLink(go => {
+    const i = ['strategy', 'workforce', 'design', 'delivery', 'readiness'].indexOf(go)
+    if (i < 0) return
+    scrolledRef.current = true
+    pendingRef.current = i
+    scrollToId('service-detail')
+    window.setTimeout(() => updateRef.current(), 1500)
+  })
 
   useEffect(() => {
     const el = combRef.current
     if (!el) return
-    let scrolled = false
     let startY = window.scrollY
     const mountedAt = performance.now()
     // "In view" means the middle of the honeycomb sits inside the screen, away from the edges
@@ -116,14 +129,16 @@ function Honeycomb({ inView }: { inView: boolean }) {
       if (!centred()) {
         // Scrolled away: fold back and wait for the next scroll into view
         setOpen(false); setTouched(false); setActive(0)
-      } else if (scrolled) {
+      } else if (scrolledRef.current) {
         setOpen(true)
+        if (pendingRef.current !== null) { setTouched(true); setActive(pendingRef.current); pendingRef.current = null }
       }
     }
+    updateRef.current = update
     const onScroll = () => {
       // Ignore the jump back to the top when the page first opens
       if (performance.now() - mountedAt < 600) { startY = window.scrollY; return }
-      if (!scrolled && Math.abs(window.scrollY - startY) > 30) scrolled = true
+      if (!scrolledRef.current && Math.abs(window.scrollY - startY) > 30) scrolledRef.current = true
       update()
     }
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -142,7 +157,7 @@ function Honeycomb({ inView }: { inView: boolean }) {
   const pick = (i: number) => { setTouched(true); setActive(i) }
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_auto] items-center gap-6 sm:gap-10 xl:gap-16">
+    <div id="service-detail" className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_auto] items-center gap-6 sm:gap-10 xl:gap-16">
       {/* Active service */}
       <div className="max-w-[640px] xl:max-w-[460px] order-2 xl:order-1 mx-auto xl:mx-0 text-center xl:text-left" aria-live="polite">
         {open ? (

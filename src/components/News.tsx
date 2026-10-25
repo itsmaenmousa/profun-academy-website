@@ -1,5 +1,6 @@
 import type React from 'react'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useDeepLink, scrollToId } from '../lib/deeplink'
 import { useEqualize } from '../hooks/useEqualize'
 import { useInView } from '../hooks/useInView'
 
@@ -50,6 +51,14 @@ export default function News() {
   const cardsRef = useRef<HTMLDivElement>(null)
   useEqualize(cardsRef)
   const { ref: headRef, inView: headIn } = useInView()
+  // Footer links: open the matching program card and bring it into view
+  const [pick, setPick] = useState<{ i: number; n: number } | null>(null)
+  useDeepLink(go => {
+    const i = ['tailored', 'accredited'].indexOf(go)
+    if (i < 0) return
+    setPick(p => ({ i, n: (p?.n ?? 0) + 1 }))
+    scrollToId(`program-${go}`)
+  })
 
   return (
     <section id="programs" className="bg-[#F2F1EF] py-16 sm:py-20 lg:py-24 px-6 sm:px-12">
@@ -80,8 +89,8 @@ export default function News() {
         <div ref={ref as React.RefObject<HTMLDivElement>}>
           <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
             {[...TAILORED, ...ACCREDITED].map((a, i) => (
-              <div key={a.title} className="flex flex-col">
-                <Card a={a} i={i} inView={inView} />
+              <div key={a.title} id={`program-${i === 0 ? 'tailored' : 'accredited'}`} className="flex flex-col">
+                <Card a={a} i={i} inView={inView} pick={pick} />
               </div>
             ))}
           </div>
@@ -92,9 +101,10 @@ export default function News() {
 }
 
 
-function Card({ a, i, inView }: { a: Program; i: number; inView: boolean }) {
+function Card({ a, i, inView, pick }: { a: Program; i: number; inView: boolean; pick: { i: number; n: number } | null }) {
   const [open, setOpen] = useState(false)
   const [area, setArea] = useState<number | null>(null)
+  useEffect(() => { if (pick) { setOpen(pick.i === i); setArea(null) } }, [pick, i])
   return (
     <article className={`flex-1 bg-[#F9F8F6] group flex flex-col transition-colors duration-300 hover:bg-white reveal reveal-delay-${i + 1} ${inView ? 'visible' : ''}`}>
       <div className="relative aspect-[16/9] overflow-hidden bg-[#E2E0DB]">

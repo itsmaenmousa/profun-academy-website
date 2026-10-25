@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useInView } from '../hooks/useInView'
+import { useDeepLink, scrollToId } from '../lib/deeplink'
 
 const channels = [
   {
@@ -51,6 +52,15 @@ export default function VideoReel() {
   const [paused, setPaused] = useState(false)
   const { ref, inView } = useInView({ threshold: 0.2 })
 
+  // Footer links: jump to Experiential, or open the matching delivery format tab
+  useDeepLink(go => {
+    if (go === 'experiential') return scrollToId('experiential-learning')
+    const i = channels.findIndex(ch => ch.id === go)
+    if (i < 0) return
+    setActive(i); setPaused(true)
+    scrollToId('delivery')
+  })
+
   useEffect(() => {
     if (!inView || paused) return
     const t = setTimeout(() => setActive(a => (a + 1) % channels.length), SLIDE_MS)
@@ -78,7 +88,7 @@ export default function VideoReel() {
         </div>
 
         {/* Experiential Learning */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div id="experiential-learning" className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6 xl:col-span-5">
             <p className="text-[20px] font-semibold text-[#8238EB] mb-4">Experiential Learning</p>
             <h3 className="font-serif text-balance text-[clamp(30px,3vw,46px)] text-[#000050] leading-[1.1] tracking-[-0.01em] mb-6">

@@ -31,21 +31,22 @@ const cols: { title: string; links: [string, string][] }[] = [
   {
     title: 'Services',
     links: [
-      ['Learning Strategy', '/services'], ['Workforce Capability', '/services'], ['Program Design', '/services'],
-      ['Training Delivery', '/services'], ['Operational Readiness', '/services'],
+      ['Learning Strategy', '/services?go=strategy'], ['Workforce Capability', '/services?go=workforce'],
+      ['Program Design', '/services?go=design'], ['Training Delivery', '/services?go=delivery'],
+      ['Operational Readiness', '/services?go=readiness'],
     ],
   },
   {
     title: 'Learning',
     links: [
-      ['Experiential', '/learning'], ['In-Person', '/learning'], ['Virtual', '/learning'],
-      ['eLearning', '/learning'], ['Blended', '/learning'],
+      ['Experiential', '/learning?go=experiential'], ['In-Person', '/learning?go=in-person'],
+      ['Virtual', '/learning?go=virtual'], ['eLearning', '/learning?go=elearning'], ['Blended', '/learning?go=blended'],
     ],
   },
   {
     title: 'Programs',
     links: [
-      ['Tailored Training', '/programs'], ['Accredited & Certified', '/programs'],
+      ['Tailored Training', '/programs?go=tailored'], ['Accredited & Certified', '/programs?go=accredited'],
     ],
   },
   {
