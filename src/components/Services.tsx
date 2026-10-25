@@ -105,19 +105,18 @@ function Honeycomb({ inView }: { inView: boolean }) {
     let scrolled = false
     let startY = window.scrollY
     const mountedAt = performance.now()
-    const visible = () => {
+    // "In view" means the middle of the honeycomb sits inside the screen, away from the edges
+    const centred = () => {
       const r = el.getBoundingClientRect()
       const vh = window.innerHeight
-      const seen = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0))
-      return seen / Math.min(r.height, vh)
+      const c = r.top + r.height / 2
+      return c > vh * 0.12 && c < vh * 0.88
     }
     const update = () => {
-      const v = visible()
-      if (v < 0.15) {
-        // Out of view: fold back and wait for the next scroll into view
+      if (!centred()) {
+        // Scrolled away: fold back and wait for the next scroll into view
         setOpen(false); setTouched(false); setActive(0)
-        scrolled = false; startY = window.scrollY
-      } else if (scrolled && v >= 0.4) {
+      } else if (scrolled) {
         setOpen(true)
       }
     }
