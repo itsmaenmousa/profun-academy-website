@@ -62,7 +62,7 @@ export default function VideoReel() {
   return (
     <>
     {/* How We Deliver intro + Experiential Learning (light) */}
-    <section id="experiential" className="relative bg-[#F9F8F6] py-16 sm:py-20 lg:py-24 px-6 sm:px-12 overflow-hidden">
+    <section id="experiential" className="relative bg-[#F9F8F6] pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-16 px-6 sm:px-12 overflow-hidden">
       <div className="max-w-[1920px] mx-auto">
         {/* How We Deliver */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12">
@@ -124,18 +124,19 @@ export default function VideoReel() {
     <section
       id="delivery"
       ref={ref as React.RefObject<HTMLElement>}
-      className="bg-[#1C1C1A] relative overflow-hidden"
+      className="bg-[#F9F8F6] relative overflow-hidden pb-16 sm:pb-20 lg:pb-24"
     >
       {/* Top label */}
       <div
-        className={`max-w-[1920px] mx-auto px-6 sm:px-12 pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-12 lg:pb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-8 reveal ${inView ? 'visible' : ''}`}
+        className={`max-w-[1920px] mx-auto px-6 sm:px-12 reveal ${inView ? 'visible' : ''}`}
       >
+        <div className="border-t border-[#E2E0DB] pt-10 sm:pt-16 pb-8 sm:pb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
         <div>
           <p className="text-[20px] font-semibold text-[#F85707] mb-4">Delivery Formats</p>
-          <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-white leading-[1.1] tracking-[-0.01em] max-w-[720px] mb-6">
+          <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] max-w-[720px] mb-6">
             The right format for your team.
           </h2>
-          <p className="text-[18px] sm:text-[19px] text-white/65 font-light leading-relaxed max-w-[640px]">
+          <p className="text-[18px] sm:text-[19px] text-[#6B6B65] font-light leading-relaxed max-w-[640px]">
             We bring this practical approach into in-person, virtual, eLearning, and blended programs, choosing the right mix for your people and operations.
           </p>
         </div>
@@ -148,7 +149,7 @@ export default function VideoReel() {
               aria-selected={i === active}
               onClick={() => { setActive(i); setPaused(true) }}
               className={`relative overflow-hidden px-1 sm:px-5 py-3 text-[13px] min-[380px]:text-[14px] sm:text-[15px] text-center whitespace-nowrap font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
-                i === active ? 'text-white bg-white/10' : 'text-white/40 hover:text-white/80'
+                i === active ? 'text-white bg-[#000050]' : 'text-[#000050]/55 bg-white hover:text-[#000050]'
               }`}
             >
               {ch.label}
@@ -163,11 +164,13 @@ export default function VideoReel() {
             </button>
           ))}
         </div>
+        </div>
       </div>
 
       {/* Stage */}
+      <div className="max-w-[1920px] mx-auto px-6 sm:px-12">
       <div
-        className="relative aspect-[4/5] sm:aspect-[16/9] lg:aspect-auto lg:h-[clamp(320px,calc(100svh-372px),620px)] overflow-hidden"
+        className="relative aspect-[4/5] sm:aspect-[16/9] lg:aspect-auto lg:h-[clamp(360px,calc(100svh-300px),620px)] overflow-hidden shadow-[0_30px_60px_-30px_rgba(0,0,80,0.45)]"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
@@ -183,11 +186,10 @@ export default function VideoReel() {
           />
         ))}
         <div className="absolute inset-0 bg-gradient-to-r from-[#1C1C1A]/90 via-[#1C1C1A]/45 to-transparent" />
-        {/* Soft fade into the strip below */}
-        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-[#1C1C1A] pointer-events-none" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1A]/85 via-[#1C1C1A]/30 to-transparent lg:hidden" aria-hidden="true" />
 
         <div className="absolute inset-0 flex items-end lg:items-start">
-          <div key={c.id} className="max-w-[1920px] w-full mx-auto px-6 sm:px-12 pb-12 sm:pb-16 lg:pb-0 lg:pt-[clamp(28px,6vh,72px)] reel-copy">
+          <div key={c.id} className="w-full px-6 sm:px-10 lg:px-12 pb-10 sm:pb-12 lg:pb-0 lg:pt-[clamp(28px,6vh,64px)] reel-copy">
             <h3 className="font-serif text-[clamp(28px,2.8vw,48px)] text-white leading-[1.06] tracking-[-0.01em] mb-4 max-w-[640px]">
               {c.title}
             </h3>
@@ -201,8 +203,10 @@ export default function VideoReel() {
         </div>
       </div>
 
+      </div>
+
       {/* Bottom strip */}
-      <div className="overflow-hidden py-6 border-t border-white/8">
+      <div className="overflow-hidden py-6 mt-10 sm:mt-12 border-y border-[#E2E0DB]">
         <div className="flex whitespace-nowrap marquee-track">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-12 pr-12" aria-hidden={i === 1}>
@@ -214,7 +218,7 @@ export default function VideoReel() {
                 item === '·' ? (
                   <span key={j} className="w-2.5 h-2.5 rounded-full bg-[#F85707] flex-shrink-0" aria-hidden="true" />
                 ) : (
-                  <span key={j} className="text-[18px] font-normal text-white/85">
+                  <span key={j} className="text-[18px] font-normal text-[#000050]/80">
                     {item}
                   </span>
                 )
