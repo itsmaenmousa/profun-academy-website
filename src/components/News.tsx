@@ -30,16 +30,6 @@ const ACCREDITED: Program[] = [
     label: 'Explore courses',
     items: ['CPR & First Aid', 'Preventing Bloodborne & Airborne Pathogens', 'Supplemental Oxygen Support', 'Active Shooter Assailant Safety', 'Attraction Operator', 'Water Slide Dispatch Operator', 'International Lifeguard Training Program', 'vanGUARD Aquatics Leadership', 'Water Safety Plus', 'Jeff Ellis Swimming', 'Train the Trainer'],
   },
-  {
-    category: 'IBCCES Certified',
-    date: 'Accessibility & inclusion',
-    title: 'Accessibility and inclusion, built into every program.',
-    desc: 'A Certified Autism Center™ recognized by IBCCES, bringing autism awareness and inclusive guest experience into every program.',
-    image: './ibcces-card.jpg',
-    color: '#15D2A4',
-    label: 'Explore focus areas',
-    items: ['Autism Awareness', 'Inclusive Guest Experience', 'Accessibility Best Practice', 'Frontline Training'],
-  },
 ]
 
 export default function News() {
@@ -75,16 +65,15 @@ export default function News() {
 
         {/* Program groups: one aligned row of cards */}
         <div ref={ref as React.RefObject<HTMLDivElement>}>
-          <div className="hidden lg:grid grid-cols-3 gap-6 mb-6">
+          <div className="hidden md:grid grid-cols-2 gap-6 mb-6">
             <GroupLabel color="#8238EB">Tailored Training Programs</GroupLabel>
-            <div className="col-span-2"><GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel></div>
+            <GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel>
           </div>
-          <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
             {[...TAILORED, ...ACCREDITED].map((a, i) => (
               <div key={a.title} className="flex flex-col">
-                {i === 0 && <div className="lg:hidden mb-5 md:min-h-[56px] flex items-end"><GroupLabel color="#8238EB">Tailored Training Programs</GroupLabel></div>}
-                {i === 1 && <div className="lg:hidden mb-5 md:min-h-[56px] flex items-end"><GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel></div>}
-                {i === 2 && <div className="hidden md:block lg:hidden mb-5 h-[56px]" aria-hidden="true" />}
+                {i === 0 && <div className="md:hidden mb-5"><GroupLabel color="#8238EB">Tailored Training Programs</GroupLabel></div>}
+                {i === 1 && <div className="md:hidden mb-5"><GroupLabel color="#00AFDC">Accredited and Certified Programs</GroupLabel></div>}
                 <Card a={a} i={i} inView={inView} />
               </div>
             ))}
