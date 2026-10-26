@@ -362,20 +362,13 @@ body {
 .hero-caption { animation: capIn .8s cubic-bezier(.16,1,.3,1) both; }
 @keyframes capIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .hero-zoom, .hero-caption { animation: none; } }
-/* ProFun Academy cell in the services honeycomb */
-.hc-academy .hc-face.hc-ring { background: conic-gradient(from var(--ring-a, 0deg), #3985FD, #15D2A4, #99CA32, #FFCA03, #F85707, #FC026F, #8238EB, #3985FD); }
-.hc-academy .hc-ring-inner { position: absolute; inset: 4px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: #fff; transition: background .3s; }
-.hc-academy:hover .hc-ring-inner, .hc-academy:focus-visible .hc-ring-inner { background: #FFF6F0; }
-.hc-academy { cursor: pointer; filter: drop-shadow(0 12px 22px rgba(248,87,7,.25)); }
+/* ProFun Academy cell in the services honeycomb: solid navy, so it reads as a link out */
+.hc-academy .hc-face.hc-ring { background: #000050; transition: background .3s; }
+.hc-academy:hover .hc-face.hc-ring, .hc-academy:focus-visible .hc-face.hc-ring { background: #F85707; }
+.hc-academy { cursor: pointer; filter: drop-shadow(0 12px 22px rgba(0,0,80,.22)); }
 .hc-academy.is-in { opacity: 1; }
-@property --ring-a { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
-.hc-academy .hc-face.hc-ring { animation: ringSpin 6s linear infinite; }
-@keyframes ringSpin { to { --ring-a: 360deg; } }
-@media (prefers-reduced-motion: reduce) { .hc-academy .hc-face.hc-ring { animation: none; } }
-/* Highlighted ProFun Academy band: rotating brand-colour frame */
-.academy-band-ring { position: absolute; inset: -150%; background: var(--grad); animation: spinRing 7s linear infinite; }
-@keyframes spinRing { to { transform: rotate(360deg); } }
+
 .academy-pulse { animation: acPulse 2s infinite; }
 @keyframes acPulse { 0% { box-shadow: 0 0 0 0 rgba(248,87,7,.55); } 70% { box-shadow: 0 0 0 8px rgba(248,87,7,0); } 100% { box-shadow: 0 0 0 0 rgba(248,87,7,0); } }
-@media (prefers-reduced-motion: reduce) { .academy-band-ring, .academy-pulse { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .academy-pulse { animation: none; } }
 .marquee { mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }

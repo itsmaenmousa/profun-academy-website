@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import { createPortal } from 'react-dom'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
 import { useDeepLink, scrollToId } from '../lib/deeplink'
-import { SECTORS, SERVICES, TEAM, NEWS, AFFILIATIONS, pf, ACADEMY_URL, type Office } from '../data'
-import { PageIntro, SectionHead, Arrow, TextLink, BRAND_GRADIENT } from './ui'
+import { SECTORS, SERVICES, NEWS, AFFILIATIONS, pf, ACADEMY_URL } from '../data'
+import { PageIntro, SectionHead, Arrow, TextLink } from './ui'
 import Stats from './Stats'
 import { AcademyBand } from './HomeSections'
+import Leadership from './Leadership'
 
 /* ── About ─────────────────────────────────────────────────────── */
 const QUALITY = [
@@ -206,8 +206,11 @@ function ServiceBlock({ s, i }: { s: typeof SERVICES[number]; i: number }) {
             </ul>
           )}
           {isTraining && (
-            <a href={ACADEMY_URL} className="group relative flex items-center justify-between gap-6 p-[3px] mb-8 overflow-hidden" style={{ background: BRAND_GRADIENT }}>
-              <span className="flex-1 flex items-center justify-between gap-6 bg-[#111110] px-6 py-5 sm:px-8 sm:py-6">
+            <a href={ACADEMY_URL} className="group relative flex items-center justify-between gap-6 mb-8 overflow-hidden bg-[#111110] hover:bg-[#000050] transition-colors">
+              <span className="absolute top-0 left-0 right-0 h-1 flex" aria-hidden="true">
+                {['#3985FD', '#15D2A4', '#99CA32', '#FFCA03', '#FC026F', '#8238EB', '#F85707'].map(c => <span key={c} className="flex-1" style={{ background: c }} />)}
+              </span>
+              <span className="flex-1 flex items-center justify-between gap-6 px-6 py-5 sm:px-8 sm:py-6">
                 <span className="flex items-center gap-5">
                   <img src="./profun-academy-white.svg" alt="ProFun Academy" className="h-10 sm:h-12 w-auto" />
                   <span className="hidden sm:block text-[16px] text-white/80 font-light">Explore programs, formats and courses</span>
@@ -226,79 +229,9 @@ function ServiceBlock({ s, i }: { s: typeof SERVICES[number]; i: number }) {
   )
 }
 
-/* ── People ────────────────────────────────────────────────────── */
+/* ── People: same team, photos and layout as the ProFun Academy site ── */
 export function TeamPage() {
-  const [office, setOffice] = useState<Office | 'All'>('All')
-  const [open, setOpen] = useState<number | null>(null)
-  const { ref, inView } = useInView()
-  const list = TEAM.map((m, i) => ({ ...m, i })).filter(m => office === 'All' || m.office === office)
-  const person = open !== null ? TEAM[open] : null
-
-  useEffect(() => {
-    if (open === null) return
-    const esc = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(null) }
-    document.addEventListener('keydown', esc)
-    document.body.style.overflow = 'hidden'
-    return () => { document.removeEventListener('keydown', esc); document.body.style.overflow = '' }
-  }, [open])
-
-  return (
-    <>
-      <PageIntro
-        eyebrow="Our People"
-        title="Leadership and people."
-        lead="A proven team of international and local professionals, experienced in planning and managing entertainment, corporate and cultural attractions, with skills and local knowledge unmatched in the market today."
-      />
-      <section className="bg-[#F9F8F6] px-6 sm:px-12 py-14 sm:py-20">
-        <div className="max-w-[1920px] mx-auto">
-          <div className="flex flex-wrap items-center gap-2 mb-10" role="group" aria-label="Filter by office">
-            {(['All', 'KSA', 'USA', 'MENA'] as const).map(o => (
-              <button key={o} type="button" aria-pressed={office === o} onClick={() => setOffice(o)} className={`h-11 px-5 text-[15px] font-medium border transition-colors ${office === o ? 'bg-[#000050] text-white border-[#000050]' : 'bg-white text-[#000050] border-[#D4D2CC] hover:border-[#000050]'}`}>
-                {o === 'All' ? 'Everyone' : o}
-                <span className={`ml-2 text-[13px] ${office === o ? 'text-white/70' : 'text-[#6B6B65]'}`}>{o === 'All' ? TEAM.length : TEAM.filter(m => m.office === o).length}</span>
-              </button>
-            ))}
-          </div>
-          <ul ref={ref as React.RefObject<HTMLUListElement>} className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-3 sm:gap-x-5 gap-y-8 sm:gap-y-10 reveal ${inView ? 'visible' : ''}`}>
-            {list.map(m => (
-              <li key={m.name}>
-                <button type="button" onClick={() => setOpen(m.i)} className="group block w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707]">
-                  <div className="aspect-[4/5] overflow-hidden bg-[#EEEDEA]">
-                    <img src={pf(m.photo)} alt={`${m.name}, ${m.role}`} loading="lazy" decoding="async" className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]" />
-                  </div>
-                  <div className="pt-4">
-                    <h3 className="font-serif text-[19px] sm:text-[22px] text-[#1C1C1A] leading-tight mb-1 group-hover:text-[#F85707] transition-colors">{m.name}</h3>
-                    <p className="text-[14px] sm:text-[15px] text-[#F85707] font-medium leading-snug">{m.role}</p>
-                    <p className="mt-1 text-[13px] sm:text-[14px] text-[#6B6B65]">{m.office}</p>
-                  </div>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {person && createPortal(
-        <div className="fixed inset-0 z-[70] flex items-end sm:items-center justify-center p-0 sm:p-6" role="dialog" aria-modal="true" aria-label={person.name}>
-          <button type="button" className="absolute inset-0 bg-[#111110]/70 backdrop-blur-sm" aria-label="Close" onClick={() => setOpen(null)} />
-          <div className="bio-panel relative bg-white w-full sm:max-w-[880px] max-h-[88svh] overflow-y-auto grid grid-cols-1 sm:grid-cols-[300px_1fr]">
-            <div className="aspect-[4/3] sm:aspect-auto bg-[#EEEDEA]">
-              <img src={pf(person.photo)} alt="" className="w-full h-full object-cover object-top" />
-            </div>
-            <div className="p-7 sm:p-10">
-              <button type="button" onClick={() => setOpen(null)} aria-label="Close" className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 border border-[#E2E0DB] flex items-center justify-center text-[#000050] hover:bg-[#000050] hover:text-white transition-colors">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
-              </button>
-              <p className="text-[15px] font-medium text-[#F85707] mb-2">{person.role} · {person.office}</p>
-              <h2 className="font-serif text-[clamp(30px,3vw,40px)] text-[#000050] leading-tight mb-6">{person.name}</h2>
-              <p className="text-[17px] text-[#4A4A45] leading-relaxed font-light">{person.bio}</p>
-            </div>
-          </div>
-        </div>,
-        document.body,
-      )}
-    </>
-  )
+  return <Leadership />
 }
 
 /* ── News ──────────────────────────────────────────────────────── */

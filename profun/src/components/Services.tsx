@@ -181,10 +181,10 @@ function Honeycomb({ inView }: { inView: boolean }) {
         {GHOSTS.map((g, i) => (
           <a key={i} href={ACADEMY_URL} aria-label="ProFun Academy, our training arm" className={`hc-cell hc-ghost hc-academy ${inView ? 'is-in' : ''}`} style={{ ...cellStyle(g, 300 + i * 60), ['--depth' as string]: 1.8, ['--float-delay' as string]: `${-i * 0.9}s` }}>
             <span className="hc-par"><span className="hc-float"><span className="hc-face hc-ring">
-              <span className="hc-ring-inner relative flex flex-col items-center justify-center h-full px-[16%] text-center">
+              <span className="relative flex flex-col items-center justify-center h-full px-[10%] sm:px-[16%] text-center">
                 <img src="./profun-symbol-color.svg" alt="" aria-hidden="true" className="w-5 sm:w-7 h-auto mb-1.5 sm:mb-2.5" />
-                <span className="font-serif text-[#000050] text-[13px] sm:text-[16px] lg:text-[clamp(15px,1.25vw,19px)] leading-tight">ProFun Academy</span>
-                <span className="hidden sm:block mt-1 text-[12px] lg:text-[13px] font-medium text-[#F85707]">Training arm →</span>
+                <span className="font-serif text-white text-[13px] sm:text-[16px] lg:text-[clamp(15px,1.25vw,19px)] leading-tight">ProFun Academy</span>
+                <span className="hidden sm:block mt-1 text-[12px] lg:text-[13px] font-medium text-white/75">Our training arm</span>
               </span>
             </span></span></span>
           </a>

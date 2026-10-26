@@ -2,7 +2,7 @@ import type React from 'react'
 import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
 import { SECTORS, CLIENTS, pf, ACADEMY_URL } from '../data'
-import { SectionHead, TextLink, Arrow, BRAND_GRADIENT } from './ui'
+import { SectionHead, TextLink, Arrow } from './ui'
 
 /* ── Intro ─────────────────────────────────────────────────────── */
 export function Intro() {
@@ -77,8 +77,10 @@ export function AcademyBand() {
   return (
     <section className="bg-[#F9F8F6] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
       <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-[1920px] mx-auto reveal ${inView ? 'visible' : ''}`}>
-        <div className="academy-band relative p-[3px] overflow-hidden" style={{ ['--grad' as string]: BRAND_GRADIENT }}>
-          <span className="academy-band-ring" aria-hidden="true" />
+        <div className="relative">
+          <span className="absolute top-0 left-0 right-0 h-1 flex z-10" aria-hidden="true">
+            {['#3985FD', '#15D2A4', '#99CA32', '#FFCA03', '#FC026F', '#8238EB', '#F85707'].map(c => <span key={c} className="flex-1" style={{ background: c }} />)}
+          </span>
           <div className="relative grid grid-cols-1 lg:grid-cols-12 bg-[#111110] overflow-hidden">
             <div className="lg:col-span-6 relative min-h-[260px] sm:min-h-[340px] order-1 lg:order-2">
               <img src="./academy-hero.jpg" alt="ProFun Academy participants in a training session" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
@@ -97,7 +99,7 @@ export function AcademyBand() {
               <p className="text-[18px] sm:text-[19px] text-white/75 leading-relaxed font-light mb-10 max-w-[560px]">
                 Award-winning training for over 30 years, designed by operators, for operators. Tailored and accredited programs for frontline teams through to senior leaders, delivered across the region.
               </p>
-              <a href={ACADEMY_URL} className="inline-flex items-center justify-center gap-3 text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#FC026F] hover:gap-5">
+              <a href={ACADEMY_URL} className="inline-flex items-center justify-center gap-3 text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#D94A05] hover:gap-5">
                 Visit ProFun Academy <Arrow />
               </a>
             </div>

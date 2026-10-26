@@ -37,7 +37,6 @@ export function TextLink({ to, children }: { to: string; children: React.ReactNo
   )
 }
 
-export const BRAND_GRADIENT = 'conic-gradient(from 0deg, #3985FD, #15D2A4, #99CA32, #FFCA03, #F85707, #FC026F, #8238EB, #3985FD)'
 
 /** Page intro band for inner pages. */
 export function PageIntro({ eyebrow, title, lead, image }: { eyebrow: string; title: React.ReactNode; lead: React.ReactNode; image?: string }) {

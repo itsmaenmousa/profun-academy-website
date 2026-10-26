@@ -95,16 +95,6 @@ export default function Nav() {
         {/* RIGHT: CTA, visible on the white bar */}
         <div className="flex items-center justify-end gap-3 xl:gap-5">
           <ProfileSwitch current="profun" onDark={!scrolled} />
-          <Link
-            to="/contact"
-            className={`hidden min-[1440px]:inline-block text-[14px] xl:text-[15px] font-medium text-white bg-[#F85707] px-4 xl:px-5 py-2.5 whitespace-nowrap transition-all duration-300 hover:bg-[#000050] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
-              scrolled ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-            }`}
-            tabIndex={scrolled ? 0 : -1}
-            aria-hidden={!scrolled}
-          >
-            Contact us
-          </Link>
         </div>
       </div>
 
@@ -127,11 +117,9 @@ export default function Nav() {
         </Link>
 
         <div className="flex items-center gap-2">
-        <a href="../academy/index.html#/" className="profile-pill-mobile inline-flex rounded-full p-[2px]" style={{ background: 'conic-gradient(from 0deg, #3985FD, #15D2A4, #99CA32, #FFCA03, #F85707, #FC026F, #8238EB, #3985FD)' }} aria-label="Go to ProFun Academy">
-          <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-medium ${solid ? 'bg-white text-[#000050]' : 'bg-[#111110]/70 text-white'}`}>
-            <img src="./profun-symbol-color.svg" alt="" aria-hidden="true" className="h-3.5 w-3.5" />
-            Academy
-          </span>
+        <a href="../academy/index.html#/" className={`profile-pill-mobile inline-flex items-center gap-1.5 px-3 py-2 text-[13px] font-medium transition-colors ${solid ? 'bg-[#000050] text-white' : 'bg-white text-[#000050]'}`} aria-label="Go to ProFun Academy">
+          <img src="./profun-symbol-color.svg" alt="" aria-hidden="true" className="h-3.5 w-3.5" />
+          Academy
         </a>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
