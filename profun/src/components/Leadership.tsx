@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
+import { TEAM, pf } from '../data'
 
-const team = [
+const academyTeam = [
   {
     name: 'Salah Elatrash',
     photo: './team-salah-elatrash-v4.jpg',
@@ -106,6 +107,17 @@ const team = [
     bio: 'Maen leads digital marketing and communications for the Academy, building lasting relationships with clients and partners across the business.',
   },
 ]
+
+/*
+  ProFun team: everyone on the Academy site keeps their black-and-white portrait;
+  the rest of the ProFun team uses their profun.com headshot until new photos are ready.
+*/
+const ORDER = ['Salah Elatrash', 'Michael Oswald', 'Brad Merriman', 'Ray Giang', 'Jim Higashi', 'Ryan Phillips', 'Joel Ward', 'Ron Merriman', 'Chris van der Merwe', 'Ludwig Louw', 'Peter Stapp', 'Samir Bubic', 'John MacDonald', 'Amber Watson', 'Kenny Wagener', 'Robert Baldwin', 'Steven Fulton', 'Alistair Rawlings', 'Lester Silverio', 'David Ciciora', 'Ibtisam Alotaibi', 'Burhan Hanif', 'Raju Lama', 'Jhumur Jha', 'Joann Reyes', 'Jami Thomas', 'Joey Secard', 'Allie Friedman', 'Jake Oswald', 'Abdulelah Khoshaim', 'John Hawkins', 'Maen Mousa']
+const others = TEAM
+  .filter(m => !academyTeam.some(a => a.name.split(' ').pop()!.toLowerCase() === m.name.split(' ').pop()!.toLowerCase() && a.name[0] === m.name[0]))
+  .map(m => ({ name: m.name, photo: pf(m.photo), role: m.role, bio: m.bio }))
+const all = [...academyTeam, ...others]
+const team = ORDER.map(n => all.find(m => m.name === n)).filter(Boolean) as typeof all
 
 const initials = (name: string) => name.split(' ').filter(Boolean).map(w => w[0]).slice(0, 2).join('')
 
