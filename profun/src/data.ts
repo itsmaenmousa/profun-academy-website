@@ -163,7 +163,7 @@ export const SERVICES: { id: string; short: string; title: string; lead: string;
   {
     id: 'training', short: 'Training', title: 'Developing and training teams that deliver.', color: '#FC026F',
     lead: 'We equip staff and leaders with the skills to improve guest experience, operations, safety, service and profitability.',
-    desc: 'The ProFun Academy has delivered award-winning training for over 30 years. We design training “by operators, for operators,” ensuring every module is grounded in best practice and tailored to client needs. Many of our programs have been recognized with IAAPA Brass Ring Awards for innovation and impact.',
+    desc: 'Training is delivered through ProFun Academy, our training arm. We design training “by operators, for operators,” ensuring every module is grounded in best practice and tailored to client needs. Many of our programs have been recognized with IAAPA Brass Ring Awards for innovation and impact.',
     cases: ['Ferrari World', 'Paisley Park', 'The Strat', 'Qiddiya', 'Rock & Roll Hall of Fame', 'Natural History Museum LA', 'Expo 2010 Shanghai', 'Exploratorium', 'QUEST', 'The Crayola Experience'],
   },
   {

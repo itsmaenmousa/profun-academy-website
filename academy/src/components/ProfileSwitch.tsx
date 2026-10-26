@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 
 /*
   Profile switcher shared by the ProFun and ProFun Academy sites.
-  The button always offers the *other* profile. On the ProFun site it is a solid
-  ProFun Academy button, so visitors can't miss the Academy.
+  The link always offers the *other* profile, set apart from the page links by a
+  divider so it reads as a sister site.
   A small menu also lists both profiles and the profile picker.
 */
 type Profile = 'profun' | 'academy'
@@ -36,16 +36,14 @@ export function ProfileSwitch({ current, onDark = false, compact = false }: { cu
       {/* Main pill: goes straight to the other profile */}
       <a
         href={LINKS[other]}
-        className={`profile-pill group inline-flex items-center gap-2 whitespace-nowrap text-[13px] xl:text-[14px] font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
-          toAcademy
-            ? `px-4 py-2.5 ${onDark ? 'bg-white text-[#000050] hover:bg-[#F85707] hover:text-white' : 'bg-[#000050] text-white hover:bg-[#F85707]'}`
-            : `px-3.5 py-2 border ${onDark ? 'border-white/40 text-white hover:bg-white/10' : 'border-[#000050]/20 text-[#000050] hover:border-[#000050]/50'}`
+        className={`profile-pill group relative inline-flex items-center gap-2 whitespace-nowrap pl-4 xl:pl-5 border-l text-[13px] xl:text-[15px] font-medium tracking-wide uppercase transition-colors duration-200 hover:text-[#F85707] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
+          onDark ? 'border-white/30 text-white' : 'border-[#000050]/15 text-[#000050]'
         }`}
         aria-label={toAcademy ? 'Go to ProFun Academy' : 'Go to ProFun'}
       >
-        <img src="./profun-symbol-color.svg" alt="" aria-hidden="true" className="h-4 w-4" />
-        {toAcademy ? (compact ? 'Academy' : 'ProFun Academy') : (compact ? 'ProFun' : 'Switch to ProFun')}
-        {toAcademy && <svg width="11" height="8" viewBox="0 0 14 10" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5"><path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>}
+        <img src="./profun-symbol-color.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px] transition-transform duration-500 group-hover:rotate-[20deg]" />
+        {toAcademy ? (compact ? 'Academy' : 'ProFun Academy') : 'ProFun'}
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </a>
 
       {/* All profiles menu */}

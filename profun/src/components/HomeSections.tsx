@@ -97,7 +97,7 @@ export function AcademyBand() {
                 Training the people behind the world&rsquo;s greatest experiences.
               </h2>
               <p className="text-[18px] sm:text-[19px] text-white/75 leading-relaxed font-light mb-10 max-w-[560px]">
-                Award-winning training for over 30 years, designed by operators, for operators. Tailored and accredited programs for frontline teams through to senior leaders, delivered across the region.
+                Training designed by operators, for operators. Tailored and accredited programs that build capability from frontline teams to senior leaders.
               </p>
               <a href={ACADEMY_URL} className="inline-flex items-center justify-center gap-3 text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#D94A05] hover:gap-5">
                 Visit ProFun Academy <Arrow />
