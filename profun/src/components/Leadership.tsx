@@ -116,7 +116,10 @@ const ORDER = ['Salah Elatrash', 'Michael Oswald', 'Brad Merriman', 'Ray Giang',
 const others = TEAM
   .filter(m => !academyTeam.some(a => a.name.split(' ').pop()!.toLowerCase() === m.name.split(' ').pop()!.toLowerCase() && a.name[0] === m.name[0]))
   .map(m => ({ name: m.name, photo: pf(m.photo), role: m.role, bio: m.bio }))
-const all = [...academyTeam, ...others]
+const same = (a: string, b: string) => a.split(' ').pop()!.toLowerCase() === b.split(' ').pop()!.toLowerCase() && a[0] === b[0]
+// Keep the black-and-white portraits, but use the role and bio from profun.com where the person is listed there
+const merged = academyTeam.map(a => { const t = TEAM.find(m => same(a.name, m.name)); return t ? { ...a, role: t.role, bio: t.bio } : a })
+const all = [...merged, ...others]
 const team = ORDER.map(n => all.find(m => m.name === n)).filter(Boolean) as typeof all
 
 const initials = (name: string) => name.split(' ').filter(Boolean).map(w => w[0]).slice(0, 2).join('')

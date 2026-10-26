@@ -104,9 +104,7 @@ export default function AcademyNav() {
             nav truly centerd.
           */}
           <a
-            href="https://profun.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="../profun/index.html#/"
             className={`text-[15px] font-medium whitespace-nowrap transition-all duration-200 hover:text-[#F85707] ${
               scrolled
                 ? 'opacity-100 pointer-events-auto text-[#6B6B65]'
@@ -115,7 +113,7 @@ export default function AcademyNav() {
             tabIndex={scrolled ? 0 : -1}
             aria-hidden={!scrolled}
           >
-            profun.com
+            ProFun
           </a>
 
           <a

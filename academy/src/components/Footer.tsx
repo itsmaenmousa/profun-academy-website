@@ -129,6 +129,11 @@ export default function Footer() {
             © {new Date().getFullYear()} ProFun. All rights reserved. The ProFun Academy is a division of ProFun.
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 md:shrink-0 md:whitespace-nowrap">
+          <a href="../profun/index.html#/" className="footer-academy inline-flex items-center gap-2 text-[15px] text-white font-medium">
+            <img src="./profun-symbol-color.svg" alt="" aria-hidden="true" className="h-4 w-4" />
+            ProFun
+            <svg width="12" height="9" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </a>
           {/* Courses & Booking: shown but switched off until bookings go live */}
           <span
             aria-disabled="true"

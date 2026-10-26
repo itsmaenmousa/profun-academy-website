@@ -54,7 +54,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-4">
             <Link to="/" className="inline-block mb-8" aria-label="ProFun home">
-              <img src="./profun-logo-white.svg" alt="ProFun" className="h-11 sm:h-12 w-auto" />
+              <img src="./profun-logo-white.svg" alt="ProFun" className="h-14 sm:h-16 w-auto" />
             </Link>
             <p className="text-[18px] text-white/55 leading-relaxed font-light max-w-[320px] mb-8">
               The world’s trusted partner in attraction operations. Tustin, California and Riyadh, Kingdom of Saudi Arabia.

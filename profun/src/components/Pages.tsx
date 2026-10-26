@@ -210,20 +210,51 @@ function SectorBlock({ s, alt }: { s: typeof SECTORS[number]; alt: boolean }) {
 
 /* ── Services page ─────────────────────────────────────────────── */
 export function ServicesPage() {
-  useDeepLink(go => { if (SERVICES.some(s => s.id === go)) scrollToId(`svc-${go}`) })
+  // A footer or honeycomb link opens that service's details as well as scrolling to it
+  const [focus, setFocus] = useState<{ id: string; n: number } | null>(null)
+  useDeepLink(go => { if (SERVICES.some(s => s.id === go)) { setFocus(f => ({ id: go, n: (f?.n ?? 0) + 1 })); scrollToId(`svc-${go}`) } })
   return (
     <>
       <Services asPage />
       <div className="bg-[#F9F8F6]">
-        {SERVICES.map((s, i) => <ServiceBlock key={s.id} s={s} i={i} />)}
+        {SERVICES.map((s, i) => <ServiceBlock key={s.id} s={s} i={i} focus={focus?.id === s.id ? focus.n : 0} />)}
       </div>
     </>
   )
 }
 
-function ServiceBlock({ s, i }: { s: typeof SERVICES[number]; i: number }) {
+/* One collapsible row in a service block: what's included, related case studies */
+function Fold({ label, count, color, open, onToggle, children }: { label: string; count: number; color: string; open: boolean; onToggle: () => void; children: React.ReactNode }) {
+  return (
+    <div className="border-b border-[#E2E0DB]">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        className="group w-full flex items-center gap-4 py-5 text-left"
+      >
+        <span className="h-1 rounded-full transition-all duration-500" style={{ background: color, width: open ? 28 : 12 }} aria-hidden="true" />
+        <span className={`flex-1 text-[17px] sm:text-[18px] font-medium transition-colors ${open ? 'text-[#000050]' : 'text-[#1C1C1A] group-hover:text-[#F85707]'}`}>{label}</span>
+        <span className="text-[14px] text-[#6B6B65] tabular-nums">{count}</span>
+        <span className={`w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-300 ${open ? 'bg-[#000050] border-[#000050] text-white rotate-180' : 'border-[#D4D2CC] text-[#000050] group-hover:border-[#000050]'}`} aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4.5L6 8.5L10 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </span>
+      </button>
+      <div className={`grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+        <div className="overflow-hidden" inert={!open}>
+          <div className="pb-6">{children}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ServiceBlock({ s, i, focus }: { s: typeof SERVICES[number]; i: number; focus: number }) {
   const { ref, inView } = useInView()
   const isTraining = s.id === 'training'
+  const [open, setOpen] = useState<'items' | 'cases' | null>(null)
+  useEffect(() => { if (focus) setOpen(s.items ? 'items' : 'cases') }, [focus, s.items])
+  const toggle = (k: 'items' | 'cases') => setOpen(o => (o === k ? null : k))
   return (
     <section id={`svc-${s.id}`} className={`px-6 sm:px-12 py-14 sm:py-20 scroll-mt-24 ${i % 2 ? 'bg-[#F9F8F6]' : 'bg-[#F2F1EF]'}`}>
       <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 reveal ${inView ? 'visible' : ''}`}>
@@ -238,15 +269,6 @@ function ServiceBlock({ s, i }: { s: typeof SERVICES[number]; i: number }) {
         </div>
         <div className="lg:col-span-6 lg:col-start-7">
           <p className="text-[18px] sm:text-[19px] text-[#6B6B65] leading-relaxed font-light mb-8">{s.desc}</p>
-          {s.items && (
-            <ul className="mb-8 border-t border-[#E2E0DB]">
-              {s.items.map(it => (
-                <li key={it} className="flex items-start gap-4 py-3.5 border-b border-[#E2E0DB] text-[17px] text-[#1C1C1A]">
-                  <span className="mt-2.5 w-1.5 h-1.5 rounded-full flex-none" style={{ background: s.color }} aria-hidden="true" />{it}
-                </li>
-              ))}
-            </ul>
-          )}
           {isTraining && (
             <a href={ACADEMY_URL} className="group relative flex items-center justify-between gap-6 mb-8 overflow-hidden bg-[#111110] hover:bg-[#000050] transition-colors">
               <span className="absolute top-0 left-0 right-0 h-1 flex" aria-hidden="true">
@@ -261,12 +283,26 @@ function ServiceBlock({ s, i }: { s: typeof SERVICES[number]; i: number }) {
               </span>
             </a>
           )}
-          <p className="text-[15px] font-medium text-[#000050] mb-3">Related case studies</p>
-          <p className="flex flex-wrap gap-2">
-            {s.cases.map(c => CASE_DETAIL[c]
-              ? <Link key={c} to={`/work/${CASE_DETAIL[c].slug}`} className="text-[14px] text-[#4A4A45] bg-white border border-[#E2E0DB] px-3 py-1.5 hover:border-[#000050] hover:text-[#000050] transition-colors">{c}</Link>
-              : <span key={c} className="text-[14px] text-[#4A4A45] bg-white border border-[#E2E0DB] px-3 py-1.5">{c}</span>)}
-          </p>
+          <div className="border-t border-[#E2E0DB]">
+            {s.items && (
+              <Fold label="What’s included" count={s.items.length} color={s.color} open={open === 'items'} onToggle={() => toggle('items')}>
+                <ul>
+                  {open === 'items' && s.items.map((it, k) => (
+                    <li key={it} className="prog-tag flex items-start gap-4 py-2.5 text-[17px] text-[#1C1C1A]" style={{ animationDelay: `${k * 40}ms`, boxShadow: "none" }}>
+                      <span className="mt-2.5 w-1.5 h-1.5 rounded-full flex-none" style={{ background: s.color }} aria-hidden="true" />{it}
+                    </li>
+                  ))}
+                </ul>
+              </Fold>
+            )}
+            <Fold label="Related case studies" count={s.cases.length} color={s.color} open={open === 'cases'} onToggle={() => toggle('cases')}>
+              <p className="flex flex-wrap gap-2">
+                {s.cases.map(c => CASE_DETAIL[c]
+                  ? <Link key={c} to={`/work/${CASE_DETAIL[c].slug}`} className="inline-flex items-center gap-2 text-[14px] text-[#4A4A45] bg-white border border-[#E2E0DB] px-3 py-1.5 hover:border-[#000050] hover:text-[#000050] transition-colors">{c}</Link>
+                  : <span key={c} className="text-[14px] text-[#4A4A45] bg-white border border-[#E2E0DB] px-3 py-1.5">{c}</span>)}
+              </p>
+            </Fold>
+          </div>
         </div>
       </div>
     </section>
