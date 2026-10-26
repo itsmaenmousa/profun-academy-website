@@ -215,7 +215,7 @@ export default function Projects() {
             <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/45 to-transparent" />
 
             {/* Category, pinned top-left on every card */}
-            <p className="absolute left-5 top-5 max-w-[calc(100%-5.75rem)] text-[13px] font-medium text-white bg-black/45 px-2.5 py-[7px] leading-tight text-balance">
+            <p className="proj-tag absolute left-5 top-5 max-w-[calc(100%-5.75rem)] text-[13px] font-medium text-white bg-black/45 px-2.5 py-[7px] leading-tight text-balance">
               {project.category.replace(/-/g, '\u2011')}
             </p>
 
@@ -236,16 +236,20 @@ export default function Projects() {
             </button>
 
             <div className="absolute inset-x-0 bottom-0 p-6">
-              <h3 className="font-serif text-[clamp(24px,2.4vw,32px)] leading-[1.08] text-white">
+              <h3 className="proj-title font-serif text-[clamp(24px,2.4vw,32px)] leading-[1.08] text-white">
                 {project.title}
               </h3>
               {'location' in project && (
-                <p className="mt-3 text-[15px] font-light text-white/60">{project.location}</p>
+                <div className="proj-loc grid">
+                  <div className="overflow-hidden">
+                    <p className="pt-3 text-[15px] font-light text-white/60">{project.location}</p>
+                  </div>
+                </div>
               )}
               {/* About: revealed on hover, focus or tap */}
               <div className="proj-about grid">
                 <div className="overflow-hidden">
-                  <p className="pt-4 mt-4 border-t border-white/20 text-[15px] leading-relaxed text-white/90">{project.about}</p>
+                  <p className="pt-4 mt-4 border-t border-white/20 text-[14px] leading-normal lg:text-[15px] lg:leading-relaxed text-white/90">{project.about}</p>
                 </div>
               </div>
             </div>
