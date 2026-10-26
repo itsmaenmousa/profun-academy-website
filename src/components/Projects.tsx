@@ -20,7 +20,7 @@ const projects = [
   {
     title: 'Ferrari World Abu Dhabi',
     about: "The world's first Ferrari-branded theme park, home to Formula Rossa, one of the fastest coasters.",
-    category: 'Brand Centers',
+    category: 'Commercial Attraction',
     location: 'Abu Dhabi, UAE',
     image: './ferrari-world-abu-dhabi-card.jpg',
   },
