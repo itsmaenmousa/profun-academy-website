@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light only" />
+<meta name="robots" content="noindex, nofollow" />
+<title>ProFun | Choose your experience</title>
+<meta name="description" content="ProFun, the world's trusted partner in attraction operations, and ProFun Academy, its training arm." />
+<link rel="icon" href="./profun-symbol-color.svg" />
+<link rel="preload" href="./fonts/LufgaLight.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="./fonts/LufgaMedium.woff2" as="font" type="font/woff2" crossorigin />
+<style>
+  @font-face { font-family: 'Lufga'; src: url('./fonts/LufgaLight.woff2') format('woff2'); font-weight: 300; font-display: swap; }
+  @font-face { font-family: 'Lufga'; src: url('./fonts/LufgaRegular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Lufga'; src: url('./fonts/LufgaMedium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Lufga'; src: url('./fonts/LufgaSemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+  :root { color-scheme: light only; --navy: #000050; --ink: #111110; --orange: #F85707; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Lufga', system-ui, sans-serif; background: var(--ink); color: #fff;
+    min-height: 100svh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased;
+  }
+  .strip { display: flex; height: 4px; flex: none; }
+  .strip span { flex: 1; }
+  header { padding: 28px 24px 0; text-align: center; }
+  header img { height: 34px; width: auto; }
+  main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 24px 40px; }
+  .eyebrow { font-size: 14px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.55); font-weight: 500; margin-bottom: 14px; text-align: center; }
+  h1 { text-wrap: balance; font-weight: 400; font-size: clamp(30px, 4.4vw, 56px); line-height: 1.1; letter-spacing: -.01em; text-align: center; margin-bottom: clamp(28px, 5vh, 56px); }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 1180px; }
+  @media (min-width: 820px) { .grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+
+  .card {
+    position: relative; display: flex; flex-direction: column; justify-content: flex-end; text-decoration: none; color: #fff;
+    min-height: clamp(300px, 46svh, 520px); overflow: hidden; isolation: isolate; outline: none;
+    transition: transform .5s cubic-bezier(.16,1,.3,1);
+  }
+  .card .bg { position: absolute; inset: 0; z-index: -2; background-size: cover; background-position: center; transform: scale(1.02); transition: transform 1.2s cubic-bezier(.16,1,.3,1), filter .6s; filter: saturate(.9) brightness(.8); }
+  .card::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.45) 45%, rgba(0,0,0,.15) 100%); }
+  .card:hover .bg, .card:focus-visible .bg { transform: scale(1.08); filter: saturate(1.05) brightness(.9); }
+  .card:hover, .card:focus-visible { transform: translateY(-4px); }
+  .card:focus-visible { box-shadow: 0 0 0 3px var(--orange); }
+  .body { padding: clamp(24px, 3.2vw, 40px); display: flex; flex-direction: column; align-items: flex-start; }
+  .body > * { flex: none; }
+  .logo { height: clamp(52px, 6vw, 72px); width: auto; display: block; margin-bottom: 20px; }
+  .card p { font-weight: 300; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; color: rgba(255,255,255,.85); max-width: 460px; margin-bottom: 26px; }
+  .cta { display: inline-flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 500; padding: 14px 24px; transition: gap .3s, background .3s, color .3s; }
+  .card:hover .cta { gap: 18px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 18px; font-size: 14px; color: rgba(255,255,255,.7); }
+  .meta b { color: #fff; font-weight: 500; }
+
+  /* ProFun: quiet, confident */
+  .profun .cta { border: 1px solid rgba(255,255,255,.45); }
+  .profun:hover .cta { background: #fff; color: var(--navy); }
+
+  /* Academy: highlighted with an animated brand-colour frame and glow */
+  .academy { padding: 3px; }
+  .academy .frame {
+    position: absolute; inset: -60%; z-index: -3;
+    background: conic-gradient(from var(--a, 0deg), #3985FD, #15D2A4, #99CA32, #FFCA03, #F85707, #FC026F, #8238EB, #3985FD);
+    animation: spin 6s linear infinite;
+  }
+  .academy .inner { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; isolation: isolate; }
+  .academy .inner::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(0,0,0,.86) 0%, rgba(0,0,0,.4) 50%, rgba(0,0,0,.1) 100%); }
+  .academy::after { display: none; }
+  .academy .bg { z-index: -2; }
+  .academy .cta { background: var(--orange); }
+  .academy:hover .cta { background: #FC026F; }
+  .glow { position: absolute; inset: 18px; z-index: -4; filter: blur(28px); opacity: .32; background: conic-gradient(from 0deg, #3985FD, #15D2A4, #FFCA03, #F85707, #FC026F, #8238EB, #3985FD); animation: spin 6s linear infinite; }
+  .wrap-academy { position: relative; }
+  .badge { align-self: flex-start; margin-bottom: 18px; display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--navy); font-size: 13px; font-weight: 500; padding: 7px 12px; }
+  .badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 0 rgba(248,87,7,.6); animation: pulse 2s infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(248,87,7,.55); } 70% { box-shadow: 0 0 0 9px rgba(248,87,7,0); } 100% { box-shadow: 0 0 0 0 rgba(248,87,7,0); } }
+  @media (prefers-reduced-motion: reduce) { .academy .frame, .glow, .badge i { animation: none; } }
+
+  footer { padding: 0 24px 26px; text-align: center; font-size: 13px; color: rgba(255,255,255,.35); font-weight: 300; }
+
+  /* entrance */
+  .rise { opacity: 0; transform: translateY(18px); animation: rise .9s cubic-bezier(.16,1,.3,1) forwards; }
+  .d1 { animation-delay: .1s } .d2 { animation-delay: .25s } .d3 { animation-delay: .4s } .d4 { animation-delay: .55s }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  @media (max-width: 819px) {
+    main { justify-content: flex-start; padding-top: 28px; }
+    .card { min-height: 300px; }
+    .academy-first { order: -1; }
+  }
+</style>
+</head>
+<body>
+  <div class="strip" aria-hidden="true"><span style="background:#3985FD"></span><span style="background:#15D2A4"></span><span style="background:#99CA32"></span><span style="background:#FFCA03"></span><span style="background:#FC026F"></span><span style="background:#8238EB"></span><span style="background:#F85707"></span></div>
+  <header class="rise d1"><img src="./profun-symbol-color.svg" alt="ProFun" /></header>
+  <main>
+    <p class="eyebrow rise d1">Welcome</p>
+    <h1 class="rise d2">Where would you like to go?</h1>
+    <div class="grid">
+      <a class="card profun rise d3" href="./profun/index.html#/" aria-label="Enter ProFun">
+        <span class="bg" data-bg="profun"></span>
+        <span class="body">
+          <img class="logo" src="./profun-logo-white.svg" alt="ProFun" style="height:clamp(40px,4.4vw,54px)" />
+          <span class="meta"><span><b>45+</b> years</span><span><b>500+</b> projects</span><span><b>50</b> countries</span></span>
+          <p>The world's trusted partner in attraction operations, from planning to management.</p>
+          <span class="cta">Enter ProFun
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </span>
+      </a>
+
+      <div class="wrap-academy academy-first rise d4">
+        <span class="glow" aria-hidden="true"></span>
+        <a class="card academy" href="./academy/index.html#/" aria-label="Enter ProFun Academy" style="height:100%">
+          <span class="frame" aria-hidden="true"></span>
+          <span class="inner">
+            <span class="bg" data-bg="academy"></span>
+            <span class="body">
+              <span class="badge"><i aria-hidden="true"></i>Training arm of ProFun</span>
+              <img class="logo" src="./profun-academy-white.svg" alt="ProFun Academy" />
+              <span class="meta"><span><b>30+</b> years of training</span><span>Riyadh, Kingdom of Saudi Arabia</span></span>
+              <p>Tailored learning and capability development for the attractions industry.</p>
+              <span class="cta">Enter the Academy
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </main>
+  <footer>© <span id="y">2026</span> ProFun Management Group Inc. All rights reserved.</footer>
+<script>
+  // Lighter images on phones
+  var small = window.matchMedia('(max-width: 900px)').matches;
+  document.querySelector('[data-bg="profun"]').style.backgroundImage = 'url(./profun-bg' + (small ? '-720' : '') + '.jpg)';
+  document.querySelector('[data-bg="academy"]').style.backgroundImage = 'url(./academy-bg' + (small ? '-720' : '') + '.jpg)';
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

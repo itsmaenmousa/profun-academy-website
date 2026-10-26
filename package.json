@@ -1,0 +1,8 @@
+{
+  "name": "profun-group-website",
+  "private": true,
+  "scripts": {
+    "install-all": "cd academy && npm install && cd ../profun && npm install",
+    "build": "bash build.sh"
+  }
+}

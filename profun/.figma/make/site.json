@@ -1,0 +1,14 @@
+{
+  "description": "ProFun is the world's trusted partner in attraction operations: planning, advisory, training, implementation and management for theme parks, museums, brand centers and world expos.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  },
+  "title": "ProFun | Attraction Operations Advisory & Management",
+  "icons": {
+    "icon": "./profun-symbol-color.svg"
+  }
+}
