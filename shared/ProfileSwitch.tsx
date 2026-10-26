@@ -46,13 +46,13 @@ export function ProfileSwitch({ current, onDark = false, compact = false }: { cu
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </a>
 
-      {/* All profiles menu */}
+      {/* Websites menu */}
       <button
         type="button"
         onClick={() => setOpen(o => !o)}
         aria-expanded={open}
-        aria-label="Switch profile"
-        title="Switch profile"
+        aria-label="ProFun websites"
+        title="ProFun websites"
         className={`w-8 h-8 inline-flex items-center justify-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${onDark ? 'text-white/80 hover:bg-white/10' : 'text-[#000050]/70 hover:bg-[#000050]/5'}`}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -64,12 +64,11 @@ export function ProfileSwitch({ current, onDark = false, compact = false }: { cu
       </button>
 
       {open && (
-        <div role="menu" className="absolute right-0 top-[calc(100%+12px)] w-[260px] bg-white shadow-[0_24px_48px_-16px_rgba(0,0,80,0.35)] border border-[#E2E0DB] p-2 z-[60]">
-          <p className="px-3 pt-2 pb-3 text-[12px] font-medium tracking-[0.12em] uppercase text-[#6B6B65]">Switch profile</p>
+        <div role="menu" className="absolute right-0 top-[calc(100%+12px)] w-[260px] pt-2 bg-white shadow-[0_24px_48px_-16px_rgba(0,0,80,0.35)] border border-[#E2E0DB] p-2 z-[60]">
           <ProfileRow href={LINKS.profun} logo="./profun-symbol-color.svg" name="ProFun" sub="Attraction operations" active={current === 'profun'} />
           <ProfileRow href={LINKS.academy} logo="./profun-symbol-color.svg" name="ProFun Academy" sub="Training and learning" active={current === 'academy'} highlight />
           <a href={LINKS.picker} role="menuitem" className="mt-1 block px-3 py-2.5 text-[14px] text-[#6B6B65] hover:text-[#F85707] border-t border-[#E2E0DB]">
-            All profiles
+            All websites
           </a>
         </div>
       )}

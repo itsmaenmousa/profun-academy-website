@@ -64,12 +64,12 @@ export default function Nav() {
               className="h-9 xl:h-10 w-auto max-w-none transition-opacity duration-300"
               style={{ opacity: scrolled ? 1 : 0 }}
             />
-            {/* White logo, shown over the hero */}
+            {/* Color flare, shown over the hero (same as the Academy site) */}
             <img
-              src="./profun-logo-white.svg"
+              src="./profun-symbol-color.svg"
               alt=""
               aria-hidden="true"
-              className="absolute left-0 top-1/2 -translate-y-1/2 h-9 xl:h-10 w-auto max-w-none transition-opacity duration-300"
+              className="absolute left-0 top-1/2 -translate-y-1/2 h-14 w-auto max-w-none transition-opacity duration-300"
               style={{ opacity: scrolled ? 0 : 1 }}
             />
           </Link>
@@ -108,10 +108,10 @@ export default function Nav() {
             style={{ opacity: solid ? 1 : 0 }}
           />
           <img
-            src="./profun-logo-white.svg"
+            src="./profun-symbol-color.svg"
             alt=""
             aria-hidden="true"
-            className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-auto transition-opacity duration-300"
+            className="absolute left-0 top-1/2 -translate-y-1/2 h-12 w-auto transition-opacity duration-300"
             style={{ opacity: solid ? 0 : 1 }}
           />
         </Link>
@@ -172,7 +172,6 @@ export default function Nav() {
               Contact us
             </Link>
             <div className="pt-5 border-t border-[#E2E0DB]">
-              <p className="text-[13px] font-medium tracking-[0.12em] uppercase text-[#6B6B65] mb-3">Switch profile</p>
               <ProfileSwitch current="profun" />
             </div>
           </div>
