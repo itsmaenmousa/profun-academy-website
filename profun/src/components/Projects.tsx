@@ -190,6 +190,12 @@ export default function Projects() {
               <div className="proj-about grid">
                 <div className="overflow-hidden">
                   <p className="pt-4 mt-4 border-t border-white/20 text-[14px] leading-normal lg:text-[15px] lg:leading-relaxed text-white/90">{project.about}</p>
+                  {project.link && (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" onMouseDown={e => e.stopPropagation()} className="mt-3 inline-flex items-center gap-2 text-[14px] font-medium text-white hover:text-[#F85707] transition-colors">
+                      {project.linkLabel ?? 'Visit website'}
+                      <svg width="11" height="8" viewBox="0 0 12 9" fill="none" aria-hidden="true" className="-rotate-45"><path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

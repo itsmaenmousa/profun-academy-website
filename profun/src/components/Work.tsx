@@ -3,7 +3,9 @@ import type React from 'react'
 import { useInView } from '../hooks/useInView'
 import { useDeepLink, scrollToId } from '../lib/deeplink'
 import { CLIENTS, SECTORS, REGIONS, CASE_STUDIES, SERVICES, pf, type SectorId, type RegionId } from '../data'
-import { PageIntro, SectionHead } from './ui'
+import { Link, useParams } from 'react-router-dom'
+import { PageIntro, SectionHead, Arrow } from './ui'
+import { CASE_DETAIL } from '../content'
 import Projects from './Projects'
 
 type Sort = 'az' | 'za'
@@ -172,14 +174,14 @@ export function CaseStudies() {
     <section id="case-studies" className="bg-[#F2F1EF] px-6 sm:px-12 py-16 sm:py-20 lg:py-24 scroll-mt-24">
       <div className="max-w-[1920px] mx-auto">
         <SectionHead eyebrow="Case Studies" title="The only firm trusted across 500+ projects worldwide." side="From theme parks in the Middle East to museums in North America and brand centers in Europe, our case studies show one thing: ProFun delivers measurable impact." />
-        <div className="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter case studies by service">
+        <div className="flex flex-nowrap sm:flex-wrap gap-2 overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden mb-8" role="group" aria-label="Filter case studies by service">
           {[null, ...SERVICES.map(s => s.short)].map(s => (
             <button
               key={s ?? 'all'}
               type="button"
               aria-pressed={svc === s}
               onClick={() => setSvc(s)}
-              className={`h-11 px-5 text-[15px] font-medium border transition-colors inline-flex items-center gap-2 ${svc === s ? 'bg-[#000050] text-white border-[#000050]' : 'bg-white text-[#000050] border-[#D4D2CC] hover:border-[#000050]'}`}
+              className={`flex-none h-11 px-5 text-[15px] font-medium border transition-colors inline-flex items-center gap-2 ${svc === s ? 'bg-[#000050] text-white border-[#000050]' : 'bg-white text-[#000050] border-[#D4D2CC] hover:border-[#000050]'}`}
             >
               {s && <span className="w-2 h-2 rounded-full" style={{ background: color(s) }} aria-hidden="true" />}
               {s ?? 'All'}
@@ -189,20 +191,23 @@ export function CaseStudies() {
         </div>
         <ul ref={ref as React.RefObject<HTMLUListElement>} className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 reveal ${inView ? 'visible' : ''}`}>
           {list.map(([name, services, logo]) => (
-            <li key={name} className="bg-white flex items-center gap-5 p-5 min-h-[112px]">
-              <div className="w-20 h-16 flex-none flex items-center justify-center">
-                <img src={pf(logo)} alt="" loading="lazy" decoding="async" className="max-w-full max-h-full object-contain" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-[16px] font-medium text-[#000050] leading-snug mb-2">{name}</p>
-                <p className="flex flex-wrap gap-x-3 gap-y-1">
-                  {services.map(s => (
-                    <span key={s} className={`inline-flex items-center gap-1.5 text-[13px] ${svc === s ? 'text-[#000050] font-medium' : 'text-[#6B6B65]'}`}>
-                      <span className="w-1.5 h-1.5 rounded-full" style={{ background: color(s) }} aria-hidden="true" />{s}
-                    </span>
-                  ))}
-                </p>
-              </div>
+            <li key={name} className="flex">
+              <Link to={`/work/${CASE_DETAIL[name].slug}`} className="group flex-1 bg-white flex items-center gap-5 p-5 min-h-[112px] border border-transparent hover:border-[#000050] transition-colors">
+                <div className="w-20 h-16 flex-none flex items-center justify-center">
+                  <img src={pf(logo)} alt="" loading="lazy" decoding="async" className="max-w-full max-h-full object-contain" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[16px] font-medium text-[#000050] leading-snug mb-2 group-hover:text-[#F85707] transition-colors">{name}</p>
+                  <p className="flex flex-wrap gap-x-3 gap-y-1">
+                    {services.map(s => (
+                      <span key={s} className={`inline-flex items-center gap-1.5 text-[13px] ${svc === s ? 'text-[#000050] font-medium' : 'text-[#6B6B65]'}`}>
+                        <span className="w-1.5 h-1.5 rounded-full" style={{ background: color(s) }} aria-hidden="true" />{s}
+                      </span>
+                    ))}
+                  </p>
+                </div>
+                <Arrow className="flex-none text-[#000050] opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+              </Link>
             </li>
           ))}
         </ul>
@@ -222,6 +227,89 @@ export default function WorkPage() {
       <Projects />
       <ClientsFilter />
       <CaseStudies />
+    </>
+  )
+}
+
+/* ── Case study detail (/work/:slug), from the profun.com case study pages ── */
+export function CaseStudyPage() {
+  const { slug } = useParams()
+  const idx = CASE_STUDIES.findIndex(c => CASE_DETAIL[c[0]].slug === slug)
+  const { ref, inView } = useInView()
+  if (idx < 0) return (
+    <section className="bg-[#F2F1EF] px-6 sm:px-12 py-24 text-center">
+      <p className="text-[19px] text-[#6B6B65] font-light mb-6">This case study could not be found.</p>
+      <Link to="/work?go=case-studies" className="inline-flex items-center gap-3 text-[16px] font-medium text-[#000050] hover:text-[#F85707]">All case studies <Arrow /></Link>
+    </section>
+  )
+  const [name, services, logo] = CASE_STUDIES[idx]
+  const d = CASE_DETAIL[name]
+  const color = (s: string) => SERVICES.find(x => x.short === s)?.color ?? '#000050'
+  const prev = CASE_STUDIES[(idx - 1 + CASE_STUDIES.length) % CASE_STUDIES.length]
+  const next = CASE_STUDIES[(idx + 1) % CASE_STUDIES.length]
+  return (
+    <>
+      <section className="bg-[#F2F1EF] px-6 sm:px-12 pt-10 sm:pt-14 lg:pt-16 pb-14 sm:pb-16">
+        <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-[1920px] mx-auto reveal ${inView ? 'visible' : ''}`}>
+          <Link to="/work?go=case-studies" className="inline-flex items-center gap-2 text-[15px] font-medium text-[#6B6B65] hover:text-[#F85707] transition-colors mb-8 sm:mb-10">
+            <Arrow className="rotate-180" /> All case studies
+          </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+            <div className="lg:col-span-7">
+              <p className="text-[20px] font-semibold text-[#F85707] mb-4">Case Study</p>
+              <h1 className="font-serif text-balance text-[clamp(40px,4.8vw,72px)] text-[#000050] leading-[1.06] tracking-[-0.015em] mb-8">{name}</h1>
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-[#E2E0DB] pt-6">
+                <div>
+                  <dt className="text-[14px] font-medium text-[#6B6B65] mb-2">Location</dt>
+                  <dd className="text-[18px] text-[#000050]">{d.location}</dd>
+                </div>
+                <div>
+                  <dt className="text-[14px] font-medium text-[#6B6B65] mb-2">Services</dt>
+                  <dd className="flex flex-wrap gap-x-4 gap-y-1.5">
+                    {services.map(s => (
+                      <Link key={s} to={`/services?go=${s.toLowerCase()}`} className="inline-flex items-center gap-2 text-[17px] text-[#000050] hover:text-[#F85707] transition-colors">
+                        <span className="w-2 h-2 rounded-full" style={{ background: color(s) }} aria-hidden="true" />{s}
+                      </Link>
+                    ))}
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div className="lg:col-span-5">
+              <div className="relative aspect-[4/3] overflow-hidden bg-[#1C1C1A]">
+                <img src={pf(d.image)} alt={name} className="w-full h-full object-cover" />
+                <span className="absolute bottom-0 left-0 right-0 h-1" style={{ background: color(services[0]) }} aria-hidden="true" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#F9F8F6] px-6 sm:px-12 py-14 sm:py-20">
+        <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+          <div className="hidden lg:block lg:col-span-3">
+            <div className="w-32 h-24 bg-white flex items-center justify-center p-3">
+              <img src={pf(logo)} alt="" className="max-w-full max-h-full object-contain" />
+            </div>
+          </div>
+          <div className="lg:col-span-8 lg:col-start-5 space-y-6 text-[18px] sm:text-[19px] text-[#1C1C1A] leading-relaxed font-light">
+            {d.body.map((p, i) => <p key={i}>{p}</p>)}
+          </div>
+        </div>
+      </section>
+
+      <nav aria-label="More case studies" className="bg-[#F2F1EF] px-6 sm:px-12 py-10 sm:py-12">
+        <div className="max-w-[1920px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          {[['Previous', prev] as const, ['Next', next] as const].map(([label, c]) => (
+            <Link key={label} to={`/work/${CASE_DETAIL[c[0]].slug}`} className={`group bg-white p-6 sm:p-8 flex flex-col gap-2 border border-transparent hover:border-[#000050] transition-colors ${label === 'Next' ? 'sm:items-end sm:text-right' : ''}`}>
+              <span className="inline-flex items-center gap-2 text-[14px] font-medium text-[#6B6B65]">
+                {label === 'Previous' && <Arrow className="rotate-180" />}{label} case study{label === 'Next' && <Arrow />}
+              </span>
+              <span className="font-serif text-[clamp(22px,1.8vw,28px)] text-[#000050] leading-snug group-hover:text-[#F85707] transition-colors">{c[0]}</span>
+            </Link>
+          ))}
+        </div>
+      </nav>
     </>
   )
 }

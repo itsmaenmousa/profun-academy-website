@@ -15,13 +15,15 @@ const loaders = {
   Pages: () => import('./components/Pages'),
   Work: () => import('./components/Work'),
   Contact: () => import('./components/Contact'),
+  News: () => import('./components/News'),
 }
 const AboutPage = lazy(() => loaders.Pages().then(m => ({ default: m.AboutPage })))
 const SectorsPage = lazy(() => loaders.Pages().then(m => ({ default: m.SectorsPage })))
 const ServicesPage = lazy(() => loaders.Pages().then(m => ({ default: m.ServicesPage })))
 const TeamPage = lazy(() => loaders.Pages().then(m => ({ default: m.TeamPage })))
-const NewsPage = lazy(() => loaders.Pages().then(m => ({ default: m.NewsPage })))
+const NewsPage = lazy(loaders.News)
 const WorkPage = lazy(loaders.Work)
+const CaseStudyPage = lazy(() => loaders.Work().then(m => ({ default: m.CaseStudyPage })))
 const Contact = lazy(loaders.Contact)
 
 function usePrefetchPages() {
@@ -126,6 +128,7 @@ export default function App() {
         <Route path="/sectors" element={<Layout><SectorsPage /></Layout>} />
         <Route path="/services" element={<Layout><ServicesPage /></Layout>} />
         <Route path="/work" element={<Layout><WorkPage /></Layout>} />
+        <Route path="/work/:slug" element={<Layout><CaseStudyPage /></Layout>} />
         <Route path="/team" element={<Layout><TeamPage /></Layout>} />
         <Route path="/news" element={<Layout><NewsPage /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />

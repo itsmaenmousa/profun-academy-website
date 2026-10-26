@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
 import { useDeepLink, scrollToId } from '../lib/deeplink'
-import { SECTORS, SERVICES, NEWS, AFFILIATIONS, pf, ACADEMY_URL } from '../data'
+import { SECTORS, SERVICES, AFFILIATIONS, ACADEMY_URL } from '../data'
+import { Link } from 'react-router-dom'
 import { PageIntro, SectionHead, Arrow, TextLink } from './ui'
+import { CASE_DETAIL } from '../content'
 import Stats from './Stats'
 import { AcademyBand } from './HomeSections'
 import Leadership from './Leadership'
@@ -221,7 +223,9 @@ function ServiceBlock({ s, i }: { s: typeof SERVICES[number]; i: number }) {
           )}
           <p className="text-[15px] font-medium text-[#000050] mb-3">Related case studies</p>
           <p className="flex flex-wrap gap-2">
-            {s.cases.map(c => <span key={c} className="text-[14px] text-[#4A4A45] bg-white border border-[#E2E0DB] px-3 py-1.5">{c}</span>)}
+            {s.cases.map(c => CASE_DETAIL[c]
+              ? <Link key={c} to={`/work/${CASE_DETAIL[c].slug}`} className="text-[14px] text-[#4A4A45] bg-white border border-[#E2E0DB] px-3 py-1.5 hover:border-[#000050] hover:text-[#000050] transition-colors">{c}</Link>
+              : <span key={c} className="text-[14px] text-[#4A4A45] bg-white border border-[#E2E0DB] px-3 py-1.5">{c}</span>)}
           </p>
         </div>
       </div>
@@ -232,49 +236,4 @@ function ServiceBlock({ s, i }: { s: typeof SERVICES[number]; i: number }) {
 /* ── People: same team, photos and layout as the ProFun Academy site ── */
 export function TeamPage() {
   return <Leadership />
-}
-
-/* ── News ──────────────────────────────────────────────────────── */
-export function NewsPage() {
-  const { ref, inView } = useInView()
-  const [lead, ...rest] = NEWS
-  return (
-    <>
-      <PageIntro eyebrow="News" title="Latest from ProFun." lead="Company news, project milestones and the stories shaping the attractions industry." />
-      <section className="bg-[#F9F8F6] px-6 sm:px-12 py-14 sm:py-20">
-        <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-[1920px] mx-auto reveal ${inView ? 'visible' : ''}`}>
-          <a href={lead.href} target="_blank" rel="noopener noreferrer" className="group grid grid-cols-1 lg:grid-cols-12 bg-white mb-6 sm:mb-8">
-            <div className="lg:col-span-7 aspect-[16/9] overflow-hidden bg-[#1C1C1A]">
-              <img src={pf(lead.image)} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-            </div>
-            <div className="lg:col-span-5 p-7 sm:p-10 lg:p-12 flex flex-col justify-center">
-              <p className="text-[14px] font-medium text-[#F85707] mb-3">{lead.tag} · {lead.date}</p>
-              <h2 className="font-serif text-[clamp(26px,2.4vw,36px)] text-[#000050] leading-tight mb-6 group-hover:text-[#F85707] transition-colors">{lead.title}</h2>
-              <span className="inline-flex items-center gap-3 text-[16px] font-medium text-[#1C1C1A] group-hover:gap-5 transition-all">Read the story <Arrow /></span>
-            </div>
-          </a>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {rest.map(n => (
-              <li key={n.href} className="bg-white">
-                <a href={n.href} target="_blank" rel="noopener noreferrer" className="group block h-full">
-                  <div className="aspect-[16/10] overflow-hidden bg-[#1C1C1A]">
-                    <img src={pf(n.image)} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[13px] font-medium text-[#F85707] mb-2">{n.tag} · {n.date}</p>
-                    <h3 className="font-serif text-[20px] text-[#000050] leading-snug group-hover:text-[#F85707] transition-colors">{n.title}</h3>
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10 flex justify-center">
-            <a href="https://profun.com/news/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 h-12 px-6 text-[15px] font-medium border border-[#000050]/25 text-[#000050] hover:border-[#000050] transition-colors">
-              News archive <Arrow />
-            </a>
-          </div>
-        </div>
-      </section>
-    </>
-  )
 }

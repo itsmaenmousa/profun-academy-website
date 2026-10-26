@@ -131,15 +131,15 @@ export const SECTORS: {
 export const sectorById = (id: SectorId) => SECTORS.find(s => s.id === id)!
 
 /* ── Featured projects (home page rail) ───────────────────────── */
-export const FEATURED: { title: string; location: string; sector: SectorId; image: string; about: string; link?: string }[] = [
+export const FEATURED: { title: string; location: string; sector: SectorId; image: string; about: string; link?: string; linkLabel?: string }[] = [
   { title: 'QUEST', location: 'Doha, Qatar', sector: 'commercial', image: './projects/quest-hero.jpg', about: 'Qatar’s first indoor theme park, at Doha Oasis, with record-breaking rides and themed zones.', link: 'https://www.dohaquest.com/en' },
-  { title: 'King Power Mahanakhon Skywalk', location: 'Bangkok, Thailand', sector: 'commercial', image: './projects/mahanakhon.jpg', about: 'A rooftop observation deck with a glass floor, high above one of Bangkok’s tallest towers.' },
+  { title: 'King Power Mahanakhon Skywalk', location: 'Bangkok, Thailand', sector: 'commercial', image: './projects/mahanakhon.jpg', about: 'A rooftop observation deck with a glass floor, high above one of Bangkok’s tallest towers.', link: 'https://edition.cnn.com/videos/travel/2018/11/19/bangkok-tallest-building-new-skywalk-lon-orig.cnn', linkLabel: 'Watch the CNN video' },
   { title: 'Ferrari World', location: 'Yas Island, Abu Dhabi', sector: 'commercial', image: './projects/ferrari-world.jpg', about: 'The world’s first Ferrari-branded theme park, home to one of the fastest roller coasters.' },
   { title: 'American Museum of Natural History', location: 'New York, USA', sector: 'science', image: './projects/amnh-rose.jpg', about: 'One of the world’s great natural history museums, on Manhattan’s Upper West Side.', link: 'https://www.amnh.org/' },
   { title: 'Makkah Royal Clock Tower', location: 'Makkah, Saudi Arabia', sector: 'science', image: './projects/makkah-royal.jpg', about: 'A landmark tower beside the Grand Mosque, crowned by its iconic clock and museum.' },
   { title: 'Aquarium of the Pacific', location: 'Long Beach, USA', sector: 'science', image: './projects/aquarium-pacific.jpg', about: 'A leading public aquarium on the Long Beach waterfront, focused on the Pacific Ocean.', link: 'https://www.aquariumofpacific.org/' },
   { title: 'Smithsonian Museum of Natural History', location: 'Washington, DC', sector: 'science', image: './projects/smithsonian.jpg', about: 'One of the most visited museums in the world, on the National Mall.', link: 'https://naturalhistory.si.edu/' },
-  { title: 'Autostadt', location: 'Wolfsburg, Germany', sector: 'brand', image: './projects/autostadt.jpg', about: 'Volkswagen’s brand destination beside its home factory, with pavilions for each of its marques.' },
+  { title: 'Autostadt', location: 'Wolfsburg, Germany', sector: 'brand', image: './projects/autostadt.jpg', about: 'Volkswagen’s brand destination beside its home factory, with pavilions for each of its marques.', link: 'https://www.motortrend.com/news/volkswagen-autostadt-visual-tour-photos/', linkLabel: 'See the MotorTrend article' },
   { title: 'Edge', location: 'New York, USA', sector: 'commercial', image: './projects/the-edge.jpg', about: 'The highest outdoor sky deck in the Western Hemisphere, at Hudson Yards.', link: 'https://www.edgenyc.com/en' },
   { title: 'Georgia Aquarium', location: 'Atlanta, USA', sector: 'science', image: './projects/georgia-aquarium.jpg', about: 'One of the largest aquariums in the world, in downtown Atlanta.', link: 'https://www.georgiaaquarium.org/' },
 ]
@@ -347,19 +347,6 @@ export const TEAM: { name: string; role: string; office: Office; photo: string; 
   { name: 'Ibtisam Alotaibi', role: 'Senior Finance Director', office: 'KSA', photo: '2026/02/Ibtisam_Alotaibi_Headshot-1000x1000-1-640x640.png', bio: 'Ibtisam holds a BBA in Finance from Shaqra University and supports accurate financial reporting, reconciliation and internal controls across ProFun.' },
   { name: 'Joann Reyes', role: 'Document Controller', office: 'KSA', photo: '2026/02/Joann_Reyes_Headshot-1000x1000-1-640x640.png', bio: 'Joann is a skilled Document Controller with experience across Saad Al Kaabi Steel and Aluminum, Boom Construction and Hyundai Engineering & Construction.' },
   { name: 'Robert Baldwin', role: 'Vice President', office: 'USA', photo: '2024/03/Bob_Baldwin_Headshot-1000x1000-1-640x640.png', bio: 'Bob spent 30 years at The Walt Disney Company in marketing, sales and operations, including two decades leading Disney’s direct marketing programs and international teams for the openings of Tokyo Disneyland and Disneyland Paris. At ProFun since 2000, he audits clients’ marketing, sales and ticketing and recommends improvements.' },
-]
-
-/* ── News (from profun.com) ───────────────────────────────────── */
-export const NEWS: { title: string; date: string; image: string; href: string; tag: string }[] = [
-  { title: 'Seder Group and ProFun launch SPOC, a Saudi-born turnkey operator for entertainment, culture, tourism and sports destinations', date: 'Jul 2, 2026', image: '2026/07/SPOC-Signing-2-1080x675.png', href: 'https://profun.com/2026/07/02/seder-group-and-profun-launch-spoc/', tag: 'ProFun News' },
-  { title: 'ProFun Academy announces strategic training partnership', date: 'Jun 25, 2026', image: '2026/06/PFA-Resized.png', href: 'https://profun.com/2026/06/25/27394/', tag: 'ProFun Academy' },
-  { title: 'Bay Area’s first surf park planned for former naval air station', date: 'Jun 20, 2025', image: '2025/06/Neptune-Beach-Surf-Club.png', href: 'https://profun.com/2025/06/20/bay-areas-first-surf-park/', tag: 'Industry' },
-  { title: 'Attractions Expert Q&A: Brad Merriman shares a birthday with Disneyland, 15 years apart', date: 'Jun 20, 2025', image: '2025/06/Shanghai-Disneyland-courtesy-of-Disney-1080x675.png', href: 'https://profun.com/2025/06/20/attractions-expert-qa-brad-merriman-shares-a-birthday-with-disneyland-but-15-years-apart/', tag: 'Interview' },
-  { title: 'Legacy Entertainment unveils design for Beijing Haichang Ocean Park', date: 'Jun 19, 2025', image: '2025/06/Beijing-Haichang-Ocean-Park-Legacy-Entertainment-1200x675-1-1080x675.jpg', href: 'https://profun.com/2025/06/19/legacy-entertainment-unveils-design-for-beijing-haichang-ocean-park/', tag: 'Industry' },
-  { title: 'New dinosaur unveiled at Natural History Museum of Utah', date: 'Jun 21, 2024', image: '2024/06/New-Dino-Discovery_MAS_01-scaled-e1718916103876-900x506-1.jpg', href: 'https://profun.com/2024/06/21/new-dinosaur-unveiled-at-natural-history-museum-of-utah/', tag: 'Client News' },
-  { title: 'Philadelphia Zoo celebrates 150 years', date: 'Jun 12, 2024', image: '2024/06/150-year-Philadelphia-Zoo-1080x675.webp', href: 'https://profun.com/2024/06/12/philadelphia-zoo-celebrates-150-years/', tag: 'Client News' },
-  { title: 'The world’s first Dragon Ball theme park is coming to Saudi', date: 'Mar 24, 2024', image: '2024/06/Dragon-ball-theme-park-1-1080x675.png', href: 'https://profun.com/2024/03/24/the-worlds-first-dragon-ball-theme-park-is-coming-to-saudi/', tag: 'Industry' },
-  { title: 'Quest: Qatar’s first-ever indoor theme park opens in Doha', date: 'Jul 6, 2021', image: '2021/07/doha-quest-time-travel-1080x675.jpg', href: 'https://profun.com/2021/07/06/quest-qatars-first-ever-indoor-theme-park-opens-in-doha/', tag: 'Project News' },
 ]
 
 /* ── Offices ──────────────────────────────────────────────────── */
