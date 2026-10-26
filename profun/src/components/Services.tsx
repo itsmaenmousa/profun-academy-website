@@ -8,7 +8,8 @@ import { SERVICES, ACADEMY_URL } from '../data'
 // Soft hyphen lets the long label break neatly in the smallest phone cells
 const services = SERVICES.map(x => ({ id: x.id, short: x.short.replace('Implementation', 'Implemen\u00ADtation'), title: x.short, desc: x.lead, color: x.color }))
 
-export default function Services() {
+export default function Services({ asPage = false }: { asPage?: boolean }) {
+  const H = asPage ? 'h1' : 'h2'
   const { ref, inView } = useInView()
 
   return (
@@ -21,9 +22,9 @@ export default function Services() {
         >
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">What We Do</p>
-            <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] max-w-[760px] tracking-[-0.01em]">
+            <H className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] max-w-[760px] tracking-[-0.01em]">
               From first plans to daily operations.
-            </h2>
+            </H>
           </div>
         </div>
 
@@ -177,17 +178,16 @@ function Honeycomb({ inView }: { inView: boolean }) {
           e.currentTarget.style.setProperty('--py', '0')
         }}
       >
-        {/* The sixth cell is ProFun Academy, highlighted with the brand colour ring */}
         {GHOSTS.map((g, i) => (
-          <a key={i} href={ACADEMY_URL} aria-label="ProFun Academy, our training arm" className={`hc-cell hc-ghost hc-academy ${inView ? 'is-in' : ''}`} style={{ ...cellStyle(g, 300 + i * 60), ['--depth' as string]: 1.8, ['--float-delay' as string]: `${-i * 0.9}s` }}>
-            <span className="hc-par"><span className="hc-float"><span className="hc-face hc-ring">
-              <span className="relative flex flex-col items-center justify-center h-full px-[10%] sm:px-[16%] text-center">
-                <img src="./profun-symbol-color.svg" alt="" aria-hidden="true" className="w-5 sm:w-7 h-auto mb-1.5 sm:mb-2.5" />
-                <span className="font-serif text-white text-[13px] sm:text-[16px] lg:text-[clamp(15px,1.25vw,19px)] leading-tight">ProFun Academy</span>
-                <span className="hidden sm:block mt-1 text-[12px] lg:text-[13px] font-medium text-white/75">Our training arm</span>
+          <span key={i} className={`hc-cell hc-ghost ${inView ? 'is-in' : ''}`} style={{ ...cellStyle(g, 300 + i * 60), ['--depth' as string]: 1.8, ['--float-delay' as string]: `${-i * 0.9}s`, ['--tint' as string]: s.color }}>
+            <span className="hc-par"><span className="hc-float"><span className="hc-face">
+              <span className="relative flex flex-col items-center justify-center h-full px-[16%] text-center">
+                <span className="w-5 sm:w-6 h-1 rounded-full mb-2 sm:mb-3 bg-[#F85707]" aria-hidden="true" />
+                <span className="hidden sm:block font-serif italic text-[#000050] text-[16px] lg:text-[clamp(15px,1.25vw,19px)] leading-tight lg:leading-snug">Tailored to your people and operations.</span>
+                <span className="sm:hidden font-serif italic text-[#000050] text-[13px] leading-tight">Tailored to you.</span>
               </span>
             </span></span></span>
-          </a>
+          </span>
         ))}
 
         {/* Center flare: hover or tap also opens the services */}

@@ -4,18 +4,20 @@ import { useInView } from '../hooks/useInView'
 import { useDeepLink, scrollToId } from '../lib/deeplink'
 import { SECTORS, SERVICES, AFFILIATIONS, ACADEMY_URL } from '../data'
 import { Link } from 'react-router-dom'
-import { PageIntro, SectionHead, Arrow, TextLink } from './ui'
-import { CASE_DETAIL } from '../content'
+import { SectionHead, Arrow, TextLink } from './ui'
+import Services from './Services'
+import { CASE_DETAIL, caseSlugFor } from '../content'
 import Stats from './Stats'
 import { AcademyBand } from './HomeSections'
 import Leadership from './Leadership'
 
 /* ── About ─────────────────────────────────────────────────────── */
+const LIGHT = ['#15D2A4', '#99CA32', '#FFCA03', '#00AFDC']
 const QUALITY = [
-  { title: 'Internal Quality', desc: 'Accuracy, consistency and efficiency in how we work.', color: '#3985FD' },
+  { title: 'Internal Quality', desc: 'Accuracy, consistency and efficiency of our work processes.', color: '#3985FD' },
   { title: 'Client Work Product', desc: 'Best-in-class consulting reports and advisory services.', color: '#15D2A4' },
-  { title: 'Programs and Services', desc: 'The quality of ProFun Academy and all client-facing services.', color: '#FC026F' },
-  { title: 'Client Enablement', desc: 'Tools and knowledge that help clients achieve their own quality standards.', color: '#8238EB' },
+  { title: 'Programs and Services', desc: 'Quality of ProFun Academy and all client-facing services.', color: '#FC026F' },
+  { title: 'Client Enablement', desc: 'Providing tools and knowledge for clients to achieve their own quality standards.', color: '#8238EB' },
 ]
 
 export function AboutPage() {
@@ -24,53 +26,66 @@ export function AboutPage() {
   const [tapped, setTapped] = useState<number | null>(null)
   return (
     <>
-      <PageIntro
-        eyebrow="About ProFun"
-        title="The world leader in attractions operations."
-        lead="The only firm dedicated solely to operations advisory and management in the global attractions industry. Since 1980, we have advised on, trained for and managed projects on every continent."
-        image="./projects/amnh-rose.jpg"
-      />
       <Stats />
-      <section className="bg-[#F2F1EF] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
-        <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 reveal ${inView ? 'visible' : ''}`}>
-          <div className="lg:col-span-5">
-            <p className="text-[20px] font-semibold text-[#F85707] mb-4">Our Value</p>
-            <h2 className="font-serif text-balance text-[clamp(34px,3.4vw,52px)] text-[#000050] leading-[1.1] tracking-[-0.01em]">
-              Bridging creative ambition with operational reality.
-            </h2>
+      <section id="about" className="bg-[#F2F1EF] pt-16 sm:pt-20 lg:pt-24 pb-16 sm:pb-20 lg:pb-24 px-6 sm:px-12">
+        <div className="max-w-[1920px] mx-auto">
+          <div ref={ref as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className={`lg:col-span-5 reveal ${inView ? 'visible' : ''}`}>
+              <p className="text-[20px] font-semibold text-[#F85707] mb-4">About ProFun</p>
+              <h1 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] mb-8 tracking-[-0.01em]">
+                The world leader in attractions operations.
+              </h1>
+              <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-6">
+                ProFun is the world leader, and the only firm of its kind, dedicated exclusively to operations advisory and management for the attractions industry. Since 1980, we have advised on, trained for and managed projects on every continent, serving some of the world&rsquo;s most iconic destinations.
+              </p>
+              <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-6">
+                Our value lies in bridging creative ambition with operational reality, applying commercial discipline, practical experience and global insight to ensure concepts thrive long after opening day.
+              </p>
+              <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-12">
+                Our team is built for impact: seasoned international executives and regional specialists with unmatched operational expertise. From pre-concept planning and analysis to daily management, our people know what it takes to deliver guest satisfaction, financial performance and operational reliability, because they&rsquo;ve been there.
+              </p>
+              <TextLink to="/team">Meet our people</TextLink>
+            </div>
+            <div className={`lg:col-span-7 relative reveal reveal-delay-2 ${inView ? 'visible' : ''}`}>
+              <div className={`aspect-[4/3] overflow-hidden bg-[#1C1C1A] img-reveal ${inView ? 'visible' : ''}`}>
+                <img src="./projects/amnh-rose.jpg" alt="The Rose Center for Earth and Space, American Museum of Natural History" className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-[1.03]" />
+              </div>
+              <p className="mt-4 text-[15px] text-[#6B6B65] font-light">The Rose Center for Earth and Space, American Museum of Natural History, New York</p>
+            </div>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 space-y-6 text-[19px] sm:text-[20px] text-[#6B6B65] leading-relaxed font-light">
-            <p>ProFun is the world leader, and the only firm of its kind, dedicated exclusively to operations advisory and management for the attractions industry, serving some of the world&rsquo;s most iconic destinations.</p>
-            <p>Our value lies in applying commercial discipline, practical experience and global insight to ensure concepts thrive long after opening day.</p>
-            <p>Our team is built for impact: seasoned international executives and regional specialists with unmatched operational expertise. From pre-concept planning and analysis to daily management, our people know what it takes to deliver guest satisfaction, financial performance and operational reliability, because they&rsquo;ve been there.</p>
-            <div className="pt-4"><TextLink to="/team">Meet our people</TextLink></div>
+
+          {/* Commitment to quality */}
+          <div ref={ref2 as React.RefObject<HTMLDivElement>} className="mt-24 pt-16 border-t border-[#E2E0DB]">
+            <div className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 reveal ${in2 ? 'visible' : ''}`}>
+              <div>
+                <p className="text-[20px] font-semibold text-[#F85707] mb-4">Our Commitment to Quality</p>
+                <h2 className="font-serif text-[clamp(32px,3vw,48px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">Excellence through accountability.</h2>
+              </div>
+              <p className="max-w-[460px] text-[18px] text-[#6B6B65] leading-relaxed font-light">
+                Our mission is to deliver exceptional operations advisory and management services, and professional training through ProFun Academy, that exceed clients&rsquo; expectations and drive sustainable growth, through a culture of quality, accountability and continuous improvement.
+              </p>
+            </div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
+              {QUALITY.map((v, i) => (
+                <li key={v.title} className={`value-card group relative bg-white p-8 sm:p-9 min-h-[240px] flex flex-col overflow-hidden reveal reveal-delay-${i + 1} ${in2 ? 'visible' : ''}`} style={{ ['--brand' as string]: v.color, ['--ink' as string]: LIGHT.includes(v.color) ? '#000050' : '#ffffff' }}>
+                  <span className="value-fill" aria-hidden="true" />
+                  <span className="value-bar absolute top-0 left-0 right-0 h-1" style={{ background: v.color }} aria-hidden="true" />
+                  <h3 className="value-title relative font-serif text-[23px] text-[#000050] leading-snug mt-4 mb-3">{v.title}</h3>
+                  <p className="value-copy relative text-[17px] text-[#6B6B65] leading-relaxed font-light">{v.desc}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 text-[16px] text-[#6B6B65] font-light">Our complete Quality Policy is available upon request.</p>
           </div>
         </div>
       </section>
 
       <section className="bg-[#F9F8F6] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
         <div className="max-w-[1920px] mx-auto">
-          <SectionHead eyebrow="Our Commitment to Quality" title="Excellence through accountability." side="Our mission is to deliver exceptional operations advisory and management services, and professional training through ProFun Academy, that exceed expectations and drive sustainable growth." />
-          <ul ref={ref2 as React.RefObject<HTMLUListElement>} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
-            {QUALITY.map((v, i) => (
-              <li key={v.title} className={`value-card group relative bg-white p-8 sm:p-9 min-h-[220px] flex flex-col overflow-hidden reveal reveal-delay-${i + 1} ${in2 ? 'visible' : ''}`} style={{ ['--brand' as string]: v.color, ['--ink' as string]: '#ffffff' }}>
-                <span className="value-fill" aria-hidden="true" />
-                <span className="value-bar absolute top-0 left-0 right-0 h-1" style={{ background: v.color }} aria-hidden="true" />
-                <h3 className="value-title relative font-serif text-[23px] text-[#000050] leading-snug mt-4 mb-3">{v.title}</h3>
-                <p className="value-copy relative text-[17px] text-[#6B6B65] leading-relaxed font-light">{v.desc}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 text-[16px] text-[#6B6B65] font-light">Our complete Quality Policy is available upon request.</p>
-        </div>
-      </section>
-
-      <section className="bg-[#F2F1EF] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-[1920px] mx-auto">
           <SectionHead eyebrow="Our Affiliations" title="Part of the bodies that shape the industry." />
           <ul className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
             {AFFILIATIONS.map((p, i) => (
-              <li key={p.name} className={`partner-card group relative bg-[#F9F8F6] p-4 sm:p-6 lg:p-10 flex items-center justify-center lg:min-h-[240px] overflow-hidden ${tapped === i ? 'is-on' : ''}`} style={{ ['--brand' as string]: p.color }} onClick={() => setTapped(t => (t === i ? null : i))}>
+              <li key={p.name} className={`partner-card group relative bg-[#F2F1EF] p-4 sm:p-6 lg:p-10 flex items-center justify-center lg:min-h-[240px] overflow-hidden ${tapped === i ? 'is-on' : ''}`} style={{ ['--brand' as string]: p.color }} onClick={() => setTapped(t => (t === i ? null : i))}>
                 <span className="partner-fill" aria-hidden="true" />
                 <div className="partner-plate relative w-full lg:max-w-[340px] h-24 sm:h-28 lg:h-32 bg-white flex items-center justify-center px-5 sm:px-8">
                   <img src={p.logo} alt={p.name} title={p.name} loading="lazy" decoding="async" className={`${p.big ? 'max-h-[68px] sm:max-h-[80px] lg:max-h-[92px]' : 'max-h-12 sm:max-h-14 lg:max-h-16'} max-w-full w-auto object-contain`} />
@@ -85,25 +100,45 @@ export function AboutPage() {
   )
 }
 
+/* Page opener in the same form as the ProFun Academy page headers */
+function PageHead({ eyebrow, title, side, children }: { eyebrow: string; title: string; side: string; children?: React.ReactNode }) {
+  const { ref, inView } = useInView()
+  return (
+    <section className="bg-[#F9F8F6] px-6 sm:px-12 pt-16 sm:pt-20 lg:pt-24">
+      <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-[1920px] mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 sm:pb-12 reveal ${inView ? 'visible' : ''}`}>
+        <div>
+          <p className="text-[20px] font-semibold text-[#F85707] mb-4">{eyebrow}</p>
+          <h1 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] max-w-[860px]">{title}</h1>
+        </div>
+        <p className="max-w-[480px] text-[19px] text-[#6B6B65] leading-relaxed font-light">{side}</p>
+      </div>
+      {children}
+    </section>
+  )
+}
+
 /* ── Sectors ───────────────────────────────────────────────────── */
 export function SectorsPage() {
   const [active, setActive] = useState<string>(SECTORS[0].id)
   useDeepLink(go => { if (SECTORS.some(s => s.id === go)) { setActive(go); scrollToId(`sector-${go}`) } })
   // Track which sector is on screen for the tab bar
   useEffect(() => {
-    const els = SECTORS.map(s => document.getElementById(`sector-${s.id}`)).filter(Boolean) as HTMLElement[]
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id.replace('sector-', '')) })
-    }, { rootMargin: '-40% 0px -55% 0px' })
-    els.forEach(el => obs.observe(el))
-    return () => obs.disconnect()
+    const onScroll = () => {
+      const line = window.innerHeight * 0.45
+      let cur = SECTORS[0].id
+      SECTORS.forEach(x => { const el = document.getElementById(`sector-${x.id}`); if (el && el.getBoundingClientRect().top <= line) cur = x.id })
+      setActive(cur)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
     <>
-      <PageIntro
+      <PageHead
         eyebrow="Our Sectors"
         title="Four sectors. One operating discipline."
-        lead="Theme parks, museums, brand centers and world expos each face different pressures. ProFun brings commercial and operational rigor to all of them."
+        side="Theme parks, museums, brand centers and world expos each face different pressures. ProFun brings commercial and operational rigor to all of them."
       />
       <div className="sticky top-[72px] lg:top-20 z-20 bg-white/95 backdrop-blur-md border-y border-[#E2E0DB]">
         <div className="max-w-[1920px] mx-auto px-3 sm:px-12 grid grid-cols-4 sm:flex gap-0 sm:gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -141,16 +176,25 @@ function SectorBlock({ s, alt }: { s: typeof SECTORS[number]; alt: boolean }) {
           </div>
         </div>
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-          {shown.map(([name, place, img]) => (
-            <li key={name} className="group relative aspect-[7/5] overflow-hidden bg-[#1C1C1A]">
-              <img src={img} alt={name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                <h3 className="font-serif text-[21px] sm:text-[23px] text-white leading-tight">{name}</h3>
-                <p className="mt-1 text-[15px] text-white/65 font-light">{place}</p>
-              </div>
-            </li>
-          ))}
+          {shown.map(([name, place, img]) => {
+            const slug = caseSlugFor(name)
+            const inner = (
+              <>
+                <img src={img} alt={name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
+                {slug && <span className="absolute top-4 right-4 text-[13px] font-medium text-white bg-black/45 px-2.5 py-1.5 inline-flex items-center gap-1.5 transition-colors group-hover:bg-[#F85707]">Case study <Arrow /></span>}
+                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                  <h3 className="font-serif text-[21px] sm:text-[23px] text-white leading-tight">{name}</h3>
+                  <p className="mt-1 text-[15px] text-white/65 font-light">{place}</p>
+                </div>
+              </>
+            )
+            return (
+              <li key={name} className="group relative aspect-[7/5] overflow-hidden bg-[#1C1C1A]">
+                {slug ? <Link to={`/work/${slug}`} className="absolute inset-0" aria-label={`${name} case study`}>{inner}</Link> : inner}
+              </li>
+            )
+          })}
         </ul>
         {s.projects.length > 8 && (
           <div className="mt-8 flex justify-center">
@@ -169,11 +213,7 @@ export function ServicesPage() {
   useDeepLink(go => { if (SERVICES.some(s => s.id === go)) scrollToId(`svc-${go}`) })
   return (
     <>
-      <PageIntro
-        eyebrow="Our Services"
-        title="From first plans to daily operations."
-        lead="Planning, advisory, training, implementation and management. Five services that work alone or together, at any stage of a project."
-      />
+      <Services asPage />
       <div className="bg-[#F9F8F6]">
         {SERVICES.map((s, i) => <ServiceBlock key={s.id} s={s} i={i} />)}
       </div>
@@ -185,7 +225,7 @@ function ServiceBlock({ s, i }: { s: typeof SERVICES[number]; i: number }) {
   const { ref, inView } = useInView()
   const isTraining = s.id === 'training'
   return (
-    <section id={`svc-${s.id}`} className={`px-6 sm:px-12 py-14 sm:py-20 scroll-mt-24 ${i % 2 ? 'bg-[#F2F1EF]' : 'bg-[#F9F8F6]'}`}>
+    <section id={`svc-${s.id}`} className={`px-6 sm:px-12 py-14 sm:py-20 scroll-mt-24 ${i % 2 ? 'bg-[#F9F8F6]' : 'bg-[#F2F1EF]'}`}>
       <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 reveal ${inView ? 'visible' : ''}`}>
         <div className="lg:col-span-5">
           <div className="flex items-center gap-4 mb-6">

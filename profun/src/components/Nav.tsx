@@ -93,8 +93,18 @@ export default function Nav() {
         </div>
 
         {/* RIGHT: CTA, visible on the white bar */}
-        <div className="flex items-center justify-end gap-3 xl:gap-5">
+        <div className="flex items-center justify-end gap-4 xl:gap-6">
           <ProfileSwitch current="profun" onDark={!scrolled} />
+          <Link
+            to="/contact"
+            className={`hidden min-[1440px]:inline-block text-[14px] xl:text-[15px] font-medium text-white bg-[#F85707] px-4 xl:px-5 py-2.5 whitespace-nowrap transition-all duration-300 hover:bg-[#000050] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
+              scrolled ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            }`}
+            tabIndex={scrolled ? 0 : -1}
+            aria-hidden={!scrolled}
+          >
+            Start a conversation
+          </Link>
         </div>
       </div>
 
@@ -164,16 +174,14 @@ export default function Nav() {
               {label}
             </NavLink>
           ))}
-          <div className="pt-6 space-y-5">
+          <div className="pt-6 flex flex-wrap items-center gap-4">
+            <ProfileSwitch current="profun" />
             <Link
               to="/contact"
               className="inline-block text-[15px] font-medium text-white bg-[#F85707] px-6 py-3 hover:bg-[#D94A05] transition-colors"
             >
-              Contact us
+              Start a conversation
             </Link>
-            <div className="pt-5 border-t border-[#E2E0DB]">
-              <ProfileSwitch current="profun" />
-            </div>
           </div>
         </div>
       </div>

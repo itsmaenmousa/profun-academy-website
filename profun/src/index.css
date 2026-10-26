@@ -372,3 +372,12 @@ body {
 @keyframes acPulse { 0% { box-shadow: 0 0 0 0 rgba(248,87,7,.55); } 70% { box-shadow: 0 0 0 8px rgba(248,87,7,0); } 100% { box-shadow: 0 0 0 0 rgba(248,87,7,0); } }
 @media (prefers-reduced-motion: reduce) { .academy-pulse { animation: none; } }
 .marquee { mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
+
+/* ── Case study page ─────────────────────────────────────────── */
+.cs-zoom { animation: csZoom 2.4s cubic-bezier(.16,1,.3,1) both; }
+@keyframes csZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
+.cs-scope span:first-child { transform-origin: left; }
+.cs-scope-on { animation: csFill .7s cubic-bezier(.16,1,.3,1) both; }
+.cs-scope { transition: opacity .3s; }
+@keyframes csFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .cs-zoom, .cs-scope-on { animation: none; } }

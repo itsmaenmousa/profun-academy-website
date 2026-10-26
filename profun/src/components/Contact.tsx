@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { OFFICES } from '../data'
+import { useDeepLink, scrollToId } from '../lib/deeplink'
 
-function Offices() {
+function Offices({ m = false }: { m?: boolean }) {
   return (
     <div className="border-t border-[#E2E0DB] divide-y divide-[#E2E0DB]">
       {OFFICES.map(o => (
@@ -14,20 +15,25 @@ function Offices() {
           </p>
         </div>
       ))}
-      <div className="py-5">
+      <div id={m ? 'careers-m' : 'careers'} className="py-5 scroll-mt-28">
         <p className="text-[15px] font-medium text-[#000050] mb-1.5">Careers</p>
-        <p className="text-[17px] text-[#1C1C1A] font-light leading-relaxed">Join a global team shaping world-class attractions. Send your resume to <a href="mailto:careers@profun.com" className="text-[#F85707] hover:text-[#D94A05] transition-colors">careers@profun.com</a>.</p>
+        <p className="text-[17px] text-[#1C1C1A] font-light leading-relaxed">Join a team of extraordinary professionals shaping world-class attractions through operational and management excellence. We offer diverse roles, a collaborative culture and opportunities for growth across disciplines. Send your resume to <a href="mailto:careers@profun.com" className="text-[#F85707] hover:text-[#D94A05] transition-colors">careers@profun.com</a>.</p>
       </div>
     </div>
   )
 }
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', organization: '', email: '', message: '', newsletter: false })
+  const [form, setForm] = useState({ name: '', organization: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
+  useDeepLink(go => { if (go === 'careers') scrollToId(window.innerWidth >= 1024 ? 'careers' : 'careers-m') })
 
+  // No form backend: open the visitor's email app with the message ready to send
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    const subject = `Website enquiry from ${form.name}${form.organization ? `, ${form.organization}` : ''}`
+    const body = `${form.message}\n\n${form.name}${form.organization ? `\n${form.organization}` : ''}\n${form.email}`
+    window.location.href = `mailto:info@profun.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     setSent(true)
   }
 
@@ -42,7 +48,7 @@ export default function Contact() {
               Let&rsquo;s make your<br className="hidden sm:block" /> attraction perform.
             </h2>
             <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light lg:mb-12">
-              Have an idea, a challenge or a project in motion? ProFun is the partner that ensures your ambition translates into sustained performance.
+              Have an idea, a challenge or a project in motion? ProFun is the partner that ensures your ambition translates into sustained performance. Get in touch with our team and let&rsquo;s build what&rsquo;s next.
             </p>
 
             <div className="hidden lg:block"><Offices /></div>
@@ -52,13 +58,10 @@ export default function Contact() {
           <div className="lg:col-span-7 lg:col-start-6">
             {sent ? (
               <div className="relative bg-white border border-[#E2E0DB] p-6 sm:p-10 lg:p-12 flex flex-col items-start justify-center min-h-[420px]">
-                <h3 className="font-serif text-[36px] text-[#000050] mb-4">Thank you</h3>
+                <h3 className="font-serif text-[36px] text-[#000050] mb-4">Almost there</h3>
                 <p className="text-[20px] text-[#6B6B65] font-light leading-relaxed">
-                  We have received your message and will be in touch shortly.
+                  Your message is ready in your email app. Press send and our team will get back to you.
                 </p>
-                {form.newsletter && (
-                  <p className="mt-4 text-[17px] text-[#6B6B65] font-light">You are also subscribed to our newsletter.</p>
-                )}
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="relative bg-white border border-[#E2E0DB] p-6 sm:p-10 lg:p-12 space-y-6">
@@ -122,25 +125,6 @@ export default function Contact() {
                     placeholder="Tell us about your attraction, your challenge and the outcome you are working toward"
                   />
                 </div>
-                <label className="flex items-start gap-3 cursor-pointer select-none group">
-                  <input
-                    type="checkbox"
-                    checked={form.newsletter}
-                    onChange={(e) => setForm({ ...form, newsletter: e.target.checked })}
-                    className="peer sr-only"
-                  />
-                  <span
-                    className="mt-0.5 w-5 h-5 flex-shrink-0 border border-[#C9C7C1] bg-white flex items-center justify-center transition-colors duration-200 peer-checked:bg-[#000050] peer-checked:border-[#000050] peer-focus-visible:ring-2 peer-focus-visible:ring-[#F85707] group-hover:border-[#000050]"
-                    aria-hidden="true"
-                  >
-                    <svg width="12" height="10" viewBox="0 0 12 10" fill="none" className={form.newsletter ? 'opacity-100' : 'opacity-0'}>
-                      <path d="M1 5l3.5 3.5L11 1.5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                  <span className="text-[15px] text-[#4A4A45] leading-relaxed">
-                    Subscribe to the ProFun newsletter for company news and industry updates.
-                  </span>
-                </label>
                 <div className="pt-2">
                   <button
                     type="submit"
@@ -157,7 +141,7 @@ export default function Contact() {
           </div>
 
           {/* Location and email: below the form on phones and tablets */}
-            <div className="lg:hidden"><Offices /></div>
+            <div className="lg:hidden"><Offices m /></div>
         </div>
       </div>
     </section>

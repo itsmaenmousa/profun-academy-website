@@ -323,3 +323,12 @@ export const NEWS_ALL: NewsItem[] = [
   { id: 'service-excellence', date: 'Dec 5, 2013', tag: 'Insight', image: '2018/11/MPF-logo-FINAL-1080x491.png', title: 'Service Excellence around the world.', summary: 'Shaun McKeogh’s guest service training takes him from Ho Chi Minh City and Moscow to Orlando and Sydney.', link: src('IAAPA', 'https://www.iaapa.org/about-iaapa/featured-member/featured-member-list/shaun-mckeogh') },
   { id: 'thrilling-ride', date: 'Sep 11, 2013', tag: 'Insight', image: '2013/09/5230c89302695-lost-paradise-of-dilmun-1080x675.webp', title: 'Theme park projects can provide a thrilling ride.', summary: 'ProFun’s view on why ride integration and technology are among the hardest parts of a project to manage.', link: src('Blooloop', 'https://blooloop.com/theme-park/in-depth/theme-park-projects-can-provide-a-thrilling-ride/') },
 ]
+
+/* Project names used elsewhere on the site that have a case study page */
+const CASE_ALIAS: Record<string, string> = {
+  'The Vessel': 'Hudson Yards', 'Edge': 'Hudson Yards', 'The Making of Harry Potter': 'Warner Bros. Studio Tour, The Making of Harry Potter',
+  'The Henry Ford Museum': 'The Henry Ford', 'CNN Studio Tours': 'CNN Studio Tour', 'Expo 2020': 'Dubai World Expo 2020',
+  '2012 Summer Olympics': '2012 London Olympics', 'Expo 2010': 'Expo 2010 Shanghai', 'King Power Mahanakhon Skywalk': 'Mahanakhon Skywalk',
+  'Makkah Royal Clock Tower': 'Makkah Clock Tower', 'World of Coca Cola': 'World of Coca-Cola',
+}
+export const caseSlugFor = (name: string) => (CASE_DETAIL[name] ?? CASE_DETAIL[CASE_ALIAS[name]])?.slug

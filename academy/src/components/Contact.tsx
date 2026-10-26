@@ -1,11 +1,15 @@
 import { useState } from 'react'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', organization: '', email: '', message: '', newsletter: false })
+  const [form, setForm] = useState({ name: '', organization: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
 
+  // No form backend: open the visitor's email app with the message ready to send
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    const subject = `Website enquiry from ${form.name}${form.organization ? `, ${form.organization}` : ''}`
+    const body = `${form.message}\n\n${form.name}${form.organization ? `\n${form.organization}` : ''}\n${form.email}`
+    window.location.href = `mailto:info@theprofunacademy.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     setSent(true)
   }
 
@@ -43,13 +47,10 @@ export default function Contact() {
           <div className="lg:col-span-7 lg:col-start-6">
             {sent ? (
               <div className="relative bg-white border border-[#E2E0DB] p-6 sm:p-10 lg:p-12 flex flex-col items-start justify-center min-h-[420px]">
-                <h3 className="font-serif text-[36px] text-[#000050] mb-4">Thank you</h3>
+                <h3 className="font-serif text-[36px] text-[#000050] mb-4">Almost there</h3>
                 <p className="text-[20px] text-[#6B6B65] font-light leading-relaxed">
-                  We have received your message and will be in touch shortly.
+                  Your message is ready in your email app. Press send and the Academy team will get back to you.
                 </p>
-                {form.newsletter && (
-                  <p className="mt-4 text-[17px] text-[#6B6B65] font-light">You are also subscribed to our newsletter.</p>
-                )}
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="relative bg-white border border-[#E2E0DB] p-6 sm:p-10 lg:p-12 space-y-6">
@@ -113,25 +114,6 @@ export default function Contact() {
                     placeholder="Tell us about your team, your learning challenge and the outcome you are working toward"
                   />
                 </div>
-                <label className="flex items-start gap-3 cursor-pointer select-none group">
-                  <input
-                    type="checkbox"
-                    checked={form.newsletter}
-                    onChange={(e) => setForm({ ...form, newsletter: e.target.checked })}
-                    className="peer sr-only"
-                  />
-                  <span
-                    className="mt-0.5 w-5 h-5 flex-shrink-0 border border-[#C9C7C1] bg-white flex items-center justify-center transition-colors duration-200 peer-checked:bg-[#000050] peer-checked:border-[#000050] peer-focus-visible:ring-2 peer-focus-visible:ring-[#F85707] group-hover:border-[#000050]"
-                    aria-hidden="true"
-                  >
-                    <svg width="12" height="10" viewBox="0 0 12 10" fill="none" className={form.newsletter ? 'opacity-100' : 'opacity-0'}>
-                      <path d="M1 5l3.5 3.5L11 1.5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                  <span className="text-[15px] text-[#4A4A45] leading-relaxed">
-                    Subscribe to The ProFun Academy newsletter for news, programs and industry updates.
-                  </span>
-                </label>
                 <div className="pt-2">
                   <button
                     type="submit"

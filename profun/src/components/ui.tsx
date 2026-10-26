@@ -37,26 +37,3 @@ export function TextLink({ to, children }: { to: string; children: React.ReactNo
   )
 }
 
-
-/** Page intro band for inner pages. */
-export function PageIntro({ eyebrow, title, lead, image }: { eyebrow: string; title: React.ReactNode; lead: React.ReactNode; image?: string }) {
-  const { ref, inView } = useInView()
-  return (
-    <section className="bg-[#F2F1EF] px-6 sm:px-12 pt-14 sm:pt-20 lg:pt-24 pb-14 sm:pb-16">
-      <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end reveal ${inView ? 'visible' : ''}`}>
-        <div className={image ? 'lg:col-span-7' : 'lg:col-span-9'}>
-          <p className="text-[20px] font-semibold text-[#F85707] mb-4">{eyebrow}</p>
-          <h1 className="font-serif text-balance text-[clamp(40px,4.8vw,72px)] text-[#000050] leading-[1.06] tracking-[-0.015em] mb-6">{title}</h1>
-          <p className="text-[19px] sm:text-[20px] text-[#6B6B65] leading-relaxed font-light max-w-[760px]">{lead}</p>
-        </div>
-        {image && (
-          <div className="lg:col-span-5">
-            <div className="aspect-[4/3] overflow-hidden bg-[#1C1C1A]">
-              <img src={image} alt="" className="w-full h-full object-cover" />
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
-  )
-}

@@ -3,8 +3,8 @@ import type React from 'react'
 import { useInView } from '../hooks/useInView'
 import { useDeepLink, scrollToId } from '../lib/deeplink'
 import { CLIENTS, SECTORS, REGIONS, CASE_STUDIES, SERVICES, pf, type SectorId, type RegionId } from '../data'
-import { Link, useParams } from 'react-router-dom'
-import { PageIntro, SectionHead, Arrow } from './ui'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { SectionHead, Arrow } from './ui'
 import { CASE_DETAIL } from '../content'
 import Projects from './Projects'
 
@@ -219,12 +219,7 @@ export function CaseStudies() {
 export default function WorkPage() {
   return (
     <>
-      <PageIntro
-        eyebrow="Our Work"
-        title="500+ projects across 50 countries."
-        lead="For more than four decades, ProFun has delivered operational excellence to the world's most iconic attractions and events. Explore our clients by sector and region, then dive into the case studies."
-      />
-      <Projects />
+      <Projects asPage />
       <ClientsFilter />
       <CaseStudies />
     </>
@@ -232,84 +227,247 @@ export default function WorkPage() {
 }
 
 /* ── Case study detail (/work/:slug), from the profun.com case study pages ── */
+
+// Sharper local photography where we have it (the profun.com case images are 700px)
+const LOCAL_IMG: Record<string, string> = {
+  'dubai-world-expo-2020': 'expo-2020', '2012-london-olympics': 'london-2012', 'ferrari-world': 'ferrari-world', absolut: 'absolut',
+  'johnnie-walker': 'johnnie-walker', 'dubai-parks-and-resorts-2': 'dubai-parks', 'ain-dubai': 'ain-dubai', 'park-at-owa': 'owa',
+  'one-vanderbilt': 'one-vanderbilt', 'aop-2-6-hudson-yards': 'the-vessel', 'expo-2010': 'expo-2010', 'ushaka-marine-world-2': 'ushaka',
+  'making-of-hp': 'harry-potter', 'world-of-coca-cola': 'coca-cola', 'henry-ford': 'henry-ford', quest: 'quest', '911-memorial': '911-memorial',
+  'cnn-tour': 'cnn', ca_academy_of_sciences: 'cal-academy', amnh: 'amnh-rose', 'crayola-experience': 'crayola', aop: 'aquarium-pacific',
+  'mahanakhon-skywalk': 'mahanakhon', 'hersheys-chocolate-world': 'hershey', 'makkah-clock-tower': 'makkah-royal',
+}
+const caseImage = (name: string) => {
+  const d = CASE_DETAIL[name]
+  return LOCAL_IMG[d.slug] ? `./projects/${LOCAL_IMG[d.slug]}.jpg` : pf(d.image)
+}
+const pad = (n: number) => String(n).padStart(2, '0')
+
 export function CaseStudyPage() {
   const { slug } = useParams()
+  // Keyed by slug so every case study plays its entrance from the start
+  return <CaseStudy key={slug} slug={slug ?? ''} />
+}
+
+function CaseStudy({ slug }: { slug: string }) {
+  const navigate = useNavigate()
   const idx = CASE_STUDIES.findIndex(c => CASE_DETAIL[c[0]].slug === slug)
-  const { ref, inView } = useInView()
-  if (idx < 0) return (
-    <section className="bg-[#F2F1EF] px-6 sm:px-12 py-24 text-center">
+  const [shown, setShown] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const bodyRef = useRef<HTMLDivElement>(null)
+  const { ref: bodyIn, inView: bodyVisible } = useInView()
+  const { ref: relRef, inView: relVisible } = useInView()
+
+  useEffect(() => { const t = requestAnimationFrame(() => setShown(true)); return () => cancelAnimationFrame(t) }, [])
+
+  // Reading progress along the story
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement
+      const max = h.scrollHeight - h.clientHeight
+      setProgress(max > 0 ? Math.min(1, h.scrollTop / max) : 0)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const n = CASE_STUDIES.length
+  const prev = idx >= 0 ? CASE_STUDIES[(idx - 1 + n) % n] : null
+  const next = idx >= 0 ? CASE_STUDIES[(idx + 1) % n] : null
+
+  // Arrow keys step through the case studies
+  useEffect(() => {
+    if (!prev || !next) return
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.target as HTMLElement)?.closest?.('input, textarea')) return
+      if (e.key === 'ArrowRight') navigate(`/work/${CASE_DETAIL[next[0]].slug}`)
+      if (e.key === 'ArrowLeft') navigate(`/work/${CASE_DETAIL[prev[0]].slug}`)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [prev, next, navigate])
+
+  if (idx < 0 || !prev || !next) return (
+    <section className="bg-[#F9F8F6] px-6 sm:px-12 py-24 text-center">
       <p className="text-[19px] text-[#6B6B65] font-light mb-6">This case study could not be found.</p>
       <Link to="/work?go=case-studies" className="inline-flex items-center gap-3 text-[16px] font-medium text-[#000050] hover:text-[#F85707]">All case studies <Arrow /></Link>
     </section>
   )
+
   const [name, services, logo] = CASE_STUDIES[idx]
   const d = CASE_DETAIL[name]
-  const color = (s: string) => SERVICES.find(x => x.short === s)?.color ?? '#000050'
-  const prev = CASE_STUDIES[(idx - 1 + CASE_STUDIES.length) % CASE_STUDIES.length]
-  const next = CASE_STUDIES[(idx + 1) % CASE_STUDIES.length]
+  const svcColor = (x: string) => SERVICES.find(v => v.short === x)?.color ?? '#000050'
+  const accent = svcColor(services[0])
+  const [lead, ...rest] = d.body
+  // Related: the case studies that share the most services
+  const related = CASE_STUDIES
+    .filter(c => c[0] !== name && c[0] !== next[0])
+    .map(c => [c, c[1].filter(x => services.includes(x)).length] as const)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3).map(r => r[0])
+
   return (
-    <>
-      <section className="bg-[#F2F1EF] px-6 sm:px-12 pt-10 sm:pt-14 lg:pt-16 pb-14 sm:pb-16">
-        <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-[1920px] mx-auto reveal ${inView ? 'visible' : ''}`}>
-          <Link to="/work?go=case-studies" className="inline-flex items-center gap-2 text-[15px] font-medium text-[#6B6B65] hover:text-[#F85707] transition-colors mb-8 sm:mb-10">
-            <Arrow className="rotate-180" /> All case studies
-          </Link>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
-            <div className="lg:col-span-7">
-              <p className="text-[20px] font-semibold text-[#F85707] mb-4">Case Study</p>
-              <h1 className="font-serif text-balance text-[clamp(40px,4.8vw,72px)] text-[#000050] leading-[1.06] tracking-[-0.015em] mb-8">{name}</h1>
-              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-[#E2E0DB] pt-6">
-                <div>
-                  <dt className="text-[14px] font-medium text-[#6B6B65] mb-2">Location</dt>
-                  <dd className="text-[18px] text-[#000050]">{d.location}</dd>
-                </div>
-                <div>
-                  <dt className="text-[14px] font-medium text-[#6B6B65] mb-2">Services</dt>
-                  <dd className="flex flex-wrap gap-x-4 gap-y-1.5">
-                    {services.map(s => (
-                      <Link key={s} to={`/services?go=${s.toLowerCase()}`} className="inline-flex items-center gap-2 text-[17px] text-[#000050] hover:text-[#F85707] transition-colors">
-                        <span className="w-2 h-2 rounded-full" style={{ background: color(s) }} aria-hidden="true" />{s}
-                      </Link>
-                    ))}
-                  </dd>
-                </div>
-              </dl>
+    <article className="cs">
+      <span className="fixed left-0 top-[72px] lg:top-20 z-40 h-[3px] origin-left" style={{ width: '100%', transform: `scaleX(${progress})`, background: accent }} aria-hidden="true" />
+
+      {/* Opening */}
+      <section className="bg-[#F2F1EF] px-6 sm:px-12 pt-10 sm:pt-14 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 overflow-hidden">
+        <div className="max-w-[1920px] mx-auto">
+          <div className={`flex items-center justify-between gap-6 mb-10 sm:mb-14 reveal ${shown ? 'visible' : ''}`}>
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[15px] text-[#6B6B65] min-w-0">
+              <Link to="/work" className="hover:text-[#F85707] transition-colors">Our Work</Link>
+              <span aria-hidden="true">/</span>
+              <Link to="/work?go=case-studies" className="hover:text-[#F85707] transition-colors whitespace-nowrap">Case Studies</Link>
+            </nav>
+            <p className="text-[15px] font-medium text-[#000050] tabular-nums whitespace-nowrap">{pad(idx + 1)} <span className="text-[#A8A59F]">/ {n}</span></p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <p className={`text-[20px] font-semibold text-[#F85707] mb-4 reveal ${shown ? 'visible' : ''}`}>Case Study</p>
+              <h1 className={`font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] mb-6 reveal reveal-delay-1 ${shown ? 'visible' : ''}`}>{name}</h1>
+              <p className={`inline-flex items-center gap-2.5 text-[19px] text-[#1C1C1A] font-light mb-10 reveal reveal-delay-2 ${shown ? 'visible' : ''}`}>
+                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true"><path d="M7 17s6-5.6 6-10A6 6 0 1 0 1 7c0 4.4 6 10 6 10Z" stroke="#F85707" strokeWidth="1.4" /><circle cx="7" cy="7" r="2.2" fill="#F85707" /></svg>
+                {d.location}
+              </p>
+
+              {/* Scope of work: all five services, the ones on this project lit */}
+              <div className={`reveal reveal-delay-3 ${shown ? 'visible' : ''}`}>
+                <p className="text-[14px] font-medium text-[#6B6B65] mb-3">Scope of work</p>
+                <ul className="grid grid-cols-5 gap-1.5">
+                  {SERVICES.map((v, i) => {
+                    const on = services.includes(v.short)
+                    return (
+                      <li key={v.id}>
+                        <Link to={`/services?go=${v.id}`} title={v.short} className={`cs-scope group block ${on ? '' : 'opacity-45 hover:opacity-80'}`}>
+                          <span className={`block h-1.5 ${shown && on ? 'cs-scope-on' : ''}`} style={{ background: on ? v.color : '#D4D2CC', animationDelay: `${0.5 + i * 0.09}s` }} />
+                          <span className={`mt-2.5 block text-[11px] min-[400px]:text-[12px] sm:text-[14px] leading-tight break-words ${on ? 'text-[#000050] font-medium' : 'text-[#6B6B65]'}`}>{v.short.replace('Implementation', 'Implemen­tation').replace('Management', 'Manage­ment')}</span>
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
             </div>
-            <div className="lg:col-span-5">
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#1C1C1A]">
-                <img src={pf(d.image)} alt={name} className="w-full h-full object-cover" />
-                <span className="absolute bottom-0 left-0 right-0 h-1" style={{ background: color(services[0]) }} aria-hidden="true" />
+
+            <div className={`lg:col-span-7 order-1 lg:order-2 reveal reveal-delay-1 ${shown ? 'visible' : ''}`}>
+              <div className={`relative aspect-[4/3] overflow-hidden bg-[#1C1C1A] img-reveal ${shown ? 'visible' : ''}`}>
+                <img src={caseImage(name)} alt={name} className="cs-zoom w-full h-full object-cover" />
+                <span className="absolute bottom-0 left-0 right-0 h-1 flex" aria-hidden="true">
+                  {services.map(x => <span key={x} className="flex-1" style={{ background: svcColor(x) }} />)}
+                </span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#F9F8F6] px-6 sm:px-12 py-14 sm:py-20">
-        <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-          <div className="hidden lg:block lg:col-span-3">
-            <div className="w-32 h-24 bg-white flex items-center justify-center p-3">
-              <img src={pf(logo)} alt="" className="max-w-full max-h-full object-contain" />
+      {/* Story */}
+      <section className="bg-[#F9F8F6] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
+        <div ref={bodyIn as React.RefObject<HTMLDivElement>} className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          <aside className="lg:col-span-4 order-2 lg:order-1">
+            <div className={`lg:sticky lg:top-32 reveal ${bodyVisible ? 'visible' : ''}`}>
+              <div className="bg-white border border-[#E2E0DB]">
+                <div className="h-36 flex items-center justify-center p-8 border-b border-[#E2E0DB]">
+                  <img src={pf(logo)} alt={`${name} logo`} className="max-w-[70%] max-h-full object-contain" />
+                </div>
+                <dl className="p-6 sm:p-8 space-y-5">
+                  <div>
+                    <dt className="text-[14px] font-medium text-[#6B6B65] mb-1.5">Location</dt>
+                    <dd className="text-[17px] text-[#000050]">{d.location}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-[14px] font-medium text-[#6B6B65] mb-2">Services</dt>
+                    <dd className="flex flex-col gap-2">
+                      {services.map(x => (
+                        <Link key={x} to={`/services?go=${x.toLowerCase()}`} className="group inline-flex items-center gap-2.5 text-[17px] text-[#000050] hover:text-[#F85707] transition-colors">
+                          <span className="w-2 h-2 rounded-full" style={{ background: svcColor(x) }} aria-hidden="true" />{x}
+                          <Arrow className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                        </Link>
+                      ))}
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+              <Link to="/contact" className="mt-4 flex items-center justify-between gap-4 bg-[#000050] text-white px-6 sm:px-8 py-5 hover:bg-[#F85707] transition-colors group">
+                <span className="text-[16px] font-medium">Planning a similar project?</span>
+                <span className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center group-hover:bg-white group-hover:text-[#F85707] transition-colors"><Arrow /></span>
+              </Link>
             </div>
-          </div>
-          <div className="lg:col-span-8 lg:col-start-5 space-y-6 text-[18px] sm:text-[19px] text-[#1C1C1A] leading-relaxed font-light">
-            {d.body.map((p, i) => <p key={i}>{p}</p>)}
+          </aside>
+
+          <div ref={bodyRef} className="lg:col-span-7 lg:col-start-6 order-1 lg:order-2">
+            <p className={`font-serif text-[clamp(21px,1.7vw,27px)] text-[#000050] leading-[1.4] tracking-[-0.01em] mb-10 reveal ${bodyVisible ? 'visible' : ''}`}>
+              <span className="block w-12 h-1 mb-8" style={{ background: accent }} aria-hidden="true" />
+              {lead}
+            </p>
+            <div className="space-y-6 text-[18px] sm:text-[19px] text-[#4A4A45] leading-relaxed font-light">
+              {rest.map((para, i) => <p key={i} className={`reveal reveal-delay-${Math.min(i + 1, 5)} ${bodyVisible ? 'visible' : ''}`}>{para}</p>)}
+            </div>
           </div>
         </div>
       </section>
 
-      <nav aria-label="More case studies" className="bg-[#F2F1EF] px-6 sm:px-12 py-10 sm:py-12">
-        <div className="max-w-[1920px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-          {[['Previous', prev] as const, ['Next', next] as const].map(([label, c]) => (
-            <Link key={label} to={`/work/${CASE_DETAIL[c[0]].slug}`} className={`group bg-white p-6 sm:p-8 flex flex-col gap-2 border border-transparent hover:border-[#000050] transition-colors ${label === 'Next' ? 'sm:items-end sm:text-right' : ''}`}>
-              <span className="inline-flex items-center gap-2 text-[14px] font-medium text-[#6B6B65]">
-                {label === 'Previous' && <Arrow className="rotate-180" />}{label} case study{label === 'Next' && <Arrow />}
-              </span>
-              <span className="font-serif text-[clamp(22px,1.8vw,28px)] text-[#000050] leading-snug group-hover:text-[#F85707] transition-colors">{c[0]}</span>
-            </Link>
-          ))}
+      {/* Related */}
+      <section className="bg-[#F2F1EF] px-6 sm:px-12 py-16 sm:py-20">
+        <div ref={relRef as React.RefObject<HTMLDivElement>} className="max-w-[1920px] mx-auto">
+          <div className={`flex items-end justify-between gap-6 mb-8 sm:mb-10 reveal ${relVisible ? 'visible' : ''}`}>
+            <div>
+              <p className="text-[20px] font-semibold text-[#F85707] mb-3">Related Work</p>
+              <h2 className="font-serif text-[clamp(28px,2.6vw,40px)] text-[#000050] leading-tight tracking-[-0.01em]">More projects like this.</h2>
+            </div>
+            <Link to="/work?go=case-studies" className="hidden sm:inline-flex items-center gap-3 text-[16px] font-medium text-[#1C1C1A] hover:text-[#F85707] hover:gap-5 transition-all whitespace-nowrap">All case studies <Arrow /></Link>
+          </div>
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+            {related.map((c, i) => (
+              <li key={c[0]} className={`reveal reveal-delay-${i + 1} ${relVisible ? 'visible' : ''}`}>
+                <Link to={`/work/${CASE_DETAIL[c[0]].slug}`} className="group block bg-white h-full">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#1C1C1A]">
+                    <img src={caseImage(c[0])} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" />
+                    <span className="absolute bottom-0 left-0 right-0 h-1 flex" aria-hidden="true">{c[1].map(x => <span key={x} className="flex-1" style={{ background: svcColor(x) }} />)}</span>
+                  </div>
+                  <div className="p-6 sm:p-7">
+                    <p className="text-[14px] text-[#6B6B65] mb-2">{CASE_DETAIL[c[0]].location}</p>
+                    <h3 className="font-serif text-[clamp(21px,1.6vw,25px)] text-[#000050] leading-snug group-hover:text-[#F85707] transition-colors">{c[0]}</h3>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link to="/work?go=case-studies" className="sm:hidden mt-8 inline-flex items-center gap-3 text-[16px] font-medium text-[#1C1C1A]">All case studies <Arrow /></Link>
         </div>
-      </nav>
-    </>
+      </section>
+
+      {/* Up next */}
+      <section className="bg-[#111110] text-white">
+        <Link to={`/work/${CASE_DETAIL[next[0]].slug}`} className="cs-next group relative block overflow-hidden">
+          <img src={caseImage(next[0])} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover opacity-40 transition-all duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:opacity-55 group-hover:scale-[1.05]" />
+          <span className="absolute inset-0 bg-gradient-to-r from-[#111110] via-[#111110]/75 to-[#111110]/20" aria-hidden="true" />
+          <div className="relative max-w-[1920px] mx-auto px-6 sm:px-12 py-16 sm:py-24 lg:py-28 flex flex-col sm:flex-row sm:items-end justify-between gap-8">
+            <div className="max-w-[900px]">
+              <p className="text-[16px] font-medium text-white/60 mb-4 tabular-nums">Up next · {pad((idx + 1) % n + 1)} / {n}</p>
+              <p className="font-serif text-[clamp(36px,4.6vw,72px)] leading-[1.05] tracking-[-0.015em]">{next[0]}</p>
+              <p className="mt-4 text-[18px] text-white/70 font-light">{CASE_DETAIL[next[0]].location}</p>
+            </div>
+            <span className="cs-go flex-none w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-white/50 flex items-center justify-center transition-all duration-500 group-hover:bg-[#F85707] group-hover:border-[#F85707] group-hover:translate-x-2">
+              <svg width="20" height="15" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </span>
+          </div>
+        </Link>
+        <div className="border-t border-white/10">
+          <div className="max-w-[1920px] mx-auto px-6 sm:px-12 py-5 flex items-center justify-between gap-6 text-[15px]">
+            <Link to={`/work/${CASE_DETAIL[prev[0]].slug}`} className="group inline-flex items-center gap-3 text-white/70 hover:text-white transition-colors min-w-0">
+              <Arrow className="rotate-180 flex-none transition-transform group-hover:-translate-x-1" />
+              <span className="truncate"><span className="hidden sm:inline">Previous: </span>{prev[0]}</span>
+            </Link>
+            <Link to="/work?go=case-studies" className="inline-flex items-center gap-2.5 text-white/70 hover:text-white transition-colors whitespace-nowrap">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect width="6" height="6" /><rect x="8" width="6" height="6" /><rect y="8" width="6" height="6" /><rect x="8" y="8" width="6" height="6" /></svg>
+              All {n}
+            </Link>
+          </div>
+        </div>
+      </section>
+    </article>
   )
 }
