@@ -4,8 +4,8 @@ import { useInView } from '../hooks/useInView'
 
 const projects = [
   {
-    title: 'Grand Hyatt',
-    about: "A resort waterpark at Grand Hyatt Dubai, with slides, pools and water play for the whole family.",
+    title: 'Grand Hyatt Dubai Waterpark',
+    about: "A resort waterpark in the heart of Dubai, with slides, pools and water play for the whole family.",
     category: 'Commercial Attraction',
     location: 'Dubai, UAE',
     image: './grand-hyatt-waterpark-card.jpg',
@@ -215,8 +215,8 @@ export default function Projects() {
             <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/45 to-transparent" />
 
             {/* Category, pinned top-left on every card */}
-            <p className="absolute left-6 top-6 text-[14px] font-medium text-white bg-black/45 px-3 py-1.5 leading-none">
-              {project.category}
+            <p className="absolute left-5 top-5 max-w-[calc(100%-5.75rem)] text-[13px] font-medium text-white bg-black/45 px-2.5 py-[7px] leading-tight text-balance">
+              {project.category.replace(/-/g, '\u2011')}
             </p>
 
             {/* Info toggle (tap on touch screens) */}
