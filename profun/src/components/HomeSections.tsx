@@ -26,10 +26,10 @@ export function Intro() {
         <div className={`lg:col-span-6 reveal reveal-delay-2 ${inView ? 'visible' : ''}`}>
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             <div className="aspect-[3/4] overflow-hidden bg-[#1C1C1A]">
-              <img src={pf('2024/04/World-of-Coca-Cola.jpg')} alt="World of Coca-Cola, Atlanta" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]" />
+              <img src="./projects/coca-cola.jpg" alt="World of Coca-Cola, Atlanta" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]" />
             </div>
             <div className="aspect-[3/4] overflow-hidden bg-[#1C1C1A] mt-10 sm:mt-16">
-              <img src={pf('2024/04/Expo-2020-Dubai-1.jpg')} alt="Expo 2020, Dubai" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]" />
+              <img src="./projects/expo-2020.jpg" alt="Expo 2020, Dubai" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]" />
             </div>
           </div>
         </div>

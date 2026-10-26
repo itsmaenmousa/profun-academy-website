@@ -26,7 +26,7 @@ export function AboutPage() {
         eyebrow="About ProFun"
         title="The world leader in attractions operations."
         lead="The only firm dedicated solely to operations advisory and management in the global attractions industry. Since 1980, we have advised on, trained for and managed projects on every continent."
-        image={pf('2024/06/AMNH-Rose-Center-scaled.jpg')}
+        image="./projects/amnh-rose.jpg"
       />
       <Stats />
       <section className="bg-[#F2F1EF] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
@@ -141,7 +141,7 @@ function SectorBlock({ s, alt }: { s: typeof SECTORS[number]; alt: boolean }) {
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
           {shown.map(([name, place, img]) => (
             <li key={name} className="group relative aspect-[7/5] overflow-hidden bg-[#1C1C1A]">
-              <img src={pf(img)} alt={name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" />
+              <img src={img} alt={name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
                 <h3 className="font-serif text-[21px] sm:text-[23px] text-white leading-tight">{name}</h3>

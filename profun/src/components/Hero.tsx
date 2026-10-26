@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { pf } from '../data'
 
 // Landmark ProFun projects, cross-fading behind the headline
 const SLIDES = [
-  { src: './hero-ferrari.jpg', small: './hero-ferrari-720.jpg', name: 'Ferrari World', place: 'Yas Island, Abu Dhabi' },
-  { src: pf('2024/06/The-Edge-scaled.jpg'), name: 'Edge', place: 'New York, USA' },
-  { src: pf('2023/12/20210630-DohaQuest2.jpg'), name: 'QUEST', place: 'Doha, Qatar' },
-  { src: pf('2024/06/AMNH-Rose-Center-scaled.jpg'), name: 'American Museum of Natural History', place: 'New York, USA' },
-  { src: pf('2024/06/Makkah-Royal-Clock-Tower-scaled.jpg'), name: 'Makkah Royal Clock Tower', place: 'Makkah, Saudi Arabia' },
-  { src: pf('2024/06/Mahanakhon-Skywalk-1-scaled.jpg'), name: 'King Power Mahanakhon Skywalk', place: 'Bangkok, Thailand' },
+  { slug: 'ferrari-world', name: 'Ferrari World', place: 'Yas Island, Abu Dhabi' },
+  { slug: 'the-edge', name: 'Edge', place: 'New York, USA' },
+  { slug: 'quest-hero', name: 'QUEST', place: 'Doha, Qatar' },
+  { slug: 'amnh-rose', name: 'American Museum of Natural History', place: 'New York, USA' },
+  { slug: 'makkah-royal', name: 'Makkah Royal Clock Tower', place: 'Makkah, Saudi Arabia' },
+  { slug: 'mahanakhon', name: 'King Power Mahanakhon Skywalk', place: 'Bangkok, Thailand' },
 ]
 const SLIDE_MS = 6500
 
@@ -27,12 +26,13 @@ export default function Hero() {
     if (!loaded[next]) {
       const img = new Image()
       img.onload = () => setLoaded(l => ({ ...l, [next]: true }))
-      img.src = SLIDES[next].src
+      img.src = srcOf(next)
     }
     const t = setTimeout(() => setI(c => (loaded[(c + 1) % SLIDES.length] ? (c + 1) % SLIDES.length : c)), SLIDE_MS)
     return () => clearTimeout(t)
   }, [i, loaded])
 
+  const srcOf = (k: number) => `./projects/${SLIDES[k].slug}-hero${small ? '-720' : ''}.jpg`
   const s = SLIDES[i]
 
   return (
@@ -42,7 +42,7 @@ export default function Hero() {
           (loaded[k] || k === 0) && (
             <img
               key={k}
-              src={k === 0 && small ? sl.small : sl.src}
+              src={srcOf(k)}
               alt=""
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1600ms] ${k === i ? 'opacity-[0.85] hero-zoom' : 'opacity-0'}`}
             />
@@ -102,7 +102,7 @@ export default function Hero() {
               role="tab"
               aria-selected={k === i}
               aria-label={sl.name}
-              onClick={() => { if (loaded[k]) setI(k); else { const im = new Image(); im.onload = () => { setLoaded(l => ({ ...l, [k]: true })); setI(k) }; im.src = sl.src } }}
+              onClick={() => { if (loaded[k]) setI(k); else { const im = new Image(); im.onload = () => { setLoaded(l => ({ ...l, [k]: true })); setI(k) }; im.src = srcOf(k) } }}
               className="py-3 group"
             >
               <span className={`block h-[3px] rounded-full transition-all duration-500 ${k === i ? 'w-10 bg-white' : 'w-5 bg-white/35 group-hover:bg-white/70'}`} />
