@@ -161,14 +161,14 @@ export default function Projects() {
             inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          <p className="mb-4 text-[20px] font-semibold text-[#F85707]">Selected Work</p>
+          <p className="mb-4 text-[20px] font-semibold text-[#F85707]">Featured Work</p>
 
           <div className="flex items-end justify-between gap-8">
             <h2
               id="projects-heading"
               className="max-w-[900px] font-serif text-balance text-[clamp(38px,4vw,60px)] leading-[1.1] tracking-[-0.01em] text-white"
             >
-              Projects that define categories
+              Projects at a glance
             </h2>
             <p className="hidden shrink-0 pb-2 text-[16px] font-medium text-white/50 lg:block">
               Drag to explore
