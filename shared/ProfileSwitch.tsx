@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
   Profile switcher shared by the ProFun and ProFun Academy sites.
   The link always offers the *other* profile, set apart from the page links by a
   divider so it reads as a sister site.
-  A small menu also lists both profiles and the profile picker.
+  A small menu also lists both profiles and a link back to the main (picker) page.
 */
 type Profile = 'profun' | 'academy'
 
@@ -39,10 +39,12 @@ export function ProfileSwitch({ current, onDark = false, compact = false }: { cu
         className={`profile-pill group relative inline-flex items-center gap-2 whitespace-nowrap pl-4 xl:pl-5 border-l text-[13px] xl:text-[15px] font-medium tracking-wide uppercase transition-colors duration-200 hover:text-[#F85707] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85707] ${
           onDark ? 'border-white/30 text-white' : 'border-[#000050]/15 text-[#000050]'
         }`}
-        aria-label={toAcademy ? 'Go to ProFun Academy' : 'Go to ProFun'}
+        aria-label={toAcademy ? 'Enter ProFun Academy' : 'Enter ProFun'}
       >
         <img src="./profun-symbol-color.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px] transition-transform duration-500 group-hover:rotate-[20deg]" />
-        {toAcademy ? (compact ? 'Academy' : 'ProFun Academy') : 'ProFun'}
+        {toAcademy
+          ? <span>Enter <span className={compact ? 'hidden' : 'hidden xl:inline'}>ProFun </span>Academy</span>
+          : 'Enter ProFun'}
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </a>
 
@@ -67,8 +69,9 @@ export function ProfileSwitch({ current, onDark = false, compact = false }: { cu
         <div role="menu" className="absolute right-0 top-[calc(100%+12px)] w-[260px] pt-2 bg-white shadow-[0_24px_48px_-16px_rgba(0,0,80,0.35)] border border-[#E2E0DB] p-2 z-[60]">
           <ProfileRow href={LINKS.profun} logo="./profun-symbol-color.svg" name="ProFun" sub="Attraction operations" active={current === 'profun'} />
           <ProfileRow href={LINKS.academy} logo="./profun-symbol-color.svg" name="ProFun Academy" sub="Training and learning" active={current === 'academy'} highlight />
-          <a href={LINKS.picker} role="menuitem" className="mt-1 block px-3 py-2.5 text-[14px] text-[#6B6B65] hover:text-[#F85707] border-t border-[#E2E0DB]">
-            All websites
+          <a href={LINKS.picker} role="menuitem" className="group mt-1 flex items-center gap-2 px-3 py-2.5 text-[14px] font-medium text-[#F85707] hover:text-[#000050] border-t border-[#E2E0DB]">
+            <svg width="12" height="9" viewBox="0 0 14 10" fill="none" aria-hidden="true" className="rotate-180 transition-transform group-hover:-translate-x-0.5"><path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            Back to main page
           </a>
         </div>
       )}

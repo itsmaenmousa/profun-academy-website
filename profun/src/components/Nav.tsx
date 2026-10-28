@@ -127,9 +127,9 @@ export default function Nav() {
         </Link>
 
         <div className="flex items-center gap-4">
-        <a href="../academy/index.html#/" className={`profile-pill-mobile inline-flex items-center gap-1.5 pr-1 text-[13px] font-medium tracking-wide uppercase transition-colors ${solid ? 'text-[#000050]' : 'text-white'}`} aria-label="Go to ProFun Academy">
+        <a href="../academy/index.html#/" className={`profile-pill-mobile inline-flex items-center gap-1.5 pr-1 whitespace-nowrap text-[13px] font-medium tracking-wide uppercase transition-colors ${solid ? 'text-[#000050]' : 'text-white'}`} aria-label="Enter ProFun Academy">
           <img src="./profun-symbol-color.svg" alt="" aria-hidden="true" className="h-4 w-4" />
-          Academy
+          <span><span className="max-[359px]:hidden">Enter </span>Academy</span>
           <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </a>
         <button
