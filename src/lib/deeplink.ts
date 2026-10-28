@@ -13,15 +13,25 @@ export function useDeepLink(handler: (go: string) => void) {
   }, [search, key])
 }
 
-/** Smoothly bring an element just below the fixed nav, after the page has settled. */
+/** Smoothly bring an element just below the fixed nav, after the page has settled.
+    Re-aims once if the layout above it was still growing when the scroll started. */
 export function scrollToId(id: string, delay = 260) {
-  window.setTimeout(() => {
+  const target = () => {
     const el = document.getElementById(id)
-    if (!el) return
+    if (!el) return null
     const navH = window.innerWidth >= 1024 ? 80 : 72
-    const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - navH - 24)
+    return Math.max(0, el.getBoundingClientRect().top + window.scrollY - navH - 24)
+  }
+  const go = (immediate = false) => {
+    const top = target()
+    if (top === null) return
     const lenis = getLenis()
-    if (lenis) lenis.scrollTo(top, { duration: 1.1 })
-    else window.scrollTo({ top, behavior: 'smooth' })
-  }, delay)
+    if (lenis) lenis.scrollTo(top, immediate ? { immediate: true } : { duration: 1.1 })
+    else window.scrollTo({ top, behavior: immediate ? 'auto' : 'smooth' })
+  }
+  window.setTimeout(() => go(), delay)
+  window.setTimeout(() => {
+    const top = target()
+    if (top !== null && Math.abs(top - window.scrollY) > 24) go()
+  }, delay + 1300)
 }

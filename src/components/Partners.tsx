@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
+import { useDeepLink, scrollToId } from '../lib/deeplink'
 
 const partners = [
   { name: 'Ellis & Associates', logo: './partner-ellis-sst.png', color: '#00AFDC' },
@@ -14,6 +15,8 @@ const partners = [
 export default function Partners() {
   const { ref, inView } = useInView()
   const [tapped, setTapped] = useState<number | null>(null)
+  // Footer link: Partners & Affiliations
+  useDeepLink(go => { if (go === 'partners') scrollToId('partners') })
 
   return (
     <section id="partners" className="bg-[#F9F8F6] py-16 sm:py-20 lg:py-24 overflow-hidden">
