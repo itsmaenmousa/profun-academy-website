@@ -33,7 +33,7 @@ const cols: { title: string; links: [string, string][] }[] = [
   {
     title: 'Company',
     links: [
-      ['About', '/about'], ['People', '/team'], ['News', '/news'], ['Careers', '/contact?go=careers'], ['Contact', '/contact'],
+      ['About', '/about'], ['People', '/team'], ['Partners & Affiliations', '/about?go=affiliations'], ['News', '/news'], ['Careers', '/contact?go=careers'], ['Contact', '/contact'],
     ],
   },
 ]

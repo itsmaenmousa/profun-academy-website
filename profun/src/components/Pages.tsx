@@ -24,6 +24,7 @@ export function AboutPage() {
   const { ref, inView } = useInView()
   const { ref: ref2, inView: in2 } = useInView()
   const [tapped, setTapped] = useState<number | null>(null)
+  useDeepLink(go => { if (go === 'affiliations') scrollToId('affiliations') })
   return (
     <>
       <Stats />
@@ -80,7 +81,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-[#F9F8F6] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
+      <section id="affiliations" className="bg-[#F9F8F6] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
         <div className="max-w-[1920px] mx-auto">
           <SectionHead eyebrow="Our Affiliations" title="Part of the bodies that shape the industry." />
           <ul className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4">

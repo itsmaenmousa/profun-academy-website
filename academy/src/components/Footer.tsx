@@ -52,7 +52,7 @@ const cols: { title: string; links: [string, string][] }[] = [
   {
     title: 'Academy',
     links: [
-      ['About', '/about'], ['Projects', '/projects'], ['Team', '/team'],
+      ['About', '/about'], ['Projects', '/projects'], ['Team', '/team'], ['Partners & Affiliations', '/?go=partners'],
       ['News', '/news'], ['Contact', '/contact'], ['Full Academy Profile', '/academy'],
     ],
   },
