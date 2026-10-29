@@ -53,13 +53,13 @@ export default function About() {
           <div className={`lg:col-span-7 relative reveal reveal-delay-2 ${inView ? 'visible' : ''}`}>
             <div className={`aspect-[4/3] overflow-hidden bg-[#1C1C1A] img-reveal ${inView ? 'visible' : ''}`}>
               <img
-                src="./academy-in-person.jpg"
-                alt="A ProFun Academy facilitator leading an in-person session"
+                src="./about-academy.jpg"
+                alt="A project team reviewing an attraction masterplan and model"
                 className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-[1.03]"
               />
             </div>
             <div className="mt-4 flex items-start justify-between">
-              <p className="text-[15px] text-[#6B6B65] font-light">In-person learning, facilitated by industry practitioners</p>
+              <p className="text-[15px] text-[#6B6B65] font-light">Working sessions with project and operations teams</p>
             </div>
           </div>
         </div>
