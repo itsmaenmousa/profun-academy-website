@@ -10,8 +10,8 @@ const channels = [
     title: 'In-Person Learning.',
     desc: 'Practical sessions led by experienced facilitators at your workplace or a dedicated venue, using discussion, activities, and realistic scenarios to build skills and confidence.',
     tags: ['Workshops', 'Seminars', 'Site Visits', 'Role-Play Simulations', 'Train-the-Trainer'],
-    image: './academy-in-person.jpg',
-    pos: '55% 24%',
+    image: './learning-in-person.jpg',
+    pos: '60% 14%',
   },
   {
     id: 'virtual',
@@ -20,8 +20,8 @@ const channels = [
     title: 'Virtual Learning.',
     desc: 'Live, facilitator-led online sessions that bring teams together through interactive discussions, group activities, and guided practice.',
     tags: ['Live Webinars', 'Virtual Cohorts', 'Remote Coaching', 'Group Breakouts'],
-    image: './academy-virtual.jpg',
-    pos: '50% 38%',
+    image: './learning-virtual.jpg',
+    pos: '50% 30%',
   },
   {
     id: 'elearning',
@@ -118,12 +118,12 @@ export default function VideoReel() {
             <div className="absolute -top-5 -right-5 sm:-top-8 sm:-right-8 w-2/3 h-2/3 bg-[#8238EB]" aria-hidden="true" />
             <div className="relative aspect-[16/11] overflow-hidden shadow-[0_30px_60px_-30px_rgba(0,0,80,0.45)]">
               <img
-                src="./academy-experiential.jpg"
+                src="./learning-experiential.jpg"
                 alt="Participants in a hands-on experiential learning session"
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-                style={{ objectPosition: '50% 40%' }}
+                style={{ objectPosition: '50% 35%' }}
               />
             </div>
           </div>
