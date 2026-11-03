@@ -20,8 +20,8 @@ const channels = [
     title: 'Virtual Learning.',
     desc: 'Live, facilitator-led online sessions that bring teams together through interactive discussions, group activities, and guided practice.',
     tags: ['Live Webinars', 'Virtual Cohorts', 'Remote Coaching', 'Group Breakouts'],
-    image: './learning-virtual.jpg',
-    pos: '50% 30%',
+    image: './academy-virtual.jpg',
+    pos: '50% 38%',
   },
   {
     id: 'elearning',
@@ -40,8 +40,8 @@ const channels = [
     title: 'Blended Learning.',
     desc: 'A tailored combination of in-person, virtual, and self-paced learning, supported by workplace practice to reinforce application over time.',
     tags: ['Pre-Work', 'Live Session', 'Sustained Follow-Through', 'Spaced Learning Design'],
-    image: './academy-blended.jpg',
-    pos: '50% 42%',
+    image: './learning-virtual.jpg',
+    pos: '50% 6%',
   },
 ]
 
