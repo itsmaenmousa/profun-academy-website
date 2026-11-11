@@ -118,12 +118,12 @@ export default function VideoReel() {
             <div className="absolute -top-5 -right-5 sm:-top-8 sm:-right-8 w-2/3 h-2/3 bg-[#8238EB]" aria-hidden="true" />
             <div className="relative aspect-[16/11] overflow-hidden shadow-[0_30px_60px_-30px_rgba(0,0,80,0.45)]">
               <img
-                src="./learning-experiential.jpg"
+                src="./learning-experiential-v2.jpg"
                 alt="Participants in a hands-on experiential learning session"
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-                style={{ objectPosition: '50% 35%' }}
+                style={{ objectPosition: '50% 30%' }}
               />
             </div>
           </div>
