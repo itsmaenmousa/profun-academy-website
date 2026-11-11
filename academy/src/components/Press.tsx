@@ -26,6 +26,22 @@ type Release = {
 
 const RELEASES: Release[] = [
   {
+    id: 'vao-graduates',
+    date: 'November 2026',
+    tag: 'Training Highlight',
+    color: '#F85707',
+    title: 'The first Visitor Attractions Operator Program graduates.',
+    summary: 'A 12-week program across Riyadh, Tabuk, Abha and Yanbu, building Saudi talent for the attractions and entertainment sector.',
+    body: [
+      'We are proud to see the first graduates of the Visitor Attractions Operator Program complete their journey.',
+      'Developed and delivered by ProFun in partnership with the Saudi Entertainment Academy, and commissioned by Qiddiya and Saudi Entertainment Ventures (SEVEN), the 12-week program was delivered across Riyadh, Tabuk, Abha and Yanbu, empowering Saudi talent to lead the future of the attractions and entertainment sector under Vision 2030.',
+      'Congratulations to all the graduates. This is only the beginning of an incredible journey ahead.',
+      'A big thank you to our ProFun instructional designers and trainers, the Saudi Entertainment Academy, and the teams at Qiddiya and SEVEN, all of whom made this program a success.',
+    ],
+    image: './news-vao-graduates.jpg',
+    pos: '50% 28%',
+  },
+  {
     id: 'website',
     date: 'November 2026',
     tag: 'Announcement',
