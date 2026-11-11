@@ -11,7 +11,7 @@ const channels = [
     desc: 'Practical sessions led by experienced facilitators at your workplace or a dedicated venue, using discussion, activities, and realistic scenarios to build skills and confidence.',
     tags: ['Workshops', 'Seminars', 'Site Visits', 'Role-Play Simulations', 'Train-the-Trainer'],
     image: './learning-in-person.jpg',
-    pos: '60% 14%',
+    pos: '60% 22%',
   },
   {
     id: 'virtual',
@@ -41,7 +41,7 @@ const channels = [
     desc: 'A tailored combination of in-person, virtual, and self-paced learning, supported by workplace practice to reinforce application over time.',
     tags: ['Pre-Work', 'Live Session', 'Sustained Follow-Through', 'Spaced Learning Design'],
     image: './learning-virtual.jpg',
-    pos: '50% 6%',
+    pos: '50% 26%',
   },
 ]
 
