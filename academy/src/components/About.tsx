@@ -53,13 +53,14 @@ export default function About() {
           <div className={`lg:col-span-7 relative reveal reveal-delay-2 ${inView ? 'visible' : ''}`}>
             <div className={`aspect-[4/3] overflow-hidden bg-[#1C1C1A] img-reveal ${inView ? 'visible' : ''}`}>
               <img
-                src="./about-academy.jpg"
-                alt="A project team reviewing an attraction masterplan and model"
+                src="./about-academy-v2.jpg"
+                style={{ objectPosition: '50% 30%' }}
+                alt="A trainer coaching ride operators at a control panel, with a coaster outside"
                 className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-[1.03]"
               />
             </div>
             <div className="mt-4 flex items-start justify-between">
-              <p className="text-[15px] text-[#6B6B65] font-light">Working sessions with project and operations teams</p>
+              <p className="text-[15px] text-[#6B6B65] font-light">Hands-on training with ride operations teams</p>
             </div>
           </div>
         </div>
