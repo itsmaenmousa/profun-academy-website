@@ -3,20 +3,17 @@ import type React from 'react'
 import { Link } from 'react-router-dom'
 import { useEqualize } from '../hooks/useEqualize'
 import { useInView } from '../hooks/useInView'
-import { NEWS_ALL, NEWS_TAG_COLOR, type NewsItem } from '../content'
-import { pf } from '../data'
+import { NEWS_ALL, NEWS_TAGS, NEWS_TAG_COLOR, newsImage, isLogoImage, type NewsItem } from '../../../shared/news'
 
 /*
-  News, in the same layout as the ProFun Academy press page:
-  a lead story, a ruled grid of cards, "Read more" opens the story in place.
-  ProFun's own announcements are shown in full; industry stories open at the source.
+  News, shared with the ProFun Academy site: both read shared/news.ts,
+  so the two News pages always show the same stories.
+  A lead story, a ruled grid of cards, "Read more" opens the story in place.
+  Own announcements are shown in full; industry stories open at the source.
 */
 
 const EQ_KEYS = ['meta', 'title', 'desc']
 const PAGE = 9
-const TAGS = ['ProFun News', 'ProFun Academy', 'Project News', 'Client News', 'Industry', 'Insight'] as const
-// Logos and wordmarks sit on white instead of being cropped like photos
-const isLogo = (img: string) => /logo|PROFUN-COLORED|MPF-logo|2024\/05\/5\.png/i.test(img)
 
 export default function News() {
   const { ref, inView } = useInView()
@@ -39,17 +36,17 @@ export default function News() {
           <div>
             <p className="text-[20px] font-semibold text-[#F85707] mb-4">News</p>
             <h1 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em]">
-              News from ProFun.
+              News from across ProFun.
             </h1>
           </div>
           <p className="max-w-[420px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
-            Company announcements, project milestones and the stories shaping the attractions industry.
+            Company announcements, Academy updates, project milestones and the stories shaping the attractions industry.
           </p>
         </div>
 
         {/* Filter */}
         <div className="flex flex-nowrap sm:flex-wrap gap-2 overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden mb-8 sm:mb-10" role="group" aria-label="Filter news">
-          {[null, ...TAGS].map(t => {
+          {[null, ...NEWS_TAGS].map(t => {
             const n = t ? NEWS_ALL.filter(x => x.tag === t).length : NEWS_ALL.length
             const on = tag === t
             return (
@@ -120,22 +117,23 @@ const ArrowSm = ({ className = '' }: { className?: string }) => (
 
 function StoryCard({ r, open, onToggle, lead }: { r: NewsItem; open: boolean; onToggle: () => void; lead?: boolean }) {
   const color = NEWS_TAG_COLOR[r.tag]
-  const logo = isLogo(r.image)
+  const logo = isLogoImage(r.image)
   return (
     <article className={`group bg-white ${lead ? 'grid grid-cols-1 lg:grid-cols-2 border border-[#E2E0DB]' : 'flex flex-col'}`}>
       <div className={`relative overflow-hidden ${logo ? 'bg-white' : 'bg-[#E2E0DB]'} ${lead ? 'aspect-[16/10] lg:aspect-auto lg:min-h-[420px]' : 'aspect-[16/9]'}`}>
         <span className="absolute bottom-0 left-0 right-0 h-1 z-10" style={{ background: color }} aria-hidden="true" />
         <img
-          src={pf(r.image)}
+          src={newsImage(r.image, 'profun')}
           alt={r.title}
           loading="lazy"
           decoding="async"
           className={`absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-[1.04] ${logo ? 'object-contain p-[18%] border-b border-[#F2F1EF]' : 'object-cover'}`}
+          style={r.pos ? { objectPosition: r.pos } : undefined}
         />
       </div>
       <div className={`p-8 ${lead ? 'sm:p-12 flex flex-col justify-center' : 'flex-1 flex flex-col'}`}>
         <div data-eq="meta" className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">
-          <span className="text-[16px] font-medium whitespace-nowrap" style={{ color }}>{r.tag}</span>
+          <span className="text-[16px] font-medium whitespace-nowrap" style={{ color }}>{r.label ?? r.tag}</span>
           <span className="text-[#C9C7C1]" aria-hidden="true">·</span>
           <span className="text-[15px] text-[#6B6B65] font-light whitespace-nowrap">{r.date}</span>
         </div>
@@ -153,6 +151,11 @@ function StoryCard({ r, open, onToggle, lead }: { r: NewsItem; open: boolean; on
                   {r.link && (
                     <a href={r.link.href} target="_blank" rel="noopener noreferrer" tabIndex={open ? 0 : -1} className="inline-flex items-center gap-2 text-[15px] font-medium text-[#F85707] hover:gap-3 transition-all duration-200">
                       {r.link.label} <ArrowSm className="-rotate-45" />
+                    </a>
+                  )}
+                  {r.cta && (
+                    <a href={`../academy/index.html#${r.cta.to}`} tabIndex={open ? 0 : -1} className="flex w-fit items-center gap-2 text-[15px] font-medium text-[#F85707] hover:gap-3 transition-all duration-200">
+                      {r.cta.label} <ArrowSm />
                     </a>
                   )}
                 </div>

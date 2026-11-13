@@ -1,7 +1,7 @@
 import { useEffect, lazy, Suspense, type ReactNode } from 'react'
 import Lenis from 'lenis'
 import { setLenis, getLenis, resetScroll } from './lib/smooth'
-import { HashRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
@@ -48,7 +48,7 @@ const SECTION_ALIASES: Record<string, string[]> = {
   programs: ['programs', 'credentials', 'library'],
 }
 const SECTION_ROUTES: Record<string, string> = {
-  about: '/about', services: '/services', delivery: '/learning', learning: '/learning',
+  about: '/about', services: '/services', delivery: '/services', learning: '/services',
   programs: '/programs', projects: '/projects', team: '/team', news: '/news', contact: '/contact', partners: '/',
 }
 
@@ -121,6 +121,12 @@ function Home() {
   )
 }
 
+function LearningRedirect() {
+  const { search } = useLocation()
+  const go = new URLSearchParams(search).get('go') ?? 'learning'
+  return <Navigate to={`/services?go=${go}`} replace />
+}
+
 export default function App() {
   useSmoothScroll()
   usePrefetchPages()
@@ -131,8 +137,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<Layout><Stats /><About /></Layout>} />
-        <Route path="/services" element={<Layout><Services /></Layout>} />
-        <Route path="/learning" element={<Layout><VideoReel /></Layout>} />
+        <Route path="/services" element={<Layout><Services /><VideoReel /></Layout>} />
+        {/* Learning now lives on the Services page */}
+        <Route path="/learning" element={<LearningRedirect />} />
         <Route path="/programs" element={<Layout><News /></Layout>} />
         <Route path="/projects" element={<Layout><Projects /></Layout>} />
         <Route path="/team" element={<Layout><Leadership /></Layout>} />

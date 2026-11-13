@@ -54,6 +54,7 @@ export default function VideoReel() {
 
   // Footer links: jump to Experiential, or open the matching delivery format tab
   useDeepLink(go => {
+    if (go === 'learning') return scrollToId('experiential')
     if (go === 'experiential') return scrollToId('experiential-learning')
     const i = channels.findIndex(ch => ch.id === go)
     if (i < 0) return

@@ -39,8 +39,8 @@ const cols: { title: string; links: [string, string][] }[] = [
   {
     title: 'Learning',
     links: [
-      ['Experiential', '/learning?go=experiential'], ['In-Person', '/learning?go=in-person'],
-      ['Virtual', '/learning?go=virtual'], ['eLearning', '/learning?go=elearning'], ['Blended', '/learning?go=blended'],
+      ['Experiential', '/services?go=experiential'], ['In-Person', '/services?go=in-person'],
+      ['Virtual', '/services?go=virtual'], ['eLearning', '/services?go=elearning'], ['Blended', '/services?go=blended'],
     ],
   },
   {

@@ -5,7 +5,6 @@ import { ProfileSwitch } from './ProfileSwitch'
 export const PAGES: [string, string][] = [
   ['About', '/about'],
   ['Services', '/services'],
-  ['Learning', '/learning'],
   ['Programs', '/programs'],
   ['Projects', '/projects'],
   ['Team', '/team'],
