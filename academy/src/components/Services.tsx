@@ -2,39 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { useDeepLink, scrollToId } from '../lib/deeplink'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
+import { COPY as P } from '../copy'
+import { SERVICES as services } from '../data'
 
-const services = [
-  {
-    short: 'Learning Strategy',
-    title: 'Learning Strategy and Management',
-    desc: 'Align learning with business priorities through needs analysis, planning, governance, and performance measurement.',
-    color: '#000050',
-  },
-  {
-    short: 'Workforce Capability',
-    title: 'Workforce Capability Development',
-    desc: 'Define role competencies, career pathways, and leadership development priorities to build a capable workforce.',
-    color: '#3985FD',
-  },
-  {
-    short: 'Program Design',
-    title: 'Program Design and Content Development',
-    desc: 'Create customized programs, materials, and assessments shaped around your operations, culture, and workforce needs.',
-    color: '#8238EB',
-  },
-  {
-    short: 'Training Delivery',
-    title: 'Training Delivery and Facilitation',
-    desc: 'Build practical skills through facilitated training, on-site coaching, and train-the-trainer programs tailored to your teams.',
-    color: '#FC026F',
-  },
-  {
-    short: 'Operational Readiness',
-    title: 'Pre-Opening and Operational Readiness Training',
-    desc: 'Prepare teams for opening through role-specific training, operational simulations, and readiness assessments.',
-    color: '#F85707',
-  },
-]
 
 export default function Services() {
   const { ref, inView } = useInView()
@@ -48,9 +18,9 @@ export default function Services() {
           className={`mb-8 sm:mb-10 lg:mb-12 border-b border-[#E2E0DB] pb-8 sm:pb-10 reveal ${inView ? 'visible' : ''}`}
         >
           <div>
-            <p className="text-[20px] font-semibold text-[#F85707] mb-4">What We Offer</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.services.head_eyebrow}</p>
             <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] max-w-[760px] tracking-[-0.01em]">
-              From individual skills to operational readiness.
+              {P.services.head_title}
             </h2>
           </div>
         </div>
@@ -169,7 +139,7 @@ function Honeycomb({ inView }: { inView: boolean }) {
         ) : (
           <div key="intro" className="hc-copy">
             <span className="block w-12 h-1 mb-8 mx-auto xl:mx-0 bg-[#F85707]" aria-hidden="true" />
-            <p className="font-serif text-[clamp(22px,1.9vw,30px)] text-[#000050] leading-[1.3] tracking-[-0.01em]">From tailored training to comprehensive learning strategies, we help organizations build workforce capability at every stage, from pre-opening to ongoing operations.</p>
+            <p className="font-serif text-[clamp(22px,1.9vw,30px)] text-[#000050] leading-[1.3] tracking-[-0.01em]">{P.services.intro_text}</p>
           </div>
         )}
         <div className={`flex items-center justify-center xl:justify-start gap-2 mt-10 transition-opacity duration-500 ${open ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true">

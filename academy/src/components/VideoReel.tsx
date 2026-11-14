@@ -1,49 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useInView } from '../hooks/useInView'
 import { useDeepLink, scrollToId } from '../lib/deeplink'
+import { COPY as P } from '../copy'
+import { FORMATS as channels } from '../data'
 
-const channels = [
-  {
-    id: 'in-person',
-    color: '#3985FD',
-    label: 'In-Person',
-    title: 'In-Person Learning.',
-    desc: 'Practical sessions led by experienced facilitators at your workplace or a dedicated venue, using discussion, activities, and realistic scenarios to build skills and confidence.',
-    tags: ['Workshops', 'Seminars', 'Site Visits', 'Role-Play Simulations', 'Train-the-Trainer'],
-    image: './learning-in-person.jpg',
-    pos: '60% 22%',
-  },
-  {
-    id: 'virtual',
-    color: '#FC026F',
-    label: 'Virtual',
-    title: 'Virtual Learning.',
-    desc: 'Live, facilitator-led online sessions that bring teams together through interactive discussions, group activities, and guided practice.',
-    tags: ['Live Webinars', 'Virtual Cohorts', 'Remote Coaching', 'Group Breakouts'],
-    image: './academy-virtual.jpg',
-    pos: '50% 38%',
-  },
-  {
-    id: 'elearning',
-    color: '#00AFDC',
-    label: 'eLearning',
-    title: 'eLearning.',
-    desc: 'Self-paced digital learning that helps employees build knowledge and reinforce skills, with language options and progress tracking based on program requirements.',
-    tags: ['SCORM Modules', 'Microlearning', 'Video-Based Learning', 'Knowledge Assessments'],
-    image: './academy-elearning.jpg',
-    pos: '50% 45%',
-  },
-  {
-    id: 'blended',
-    color: '#15D2A4',
-    label: 'Blended',
-    title: 'Blended Learning.',
-    desc: 'A tailored combination of in-person, virtual, and self-paced learning, supported by workplace practice to reinforce application over time.',
-    tags: ['Pre-Work', 'Live Session', 'Sustained Follow-Through', 'Spaced Learning Design'],
-    image: './learning-virtual.jpg',
-    pos: '50% 26%',
-  },
-]
 
 const SLIDE_MS = 6000
 
@@ -78,25 +38,25 @@ export default function VideoReel() {
         {/* How We Deliver */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12">
           <div>
-            <p className="text-[20px] font-semibold text-[#F85707] mb-4">How We Deliver</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.learning.head_eyebrow}</p>
             <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] max-w-[760px]">
-              Learning that fits your teams and operations.
+              {P.learning.head_title}
             </h2>
           </div>
           <p className="max-w-[520px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
-            We shape learning around your workforce, operational priorities, and learning goals, combining experienced facilitators, practical activities, and content tailored to your cultural context.
+            {P.learning.head_text}
           </p>
         </div>
 
         {/* Experiential Learning */}
         <div id="experiential-learning" className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6 xl:col-span-5">
-            <p className="text-[20px] font-semibold text-[#8238EB] mb-4">Experiential Learning</p>
+            <p className="text-[20px] font-semibold text-[#8238EB] mb-4">{P.learning.experiential_eyebrow}</p>
             <h3 className="font-serif text-balance text-[clamp(30px,3vw,46px)] text-[#000050] leading-[1.1] tracking-[-0.01em] mb-6">
-              Practical experience.<br className="hidden sm:block" /> Lasting application.
+              {P.learning.experiential_title.split('\n').map((l, i) => <span key={i}>{i > 0 && <br className="hidden sm:block" />}{i > 0 ? ' ' : ''}{l}</span>)}
             </h3>
             <p className="text-[18px] sm:text-[19px] text-[#6B6B65] font-light leading-relaxed max-w-[560px] mb-8">
-              Through realistic scenarios, simulations, and workplace practice, your teams connect knowledge to their roles and build the confidence to apply it.
+              {P.learning.experiential_text}
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3">
               {[
@@ -119,7 +79,7 @@ export default function VideoReel() {
             <div className="absolute -top-5 -right-5 sm:-top-8 sm:-right-8 w-2/3 h-2/3 bg-[#8238EB]" aria-hidden="true" />
             <div className="relative aspect-[16/11] overflow-hidden shadow-[0_30px_60px_-30px_rgba(0,0,80,0.45)]">
               <img
-                src="./learning-experiential-v2.jpg"
+                src={P.learning.experiential_image}
                 alt="Participants in a hands-on experiential learning session"
                 loading="lazy"
                 decoding="async"
@@ -143,12 +103,12 @@ export default function VideoReel() {
       >
         <div className="border-t border-[#E2E0DB] pt-10 sm:pt-16 pb-8 sm:pb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
         <div>
-          <p className="text-[20px] font-semibold text-[#F85707] mb-4">Delivery Formats</p>
+          <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.learning.formats_eyebrow}</p>
           <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] max-w-[720px] mb-6">
-            The right format for your team.
+            {P.learning.formats_title}
           </h2>
           <p className="text-[18px] sm:text-[19px] text-[#6B6B65] font-light leading-relaxed max-w-[640px]">
-            We bring this practical approach into in-person, virtual, eLearning, and blended programs, choosing the right mix for your people and operations.
+            {P.learning.formats_text}
           </p>
         </div>
         {/* Channel tabs */}

@@ -3,48 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useDeepLink, scrollToId } from '../lib/deeplink'
 import { useEqualize } from '../hooks/useEqualize'
 import { useInView } from '../hooks/useInView'
-
-type Area = { name: string; color: string; subs: string[] }
-type Program = { category: string; title: string; desc: string; image: string; color: string; pos?: string; label: string; items: (string | Area)[] }
-
-const TAILORED: Program[] = [
-  {
-    category: 'Tailored Training Programs',
-    title: 'The ProFun Academy',
-    desc: 'Tailored training across every part of an attraction, shaped around your people, culture and operations.',
-    image: './training-programs-v2.jpg',
-    pos: '50% 35%',
-    color: '#8238EB',
-    label: 'Explore program areas',
-    items: [
-      { name: 'Leadership & Management', color: '#3985FD', subs: ['Policy & Procedure Development Across All Departments', 'Leadership Development & Capability Building', 'Keynote Speakers', 'Revenue & Financial Management'] },
-      { name: 'Industry Experience', color: '#E0A800', subs: ['Global Benchmarking', 'Facility Tours', 'Industry Networking & Association', 'International Study & Exposure Trips'] },
-      { name: 'Safety & Security', color: '#15D2A4', subs: ['Facility Audits and Reviews', 'First Aid, CPR & AED Certification', 'Risk Assessment Overview', 'Emergency Action Planning', 'Incident Reporting and Follow-up', 'Regulatory Compliance Best Practices'] },
-      { name: 'Rides & Attractions', color: '#00AFDC', subs: ['Ride Operator Certification', 'Lifeguard Certification', 'Ride Scripts, Spiels and Safety Announcements', 'Throughput & Queue-line Management', 'Guest Management and Accessibility'] },
-      { name: 'Frontline Colleagues', color: '#F85707', subs: ['Introduction and History of Attractions', 'Effective Communication', 'Conflict Resolution & Service Recovery', 'Point of Sale Operations', 'Admission & Ticketing Operations'] },
-      { name: 'Human Resources', color: '#7FB01F', subs: ['Motivation & Incentive Programs', 'Colleague Engagement Programs', 'Coaching & Mentorship', 'Train-the-Trainer Programs', 'Onboarding and Induction', 'Performance Management', 'Facilitator Guides & Assessment Tools'] },
-      { name: 'Guest Service Excellence', color: '#8238EB', subs: ['Guest Interaction Scripts and Best Practices', 'Entertainment in Attractions', 'Audits and Secret Shoppers', 'KPI Recommendations', 'Role-play Simulations & Coaching', 'Guided Experiences'] },
-      { name: 'Sales & Marketing', color: '#FC026F', subs: ['Current Trends and Best Practices', 'Brand Positioning', 'Industry Strategies and Tactics', 'Social Media Engagement', 'Sales Channel Management'] },
-      { name: 'Food & Beverage', color: '#3985FD', subs: ['Outlet Setup & Layout', 'Upselling Techniques', 'Food Hygiene Best Practices', 'Kitchen Operation Efficiency', 'Attractions Menu Overview'] },
-      { name: 'Retail', color: '#15D2A4', subs: ['Merchandising & Store Layout', 'Inventory & Stock Management', 'Sales Strategies', 'Loss Prevention & Shrinkage', 'Cashiering Overview'] },
-      { name: 'Engineering & Technical Services', color: '#7FB01F', subs: ['Technical Regulations & Industry Best Practices', 'Inspection Protocols', 'Preventive & Predictive Maintenance'] },
-      { name: 'Information Technology', color: '#8238EB', subs: ['Technology in Attractions', 'Applications and Digital Experience', 'Guest Analytics'] },
-      { name: 'Housekeeping', color: '#F85707', subs: ['Chemical Handling Procedures', 'Inspection Protocols', 'Cleaning Standards'] },
-    ],
-  },
-]
-
-const ACCREDITED: Program[] = [
-  {
-    category: 'Accredited and Certified Programs',
-    title: 'Ellis & Associates',
-    desc: 'The gold standard in first aid, CPR and safety certification for attractions teams, plus lifeguard and aquatic programs.',
-    image: './ellis-first-aid.jpg',
-    color: '#00AFDC',
-    label: 'Explore courses',
-    items: ['CPR & First Aid', 'Preventing Bloodborne & Airborne Pathogens', 'Supplemental Oxygen Support', 'Active Shooter Assailant Safety', 'Attraction Operator', 'Water Slide Dispatch Operator', 'International Lifeguard Training Program', 'vanGUARD Aquatics Leadership', 'Water Safety Plus', 'Jeff Ellis Swimming', 'Train the Trainer'],
-  },
-]
+import { COPY as P } from '../copy'
+import { TAILORED, ACCREDITED, type Area, type Program } from '../data'
 
 export default function News() {
   const { ref, inView } = useInView()
@@ -66,19 +26,19 @@ export default function News() {
         {/* Header */}
         <div ref={headRef as React.RefObject<HTMLDivElement>} className={`flex items-end justify-between gap-8 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12 reveal ${headIn ? 'visible' : ''}`}>
           <div>
-            <p className="text-[20px] font-semibold text-[#F85707] mb-4">Our Programs</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.programs.head_eyebrow}</p>
             <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] max-w-[900px] mb-6">
-              Industry expertise. Programs shaped around you.
+              {P.programs.head_title}
             </h2>
             <p className="text-[19px] text-[#6B6B65] leading-relaxed font-light max-w-[640px]">
-              Explore accredited and certified programs alongside tailored training designed around your people, culture, and operational priorities.
+              {P.programs.head_text}
             </p>
           </div>
           <a
             href="#contact"
             className="hidden lg:inline-flex items-center gap-2 text-[15px] font-medium text-[#6B6B65] hover:text-[#F85707] hover:gap-4 transition-all duration-200"
           >
-            Request a custom program
+            {P.programs.head_link}
             <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
               <path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>

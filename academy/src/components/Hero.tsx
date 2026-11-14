@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
+import { COPY as P } from '../copy'
 
-const LINES = [
-  'Training the people',
-  'behind the world\'s',
-  'greatest experiences.',
-]
+const LINES = P.home.hero_title.split('\n')
 
 export default function Hero() {
   const [ready, setReady] = useState(false)
@@ -113,7 +110,7 @@ export default function Hero() {
               transitionDelay: '0.9s',
             }}
           >
-            Tailored learning and capability development for the attractions industry.
+            {P.home.hero_text}
           </p>
 
           <div
@@ -129,7 +126,7 @@ export default function Hero() {
               href="#services"
               className="inline-flex items-center justify-center gap-3 w-full max-w-[300px] sm:w-auto text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#FC026F] hover:gap-5"
             >
-              Explore our services
+              {P.home.hero_button1}
               <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
                 <path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -138,7 +135,7 @@ export default function Hero() {
               href="#contact"
               className="inline-flex items-center justify-center gap-3 w-full max-w-[300px] sm:w-auto text-[17px] font-medium text-white border border-white/40 px-8 py-4 transition-all duration-300 hover:border-white/70 hover:bg-white/8"
             >
-              Start a conversation
+              {P.home.hero_button2}
             </a>
           </div>
         </div>

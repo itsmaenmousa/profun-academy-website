@@ -1,6 +1,7 @@
 import { defineField, defineType } from 'sanity'
 import { isImageKey, docType, type Copy } from '../../shared/copy'
 import { COPY as PF_COPY } from '../../profun/src/copy'
+import { COPY as AC_COPY } from '../../academy/src/copy'
 
 /*
   One document per page, generated from the site's COPY defaults.
@@ -10,13 +11,13 @@ const human = (s: string) => s.replace(/_/g, ' ').replace(/(\d+)/g, ' $1').repla
 const SECTION: Record<string, string> = {
   hero: 'Top of page (hero)', intro: 'Introduction', head: 'Page heading', projects: 'Featured projects', sectors: 'Sectors',
   academy: 'ProFun Academy', clients: 'Clients', quality: 'Commitment to quality', affiliations: 'Affiliations', cases: 'Case studies',
-  sent: 'After sending the form', form: 'Contact form', careers: 'Careers', training: 'Training', services: 'Services',
+  sent: 'After sending the form', quote: 'Quote band', partners: 'Partners', iaapa: 'IAAPA recognition', values: 'What sets us apart', experiential: 'Experiential learning', formats: 'Delivery formats', location: 'Location', email: 'Email', linkedin: 'LinkedIn', facebook: 'Facebook', instagram: 'Instagram', x: 'X (Twitter)', follow: 'Social links', tagline: 'Tagline', form: 'Contact form', careers: 'Careers', training: 'Training', services: 'Services',
 }
 const FIELD: Record<string, string> = { eyebrow: 'Small heading above the title', title: 'Title', text: 'Text', link: 'Link text', button: 'Button text', caption: 'Photo caption', note: 'Small print' }
 
 export const PAGE_TITLES: Record<string, string> = {
   home: 'Home', services: 'Services (header and intro)', about: 'About', sectors: 'Sectors page', work: 'Our Work page',
-  team: 'People page', contact: 'Contact', footer: 'Footer',
+  team: 'People page', contact: 'Contact', footer: 'Footer', learning: 'Learning (on Services page)', programs: 'Programs page',
 }
 
 function pageDoc(site: string, page: string, defaults: Record<string, string>, title: string) {
@@ -47,4 +48,5 @@ function pageDoc(site: string, page: string, defaults: Record<string, string>, t
 
 const build = (site: string, copy: Copy) => Object.entries(copy).map(([page, defaults]) => pageDoc(site, page, defaults, PAGE_TITLES[page] ?? human(page)))
 export const pfPages = build('pf', PF_COPY)
-export const pageTypes = [...pfPages]
+export const acPages = build('ac', AC_COPY).map(t => (t.name === 'ac_team' ? { ...t, title: 'Team page' } : t))
+export const pageTypes = [...pfPages, ...acPages]

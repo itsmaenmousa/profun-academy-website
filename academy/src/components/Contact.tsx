@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { COPY as P } from '../copy'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', organization: '', email: '', message: '' })
@@ -9,7 +10,7 @@ export default function Contact() {
     e.preventDefault()
     const subject = `Website enquiry from ${form.name}${form.organization ? `, ${form.organization}` : ''}`
     const body = `${form.message}\n\n${form.name}${form.organization ? `\n${form.organization}` : ''}\n${form.email}`
-    window.location.href = `mailto:info@theprofunacademy.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = `mailto:${P.contact.email_text}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     setSent(true)
   }
 
@@ -19,25 +20,25 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left */}
           <div className="lg:col-span-5 lg:pr-8">
-            <p className="text-[20px] font-semibold text-[#F85707] mb-4">Get Started</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.contact.head_eyebrow}</p>
             <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] mb-8 tracking-[-0.01em]">
-              Build capability<br className="hidden sm:block" /> that lasts.
+              {P.contact.head_title.split('\n').map((l, i) => <span key={i}>{i > 0 && <br className="hidden sm:block" />}{i > 0 ? ' ' : ''}{l}</span>)}
             </h2>
             <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light lg:mb-12">
-              Whether you need a single program or a full learning strategy, tell us about your team and we will shape the right approach with you.
+              {P.contact.head_text}
             </p>
 
             <div className="hidden lg:block border-t border-[#E2E0DB] divide-y divide-[#E2E0DB]">
               <div className="py-5">
                 <p className="text-[15px] font-medium text-[#000050] mb-1.5">Location</p>
                 <p className="text-[18px] text-[#1C1C1A] font-light leading-relaxed">
-                  Riyadh, Kingdom of Saudi Arabia
+                  {P.contact.location_text}
                 </p>
               </div>
               <div className="py-5">
                 <p className="text-[15px] font-medium text-[#000050] mb-1.5">Get in touch</p>
-                <a href="mailto:info@theprofunacademy.com" className="text-[18px] text-[#F85707] hover:text-[#D94A05] transition-colors">
-                  info@theprofunacademy.com
+                <a href={`mailto:${P.contact.email_text}`} className="text-[18px] text-[#F85707] hover:text-[#D94A05] transition-colors">
+                  {P.contact.email_text}
                 </a>
               </div>
             </div>
@@ -47,9 +48,9 @@ export default function Contact() {
           <div className="lg:col-span-7 lg:col-start-6">
             {sent ? (
               <div className="relative bg-white border border-[#E2E0DB] p-6 sm:p-10 lg:p-12 flex flex-col items-start justify-center min-h-[420px]">
-                <h3 className="font-serif text-[36px] text-[#000050] mb-4">Almost there</h3>
+                <h3 className="font-serif text-[36px] text-[#000050] mb-4">{P.contact.sent_title}</h3>
                 <p className="text-[20px] text-[#6B6B65] font-light leading-relaxed">
-                  Your message is ready in your email app. Press send and the Academy team will get back to you.
+                  {P.contact.sent_text}
                 </p>
               </div>
             ) : (
@@ -58,8 +59,8 @@ export default function Contact() {
                   {['#3985FD', '#15D2A4', '#FFCA03', '#FC026F', '#8238EB', '#F85707'].map(c => <span key={c} className="flex-1" style={{ background: c }} />)}
                 </span>
                 <div className="pb-2">
-                  <h3 className="font-serif text-[clamp(24px,2vw,30px)] text-[#000050] leading-tight">Send us a message</h3>
-                  <p className="mt-2 text-[16px] text-[#6B6B65] font-light">Fill in the form and our team will get back to you.</p>
+                  <h3 className="font-serif text-[clamp(24px,2vw,30px)] text-[#000050] leading-tight">{P.contact.form_title}</h3>
+                  <p className="mt-2 text-[16px] text-[#6B6B65] font-light">{P.contact.form_text}</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -134,12 +135,12 @@ export default function Contact() {
               <div className="py-5">
                 <p className="text-[15px] font-medium text-[#000050] mb-1.5">Location</p>
                 <p className="text-[18px] text-[#1C1C1A] font-light leading-relaxed">
-                  Riyadh, Kingdom of Saudi Arabia
+                  {P.contact.location_text}
                 </p>
               </div>
               <div className="py-5">
                 <p className="text-[15px] font-medium text-[#000050] mb-1.5">Get in touch</p>
-                <a href="mailto:info@theprofunacademy.com" className="text-[18px] text-[#F85707] hover:text-[#D94A05] transition-colors">
+                <a href={`mailto:${P.contact.email_text}`} className="text-[18px] text-[#F85707] hover:text-[#D94A05] transition-colors">
                   info@theprofunacademy.com
                 </a>
               </div>

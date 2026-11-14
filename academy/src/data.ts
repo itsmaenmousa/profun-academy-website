@@ -287,3 +287,132 @@ export const COURSES: Course[] = [
     dates: SELF_PACED,
   },
 ]
+
+export const VALUES: { title: string; desc: string; color: string }[] = [
+  { title: 'Shaped by operational experience', desc: 'Learning shaped by attractions professionals who understand the realities of opening, operating, and leading visitor experiences.', color: '#3985FD' },
+  { title: 'Practical learning, real-world application', desc: 'Scenarios, simulations, and practical activities connect learning to the workplace, with on-site delivery where the brief requires it.', color: '#15D2A4' },
+  { title: 'Built around each role', desc: 'Programs tailored to specific responsibilities and career stages, from frontline operations to management and leadership.', color: '#99CA32' },
+  { title: 'Culturally grounded, in design and delivery', desc: 'Learning shaped around local cultures, values, and workplace expectations, with delivery that connects with diverse teams across regions.', color: '#FFCA03' },
+  { title: 'Learning that speaks your team\u2019s language', desc: 'Programs delivered in Arabic, English, and other languages to suit your workforce, helping participants understand, engage, and apply their learning.', color: '#FC026F' },
+  { title: 'From frontline to senior leadership', desc: 'Development that supports capability at every level, helping organizations prepare teams, strengthen managers, and develop leaders.', color: '#8238EB' },
+  { title: 'Capability that stays with your team', desc: 'On-site coaching and train-the-trainer options help your people reinforce learning and sustain standards over time.', color: '#00AFDC' },
+  { title: 'Recognized training and specialist partnerships', desc: 'Programs supported by recognized accreditations, certifications, and specialist partnerships, with the applicable recognition specified for each program.', color: '#F85707' },
+]
+
+export const SERVICES: { short: string; title: string; desc: string; color: string }[] = [
+  {
+    short: 'Learning Strategy',
+    title: 'Learning Strategy and Management',
+    desc: 'Align learning with business priorities through needs analysis, planning, governance, and performance measurement.',
+    color: '#000050',
+  },
+  {
+    short: 'Workforce Capability',
+    title: 'Workforce Capability Development',
+    desc: 'Define role competencies, career pathways, and leadership development priorities to build a capable workforce.',
+    color: '#3985FD',
+  },
+  {
+    short: 'Program Design',
+    title: 'Program Design and Content Development',
+    desc: 'Create customized programs, materials, and assessments shaped around your operations, culture, and workforce needs.',
+    color: '#8238EB',
+  },
+  {
+    short: 'Training Delivery',
+    title: 'Training Delivery and Facilitation',
+    desc: 'Build practical skills through facilitated training, on-site coaching, and train-the-trainer programs tailored to your teams.',
+    color: '#FC026F',
+  },
+  {
+    short: 'Operational Readiness',
+    title: 'Pre-Opening and Operational Readiness Training',
+    desc: 'Prepare teams for opening through role-specific training, operational simulations, and readiness assessments.',
+    color: '#F85707',
+  },
+]
+
+export const FORMATS: { id: string; color: string; label: string; title: string; desc: string; tags: string[]; image: string; pos: string }[] = [
+  {
+    id: 'in-person',
+    color: '#3985FD',
+    label: 'In-Person',
+    title: 'In-Person Learning.',
+    desc: 'Practical sessions led by experienced facilitators at your workplace or a dedicated venue, using discussion, activities, and realistic scenarios to build skills and confidence.',
+    tags: ['Workshops', 'Seminars', 'Site Visits', 'Role-Play Simulations', 'Train-the-Trainer'],
+    image: './learning-in-person.jpg',
+    pos: '60% 22%',
+  },
+  {
+    id: 'virtual',
+    color: '#FC026F',
+    label: 'Virtual',
+    title: 'Virtual Learning.',
+    desc: 'Live, facilitator-led online sessions that bring teams together through interactive discussions, group activities, and guided practice.',
+    tags: ['Live Webinars', 'Virtual Cohorts', 'Remote Coaching', 'Group Breakouts'],
+    image: './academy-virtual.jpg',
+    pos: '50% 38%',
+  },
+  {
+    id: 'elearning',
+    color: '#00AFDC',
+    label: 'eLearning',
+    title: 'eLearning.',
+    desc: 'Self-paced digital learning that helps employees build knowledge and reinforce skills, with language options and progress tracking based on program requirements.',
+    tags: ['SCORM Modules', 'Microlearning', 'Video-Based Learning', 'Knowledge Assessments'],
+    image: './academy-elearning.jpg',
+    pos: '50% 45%',
+  },
+  {
+    id: 'blended',
+    color: '#15D2A4',
+    label: 'Blended',
+    title: 'Blended Learning.',
+    desc: 'A tailored combination of in-person, virtual, and self-paced learning, supported by workplace practice to reinforce application over time.',
+    tags: ['Pre-Work', 'Live Session', 'Sustained Follow-Through', 'Spaced Learning Design'],
+    image: './learning-virtual.jpg',
+    pos: '50% 26%',
+  },
+]
+
+export type Area = { name: string; color: string; subs: string[] }
+export type Program = { category: string; title: string; desc: string; image: string; color: string; pos?: string; label: string; items: (string | Area)[] }
+
+export const TAILORED: Program[] = [
+  {
+    category: 'Tailored Training Programs',
+    title: 'The ProFun Academy',
+    desc: 'Tailored training across every part of an attraction, shaped around your people, culture and operations.',
+    image: './training-programs-v2.jpg',
+    pos: '50% 35%',
+    color: '#8238EB',
+    label: 'Explore program areas',
+    items: [
+      { name: 'Leadership & Management', color: '#3985FD', subs: ['Policy & Procedure Development Across All Departments', 'Leadership Development & Capability Building', 'Keynote Speakers', 'Revenue & Financial Management'] },
+      { name: 'Industry Experience', color: '#E0A800', subs: ['Global Benchmarking', 'Facility Tours', 'Industry Networking & Association', 'International Study & Exposure Trips'] },
+      { name: 'Safety & Security', color: '#15D2A4', subs: ['Facility Audits and Reviews', 'First Aid, CPR & AED Certification', 'Risk Assessment Overview', 'Emergency Action Planning', 'Incident Reporting and Follow-up', 'Regulatory Compliance Best Practices'] },
+      { name: 'Rides & Attractions', color: '#00AFDC', subs: ['Ride Operator Certification', 'Lifeguard Certification', 'Ride Scripts, Spiels and Safety Announcements', 'Throughput & Queue-line Management', 'Guest Management and Accessibility'] },
+      { name: 'Frontline Colleagues', color: '#F85707', subs: ['Introduction and History of Attractions', 'Effective Communication', 'Conflict Resolution & Service Recovery', 'Point of Sale Operations', 'Admission & Ticketing Operations'] },
+      { name: 'Human Resources', color: '#7FB01F', subs: ['Motivation & Incentive Programs', 'Colleague Engagement Programs', 'Coaching & Mentorship', 'Train-the-Trainer Programs', 'Onboarding and Induction', 'Performance Management', 'Facilitator Guides & Assessment Tools'] },
+      { name: 'Guest Service Excellence', color: '#8238EB', subs: ['Guest Interaction Scripts and Best Practices', 'Entertainment in Attractions', 'Audits and Secret Shoppers', 'KPI Recommendations', 'Role-play Simulations & Coaching', 'Guided Experiences'] },
+      { name: 'Sales & Marketing', color: '#FC026F', subs: ['Current Trends and Best Practices', 'Brand Positioning', 'Industry Strategies and Tactics', 'Social Media Engagement', 'Sales Channel Management'] },
+      { name: 'Food & Beverage', color: '#3985FD', subs: ['Outlet Setup & Layout', 'Upselling Techniques', 'Food Hygiene Best Practices', 'Kitchen Operation Efficiency', 'Attractions Menu Overview'] },
+      { name: 'Retail', color: '#15D2A4', subs: ['Merchandising & Store Layout', 'Inventory & Stock Management', 'Sales Strategies', 'Loss Prevention & Shrinkage', 'Cashiering Overview'] },
+      { name: 'Engineering & Technical Services', color: '#7FB01F', subs: ['Technical Regulations & Industry Best Practices', 'Inspection Protocols', 'Preventive & Predictive Maintenance'] },
+      { name: 'Information Technology', color: '#8238EB', subs: ['Technology in Attractions', 'Applications and Digital Experience', 'Guest Analytics'] },
+      { name: 'Housekeeping', color: '#F85707', subs: ['Chemical Handling Procedures', 'Inspection Protocols', 'Cleaning Standards'] },
+    ],
+  },
+]
+
+export const ACCREDITED: Program[] = [
+  {
+    category: 'Accredited and Certified Programs',
+    title: 'Ellis & Associates',
+    desc: 'The gold standard in first aid, CPR and safety certification for attractions teams, plus lifeguard and aquatic programs.',
+    image: './ellis-first-aid.jpg',
+    color: '#00AFDC',
+    label: 'Explore courses',
+    items: ['CPR & First Aid', 'Preventing Bloodborne & Airborne Pathogens', 'Supplemental Oxygen Support', 'Active Shooter Assailant Safety', 'Attraction Operator', 'Water Slide Dispatch Operator', 'International Lifeguard Training Program', 'vanGUARD Aquatics Leadership', 'Water Safety Plus', 'Jeff Ellis Swimming', 'Train the Trainer'],
+  },
+]

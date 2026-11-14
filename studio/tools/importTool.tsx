@@ -8,7 +8,8 @@ import { CASE_DETAIL, LOCAL_IMG } from '../../profun/src/content'
 import { COPY as PF_COPY } from '../../profun/src/copy'
 import { isImageKey, docType } from '../../shared/copy'
 import { TEAM_LIST } from '../../profun/src/team'
-import { TEAM as AC_TEAM, PROJECTS, PARTNERS, STATS as AC_STATS, COURSES, SELF_PACED } from '../../academy/src/data'
+import { TEAM as AC_TEAM, PROJECTS, PARTNERS, STATS as AC_STATS, COURSES, SELF_PACED, VALUES, SERVICES as AC_SERVICES, FORMATS, TAILORED, ACCREDITED } from '../../academy/src/data'
+import { COPY as AC_COPY } from '../../academy/src/copy'
 
 /*
   One-click import of the content that is built into the website today.
@@ -54,6 +55,14 @@ const SETS: { title: string; docs: () => Doc[] }[] = [
   { title: 'ProFun: Clients', docs: () => ranked(CLIENTS.map(([name, sectors, region, logo]) => ({ _id: `pfClient-${slug(name)}`, _type: 'pfClient', name, sectors, region, legacyImage: pf(logo), home: HOME_CLIENTS.includes(name), _patch: { home: HOME_CLIENTS.includes(name) } }))) },
   { title: 'ProFun: Affiliations', docs: () => ranked(AFFILIATIONS.map(a => ({ _id: `pfAffiliation-${slug(a.name)}`, _type: 'pfAffiliation', name: a.name, color: a.color, big: !!(a as { big?: boolean }).big, legacyImage: a.logo }))) },
   { title: 'ProFun: Key numbers', docs: () => ranked(PF_STATS.map((s, i) => ({ _id: `pfStat-${i + 1}`, _type: 'pfStat', numeric: s.numeric, suffix: s.suffix, label: s.label, color: s.color }))) },
+  { title: 'Academy: Pages', docs: () => pages('ac', AC_COPY) },
+  { title: 'Academy: Services', docs: () => ranked(AC_SERVICES.map(x => ({ _id: `acService-${slug(x.short)}`, _type: 'acService', short: x.short, title: x.title, desc: x.desc, color: x.color }))) },
+  { title: 'Academy: Delivery formats', docs: () => ranked(FORMATS.map(x => ({ _id: `acFormat-${x.id}`, _type: 'acFormat', code: x.id, label: x.label, title: x.title, desc: x.desc, tags: x.tags, color: x.color, legacyImage: x.image, pos: x.pos }))) },
+  { title: 'Academy: Programs', docs: () => ranked([...TAILORED.map(x => ({ ...x, group: 'tailored' })), ...ACCREDITED.map(x => ({ ...x, group: 'accredited' }))].map(x => ({
+      _id: `acProgram-${slug(x.title)}`, _type: 'acProgram', group: x.group, category: x.category, title: x.title, desc: x.desc, color: x.color, label: x.label, legacyImage: x.image, ...(x.pos ? { pos: x.pos } : {}),
+      items: x.items.map((it, i) => (typeof it === 'string' ? { _key: key(i), _type: 'programItem', name: it } : { _key: key(i), _type: 'programItem', name: it.name, color: it.color, subs: it.subs })),
+    }))) },
+  { title: 'Academy: What sets us apart', docs: () => ranked(VALUES.map(x => ({ _id: `acValue-${slug(x.title)}`, _type: 'acValue', title: x.title, desc: x.desc, color: x.color }))) },
   { title: 'Academy: Team', docs: () => ranked(AC_TEAM.map(t => ({ _id: `acTeam-${slug(t.name)}`, _type: 'acTeam', name: t.name, role: t.role, bio: t.bio, legacyImage: t.photo }))) },
   { title: 'Academy: Projects', docs: () => ranked(PROJECTS.map(p => ({ _id: `acProject-${slug(p.title)}`, _type: 'acProject', title: p.title, category: p.category, location: p.location, about: p.about, legacyImage: p.image }))) },
   { title: 'Academy: Courses', docs: () => ranked(COURSES.map(c => ({ _id: `acCourse-${slug(c.id)}`, _type: 'acCourse', code: c.id, title: c.title, category: c.category, format: c.format, duration: c.duration, price: c.price, ...(c.accredited ? { accredited: c.accredited } : {}), desc: c.desc, selfPaced: c.dates === SELF_PACED, ...(c.dates === SELF_PACED ? {} : { dates: c.dates }) }))) },

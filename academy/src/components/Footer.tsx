@@ -1,27 +1,28 @@
 import { Link } from 'react-router-dom'
+import { COPY as P } from '../copy'
 
 const SOCIALS = [
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/the-profun-academy/',
+    href: P.footer.linkedin_url,
     color: '#3985FD',
     icon: <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-1.85 3.76-1.85 4.02 0 4.76 2.5 4.76 5.75v5.6h-4v-4.96c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62v5.04h-4v-11Z" />,
   },
   {
     name: 'Facebook',
-    href: 'https://www.facebook.com/profunacademy',
+    href: P.footer.facebook_url,
     color: '#00AFDC',
     icon: <path d="M13.5 21v-7.6h2.56l.38-2.97H13.5V8.54c0-.86.24-1.45 1.47-1.45h1.57V4.43a21 21 0 0 0-2.29-.12c-2.27 0-3.82 1.38-3.82 3.93v2.19H7.87v2.97h2.56V21h3.07Z" />,
   },
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/profunacademy',
+    href: P.footer.instagram_url,
     color: '#FC026F',
     icon: <path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Zm0 7.75a3.05 3.05 0 1 1 0-6.1 3.05 3.05 0 0 1 0 6.1Zm5.98-7.94a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21.1 8.2c-.07-1.47-.4-2.77-1.48-3.84-1.07-1.07-2.37-1.4-3.84-1.48-1.51-.09-6.05-.09-7.56 0-1.47.07-2.77.4-3.84 1.47S2.98 6.72 2.9 8.2c-.09 1.51-.09 6.05 0 7.56.07 1.47.4 2.77 1.48 3.84 1.07 1.07 2.37 1.4 3.84 1.48 1.51.09 6.05.09 7.56 0 1.47-.07 2.77-.4 3.84-1.48 1.07-1.07 1.4-2.37 1.48-3.84.09-1.51.09-6.04 0-7.55Zm-1.97 9.17a3.1 3.1 0 0 1-1.74 1.74c-1.21.48-4.07.37-5.39.37s-4.19.1-5.39-.37a3.1 3.1 0 0 1-1.74-1.74c-.48-1.21-.37-4.07-.37-5.39s-.1-4.19.37-5.39a3.1 3.1 0 0 1 1.74-1.74c1.21-.48 4.07-.37 5.39-.37s4.19-.1 5.39.37a3.1 3.1 0 0 1 1.74 1.74c.48 1.21.37 4.07.37 5.39s.11 4.19-.37 5.39Z" />,
   },
   {
     name: 'X',
-    href: 'https://x.com/profunacademy',
+    href: P.footer.x_url,
     color: '#8238EB',
     icon: <path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78L17.75 3Zm-1.08 16.18h1.7L7.4 4.73H5.58l11.09 14.45Z" />,
   },
@@ -77,9 +78,9 @@ export default function Footer() {
               <img src="./profun-academy-white.svg" alt="The ProFun Academy" className="h-20 sm:h-24 w-auto" />
             </Link>
             <p className="text-[18px] text-white/55 leading-relaxed font-light max-w-[320px] mb-8">
-              Tailored learning and capability development for the attractions industry. Riyadh, Kingdom of Saudi Arabia.
+              {P.footer.tagline}
             </p>
-            <p className="text-[17px] font-medium text-white/75 mb-4">Follow the Academy</p>
+            <p className="text-[17px] font-medium text-white/75 mb-4">{P.footer.follow_label}</p>
             <ul className="flex items-center gap-7" aria-label="The ProFun Academy on social media">
               {SOCIALS.map(s => (
                 <li key={s.name}>

@@ -3,9 +3,9 @@ import { structureTool } from 'sanity/structure'
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { schemaTypes } from './schemaTypes'
 import { importTool } from './tools/importTool'
-import { pfPages, PAGE_TITLES } from './schemaTypes/pages'
+import { pfPages, acPages } from './schemaTypes/pages'
 
-const SINGLETONS = pfPages.map(t => t.name)
+const SINGLETONS = [...pfPages, ...acPages].map(t => t.name)
 
 export default defineConfig({
   name: 'default',
@@ -40,6 +40,16 @@ export default defineConfig({
             ),
             S.listItem().title('ProFun Academy').child(
               S.list().title('ProFun Academy').items([
+                S.listItem().title('Pages').child(
+                  S.list().title('Academy pages').items(
+                    acPages.map(t => S.listItem().title(t.title ?? t.name).id(t.name).child(S.document().schemaType(t.name).documentId(t.name).title(t.title ?? t.name))),
+                  ),
+                ),
+                S.divider(),
+                ordered('acService', 'Services'),
+                ordered('acFormat', 'Delivery formats'),
+                ordered('acProgram', 'Programs'),
+                ordered('acValue', 'What sets us apart'),
                 ordered('acProject', 'Projects'),
                 ordered('acCourse', 'Courses'),
                 ordered('acTeam', 'Team'),

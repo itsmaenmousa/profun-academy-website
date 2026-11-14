@@ -13,7 +13,7 @@ const LIST = (type: string) =>
 
 export const LIST_TYPES = [
   'pfTeam', 'pfFeatured', 'pfClient', 'pfAffiliation', 'pfStat', 'pfSector', 'pfService', 'pfCaseStudy',
-  'acTeam', 'acProject', 'acPartner', 'acStat', 'acCourse',
+  'acTeam', 'acProject', 'acPartner', 'acStat', 'acCourse', 'acValue', 'acService', 'acFormat', 'acProgram',
 ] as const
 export type ListType = (typeof LIST_TYPES)[number]
 
@@ -62,5 +62,7 @@ export const BRAND_COLORS: { title: string; value: string; ink: string }[] = [
   { title: 'Orange', value: '#F85707', ink: '#D94A05' },
   { title: 'Cyan', value: '#00AFDC', ink: '#0090B8' },
   { title: 'Navy', value: '#000050', ink: '#000050' },
+  { title: 'Gold', value: '#E0A800', ink: '#B88A00' },
+  { title: 'Green', value: '#7FB01F', ink: '#65901A' },
 ]
 export const inkFor = (color: string) => BRAND_COLORS.find(c => c.value.toLowerCase() === color?.toLowerCase())?.ink ?? color

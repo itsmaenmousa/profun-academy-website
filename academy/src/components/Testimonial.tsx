@@ -1,5 +1,6 @@
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
+import { COPY as P } from '../copy'
 
 export default function Testimonial() {
   const { ref, inView } = useInView()
@@ -19,11 +20,11 @@ export default function Testimonial() {
             <path d="M0 34V20.4C0 8.9 6.1 2.1 18.2 0l1.7 4.3C13.4 6.2 10.3 9.8 10 15.2h8.3V34H0Zm24.1 0V20.4C24.1 8.9 30.2 2.1 42.3 0L44 4.3c-6.5 1.9-9.6 5.5-9.9 10.9h8.3V34H24.1Z" fill="#FFCA03" />
           </svg>
           <blockquote className="font-serif text-[clamp(34px,5vw,80px)] text-white leading-[1.1] mb-12 tracking-[-0.01em] text-balance">
-            Training for operators,<br className="hidden sm:block" /> by operators.
+            {P.home.quote_text.split('\n').map((l, i) => <span key={i}>{i > 0 && <br className="hidden sm:block" />}{i > 0 ? ' ' : ''}{l}</span>)}
           </blockquote>
           <div className="flex flex-col items-center gap-1">
-            <p className="text-[18px] font-medium text-white">The ProFun Academy</p>
-            <p className="text-[15px] text-white/55 font-light">A division of ProFun, operating since 1980</p>
+            <p className="text-[18px] font-medium text-white">{P.home.quote_name}</p>
+            <p className="text-[15px] text-white/55 font-light">{P.home.quote_role}</p>
           </div>
           <div className="w-px h-16 mx-auto mt-12 bg-gradient-to-b from-[#FC026F] to-transparent" />
         </div>

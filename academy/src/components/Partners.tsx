@@ -3,6 +3,7 @@ import type React from 'react'
 import { useInView } from '../hooks/useInView'
 import { PARTNERS as partners } from '../data'
 import { useDeepLink, scrollToId } from '../lib/deeplink'
+import { COPY as P } from '../copy'
 
 
 export default function Partners() {
@@ -19,13 +20,13 @@ export default function Partners() {
         className={`max-w-[1920px] mx-auto px-6 sm:px-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12 reveal ${inView ? 'visible' : ''}`}
       >
         <div>
-          <p className="text-[20px] font-semibold text-[#F85707] mb-4">Partners & Affiliations</p>
+          <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.home.partners_eyebrow}</p>
           <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] max-w-[920px]">
-            Connected to the institutions<br className="hidden md:block" /> that set the standard.
+            {P.home.partners_title.split('\n').map((l, i) => <span key={i}>{i > 0 && <br className="hidden md:block" />}{i > 0 ? ' ' : ''}{l}</span>)}
           </h2>
         </div>
         <p className="max-w-[420px] text-[19px] text-[#6B6B65] leading-relaxed font-light">
-          Accreditation partners, delivery partners and industry bodies that keep every Academy program aligned with global best practice.
+          {P.home.partners_text}
         </p>
       </div>
 
@@ -49,14 +50,14 @@ export default function Partners() {
 
         {/* IAAPA Education Pre-Approved Provider */}
         <div className={`mt-10 sm:mt-16 bg-white border border-[#E2E0DB] grid grid-cols-1 md:grid-cols-[minmax(0,320px)_1fr] items-center gap-8 md:gap-14 p-8 sm:p-12 reveal ${inView ? 'visible' : ''}`}>
-          <img src="./iaapa-pre-approved.png" alt="IAAPA Education Pre-Approved Provider" loading="lazy" decoding="async" className="w-full max-w-[280px] h-auto" />
+          <img src={P.home.iaapa_image} alt="IAAPA Education Pre-Approved Provider" loading="lazy" decoding="async" className="w-full max-w-[280px] h-auto" />
           <div>
-            <p className="text-[20px] font-semibold text-[#F85707] mb-3">IAAPA Education Pre-Approved Provider</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-3">{P.home.iaapa_eyebrow}</p>
             <h3 className="font-serif text-[clamp(26px,2.4vw,38px)] text-[#000050] leading-tight tracking-[-0.01em] mb-4">
-              Recognized by IAAPA for industry education.
+              {P.home.iaapa_title}
             </h3>
             <p className="text-[18px] text-[#6B6B65] leading-relaxed font-light max-w-[720px]">
-              The ProFun Academy is an IAAPA Education Pre-Approved Provider, recognized by the International Association of Amusement Parks and Attractions for delivering quality education to the global attractions industry.
+              {P.home.iaapa_text}
             </p>
           </div>
         </div>

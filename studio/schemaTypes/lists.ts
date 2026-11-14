@@ -136,4 +136,48 @@ export const pfCaseStudy = list('pfCaseStudy', 'ProFun case study', [
   defineField({ name: 'slug', title: 'Page address', type: 'string', description: 'The end of the page link, e.g. "ferrari-world". Leave empty to show this case study without its own page.' }),
 ], { title: 'name', subtitle: 'location' })
 
-export const listTypes = [pfSector, pfService, pfCaseStudy, pfTeam, pfFeatured, pfClient, pfAffiliation, pfStat, acTeam, acProject, acPartner, acStat, acCourse]
+export const acValue = list('acValue', 'Academy value (What sets us apart)', [
+  defineField({ name: 'title', title: 'Title', type: 'string', validation: req }),
+  defineField({ name: 'desc', title: 'Text', type: 'text', rows: 3 }),
+  color,
+], { title: 'title' })
+export const acService = list('acService', 'Academy service', [
+  defineField({ name: 'short', title: 'Short name (on the honeycomb)', type: 'string', validation: req }),
+  defineField({ name: 'title', title: 'Full name', type: 'string' }),
+  defineField({ name: 'desc', title: 'Text', type: 'text', rows: 3 }),
+  color,
+], { title: 'title', subtitle: 'short' })
+export const acFormat = list('acFormat', 'Academy delivery format', [
+  defineField({ name: 'label', title: 'Tab name', type: 'string', validation: req }),
+  defineField({ name: 'title', title: 'Title', type: 'string' }),
+  defineField({ name: 'desc', title: 'Text', type: 'text', rows: 3 }),
+  defineField({ name: 'tags', title: 'Tags', type: 'array', of: [{ type: 'string' }] }),
+  photo('Photo', 'Wide photo. Click the crop icon and set the focus point so faces are not cut off.'), legacy,
+  color,
+  defineField({ name: 'code', title: 'Code', type: 'string', hidden: true }),
+  defineField({ name: 'pos', title: 'Focus', type: 'string', hidden: true }),
+], { title: 'label', subtitle: 'title' })
+export const acProgram = list('acProgram', 'Academy program', [
+  defineField({ name: 'group', title: 'Group', type: 'string', options: { list: [{ title: 'Tailored training', value: 'tailored' }, { title: 'Accredited and certified', value: 'accredited' }], layout: 'radio' }, initialValue: 'tailored' }),
+  defineField({ name: 'category', title: 'Small heading', type: 'string' }),
+  defineField({ name: 'title', title: 'Title', type: 'string', validation: req }),
+  defineField({ name: 'desc', title: 'Text', type: 'text', rows: 3 }),
+  photo(), legacy,
+  color,
+  defineField({ name: 'label', title: 'Button text', type: 'string', placeholder: 'Explore courses' }),
+  defineField({
+    name: 'items', title: 'Areas or courses', type: 'array',
+    of: [{
+      type: 'object', name: 'programItem',
+      fields: [
+        defineField({ name: 'name', title: 'Name', type: 'string' }),
+        defineField({ name: 'color', title: 'Color (areas only)', type: 'string', options: { list: BRAND_COLORS.map(c => ({ title: c.title, value: c.value })) } }),
+        defineField({ name: 'subs', title: 'Topics (leave empty for a single course)', type: 'array', of: [{ type: 'string' }] }),
+      ],
+      preview: { select: { title: 'name', subs: 'subs' }, prepare: ({ title, subs }) => ({ title, subtitle: subs?.length ? `${subs.length} topics` : '' }) },
+    }],
+  }),
+  defineField({ name: 'pos', title: 'Focus', type: 'string', hidden: true }),
+], { title: 'title', subtitle: 'category' })
+
+export const listTypes = [acValue, acService, acFormat, acProgram, pfSector, pfService, pfCaseStudy, pfTeam, pfFeatured, pfClient, pfAffiliation, pfStat, acTeam, acProject, acPartner, acStat, acCourse]
