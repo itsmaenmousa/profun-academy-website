@@ -80,7 +80,7 @@ export const COPY = {
     head_title: "Build capability\nthat lasts.",
     head_text: "Whether you need a single program or a full learning strategy, tell us about your team and we will shape the right approach with you.",
     location_text: "Riyadh, Kingdom of Saudi Arabia",
-    email_text: "info@theprofunacademy.com",
+    email_text: "info@profunacademy.com",
     sent_title: "Almost there",
     sent_text: "Your message is ready in your email app. Press send and the Academy team will get back to you.",
     form_title: "Send us a message",

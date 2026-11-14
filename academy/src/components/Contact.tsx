@@ -145,7 +145,7 @@ export default function Contact() {
               <div className="py-5">
                 <p className="text-[15px] font-medium text-[#000050] mb-1.5">Get in touch</p>
                 <a href={`mailto:${P.contact.email_text}`} className="text-[18px] text-[#F85707] hover:text-[#D94A05] transition-colors">
-                  info@theprofunacademy.com
+                  {P.contact.email_text}
                 </a>
               </div>
             </div>

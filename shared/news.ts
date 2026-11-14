@@ -58,7 +58,7 @@ const STORIES: NewsItem[] = [
     title: "Introducing the new home of The ProFun Academy.",
     summary: "A new website bringing our programs, learning formats, projects and people together in one place.",
     body: [
-      "The ProFun Academy has launched its new website, theprofunacademy.com, a single destination for operators, project teams and professionals across the attractions industry.",
+      "The ProFun Academy has launched its new website, profunacademy.com, a single destination for operators, project teams and professionals across the attractions industry.",
       "Visitors can explore our tailored and accredited programs, see how we deliver learning in person, virtually, online and blended, browse selected work from landmark destinations, and meet the team behind it.",
       "It is also where we will share Academy news, certifications, events and featured courses, so the industry can follow our work as it grows across Saudi Arabia and the wider region.",
     ],
