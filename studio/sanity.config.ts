@@ -38,6 +38,7 @@ export default defineConfig({
                 ordered('pfTeam', 'Team (People page)'),
                 ordered('pfStat', 'Key numbers'),
                 ordered('pfAffiliation', 'Affiliations'),
+                ordered('pfOffice', 'Offices (Contact page)'),
               ]),
             ),
             S.listItem().title('ProFun Academy').child(
@@ -53,7 +54,6 @@ export default defineConfig({
                 ordered('acProgram', 'Programs'),
                 ordered('acValue', 'What sets us apart'),
                 ordered('acProject', 'Projects'),
-                ordered('acCourse', 'Courses'),
                 ordered('acTeam', 'Team'),
                 ordered('acStat', 'Key numbers'),
                 ordered('acPartner', 'Partners'),

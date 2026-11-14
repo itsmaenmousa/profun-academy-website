@@ -1,7 +1,7 @@
 import { loadCms, fill, rowImage, rowFocus, inkFor, type Cms } from '../../shared/cms'
 import { applyCopy, pageTypes } from '../../shared/copy'
 import { COPY } from './copy'
-import { TEAM, PROJECTS, PARTNERS, STATS, COURSES, SELF_PACED, VALUES, SERVICES, FORMATS, TAILORED, ACCREDITED, type Format, type Program } from './data'
+import { TEAM, PROJECTS, PARTNERS, STATS, VALUES, SERVICES, FORMATS, TAILORED, ACCREDITED, type Program } from './data'
 
 /* Copies the dashboard lists into the site's built-in lists. Runs once, before the first render. */
 export function applyCms(c: Cms | null) {
@@ -11,11 +11,6 @@ export function applyCms(c: Cms | null) {
   fill(PROJECTS, c.acProject, r => ({ title: r.title, about: r.about ?? '', category: r.category ?? '', location: r.location ?? '', image: rowImage(r, 1200) }))
   fill(PARTNERS, c.acPartner, r => ({ name: r.name, logo: rowImage(r, 600), color: r.color ?? '#000050', ...(r.big ? { big: true } : {}) }))
   fill(STATS, c.acStat, r => ({ numeric: r.numeric ?? 0, suffix: r.suffix ?? '', label: r.label ?? '', color: r.color ?? '#3985FD', ink: inkFor(r.color) }))
-  fill(COURSES, c.acCourse, r => ({
-    id: r.code || r._id, title: r.title, category: r.category ?? '', format: (r.format ?? 'In-Person') as Format,
-    duration: r.duration ?? '', price: r.price ?? 0, ...(r.accredited ? { accredited: r.accredited } : {}),
-    desc: r.desc ?? '', dates: r.selfPaced ? SELF_PACED : (r.dates ?? []),
-  }))
 
   fill(VALUES, c.acValue, r => ({ title: r.title ?? '', desc: r.desc ?? '', color: r.color ?? '#3985FD' }))
   fill(SERVICES, c.acService, r => ({ short: r.short ?? '', title: r.title ?? '', desc: r.desc ?? '', color: r.color ?? '#000050' }))

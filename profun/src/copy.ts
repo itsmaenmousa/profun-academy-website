@@ -32,7 +32,10 @@ export const COPY = {
     projects_title: "Iconic destinations, operating at their best.",
     projects_hint: "Drag to explore",
     projects_link: "Read the case study",
-  },
+
+    seo_title: "ProFun | Attraction Operations Advisory & Management",
+    seo_description: "ProFun is the world’s trusted partner in attraction operations: planning, advisory, training, implementation and management for theme parks, museums, brand centers and world expos.",
+    seo_image: "./projects/ferrari-world-hero.jpg",  },
   services: {
     head_eyebrow: "What We Do",
     head_title: "From first plans to daily operations.",
@@ -40,7 +43,9 @@ export const COPY = {
     training_link: "Delivered by ProFun Academy",
     academy_note: "Tailored to your people and operations.",
     academy_card: "Explore programs, formats and courses",
-  },
+
+    seo_title: "Services | ProFun",
+    seo_description: "Planning, advisory, training, implementation and management: five services that take an attraction from first plans to daily operations.",  },
   about: {
     intro_eyebrow: "About ProFun",
     intro_title: "The world leader in attractions operations.",
@@ -64,12 +69,16 @@ export const COPY = {
     quality4_text: "Providing tools and knowledge for clients to achieve their own quality standards.",
     affiliations_eyebrow: "Our Affiliations",
     affiliations_title: "Part of the bodies that shape the industry.",
-  },
+
+    seo_title: "About ProFun | The World Leader in Attractions Operations",
+    seo_description: "Since 1980, ProFun has advised on, trained for and managed attractions on every continent, bridging creative ambition with operational reality.",  },
   sectors: {
     head_eyebrow: "Our Sectors",
     head_title: "Four sectors. One operating discipline.",
     head_text: "Theme parks, museums, brand centers and world expos each face different pressures. ProFun brings commercial and operational rigor to all of them.",
-  },
+
+    seo_title: "Sectors | ProFun",
+    seo_description: "Commercial attractions, science and culture, brand centers, and expos and mega-events: one operating discipline across every kind of attraction.",  },
   work: {
     clients_eyebrow: "Clients & Projects",
     clients_title: "The names we have worked alongside.",
@@ -77,12 +86,16 @@ export const COPY = {
     cases_eyebrow: "Case Studies",
     cases_title: "The only firm trusted across 500+ projects worldwide.",
     cases_text: "From theme parks in the Middle East to museums in North America and brand centers in Europe, our case studies show one thing: ProFun delivers measurable impact.",
-  },
+
+    seo_title: "Our Work | ProFun",
+    seo_description: "Clients, projects and case studies from more than 500 attractions in over 50 countries.",  },
   team: {
     head_eyebrow: "Leadership() {",
     head_title: "The people who lead our practice",
     head_text: "A proven team of international and local professionals, experienced in planning and managing entertainment, corporate and cultural attractions worldwide.",
-  },
+
+    seo_title: "People | ProFun",
+    seo_description: "Meet the international team behind ProFun’s attraction operations advisory and management work.",  },
   contact: {
     careers_text: "Join a team of extraordinary professionals shaping world-class attractions through operational and management excellence. We offer diverse roles, a collaborative culture and opportunities for growth across disciplines. Send your resume to",
     head_eyebrow: "Contact Us",
@@ -92,10 +105,20 @@ export const COPY = {
     sent_text: "Your message is ready in your email app. Press send and our team will get back to you.",
     form_title: "Send us a message",
     form_text: "Fill in the form and our team will get back to you.",
-  },
+
+    form_email: "info@profun.com",
+    form_endpoint: "",
+    done_title: "Thank you",
+    done_text: "Your message has been sent. Our team will get back to you shortly.",
+    seo_title: "Contact | ProFun",
+    seo_description: "Get in touch with ProFun in Tustin, California or Riyadh, Kingdom of Saudi Arabia.",  },
   footer: {
     tagline: "The world’s trusted partner in attraction operations. Tustin, California and Riyadh, Kingdom of Saudi Arabia.",
     follow_label: "Follow ProFun",
     linkedin_url: "https://www.linkedin.com/company/profun-inc",
+  },
+  news: {
+    seo_title: "News | ProFun",
+    seo_description: "Company announcements, Academy updates, project milestones and the stories shaping the attractions industry.",
   },
 } satisfies Copy

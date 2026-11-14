@@ -3,12 +3,12 @@ import { useClient, type Tool } from 'sanity'
 import { Box, Button, Card, Stack, Text, Heading } from '@sanity/ui'
 import { LexoRank } from 'lexorank'
 import { NEWS_ALL, isoDate, hasDay, isLogoImage } from '../../shared/news'
-import { FEATURED, CLIENTS, HOME_CLIENTS, AFFILIATIONS, STATS as PF_STATS, SECTORS, SERVICES, CASE_STUDIES, pf } from '../../profun/src/data'
+import { OFFICES, FEATURED, CLIENTS, HOME_CLIENTS, AFFILIATIONS, STATS as PF_STATS, SECTORS, SERVICES, CASE_STUDIES, pf } from '../../profun/src/data'
 import { CASE_DETAIL, LOCAL_IMG } from '../../profun/src/content'
 import { COPY as PF_COPY } from '../../profun/src/copy'
 import { isImageKey, docType } from '../../shared/copy'
 import { TEAM_LIST } from '../../profun/src/team'
-import { TEAM as AC_TEAM, PROJECTS, PARTNERS, STATS as AC_STATS, COURSES, SELF_PACED, VALUES, SERVICES as AC_SERVICES, FORMATS, TAILORED, ACCREDITED } from '../../academy/src/data'
+import { TEAM as AC_TEAM, PROJECTS, PARTNERS, STATS as AC_STATS, VALUES, SERVICES as AC_SERVICES, FORMATS, TAILORED, ACCREDITED } from '../../academy/src/data'
 import { COPY as AC_COPY } from '../../academy/src/copy'
 
 /*
@@ -21,7 +21,11 @@ type Doc = Record<string, unknown> & { _id: string; _type: string; _patch?: Reco
 
 const key = (i: number) => `k${i}`
 const pages = (site: string, copy: Record<string, Record<string, string>>): Doc[] =>
-  Object.entries(copy).map(([page, f]) => ({ _id: docType(site, page), _type: docType(site, page), ...Object.fromEntries(Object.entries(f).filter(([k]) => !isImageKey(k))) }))
+  Object.entries(copy).map(([page, f]) => {
+    // Text fields only; new fields added to an existing page are filled in without touching edits
+    const text = Object.fromEntries(Object.entries(f).filter(([k, v]) => !isImageKey(k) && v !== ''))
+    return { _id: docType(site, page), _type: docType(site, page), ...text, _patch: text }
+  })
 
 /* Gives each list item a position, in the order it shows on the site today */
 const ranked = (docs: Doc[]) => {
@@ -50,6 +54,7 @@ const SETS: { title: string; docs: () => Doc[] }[] = [
       const photo = d ? (LOCAL_IMG[d.slug] ? `./projects/${LOCAL_IMG[d.slug]}.jpg` : pf(d.image)) : undefined
       return { _id: `pfCaseStudy-${slug(name)}`, _type: 'pfCaseStudy', name, services, legacyLogo: pf(logo), ...(d ? { slug: d.slug, location: d.location, legacyImage: photo, body: d.body.join('\n\n') } : {}) }
     })) },
+  { title: 'ProFun: Offices', docs: () => ranked(OFFICES.map(o => ({ _id: `pfOffice-${slug(o.name)}`, _type: 'pfOffice', name: o.name, address: o.lines.join('\n'), phone: o.phone, email: o.email }))) },
   { title: 'ProFun: Team', docs: () => ranked(TEAM_LIST.map(t => ({ _id: `pfTeam-${slug(t.name)}`, _type: 'pfTeam', name: t.name, role: t.role, bio: t.bio, legacyImage: t.photo }))) },
   { title: 'ProFun: Featured projects', docs: () => ranked(FEATURED.map(p => ({ _id: `pfFeatured-${slug(p.title)}`, _type: 'pfFeatured', title: p.title, location: p.location, sector: p.sector, about: p.about, legacyImage: p.image, ...(p.link ? { link: p.link } : {}), ...(p.linkLabel ? { linkLabel: p.linkLabel } : {}) }))) },
   { title: 'ProFun: Clients', docs: () => ranked(CLIENTS.map(([name, sectors, region, logo]) => ({ _id: `pfClient-${slug(name)}`, _type: 'pfClient', name, sectors, region, legacyImage: pf(logo), home: HOME_CLIENTS.includes(name), _patch: { home: HOME_CLIENTS.includes(name) } }))) },
@@ -65,7 +70,6 @@ const SETS: { title: string; docs: () => Doc[] }[] = [
   { title: 'Academy: What sets us apart', docs: () => ranked(VALUES.map(x => ({ _id: `acValue-${slug(x.title)}`, _type: 'acValue', title: x.title, desc: x.desc, color: x.color }))) },
   { title: 'Academy: Team', docs: () => ranked(AC_TEAM.map(t => ({ _id: `acTeam-${slug(t.name)}`, _type: 'acTeam', name: t.name, role: t.role, bio: t.bio, legacyImage: t.photo }))) },
   { title: 'Academy: Projects', docs: () => ranked(PROJECTS.map(p => ({ _id: `acProject-${slug(p.title)}`, _type: 'acProject', title: p.title, category: p.category, location: p.location, about: p.about, legacyImage: p.image }))) },
-  { title: 'Academy: Courses', docs: () => ranked(COURSES.map(c => ({ _id: `acCourse-${slug(c.id)}`, _type: 'acCourse', code: c.id, title: c.title, category: c.category, format: c.format, duration: c.duration, price: c.price, ...(c.accredited ? { accredited: c.accredited } : {}), desc: c.desc, selfPaced: c.dates === SELF_PACED, ...(c.dates === SELF_PACED ? {} : { dates: c.dates }) }))) },
   { title: 'Academy: Partners', docs: () => ranked(PARTNERS.map(p => ({ _id: `acPartner-${slug(p.name)}`, _type: 'acPartner', name: p.name, color: p.color, big: !!p.big, legacyImage: p.logo }))) },
   { title: 'Academy: Key numbers', docs: () => ranked(AC_STATS.map((s, i) => ({ _id: `acStat-${i + 1}`, _type: 'acStat', numeric: s.numeric, suffix: s.suffix, label: s.label, color: s.color }))) },
 ]

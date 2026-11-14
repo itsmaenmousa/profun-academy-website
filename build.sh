@@ -8,3 +8,5 @@ rm -rf dist && mkdir -p dist
 cp -r picker/. dist/
 # The content dashboard (Sanity Studio) at /studio
 (cd studio && npx sanity build ../dist/studio -y)
+# Link-preview tags (title, description, share image) from the dashboard
+node scripts/seo.mjs

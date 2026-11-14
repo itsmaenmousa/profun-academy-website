@@ -9,6 +9,9 @@ import Stats from './components/Stats'
 import Services from './components/Services'
 import { Intro, SectorsGrid, AcademyBand, ClientsStrip } from './components/HomeSections'
 import Footer from './components/Footer'
+import { COPY } from './copy'
+import { setMeta } from '../../shared/seo'
+import { CASE_DETAIL } from './content'
 
 // Pages other than Home load on demand, then quietly prefetch once the browser is idle
 const loaders = {
@@ -82,6 +85,22 @@ function LinkRouter() {
   return null
 }
 
+/* Browser title and description for each page, from the dashboard */
+const SEO_PAGE: Record<string, keyof typeof COPY> = {"/": "home", "/about": "about", "/services": "services", "/sectors": "sectors", "/work": "work", "/team": "team", "/news": "news", "/contact": "contact"}
+function Seo() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    const cs = pathname.match(/^\/work\/(.+)/)
+    if (cs) {
+      const name = Object.keys(CASE_DETAIL).find(k => CASE_DETAIL[k].slug === cs[1])
+      if (name) return setMeta(`${name} | ProFun`, CASE_DETAIL[name].body[0]?.slice(0, 155))
+    }
+    const page = COPY[SEO_PAGE[pathname] ?? 'home'] as Record<string, string>
+    setMeta(page.seo_title, page.seo_description)
+  }, [pathname])
+  return null
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => { resetScroll() }, [pathname])
@@ -122,6 +141,7 @@ export default function App() {
     <HashRouter>
       <LinkRouter />
       <ScrollToTop />
+      <Seo />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<Layout><AboutPage /></Layout>} />

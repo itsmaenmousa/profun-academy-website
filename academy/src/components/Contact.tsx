@@ -1,17 +1,19 @@
 import { useState } from 'react'
 import { COPY as P } from '../copy'
+import { sendMessage } from '../../../shared/form'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', organization: '', email: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [sent, setSent] = useState<false | 'sent' | 'mail'>(false)
+  const [sending, setSending] = useState(false)
 
-  // No form backend: open the visitor's email app with the message ready to send
-  const handleSubmit = (e: React.FormEvent) => {
+  // Posts to the form address set in the dashboard; without one, opens the visitor's email app
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = `Website enquiry from ${form.name}${form.organization ? `, ${form.organization}` : ''}`
-    const body = `${form.message}\n\n${form.name}${form.organization ? `\n${form.organization}` : ''}\n${form.email}`
-    window.location.href = `mailto:${P.contact.email_text}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    setSent(true)
+    setSending(true)
+    const r = await sendMessage(form, P.contact.form_endpoint, P.contact.email_text, 'Academy')
+    setSending(false)
+    if (r !== 'error') setSent(r)
   }
 
   return (
@@ -48,13 +50,14 @@ export default function Contact() {
           <div className="lg:col-span-7 lg:col-start-6">
             {sent ? (
               <div className="relative bg-white border border-[#E2E0DB] p-6 sm:p-10 lg:p-12 flex flex-col items-start justify-center min-h-[420px]">
-                <h3 className="font-serif text-[36px] text-[#000050] mb-4">{P.contact.sent_title}</h3>
+                <h3 className="font-serif text-[36px] text-[#000050] mb-4">{sent === 'sent' ? P.contact.done_title : P.contact.sent_title}</h3>
                 <p className="text-[20px] text-[#6B6B65] font-light leading-relaxed">
-                  {P.contact.sent_text}
+                  {sent === 'sent' ? P.contact.done_text : P.contact.sent_text}
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="relative bg-white border border-[#E2E0DB] p-6 sm:p-10 lg:p-12 space-y-6">
+                  <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" value={(form as { website?: string }).website ?? ''} onChange={e => setForm({ ...form, website: e.target.value } as typeof form)} />
                 <span className="absolute top-0 left-0 right-0 h-1 flex" aria-hidden="true">
                   {['#3985FD', '#15D2A4', '#FFCA03', '#FC026F', '#8238EB', '#F85707'].map(c => <span key={c} className="flex-1" style={{ background: c }} />)}
                 </span>
@@ -118,9 +121,10 @@ export default function Contact() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="group/btn w-full sm:w-auto justify-center inline-flex items-center gap-3 text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#000050]"
+                    disabled={sending}
+                    className="disabled:opacity-60 group/btn w-full sm:w-auto justify-center inline-flex items-center gap-3 text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#000050]"
                   >
-                    Send message
+                    {sending ? 'Sending…' : 'Send message'}
                     <svg width="14" height="10" viewBox="0 0 14 10" fill="none" className="transition-transform duration-300 group-hover/btn:translate-x-1">
                       <path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>

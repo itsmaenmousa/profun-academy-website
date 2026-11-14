@@ -54,7 +54,7 @@ const cols: { title: string; links: [string, string][] }[] = [
     title: 'Academy',
     links: [
       ['About', '/about'], ['Projects', '/projects'], ['Team', '/team'], ['Partners & Affiliations', '/?go=partners'],
-      ['News', '/news'], ['Contact', '/contact'], ['Full Academy Profile', '/academy'],
+      ['News', '/news'], ['Contact', '/contact'],
     ],
   },
 ]
@@ -135,19 +135,11 @@ export default function Footer() {
             ProFun
             <svg width="12" height="9" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </a>
-          {/* Courses & Booking: shown but switched off until bookings go live */}
-          <span
-            aria-disabled="true"
-            title="Coming soon"
-            className="text-[15px] text-white/20 cursor-default select-none"
-          >
-            Courses & Booking
-          </span>
           <a
-            href="mailto:info@theprofunacademy.com"
+            href={`mailto:${P.contact.email_text}`}
             className="text-[15px] text-white/55 hover:text-[#FFCA03] transition-colors duration-200"
           >
-            info@theprofunacademy.com
+            {P.contact.email_text}
           </a>
           </div>
         </div>

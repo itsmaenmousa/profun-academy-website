@@ -12,8 +12,8 @@ const LIST = (type: string) =>
   `"${type}": *[_type == "${type}" && !(_id in path("drafts.**"))] | order(orderRank asc) { ..., "imageUrl": image.asset->url, "imageHs": image.hotspot }`
 
 export const LIST_TYPES = [
-  'pfTeam', 'pfFeatured', 'pfClient', 'pfAffiliation', 'pfStat', 'pfSector', 'pfService', 'pfCaseStudy',
-  'acTeam', 'acProject', 'acPartner', 'acStat', 'acCourse', 'acValue', 'acService', 'acFormat', 'acProgram',
+  'pfTeam', 'pfFeatured', 'pfClient', 'pfAffiliation', 'pfStat', 'pfSector', 'pfService', 'pfCaseStudy', 'pfOffice',
+  'acTeam', 'acProject', 'acPartner', 'acStat', 'acValue', 'acService', 'acFormat', 'acProgram',
 ] as const
 export type ListType = (typeof LIST_TYPES)[number]
 

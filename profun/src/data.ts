@@ -357,7 +357,7 @@ export const TEAM: { name: string; role: string; office: Office; photo: string; 
 ]
 
 /* ── Offices ──────────────────────────────────────────────────── */
-export const OFFICES = [
+export const OFFICES: { name: string; lines: string[]; phone: string; email: string }[] = [
   { name: 'Corporate Headquarters', lines: ['210 W Main St #201', 'Tustin, CA 92780', 'United States'], phone: '+1 714 832 1201', email: 'info@profun.com' },
   { name: 'Kingdom of Saudi Arabia', lines: ['Dist. 7336 Anas Ibn Malik Rd', 'Al Malqa District, RRMA4936', 'Riyadh 13525, Saudi Arabia'], phone: '+966 50 061 1174', email: 'info@profun.sa' },
 ]

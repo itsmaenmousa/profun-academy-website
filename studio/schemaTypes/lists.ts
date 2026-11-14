@@ -77,18 +77,6 @@ export const acProject = list('acProject', 'Academy project', [
 ], { title: 'title', subtitle: 'location' })
 export const acPartner = list('acPartner', 'Academy partner', logoRow, { title: 'name' })
 export const acStat = list('acStat', 'Academy key number', stat, { title: 'label', subtitle: 'suffix' })
-export const acCourse = list('acCourse', 'Academy course', [
-  defineField({ name: 'title', title: 'Course name', type: 'string', validation: req }),
-  defineField({ name: 'category', title: 'Category', type: 'string', options: { list: ['Safety & Certification', 'Guest Experience', 'Operations', 'Leadership', 'Industry Experience'] }, validation: req }),
-  defineField({ name: 'format', title: 'Format', type: 'string', options: { list: ['In-Person', 'Virtual', 'eLearning', 'Blended'], layout: 'radio' }, validation: req }),
-  defineField({ name: 'duration', title: 'Duration', type: 'string', placeholder: '2 days' }),
-  defineField({ name: 'price', title: 'Price (USD)', type: 'number' }),
-  defineField({ name: 'accredited', title: 'Accredited by (optional)', type: 'string' }),
-  defineField({ name: 'desc', title: 'Description', type: 'text', rows: 4 }),
-  defineField({ name: 'selfPaced', title: 'Self-paced (start anytime)', type: 'boolean', initialValue: false }),
-  defineField({ name: 'dates', title: 'Upcoming dates', type: 'array', of: [{ type: 'string' }], description: 'e.g. "9 Nov 2026 · Riyadh"', hidden: ({ document }) => !!document?.selfPaced }),
-  defineField({ name: 'code', title: 'Course code', type: 'string', hidden: true }),
-], { title: 'title', subtitle: 'category' })
 
 const SERVICE_NAMES = ['Planning', 'Advisory', 'Training', 'Implementation', 'Management']
 const paragraphs = (name: string, title: string) => defineField({ name, title, type: 'text', rows: 10, description: 'Leave an empty line between paragraphs.' })
@@ -136,6 +124,13 @@ export const pfCaseStudy = list('pfCaseStudy', 'ProFun case study', [
   defineField({ name: 'slug', title: 'Page address', type: 'string', description: 'The end of the page link, e.g. "ferrari-world". Leave empty to show this case study without its own page.' }),
 ], { title: 'name', subtitle: 'location' })
 
+export const pfOffice = list('pfOffice', 'ProFun office', [
+  defineField({ name: 'name', title: 'Office name', type: 'string', validation: req }),
+  defineField({ name: 'address', title: 'Address', type: 'text', rows: 4, description: 'One line per row.' }),
+  defineField({ name: 'phone', title: 'Phone', type: 'string' }),
+  defineField({ name: 'email', title: 'Email', type: 'string' }),
+], { title: 'name', subtitle: 'email' })
+
 export const acValue = list('acValue', 'Academy value (What sets us apart)', [
   defineField({ name: 'title', title: 'Title', type: 'string', validation: req }),
   defineField({ name: 'desc', title: 'Text', type: 'text', rows: 3 }),
@@ -180,4 +175,4 @@ export const acProgram = list('acProgram', 'Academy program', [
   defineField({ name: 'pos', title: 'Focus', type: 'string', hidden: true }),
 ], { title: 'title', subtitle: 'category' })
 
-export const listTypes = [acValue, acService, acFormat, acProgram, pfSector, pfService, pfCaseStudy, pfTeam, pfFeatured, pfClient, pfAffiliation, pfStat, acTeam, acProject, acPartner, acStat, acCourse]
+export const listTypes = [pfOffice, acValue, acService, acFormat, acProgram, pfSector, pfService, pfCaseStudy, pfTeam, pfFeatured, pfClient, pfAffiliation, pfStat, acTeam, acProject, acPartner, acStat]

@@ -11,13 +11,13 @@ const human = (s: string) => s.replace(/_/g, ' ').replace(/(\d+)/g, ' $1').repla
 const SECTION: Record<string, string> = {
   hero: 'Top of page (hero)', intro: 'Introduction', head: 'Page heading', projects: 'Featured projects', sectors: 'Sectors',
   academy: 'ProFun Academy', clients: 'Clients', quality: 'Commitment to quality', affiliations: 'Affiliations', cases: 'Case studies',
-  sent: 'After sending the form', quote: 'Quote band', partners: 'Partners', iaapa: 'IAAPA recognition', values: 'What sets us apart', experiential: 'Experiential learning', formats: 'Delivery formats', location: 'Location', email: 'Email', linkedin: 'LinkedIn', facebook: 'Facebook', instagram: 'Instagram', x: 'X (Twitter)', follow: 'Social links', tagline: 'Tagline', form: 'Contact form', careers: 'Careers', training: 'Training', services: 'Services',
+  sent: 'After sending (email app)', done: 'After sending (form)', seo: 'Google and link previews', quote: 'Quote band', partners: 'Partners', iaapa: 'IAAPA recognition', values: 'What sets us apart', experiential: 'Experiential learning', formats: 'Delivery formats', location: 'Location', email: 'Email', linkedin: 'LinkedIn', facebook: 'Facebook', instagram: 'Instagram', x: 'X (Twitter)', follow: 'Social links', tagline: 'Tagline', form: 'Contact form', careers: 'Careers', training: 'Training', services: 'Services',
 }
-const FIELD: Record<string, string> = { eyebrow: 'Small heading above the title', title: 'Title', text: 'Text', link: 'Link text', button: 'Button text', caption: 'Photo caption', note: 'Small print' }
+const FIELD: Record<string, string> = { endpoint: 'Form address (from Formspree)', email: 'Email address', eyebrow: 'Small heading above the title', title: 'Title', text: 'Text', link: 'Link text', button: 'Button text', caption: 'Photo caption', note: 'Small print' }
 
 export const PAGE_TITLES: Record<string, string> = {
   home: 'Home', services: 'Services (header and intro)', about: 'About', sectors: 'Sectors page', work: 'Our Work page',
-  team: 'People page', contact: 'Contact', footer: 'Footer', learning: 'Learning (on Services page)', programs: 'Programs page',
+  team: 'People page', contact: 'Contact', footer: 'Footer', learning: 'Learning (on Services page)', programs: 'Programs page', news: 'News page', projects: 'Projects page',
 }
 
 function pageDoc(site: string, page: string, defaults: Record<string, string>, title: string) {
@@ -33,13 +33,17 @@ function pageDoc(site: string, page: string, defaults: Record<string, string>, t
       const base = tail.replace(/\d+$/, '')
       const label = (FIELD[base] ? FIELD[base] + (tail.match(/\d+$/)?.[0] ? ` ${tail.match(/\d+$/)![0]}` : '') : human(tail)) || human(key)
       if (isImageKey(key)) {
+        if (key === 'seo_image') return defineField({ name: key, title: 'Link preview image', type: 'image', fieldset: section, description: 'Shown when the site is shared on WhatsApp, LinkedIn and others. 1200 × 630 works best. Updates after the next site update.' })
         return defineField({ name: key, title: label.replace(/^Image/, 'Photo'), type: 'image', fieldset: section, options: { hotspot: true }, description: 'Leave empty to keep the current photo.' })
       }
       const long = def.length > 80 || def.includes('\n')
       return defineField({
         name: key, title: label, type: long ? 'text' : 'string', fieldset: section,
         ...(long ? { rows: def.includes('\n') ? Math.min(4, def.split('\n').length + 1) : 4 } : {}),
-        description: def.includes('\n') ? 'Each line starts on a new row. Leave empty to keep the current text.' : 'Leave empty to keep the current text.',
+        description: key === 'contact_form_endpoint' || key === 'form_endpoint'
+          ? 'Paste the form link from Formspree (https://formspree.io/f/...). Messages then go straight to the inbox. Leave empty to open the visitor’s email app instead.'
+          : key.startsWith('seo_') ? 'Shown in Google results and browser tabs.'
+          : def.includes('\n') ? 'Each line starts on a new row. Leave empty to keep the current text.' : 'Leave empty to keep the current text.',
       })
     }),
     preview: { prepare: () => ({ title }) },
@@ -65,7 +69,11 @@ export const landing = defineType({
     defineField({ name: 'profun_text', title: 'ProFun side: line', type: 'string', description: 'Leave empty to keep the current text.' }),
     defineField({ name: 'academy_image', title: 'Academy side: background photo', type: 'image', options: { hotspot: true }, description: 'Leave empty to keep the current photo.' }),
     defineField({ name: 'academy_text', title: 'Academy side: line', type: 'string', description: 'Leave empty to keep the current text.' }),
+    defineField({ name: 'seo_title', title: 'Google and link previews: title', type: 'string', fieldset: 'seo' }),
+    defineField({ name: 'seo_description', title: 'Google and link previews: description', type: 'text', rows: 3, fieldset: 'seo' }),
+    defineField({ name: 'seo_image', title: 'Link preview image', type: 'image', fieldset: 'seo', description: 'Shown when the link is shared on WhatsApp, LinkedIn and others. 1200 × 630 works best. Updates after the next site update.' }),
   ],
+  fieldsets: [{ name: 'seo', title: 'Google and link previews', options: { collapsible: true, collapsed: true } }],
   preview: { prepare: () => ({ title: 'Landing page' }) },
 })
 

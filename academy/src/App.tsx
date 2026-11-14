@@ -8,6 +8,8 @@ import Projects from './components/Projects'
 import Testimonial from './components/Testimonial'
 import Partners from './components/Partners'
 import Footer from './components/Footer'
+import { COPY } from './copy'
+import { setMeta } from '../../shared/seo'
 
 // Pages other than Home load on demand, then quietly prefetch once the browser is idle
 const loaders = {
@@ -18,9 +20,7 @@ const loaders = {
   Leadership: () => import('./components/Leadership'),
   News: () => import('./components/News'),
   Contact: () => import('./components/Contact'),
-  Courses: () => import('./components/Courses'),
   Press: () => import('./components/Press'),
-  Academy: () => import('./pages/Academy'),
 }
 const Stats = lazy(loaders.Stats)
 const Services = lazy(loaders.Services)
@@ -29,9 +29,7 @@ const About = lazy(loaders.About)
 const Leadership = lazy(loaders.Leadership)
 const News = lazy(loaders.News)
 const Contact = lazy(loaders.Contact)
-const Courses = lazy(loaders.Courses)
 const Press = lazy(loaders.Press)
-const Academy = lazy(loaders.Academy)
 
 function usePrefetchPages() {
   useEffect(() => {
@@ -92,6 +90,17 @@ function LinkRouter() {
   return null
 }
 
+/* Browser title and description for each page, from the dashboard */
+const SEO_PAGE: Record<string, keyof typeof COPY> = {"/": "home", "/about": "about", "/services": "services", "/programs": "programs", "/projects": "projects", "/team": "team", "/news": "news", "/contact": "contact"}
+function Seo() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    const page = COPY[SEO_PAGE[pathname] ?? 'home'] as Record<string, string>
+    setMeta(page.seo_title, page.seo_description)
+  }, [pathname])
+  return null
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => { resetScroll() }, [pathname])
@@ -134,6 +143,7 @@ export default function App() {
     <HashRouter>
       <LinkRouter />
       <ScrollToTop />
+      <Seo />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<Layout><Stats /><About /></Layout>} />
@@ -144,9 +154,10 @@ export default function App() {
         <Route path="/projects" element={<Layout><Projects /></Layout>} />
         <Route path="/team" element={<Layout><Leadership /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
-        <Route path="/academy" element={<Suspense fallback={<div className="min-h-[100svh] bg-[#F9F8F6]" />}><Academy /></Suspense>} />
+        {/* Retired pages: the full Academy profile and Courses & Booking */}
+        <Route path="/academy" element={<Navigate to="/" replace />} />
         <Route path="/news" element={<Layout><Press /></Layout>} />
-        <Route path="/courses" element={<Layout><Courses /></Layout>} />
+        <Route path="/courses" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </HashRouter>
