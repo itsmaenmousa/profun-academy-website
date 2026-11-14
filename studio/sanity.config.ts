@@ -9,7 +9,6 @@ export default defineConfig({
   title: 'ProFun Website',
   projectId: 'hxe3wh04',
   dataset: 'production',
-  basePath: '/studio',
   plugins: [
     structureTool({
       structure: (S, context) => {
