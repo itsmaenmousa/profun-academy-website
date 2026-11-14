@@ -1,9 +1,9 @@
-import { useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState, useEffect } from 'react'
 import type React from 'react'
 import { Link } from 'react-router-dom'
 import { useEqualize } from '../hooks/useEqualize'
 import { useInView } from '../hooks/useInView'
-import { NEWS_ALL, NEWS_TAGS, NEWS_TAG_COLOR, newsImage, isLogoImage, type NewsItem } from '../../../shared/news'
+import { NEWS_ALL, NEWS_TAGS, fetchNews, NEWS_TAG_COLOR, newsImage, isLogoImage, type NewsItem } from '../../../shared/news'
 
 /*
   News, shared with the ProFun Academy site: both read shared/news.ts,
@@ -20,7 +20,10 @@ export default function Press() {
   const [open, setOpen] = useState<string | null>(null)
   const [tag, setTag] = useState<NewsItem['tag'] | null>(null)
   const [shown, setShown] = useState(PAGE + 1)
-  const list = useMemo(() => (tag ? NEWS_ALL.filter(n => n.tag === tag) : NEWS_ALL), [tag])
+  // Stories come live from the dashboard (Sanity); the built-in copy shows until then
+  const [all, setAll] = useState<NewsItem[]>(NEWS_ALL)
+  useEffect(() => { fetchNews().then(n => { if (n) setAll(n) }) }, [])
+  const list = useMemo(() => (tag ? all.filter(n => n.tag === tag) : all), [tag, all])
   const [lead, ...rest] = list
   const gridRef = useRef<HTMLDivElement>(null)
   useEqualize(gridRef, EQ_KEYS)
@@ -47,7 +50,7 @@ export default function Press() {
         {/* Filter */}
         <div className="flex flex-nowrap sm:flex-wrap gap-2 overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden mb-8 sm:mb-10" role="group" aria-label="Filter news">
           {[null, ...NEWS_TAGS].map(t => {
-            const n = t ? NEWS_ALL.filter(x => x.tag === t).length : NEWS_ALL.length
+            const n = t ? all.filter(x => x.tag === t).length : all.length
             const on = tag === t
             return (
               <button
@@ -117,7 +120,7 @@ const ArrowSm = ({ className = '' }: { className?: string }) => (
 
 function StoryCard({ r, open, onToggle, lead }: { r: NewsItem; open: boolean; onToggle: () => void; lead?: boolean }) {
   const color = NEWS_TAG_COLOR[r.tag]
-  const logo = isLogoImage(r.image)
+  const logo = r.logo ?? isLogoImage(r.image)
   return (
     <article className={`group bg-white ${lead ? 'grid grid-cols-1 lg:grid-cols-2 border border-[#E2E0DB]' : 'flex flex-col'}`}>
       <div className={`relative overflow-hidden ${logo ? 'bg-white' : 'bg-[#E2E0DB]'} ${lead ? 'aspect-[16/10] lg:aspect-auto lg:min-h-[420px]' : 'aspect-[16/9]'}`}>

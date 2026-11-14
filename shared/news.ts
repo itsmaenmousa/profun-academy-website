@@ -24,6 +24,7 @@ export type NewsItem = {
   body?: string[]
   link?: { label: string; href: string }
   cta?: { label: string; to: string }
+  logo?: boolean
 }
 
 export const NEWS_TAGS: NewsTag[] = ['ProFun News', 'ProFun Academy', 'Project News', 'Client News', 'Industry', 'Insight']
@@ -253,12 +254,62 @@ const sortKey = (d: string) => {
   return (y ? +y[1] : 0) * 10000 + (m ? MONTHS.indexOf(m[1]) + 1 : 0) * 100 + (m && m[2] ? +m[2] : 0)
 }
 
+/* Built-in copy of the stories. Used until the dashboard (Sanity) answers, and as a fallback. */
 export const NEWS_ALL: NewsItem[] = [...STORIES].sort((a, b) => sortKey(b.date) - sortKey(a.date))
+
+/* "Jul 2, 2026" -> "2026-07-02", "Nov 2026" -> "2026-11-01" (used by the dashboard import) */
+export const isoDate = (d: string) => {
+  const k = sortKey(d)
+  const y = Math.floor(k / 10000), m = Math.floor(k / 100) % 100, day = k % 100
+  return `${y}-${String(m || 1).padStart(2, '0')}-${String(day || 1).padStart(2, '0')}`
+}
+export const hasDay = (d: string) => /\d{1,2},\s*\d{4}/.test(d)
 
 /* Image URL for a story, from either site */
 const PF = 'https://profun.com/wp-content/uploads/'
 export const newsImage = (img: string, site: 'profun' | 'academy') =>
-  img.startsWith('academy:') ? (site === 'academy' ? './' : '../academy/') + img.slice(8) : PF + img
+  /^https?:/.test(img) ? img : img.startsWith('academy:') ? (site === 'academy' ? './' : '../academy/') + img.slice(8) : PF + img
 
 /* Logos and wordmarks sit on white instead of being cropped like photos */
 export const isLogoImage = (img: string) => /logo|PROFUN-COLORED|MPF-logo|2024\/05\/5\.png/i.test(img)
+
+/* ── Live content from the dashboard (Sanity) ───────────────────────────── */
+const SANITY = 'https://hxe3wh04.apicdn.sanity.io/v2025-01-01/data/query/production'
+const QUERY = `*[_type == "news" && !(_id in path("drafts.**")) && defined(title)] | order(date desc) {
+  _id, title, date, dateLabel, tag, label, logo, summary, body, link, cta, legacyImage, pos,
+  "img": image.asset->url, "hs": image.hotspot
+}`
+const MONTH = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const showDate = (iso: string) => {
+  const [y, m, d] = iso.split('-').map(Number)
+  return `${MONTH[m - 1]} ${d}, ${y}`
+}
+type Raw = {
+  _id: string; title: string; date: string; dateLabel?: string; tag: NewsTag; label?: string; logo?: boolean
+  summary: string; body?: string; link?: { label?: string; href?: string }; cta?: { label?: string; to?: string }
+  legacyImage?: string; pos?: string; img?: string; hs?: { x: number; y: number }
+}
+export async function fetchNews(): Promise<NewsItem[] | null> {
+  try {
+    const res = await fetch(`${SANITY}?query=${encodeURIComponent(QUERY)}`)
+    if (!res.ok) return null
+    const rows: Raw[] = (await res.json()).result ?? []
+    if (!rows.length) return null
+    return rows.map(r => ({
+      id: r._id.replace(/^news-/, ''),
+      title: r.title,
+      date: r.dateLabel || (r.date ? showDate(r.date) : ''),
+      tag: r.tag,
+      label: r.label || undefined,
+      image: r.img ? `${r.img}?w=1600&auto=format` : (r.legacyImage ?? ''),
+      pos: r.img ? (r.hs ? `${Math.round(r.hs.x * 100)}% ${Math.round(r.hs.y * 100)}%` : undefined) : r.pos,
+      logo: r.logo || (!r.img && !!r.legacyImage && isLogoImage(r.legacyImage)),
+      summary: r.summary,
+      body: r.body ? r.body.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean) : undefined,
+      link: r.link?.href ? { label: r.link.label || 'Read more', href: r.link.href } : undefined,
+      cta: r.cta?.to ? { label: r.cta.label || 'Learn more', to: r.cta.to } : undefined,
+    }))
+  } catch {
+    return null
+  }
+}
