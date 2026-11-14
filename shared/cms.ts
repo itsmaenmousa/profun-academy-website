@@ -12,13 +12,13 @@ const LIST = (type: string) =>
   `"${type}": *[_type == "${type}" && !(_id in path("drafts.**"))] | order(orderRank asc) { ..., "imageUrl": image.asset->url, "imageHs": image.hotspot }`
 
 export const LIST_TYPES = [
-  'pfTeam', 'pfFeatured', 'pfClient', 'pfAffiliation', 'pfStat',
+  'pfTeam', 'pfFeatured', 'pfClient', 'pfAffiliation', 'pfStat', 'pfSector', 'pfService', 'pfCaseStudy',
   'acTeam', 'acProject', 'acPartner', 'acStat', 'acCourse',
 ] as const
 export type ListType = (typeof LIST_TYPES)[number]
 
 export type Row = Record<string, any> & { imageUrl?: string; imageHs?: { x: number; y: number }; legacyImage?: string }
-export type Cms = Partial<Record<ListType, Row[]>>
+export type Cms = Partial<Record<ListType, Row[]>> & { pages?: Record<string, any>[] }
 
 /* Photo URL for a row: the uploaded photo (resized by Sanity), else the original one */
 export const rowImage = (r: Row, width = 1200) =>
@@ -27,14 +27,22 @@ export const rowImage = (r: Row, width = 1200) =>
 /* Focus point set in the dashboard, as CSS object-position */
 export const rowFocus = (r: Row) => (r.imageUrl && r.imageHs ? `${Math.round(r.imageHs.x * 100)}% ${Math.round(r.imageHs.y * 100)}%` : undefined)
 
-export async function loadCms(timeoutMs = 1500): Promise<Cms | null> {
-  const query = `{ ${LIST_TYPES.map(LIST).join(',\n')} }`
+export async function loadCms(timeoutMs = 1500, pageTypes: string[] = []): Promise<Cms | null> {
+  const pages = `"pages": *[_type in ${JSON.stringify(pageTypes)} && !(_id in path("drafts.**"))]`
+  const query = `{ ${[...LIST_TYPES.map(LIST), pages].join(',\n')} }`
   const timer = new Promise<null>(res => setTimeout(() => res(null), timeoutMs))
   const req = fetch(`${ENDPOINT}?query=${encodeURIComponent(query)}`)
     .then(r => (r.ok ? r.json() : null))
     .then(j => (j?.result as Cms) ?? null)
     .catch(() => null)
   return Promise.race([req, timer])
+}
+
+/* Image inside a nested item (e.g. a sector's project): uploaded photo, else the original path */
+export const nestedImage = (img: any, legacy?: string, width = 1200) => {
+  const ref = img?.asset?._ref as string | undefined
+  const m = ref && /^image-([a-f0-9]+)-(\d+x\d+)-(\w+)$/.exec(ref)
+  return m ? `https://cdn.sanity.io/images/hxe3wh04/production/${m[1]}-${m[2]}.${m[3]}?w=${width}&auto=format` : (legacy ?? '')
 }
 
 /* Replace the contents of a built-in list with the dashboard rows (only if the dashboard has any) */

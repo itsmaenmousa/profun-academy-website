@@ -3,6 +3,9 @@ import { structureTool } from 'sanity/structure'
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { schemaTypes } from './schemaTypes'
 import { importTool } from './tools/importTool'
+import { pfPages, PAGE_TITLES } from './schemaTypes/pages'
+
+const SINGLETONS = pfPages.map(t => t.name)
 
 export default defineConfig({
   name: 'default',
@@ -19,6 +22,15 @@ export default defineConfig({
           .items([
             S.listItem().title('ProFun').child(
               S.list().title('ProFun').items([
+                S.listItem().title('Pages').child(
+                  S.list().title('ProFun pages').items(
+                    pfPages.map(t => S.listItem().title(t.title ?? t.name).id(t.name).child(S.document().schemaType(t.name).documentId(t.name).title(t.title ?? t.name))),
+                  ),
+                ),
+                S.divider(),
+                ordered('pfSector', 'Sectors'),
+                ordered('pfService', 'Services'),
+                ordered('pfCaseStudy', 'Case studies'),
                 ordered('pfFeatured', 'Featured projects (Home)'),
                 ordered('pfClient', 'Clients'),
                 ordered('pfTeam', 'Team (People page)'),
@@ -45,5 +57,12 @@ export default defineConfig({
     }),
   ],
   tools: prev => [...prev, importTool],
-  schema: { types: schemaTypes },
+  schema: {
+    types: schemaTypes,
+    // Pages exist once each: hide them from "Create new"
+    templates: prev => prev.filter(t => !SINGLETONS.includes(t.schemaType)),
+  },
+  document: {
+    actions: (prev, { schemaType }) => (SINGLETONS.includes(schemaType) ? prev.filter(a => !['delete', 'duplicate', 'unpublish'].includes(a.action ?? '')) : prev),
+  },
 })

@@ -189,3 +189,13 @@ const CASE_ALIAS: Record<string, string> = {
   'Makkah Royal Clock Tower': 'Makkah Clock Tower', 'World of Coca Cola': 'World of Coca-Cola',
 }
 export const caseSlugFor = (name: string) => (CASE_DETAIL[name] ?? CASE_DETAIL[CASE_ALIAS[name]])?.slug
+
+// Sharper local photography where we have it (the profun.com case images are 700px)
+export const LOCAL_IMG: Record<string, string> = {
+  'dubai-world-expo-2020': 'expo-2020', '2012-london-olympics': 'london-2012', 'ferrari-world': 'ferrari-world', absolut: 'absolut',
+  'johnnie-walker': 'johnnie-walker', 'dubai-parks-and-resorts-2': 'dubai-parks', 'ain-dubai': 'ain-dubai', 'park-at-owa': 'owa',
+  'one-vanderbilt': 'one-vanderbilt', 'aop-2-6-hudson-yards': 'the-vessel', 'expo-2010': 'expo-2010', 'ushaka-marine-world-2': 'ushaka',
+  'making-of-hp': 'harry-potter', 'world-of-coca-cola': 'coca-cola', 'henry-ford': 'henry-ford', quest: 'quest', '911-memorial': '911-memorial',
+  'cnn-tour': 'cnn', ca_academy_of_sciences: 'cal-academy', amnh: 'amnh-rose', 'crayola-experience': 'crayola', aop: 'aquarium-pacific',
+  'mahanakhon-skywalk': 'mahanakhon', 'hersheys-chocolate-world': 'hershey', 'makkah-clock-tower': 'makkah-royal',
+}

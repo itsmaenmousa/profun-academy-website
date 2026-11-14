@@ -4,6 +4,7 @@ import { useInView } from '../hooks/useInView'
 import { Link } from 'react-router-dom'
 import { FEATURED, sectorById } from '../data'
 import { caseSlugFor } from '../content'
+import { COPY as P } from '../copy'
 
 const projects = FEATURED.map(p => ({ ...p, category: sectorById(p.sector).tag }))
 
@@ -102,17 +103,17 @@ export default function Projects({ asPage = false }: { asPage?: boolean }) {
             inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          <p className="mb-4 text-[20px] font-semibold text-[#F85707]">Featured Projects</p>
+          <p className="mb-4 text-[20px] font-semibold text-[#F85707]">{P.home.projects_eyebrow}</p>
 
           <div className="flex items-end justify-between gap-8">
             <H
               id="projects-heading"
               className="max-w-[900px] font-serif text-balance text-[clamp(38px,4vw,60px)] leading-[1.1] tracking-[-0.01em] text-white"
             >
-              Iconic destinations, operating at their best.
+              {P.home.projects_title}
             </H>
             <p className="hidden shrink-0 pb-2 text-[16px] font-medium text-white/50 lg:block">
-              Drag to explore
+              {P.home.projects_hint}
             </p>
           </div>
 
@@ -195,7 +196,7 @@ export default function Projects({ asPage = false }: { asPage?: boolean }) {
                   <p className="pt-4 mt-4 border-t border-white/20 text-[14px] leading-normal lg:text-[15px] lg:leading-relaxed text-white/90">{project.about}</p>
                   {caseSlugFor(project.title) && (
                     <Link to={`/work/${caseSlugFor(project.title)}`} onMouseDown={e => e.stopPropagation()} className="mt-3 mr-5 inline-flex items-center gap-2 text-[14px] font-medium text-white hover:text-[#F85707] transition-colors">
-                      Read the case study
+                      {P.home.projects_link}
                       <svg width="11" height="8" viewBox="0 0 12 9" fill="none" aria-hidden="true"><path d="M7 1L11 4.5M11 4.5L7 8M11 4.5H1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     </Link>
                   )}

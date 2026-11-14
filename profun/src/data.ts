@@ -314,6 +314,9 @@ export const CLIENTS: [string, SectorId[], RegionId, string][] = [
   ['Universal', ['commercial'], 'na', '2023/10/Universal-e1555098134622.jpg'],
 ]
 
+/* Clients shown in the moving logo strip on Home */
+export const HOME_CLIENTS: string[] = ['Universal', 'LEGO', 'Warner Bros.', 'Paramount', 'HBO', 'Cartoon Network', 'NBA', 'Ford', 'Metro Goldwyn Mayer', 'Everland Resort', 'Exploratorium', 'Doha Quest', 'World of Coca-Cola', 'American Museum of Natural History', 'Georgia Aquarium', 'Hershey’s Chocolate World']
+
 /* ── Team ─────────────────────────────────────────────────────── */
 export type Office = 'KSA' | 'USA' | 'MENA'
 export const TEAM: { name: string; role: string; office: Office; photo: string; bio: string }[] = [

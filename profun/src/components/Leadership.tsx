@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
 import { TEAM_LIST as team } from '../team'
+import { COPY as P } from '../copy'
 
 const initials = (name: string) => name.split(' ').filter(Boolean).map(w => w[0]).slice(0, 2).join('')
 
@@ -19,14 +20,14 @@ export default function Leadership() {
           className={`grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 mb-10 sm:mb-16 border-b border-[#E2E0DB] pb-8 sm:pb-12 reveal ${inView ? 'visible' : ''}`}
         >
           <div className="lg:col-span-4">
-            <p className="text-[20px] font-semibold text-[#F85707] mb-4">Leadership</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.team.head_eyebrow}</p>
             <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em]">
-              The people who lead our practice
+              {P.team.head_title}
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
             <p className="text-[19px] text-[#6B6B65] leading-relaxed font-light">
-              A proven team of international and local professionals, experienced in planning and managing entertainment, corporate and cultural attractions worldwide.
+              {P.team.head_text}
             </p>
           </div>
         </div>

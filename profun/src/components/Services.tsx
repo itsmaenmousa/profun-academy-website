@@ -4,6 +4,7 @@ import type React from 'react'
 import { useInView } from '../hooks/useInView'
 import { Link } from 'react-router-dom'
 import { SERVICES, ACADEMY_URL } from '../data'
+import { COPY as P } from '../copy'
 
 // Soft hyphen lets the long label break neatly in the smallest phone cells
 const services = SERVICES.map(x => ({ id: x.id, short: x.short.replace('Implementation', 'Implemen\u00ADtation'), title: x.short, desc: x.lead, color: x.color }))
@@ -21,9 +22,9 @@ export default function Services({ asPage = false }: { asPage?: boolean }) {
           className={`mb-8 sm:mb-10 lg:mb-12 border-b border-[#E2E0DB] pb-8 sm:pb-10 reveal ${inView ? 'visible' : ''}`}
         >
           <div>
-            <p className="text-[20px] font-semibold text-[#F85707] mb-4">What We Do</p>
+            <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.services.head_eyebrow}</p>
             <H className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] max-w-[760px] tracking-[-0.01em]">
-              From first plans to daily operations.
+              {P.services.head_title}
             </H>
           </div>
         </div>
@@ -140,7 +141,7 @@ function Honeycomb({ inView }: { inView: boolean }) {
             <p className="text-[19px] text-[#4A4A45] leading-relaxed font-light mb-8">{s.desc}</p>
             {s.id === 'training' ? (
               <a href={ACADEMY_URL} className="inline-flex items-center gap-3 text-[17px] font-medium text-[#F85707] hover:gap-5 transition-all duration-300">
-                Delivered by ProFun Academy
+                {P.services.training_link}
                 <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </a>
             ) : (
@@ -153,7 +154,7 @@ function Honeycomb({ inView }: { inView: boolean }) {
         ) : (
           <div key="intro" className="hc-copy">
             <span className="block w-12 h-1 mb-8 mx-auto xl:mx-0 bg-[#F85707]" aria-hidden="true" />
-            <p className="font-serif text-[clamp(22px,1.9vw,30px)] text-[#000050] leading-[1.3] tracking-[-0.01em]">Concepts inspire. Design excites. But success is decided on the ground. Five services take an attraction from first plans to daily operations.</p>
+            <p className="font-serif text-[clamp(22px,1.9vw,30px)] text-[#000050] leading-[1.3] tracking-[-0.01em]">{P.services.intro_text}</p>
           </div>
         )}
         <div className={`flex items-center justify-center xl:justify-start gap-2 mt-10 transition-opacity duration-500 ${open ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true">
@@ -183,7 +184,7 @@ function Honeycomb({ inView }: { inView: boolean }) {
             <span className="hc-par"><span className="hc-float"><span className="hc-face">
               <span className="relative flex flex-col items-center justify-center h-full px-[16%] text-center">
                 <span className="w-5 sm:w-6 h-1 rounded-full mb-2 sm:mb-3 bg-[#F85707]" aria-hidden="true" />
-                <span className="hidden sm:block font-serif italic text-[#000050] text-[16px] lg:text-[clamp(15px,1.25vw,19px)] leading-tight lg:leading-snug">Tailored to your people and operations.</span>
+                <span className="hidden sm:block font-serif italic text-[#000050] text-[16px] lg:text-[clamp(15px,1.25vw,19px)] leading-tight lg:leading-snug">{P.services.academy_note}</span>
                 <span className="sm:hidden font-serif italic text-[#000050] text-[13px] leading-tight">Tailored to you.</span>
               </span>
             </span></span></span>

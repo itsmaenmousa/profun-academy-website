@@ -5,8 +5,9 @@ import { useDeepLink, scrollToId } from '../lib/deeplink'
 import { CLIENTS, SECTORS, REGIONS, CASE_STUDIES, SERVICES, pf, type SectorId, type RegionId } from '../data'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { SectionHead, Arrow } from './ui'
-import { CASE_DETAIL } from '../content'
+import { LOCAL_IMG, CASE_DETAIL } from '../content'
 import Projects from './Projects'
+import { COPY as P } from '../copy'
 
 type Sort = 'az' | 'za'
 
@@ -77,7 +78,7 @@ export function ClientsFilter() {
   return (
     <section id="clients" className="bg-[#F9F8F6] px-6 sm:px-12 py-16 sm:py-20 lg:py-24 scroll-mt-24">
       <div className="max-w-[1920px] mx-auto">
-        <SectionHead eyebrow="Clients & Projects" title="The names we have worked alongside." side="Filter by sector or region, or sort the list, to find the work closest to yours." />
+        <SectionHead eyebrow={P.work.clients_eyebrow} title={P.work.clients_title} side={P.work.clients_text} />
 
         {/* Toolbar */}
         <div className="sticky top-[72px] lg:top-20 z-20 -mx-6 sm:-mx-12 px-6 sm:px-12 py-3 bg-[#F9F8F6]/95 backdrop-blur-md mb-8 border-b border-[#E2E0DB]">
@@ -173,7 +174,7 @@ export function CaseStudies() {
   return (
     <section id="case-studies" className="bg-[#F2F1EF] px-6 sm:px-12 py-16 sm:py-20 lg:py-24 scroll-mt-24">
       <div className="max-w-[1920px] mx-auto">
-        <SectionHead eyebrow="Case Studies" title="The only firm trusted across 500+ projects worldwide." side="From theme parks in the Middle East to museums in North America and brand centers in Europe, our case studies show one thing: ProFun delivers measurable impact." />
+        <SectionHead eyebrow={P.work.cases_eyebrow} title={P.work.cases_title} side={P.work.cases_text} />
         <div className="flex flex-nowrap sm:flex-wrap gap-2 overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden mb-8" role="group" aria-label="Filter case studies by service">
           {[null, ...SERVICES.map(s => s.short)].map(s => (
             <button
@@ -228,17 +229,10 @@ export default function WorkPage() {
 
 /* ── Case study detail (/work/:slug), from the profun.com case study pages ── */
 
-// Sharper local photography where we have it (the profun.com case images are 700px)
-const LOCAL_IMG: Record<string, string> = {
-  'dubai-world-expo-2020': 'expo-2020', '2012-london-olympics': 'london-2012', 'ferrari-world': 'ferrari-world', absolut: 'absolut',
-  'johnnie-walker': 'johnnie-walker', 'dubai-parks-and-resorts-2': 'dubai-parks', 'ain-dubai': 'ain-dubai', 'park-at-owa': 'owa',
-  'one-vanderbilt': 'one-vanderbilt', 'aop-2-6-hudson-yards': 'the-vessel', 'expo-2010': 'expo-2010', 'ushaka-marine-world-2': 'ushaka',
-  'making-of-hp': 'harry-potter', 'world-of-coca-cola': 'coca-cola', 'henry-ford': 'henry-ford', quest: 'quest', '911-memorial': '911-memorial',
-  'cnn-tour': 'cnn', ca_academy_of_sciences: 'cal-academy', amnh: 'amnh-rose', 'crayola-experience': 'crayola', aop: 'aquarium-pacific',
-  'mahanakhon-skywalk': 'mahanakhon', 'hersheys-chocolate-world': 'hershey', 'makkah-clock-tower': 'makkah-royal',
-}
 const caseImage = (name: string) => {
   const d = CASE_DETAIL[name]
+  // A photo from the dashboard (full URL or site path) wins over the built-in choice
+  if (/^(https?:|\.\/)/.test(d.image)) return d.image
   return LOCAL_IMG[d.slug] ? `./projects/${LOCAL_IMG[d.slug]}.jpg` : pf(d.image)
 }
 const pad = (n: number) => String(n).padStart(2, '0')

@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
+import { COPY as P } from '../copy'
 
 const SOCIALS = [
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/profun-inc',
+    href: P.footer.linkedin_url,
     color: '#3985FD',
     icon: <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-1.85 3.76-1.85 4.02 0 4.76 2.5 4.76 5.75v5.6h-4v-4.96c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62v5.04h-4v-11Z" />,
   },
@@ -57,9 +58,9 @@ export default function Footer() {
               <img src="./profun-logo-white.svg" alt="ProFun" className="h-14 sm:h-16 w-auto" />
             </Link>
             <p className="text-[18px] text-white/55 leading-relaxed font-light max-w-[320px] mb-8">
-              The world’s trusted partner in attraction operations. Tustin, California and Riyadh, Kingdom of Saudi Arabia.
+              {P.footer.tagline}
             </p>
-            <p className="text-[17px] font-medium text-white/75 mb-4">Follow ProFun</p>
+            <p className="text-[17px] font-medium text-white/75 mb-4">{P.footer.follow_label}</p>
             <ul className="flex items-center gap-7" aria-label="ProFun on social media">
               {SOCIALS.map(s => (
                 <li key={s.name}>

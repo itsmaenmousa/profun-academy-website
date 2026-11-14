@@ -10,14 +10,15 @@ import { CASE_DETAIL, caseSlugFor } from '../content'
 import Stats from './Stats'
 import { AcademyBand } from './HomeSections'
 import Leadership from './Leadership'
+import { COPY as P } from '../copy'
 
 /* ── About ─────────────────────────────────────────────────────── */
 const LIGHT = ['#15D2A4', '#99CA32', '#FFCA03', '#00AFDC']
 const QUALITY = [
-  { title: 'Internal Quality', desc: 'Accuracy, consistency and efficiency of our work processes.', color: '#3985FD' },
-  { title: 'Client Work Product', desc: 'Best-in-class consulting reports and advisory services.', color: '#15D2A4' },
-  { title: 'Programs and Services', desc: 'Quality of ProFun Academy and all client-facing services.', color: '#FC026F' },
-  { title: 'Client Enablement', desc: 'Providing tools and knowledge for clients to achieve their own quality standards.', color: '#8238EB' },
+  { title: P.about.quality1_title, desc: P.about.quality1_text, color: '#3985FD' },
+  { title: P.about.quality2_title, desc: P.about.quality2_text, color: '#15D2A4' },
+  { title: P.about.quality3_title, desc: P.about.quality3_text, color: '#FC026F' },
+  { title: P.about.quality4_title, desc: P.about.quality4_text, color: '#8238EB' },
 ]
 
 export function AboutPage() {
@@ -32,26 +33,26 @@ export function AboutPage() {
         <div className="max-w-[1920px] mx-auto">
           <div ref={ref as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div className={`lg:col-span-5 reveal ${inView ? 'visible' : ''}`}>
-              <p className="text-[20px] font-semibold text-[#F85707] mb-4">About ProFun</p>
+              <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.about.intro_eyebrow}</p>
               <h1 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] mb-8 tracking-[-0.01em]">
-                The world leader in attractions operations.
+                {P.about.intro_title}
               </h1>
               <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-6">
-                ProFun is the world leader, and the only firm of its kind, dedicated exclusively to operations advisory and management for the attractions industry. Since 1980, we have advised on, trained for and managed projects on every continent, serving some of the world&rsquo;s most iconic destinations.
+                {P.about.intro_text1}
               </p>
               <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-6">
-                Our value lies in bridging creative ambition with operational reality, applying commercial discipline, practical experience and global insight to ensure concepts thrive long after opening day.
+                {P.about.intro_text2}
               </p>
               <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-12">
-                Our team is built for impact: seasoned international executives and regional specialists with unmatched operational expertise. From pre-concept planning and analysis to daily management, our people know what it takes to deliver guest satisfaction, financial performance and operational reliability, because they&rsquo;ve been there.
+                {P.about.intro_text3}
               </p>
-              <TextLink to="/team">Meet our people</TextLink>
+              <TextLink to="/team">{P.about.intro_link}</TextLink>
             </div>
             <div className={`lg:col-span-7 relative reveal reveal-delay-2 ${inView ? 'visible' : ''}`}>
               <div className={`aspect-[4/3] overflow-hidden bg-[#1C1C1A] img-reveal ${inView ? 'visible' : ''}`}>
-                <img src="./projects/amnh-rose.jpg" alt="The Rose Center for Earth and Space, American Museum of Natural History" className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-[1.03]" />
+                <img src={P.about.intro_image} alt="The Rose Center for Earth and Space, American Museum of Natural History" className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-[1.03]" />
               </div>
-              <p className="mt-4 text-[15px] text-[#6B6B65] font-light">The Rose Center for Earth and Space, American Museum of Natural History, New York</p>
+              <p className="mt-4 text-[15px] text-[#6B6B65] font-light">{P.about.intro_caption}</p>
             </div>
           </div>
 
@@ -59,11 +60,11 @@ export function AboutPage() {
           <div ref={ref2 as React.RefObject<HTMLDivElement>} className="mt-24 pt-16 border-t border-[#E2E0DB]">
             <div className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 reveal ${in2 ? 'visible' : ''}`}>
               <div>
-                <p className="text-[20px] font-semibold text-[#F85707] mb-4">Our Commitment to Quality</p>
-                <h2 className="font-serif text-[clamp(32px,3vw,48px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">Excellence through accountability.</h2>
+                <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.about.quality_eyebrow}</p>
+                <h2 className="font-serif text-[clamp(32px,3vw,48px)] text-[#1C1C1A] leading-tight tracking-[-0.01em]">{P.about.quality_title}</h2>
               </div>
               <p className="max-w-[460px] text-[18px] text-[#6B6B65] leading-relaxed font-light">
-                Our mission is to deliver exceptional operations advisory and management services, and professional training through ProFun Academy, that exceed clients&rsquo; expectations and drive sustainable growth, through a culture of quality, accountability and continuous improvement.
+                {P.about.quality_text}
               </p>
             </div>
             <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
@@ -76,14 +77,14 @@ export function AboutPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-[16px] text-[#6B6B65] font-light">Our complete Quality Policy is available upon request.</p>
+            <p className="mt-8 text-[16px] text-[#6B6B65] font-light">{P.about.quality_note}</p>
           </div>
         </div>
       </section>
 
       <section id="affiliations" className="bg-[#F9F8F6] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
         <div className="max-w-[1920px] mx-auto">
-          <SectionHead eyebrow="Our Affiliations" title="Part of the bodies that shape the industry." />
+          <SectionHead eyebrow={P.about.affiliations_eyebrow} title={P.about.affiliations_title} />
           <ul className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
             {AFFILIATIONS.map((p, i) => (
               <li key={p.name} className={`partner-card group relative bg-[#F2F1EF] p-4 sm:p-6 lg:p-10 flex items-center justify-center lg:min-h-[240px] overflow-hidden ${tapped === i ? 'is-on' : ''}`} style={{ ['--brand' as string]: p.color }} onClick={() => setTapped(t => (t === i ? null : i))}>
@@ -137,9 +138,9 @@ export function SectorsPage() {
   return (
     <>
       <PageHead
-        eyebrow="Our Sectors"
-        title="Four sectors. One operating discipline."
-        side="Theme parks, museums, brand centers and world expos each face different pressures. ProFun brings commercial and operational rigor to all of them."
+        eyebrow={P.sectors.head_eyebrow}
+        title={P.sectors.head_title}
+        side={P.sectors.head_text}
       />
       <div className="sticky top-[72px] lg:top-20 z-20 bg-white/95 backdrop-blur-md border-y border-[#E2E0DB]">
         <div className="max-w-[1920px] mx-auto px-3 sm:px-12 grid grid-cols-4 sm:flex gap-0 sm:gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -278,7 +279,7 @@ function ServiceBlock({ s, i, focus }: { s: typeof SERVICES[number]; i: number; 
               <span className="flex-1 flex items-center justify-between gap-6 px-6 py-5 sm:px-8 sm:py-6">
                 <span className="flex items-center gap-5">
                   <img src="./profun-academy-white.svg" alt="ProFun Academy" className="h-10 sm:h-12 w-auto" />
-                  <span className="hidden sm:block text-[16px] text-white/80 font-light">Explore programs, formats and courses</span>
+                  <span className="hidden sm:block text-[16px] text-white/80 font-light">{P.services.academy_card}</span>
                 </span>
                 <span className="inline-flex items-center gap-2 text-[15px] font-medium text-white group-hover:gap-4 transition-all whitespace-nowrap">Visit <Arrow /></span>
               </span>

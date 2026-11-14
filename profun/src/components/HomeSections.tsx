@@ -1,8 +1,9 @@
 import type React from 'react'
 import { Link } from 'react-router-dom'
 import { useInView } from '../hooks/useInView'
-import { SECTORS, CLIENTS, pf, ACADEMY_URL } from '../data'
+import { SECTORS, CLIENTS, HOME_CLIENTS, pf, ACADEMY_URL } from '../data'
 import { SectionHead, TextLink, Arrow } from './ui'
+import { COPY as P } from '../copy'
 
 /* ── Intro ─────────────────────────────────────────────────────── */
 export function Intro() {
@@ -11,25 +12,25 @@ export function Intro() {
     <section className="bg-[#F2F1EF] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
       <div ref={ref as React.RefObject<HTMLDivElement>} className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div className={`lg:col-span-6 reveal ${inView ? 'visible' : ''}`}>
-          <p className="text-[20px] font-semibold text-[#F85707] mb-4">Who We Are</p>
+          <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.home.intro_eyebrow}</p>
           <h2 className="font-serif text-balance text-[clamp(38px,4vw,60px)] text-[#000050] leading-[1.1] tracking-[-0.01em] mb-8">
-            Concepts inspire. Design excites. Success is decided on the ground.
+            {P.home.intro_title}
           </h2>
           <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-6">
-            For more than 45 years, ProFun has been the world&rsquo;s trusted partner in transforming bold ideas into operationally sound, financially sustainable attractions.
+            {P.home.intro_text1}
           </p>
           <p className="text-[20px] text-[#6B6B65] leading-relaxed font-light mb-10">
-            From theme parks to museums, brand centers to world expos, we ensure that every project is commercially viable, operationally resilient and built to last.
+            {P.home.intro_text2}
           </p>
-          <TextLink to="/about">More about ProFun</TextLink>
+          <TextLink to="/about">{P.home.intro_link}</TextLink>
         </div>
         <div className={`lg:col-span-6 reveal reveal-delay-2 ${inView ? 'visible' : ''}`}>
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             <div className="aspect-[3/4] overflow-hidden bg-[#1C1C1A]">
-              <img src="./projects/coca-cola.jpg" alt="World of Coca-Cola, Atlanta" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]" />
+              <img src={P.home.intro_image1} alt="World of Coca-Cola, Atlanta" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]" />
             </div>
             <div className="aspect-[3/4] overflow-hidden bg-[#1C1C1A] mt-10 sm:mt-16">
-              <img src="./projects/expo-2020.jpg" alt="Expo 2020, Dubai" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]" />
+              <img src={P.home.intro_image2} alt="Expo 2020, Dubai" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]" />
             </div>
           </div>
         </div>
@@ -44,7 +45,7 @@ export function SectorsGrid() {
   return (
     <section id="sectors" className="bg-[#F9F8F6] px-6 sm:px-12 py-16 sm:py-20 lg:py-24">
       <div className="max-w-[1920px] mx-auto">
-        <SectionHead eyebrow="Our Sectors" title="Every kind of attraction, one operating discipline." side="Theme parks, museums, brand centers and world expos each face different pressures. We bring the same rigor to all of them." />
+        <SectionHead eyebrow={P.home.sectors_eyebrow} title={P.home.sectors_title} side={P.home.sectors_text} />
         <div ref={ref as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
           {SECTORS.map((s, i) => (
             <Link
@@ -83,24 +84,24 @@ export function AcademyBand() {
           </span>
           <div className="relative grid grid-cols-1 lg:grid-cols-12 bg-[#111110] overflow-hidden">
             <div className="lg:col-span-6 relative min-h-[260px] sm:min-h-[340px] order-1 lg:order-2">
-              <img src="./academy-hero.jpg" alt="ProFun Academy participants in a training session" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+              <img src={P.home.academy_image} alt="ProFun Academy participants in a training session" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#111110] via-[#111110]/20 to-transparent hidden lg:block" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111110] to-transparent lg:hidden" />
             </div>
             <div className="lg:col-span-6 relative p-8 sm:p-12 lg:p-16 order-2 lg:order-1">
               <span className="inline-flex items-center gap-2 bg-white text-[#000050] text-[13px] font-medium px-3 py-1.5 mb-8">
                 <span className="w-2 h-2 rounded-full bg-[#F85707] academy-pulse" aria-hidden="true" />
-                Our training arm
+                {P.home.academy_badge}
               </span>
               <img src="./profun-academy-white.svg" alt="ProFun Academy" className="h-16 sm:h-20 w-auto mb-8" />
               <h2 className="font-serif text-balance text-[clamp(30px,3vw,46px)] text-white leading-[1.12] tracking-[-0.01em] mb-6">
-                Training the people behind the world&rsquo;s greatest experiences.
+                {P.home.academy_title}
               </h2>
               <p className="text-[18px] sm:text-[19px] text-white/75 leading-relaxed font-light mb-10 max-w-[560px]">
-                Training designed by operators, for operators. Tailored and accredited programs that build capability from frontline teams to senior leaders.
+                {P.home.academy_text}
               </p>
               <a href={ACADEMY_URL} className="inline-flex items-center justify-center gap-3 text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#D94A05] hover:gap-5">
-                Visit ProFun Academy <Arrow />
+                {P.home.academy_button} <Arrow />
               </a>
             </div>
           </div>
@@ -114,18 +115,18 @@ export function AcademyBand() {
 export function ClientsStrip() {
   const { ref, inView } = useInView()
   // A short, well-known selection; the full list lives on Our Work
-  const pick = ['Universal', 'LEGO', 'Warner Bros.', 'Paramount', 'HBO', 'Cartoon Network', 'NBA', 'Ford', 'Metro Goldwyn Mayer', 'Everland Resort', 'Exploratorium', 'Doha Quest', 'World of Coca-Cola', 'American Museum of Natural History', 'Georgia Aquarium', 'Hershey’s Chocolate World']
+  const pick = HOME_CLIENTS
   const logos = pick.map(n => CLIENTS.find(c => c[0] === n)).filter(Boolean) as typeof CLIENTS
   return (
     <section className="bg-white py-16 sm:py-20 lg:py-24 overflow-hidden border-y border-[#E2E0DB]">
       <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-[1920px] mx-auto px-6 sm:px-12 flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-14 reveal ${inView ? 'visible' : ''}`}>
         <div>
-          <p className="text-[20px] font-semibold text-[#F85707] mb-4">Clients & Partners</p>
+          <p className="text-[20px] font-semibold text-[#F85707] mb-4">{P.home.clients_eyebrow}</p>
           <h2 className="font-serif text-balance text-[clamp(32px,3.2vw,48px)] text-[#000050] leading-[1.1] tracking-[-0.01em] max-w-[760px]">
-            500+ projects. 50 countries. One trusted partner.
+            {P.home.clients_title}
           </h2>
         </div>
-        <TextLink to="/work">See all clients</TextLink>
+        <TextLink to="/work">{P.home.clients_link}</TextLink>
       </div>
       <div className="marquee relative" aria-label="Selected clients">
         <div className="marquee-track flex items-center gap-4 sm:gap-6 w-max">

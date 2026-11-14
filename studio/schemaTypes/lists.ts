@@ -61,6 +61,7 @@ export const pfClient = list('pfClient', 'ProFun client', [
   defineField({ name: 'sectors', title: 'Sectors', type: 'array', of: [{ type: 'string' }], options: { list: sectorList } }),
   defineField({ name: 'region', title: 'Region', type: 'string', options: { list: regionList, layout: 'radio' } }),
   photo('Logo', 'PNG with a transparent background works best.'), legacy,
+  defineField({ name: 'home', title: 'Show in the logo strip on Home', type: 'boolean', initialValue: false }),
 ], { title: 'name' })
 export const pfAffiliation = list('pfAffiliation', 'ProFun affiliation', logoRow, { title: 'name' })
 export const pfStat = list('pfStat', 'ProFun key number', stat, { title: 'label', subtitle: 'suffix' })
@@ -89,4 +90,50 @@ export const acCourse = list('acCourse', 'Academy course', [
   defineField({ name: 'code', title: 'Course code', type: 'string', hidden: true }),
 ], { title: 'title', subtitle: 'category' })
 
-export const listTypes = [pfTeam, pfFeatured, pfClient, pfAffiliation, pfStat, acTeam, acProject, acPartner, acStat, acCourse]
+const SERVICE_NAMES = ['Planning', 'Advisory', 'Training', 'Implementation', 'Management']
+const paragraphs = (name: string, title: string) => defineField({ name, title, type: 'text', rows: 10, description: 'Leave an empty line between paragraphs.' })
+export const pfSector = list('pfSector', 'ProFun sector', [
+  defineField({ name: 'name', title: 'Sector name', type: 'string', validation: req }),
+  defineField({ name: 'tag', title: 'Short label (on project cards)', type: 'string' }),
+  color,
+  defineField({ name: 'title', title: 'Headline', type: 'string' }),
+  defineField({ name: 'lead', title: 'One-line summary', type: 'text', rows: 2 }),
+  paragraphs('body', 'Description'),
+  photo('Cover photo'), legacy,
+  defineField({
+    name: 'projects', title: 'Projects in this sector', type: 'array',
+    of: [{
+      type: 'object', name: 'sectorProject',
+      fields: [
+        defineField({ name: 'name', title: 'Project', type: 'string' }),
+        defineField({ name: 'location', title: 'Location', type: 'string' }),
+        defineField({ name: 'image', title: 'Photo', type: 'image', options: { hotspot: true } }),
+        defineField({ name: 'legacyImage', title: 'Current photo', type: 'string', readOnly: true, hidden: ({ parent }) => !(parent as any)?.legacyImage }),
+      ],
+      preview: { select: { title: 'name', subtitle: 'location', media: 'image' } },
+    }],
+  }),
+  defineField({ name: 'code', title: 'Code', type: 'string', hidden: true }),
+], { title: 'name', subtitle: 'title' })
+export const pfService = list('pfService', 'ProFun service', [
+  defineField({ name: 'short', title: 'Service name', type: 'string', validation: req }),
+  defineField({ name: 'title', title: 'Headline', type: 'string' }),
+  color,
+  defineField({ name: 'lead', title: 'One-line summary', type: 'text', rows: 2 }),
+  defineField({ name: 'desc', title: 'Description', type: 'text', rows: 5 }),
+  defineField({ name: 'items', title: 'What’s included', type: 'array', of: [{ type: 'string' }] }),
+  defineField({ name: 'cases', title: 'Related case studies', type: 'array', of: [{ type: 'string' }], description: 'Use the exact case study name so it links to its page.' }),
+  defineField({ name: 'code', title: 'Code', type: 'string', hidden: true }),
+], { title: 'short', subtitle: 'title' })
+export const pfCaseStudy = list('pfCaseStudy', 'ProFun case study', [
+  defineField({ name: 'name', title: 'Name', type: 'string', validation: req }),
+  defineField({ name: 'services', title: 'Services provided', type: 'array', of: [{ type: 'string' }], options: { list: SERVICE_NAMES } }),
+  defineField({ name: 'location', title: 'Location', type: 'string' }),
+  defineField({ name: 'logo', title: 'Logo (in the case study grid)', type: 'image' }),
+  defineField({ name: 'legacyLogo', title: 'Current logo', type: 'string', readOnly: true, hidden: ({ document }) => !document?.legacyLogo }),
+  photo('Main photo (case study page)'), legacy,
+  paragraphs('body', 'Case study text'),
+  defineField({ name: 'slug', title: 'Page address', type: 'string', description: 'The end of the page link, e.g. "ferrari-world". Leave empty to show this case study without its own page.' }),
+], { title: 'name', subtitle: 'location' })
+
+export const listTypes = [pfSector, pfService, pfCaseStudy, pfTeam, pfFeatured, pfClient, pfAffiliation, pfStat, acTeam, acProject, acPartner, acStat, acCourse]

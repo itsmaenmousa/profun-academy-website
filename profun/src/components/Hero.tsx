@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { COPY as P } from '../copy'
 
-const LINES = [
-  'The world\u2019s trusted',
-  'partner in attraction',
-  'operations.',
-]
+const LINES = P.home.hero_title.split('\n')
 
 // Landmark ProFun projects cross-fade behind the headline (in place of the Academy video)
 const SLIDES = ['ferrari-world', 'the-edge', 'quest-hero', 'amnh-rose', 'makkah-royal', 'mahanakhon']
@@ -128,7 +125,7 @@ export default function Hero() {
               transitionDelay: '0.9s',
             }}
           >
-            From planning to management, we ensure attractions perform: commercially, operationally, globally.
+            {P.home.hero_text}
           </p>
 
           <div
@@ -144,7 +141,7 @@ export default function Hero() {
               to="/work"
               className="inline-flex items-center justify-center gap-3 w-full max-w-[300px] sm:w-auto text-[17px] font-medium text-white bg-[#F85707] px-8 py-4 transition-all duration-300 hover:bg-[#FC026F] hover:gap-5"
             >
-              Explore our work
+              {P.home.hero_button1}
               <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
                 <path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -153,7 +150,7 @@ export default function Hero() {
               to="/contact"
               className="inline-flex items-center justify-center gap-3 w-full max-w-[300px] sm:w-auto text-[17px] font-medium text-white border border-white/40 px-8 py-4 transition-all duration-300 hover:border-white/70 hover:bg-white/8"
             >
-              Start a conversation
+              {P.home.hero_button2}
             </Link>
           </div>
         </div>

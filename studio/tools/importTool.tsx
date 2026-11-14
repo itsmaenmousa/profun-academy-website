@@ -3,7 +3,10 @@ import { useClient, type Tool } from 'sanity'
 import { Box, Button, Card, Stack, Text, Heading } from '@sanity/ui'
 import { LexoRank } from 'lexorank'
 import { NEWS_ALL, isoDate, hasDay, isLogoImage } from '../../shared/news'
-import { FEATURED, CLIENTS, AFFILIATIONS, STATS as PF_STATS, pf } from '../../profun/src/data'
+import { FEATURED, CLIENTS, HOME_CLIENTS, AFFILIATIONS, STATS as PF_STATS, SECTORS, SERVICES, CASE_STUDIES, pf } from '../../profun/src/data'
+import { CASE_DETAIL, LOCAL_IMG } from '../../profun/src/content'
+import { COPY as PF_COPY } from '../../profun/src/copy'
+import { isImageKey, docType } from '../../shared/copy'
 import { TEAM_LIST } from '../../profun/src/team'
 import { TEAM as AC_TEAM, PROJECTS, PARTNERS, STATS as AC_STATS, COURSES, SELF_PACED } from '../../academy/src/data'
 
@@ -13,7 +16,11 @@ import { TEAM as AC_TEAM, PROJECTS, PARTNERS, STATS as AC_STATS, COURSES, SELF_P
 */
 const slug = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60)
 
-type Doc = Record<string, unknown> & { _id: string; _type: string }
+type Doc = Record<string, unknown> & { _id: string; _type: string; _patch?: Record<string, unknown> }
+
+const key = (i: number) => `k${i}`
+const pages = (site: string, copy: Record<string, Record<string, string>>): Doc[] =>
+  Object.entries(copy).map(([page, f]) => ({ _id: docType(site, page), _type: docType(site, page), ...Object.fromEntries(Object.entries(f).filter(([k]) => !isImageKey(k))) }))
 
 /* Gives each list item a position, in the order it shows on the site today */
 const ranked = (docs: Doc[]) => {
@@ -33,9 +40,18 @@ const SETS: { title: string; docs: () => Doc[] }[] = [
       ...(n.cta ? { cta: { _type: 'object', label: n.cta.label, to: n.cta.to } } : {}),
     })),
   },
+  { title: 'ProFun: Pages', docs: () => pages('pf', PF_COPY) },
+  { title: 'ProFun: Sectors', docs: () => ranked(SECTORS.map(x => ({ _id: `pfSector-${x.id}`, _type: 'pfSector', code: x.id, name: x.name, tag: x.tag, color: x.color, title: x.title, lead: x.lead, body: x.body.join('\n\n'), legacyImage: x.cover,
+      projects: x.projects.map(([name, location, img], i) => ({ _key: key(i), _type: 'sectorProject', name, location, legacyImage: img })) }))) },
+  { title: 'ProFun: Services', docs: () => ranked(SERVICES.map(x => ({ _id: `pfService-${x.id}`, _type: 'pfService', code: x.id, short: x.short, title: x.title, color: x.color, lead: x.lead, desc: x.desc, ...(x.items ? { items: x.items } : {}), cases: x.cases }))) },
+  { title: 'ProFun: Case studies', docs: () => ranked(CASE_STUDIES.map(([name, services, logo]) => {
+      const d = CASE_DETAIL[name]
+      const photo = d ? (LOCAL_IMG[d.slug] ? `./projects/${LOCAL_IMG[d.slug]}.jpg` : pf(d.image)) : undefined
+      return { _id: `pfCaseStudy-${slug(name)}`, _type: 'pfCaseStudy', name, services, legacyLogo: pf(logo), ...(d ? { slug: d.slug, location: d.location, legacyImage: photo, body: d.body.join('\n\n') } : {}) }
+    })) },
   { title: 'ProFun: Team', docs: () => ranked(TEAM_LIST.map(t => ({ _id: `pfTeam-${slug(t.name)}`, _type: 'pfTeam', name: t.name, role: t.role, bio: t.bio, legacyImage: t.photo }))) },
   { title: 'ProFun: Featured projects', docs: () => ranked(FEATURED.map(p => ({ _id: `pfFeatured-${slug(p.title)}`, _type: 'pfFeatured', title: p.title, location: p.location, sector: p.sector, about: p.about, legacyImage: p.image, ...(p.link ? { link: p.link } : {}), ...(p.linkLabel ? { linkLabel: p.linkLabel } : {}) }))) },
-  { title: 'ProFun: Clients', docs: () => ranked(CLIENTS.map(([name, sectors, region, logo]) => ({ _id: `pfClient-${slug(name)}`, _type: 'pfClient', name, sectors, region, legacyImage: pf(logo) }))) },
+  { title: 'ProFun: Clients', docs: () => ranked(CLIENTS.map(([name, sectors, region, logo]) => ({ _id: `pfClient-${slug(name)}`, _type: 'pfClient', name, sectors, region, legacyImage: pf(logo), home: HOME_CLIENTS.includes(name), _patch: { home: HOME_CLIENTS.includes(name) } }))) },
   { title: 'ProFun: Affiliations', docs: () => ranked(AFFILIATIONS.map(a => ({ _id: `pfAffiliation-${slug(a.name)}`, _type: 'pfAffiliation', name: a.name, color: a.color, big: !!(a as { big?: boolean }).big, legacyImage: a.logo }))) },
   { title: 'ProFun: Key numbers', docs: () => ranked(PF_STATS.map((s, i) => ({ _id: `pfStat-${i + 1}`, _type: 'pfStat', numeric: s.numeric, suffix: s.suffix, label: s.label, color: s.color }))) },
   { title: 'Academy: Team', docs: () => ranked(AC_TEAM.map(t => ({ _id: `acTeam-${slug(t.name)}`, _type: 'acTeam', name: t.name, role: t.role, bio: t.bio, legacyImage: t.photo }))) },
@@ -56,7 +72,10 @@ function ImportPage() {
     try {
       for (const set of SETS) {
         const tx = client.transaction()
-        set.docs().forEach(d => tx.createIfNotExists(d))
+        set.docs().forEach(({ _patch, ...d }) => {
+          tx.createIfNotExists(d)
+          if (_patch) tx.patch(d._id, p => p.setIfMissing(_patch))
+        })
         await tx.commit()
       }
       setState('done')
