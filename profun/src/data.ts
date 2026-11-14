@@ -314,6 +314,10 @@ export const CLIENTS: [string, SectorId[], RegionId, string][] = [
   ['Universal', ['commercial'], 'na', '2023/10/Universal-e1555098134622.jpg'],
 ]
 
+/* Rotating photos behind the Home headline (desktop + lighter phone version). Editable in the dashboard. */
+export const HERO_SLIDES: { desktop: string; mobile: string; pos?: string }[] = ['ferrari-world', 'the-edge', 'quest-hero', 'amnh-rose', 'makkah-royal', 'mahanakhon']
+  .map(n => ({ desktop: `./projects/${n}-hero.jpg`, mobile: `./projects/${n}-hero-720.jpg` }))
+
 /* Clients shown in the moving logo strip on Home */
 export const HOME_CLIENTS: string[] = ['Universal', 'LEGO', 'Warner Bros.', 'Paramount', 'HBO', 'Cartoon Network', 'NBA', 'Ford', 'Metro Goldwyn Mayer', 'Everland Resort', 'Exploratorium', 'Doha Quest', 'World of Coca-Cola', 'American Museum of Natural History', 'Georgia Aquarium', 'Hershey’s Chocolate World']
 

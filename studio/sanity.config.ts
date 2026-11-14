@@ -5,7 +5,7 @@ import { schemaTypes } from './schemaTypes'
 import { importTool } from './tools/importTool'
 import { pfPages, acPages } from './schemaTypes/pages'
 
-const SINGLETONS = [...pfPages, ...acPages].map(t => t.name)
+const SINGLETONS = [...pfPages, ...acPages].map(t => t.name).concat('site_picker')
 
 export default defineConfig({
   name: 'default',
@@ -20,6 +20,8 @@ export default defineConfig({
         return S.list()
           .title('Content')
           .items([
+            S.listItem().title('Landing page').id('site_picker').child(S.document().schemaType('site_picker').documentId('site_picker').title('Landing page')),
+            S.divider(),
             S.listItem().title('ProFun').child(
               S.list().title('ProFun').items([
                 S.listItem().title('Pages').child(

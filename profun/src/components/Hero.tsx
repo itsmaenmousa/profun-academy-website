@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { COPY as P } from '../copy'
+import { HERO_SLIDES } from '../data'
 
 const LINES = P.home.hero_title.split('\n')
 
 // Landmark ProFun projects cross-fade behind the headline (in place of the Academy video)
-const SLIDES = ['ferrari-world', 'the-edge', 'quest-hero', 'amnh-rose', 'makkah-royal', 'mahanakhon']
+const SLIDES = HERO_SLIDES
 const SLIDE_MS = 6500
 
 export default function Hero() {
@@ -35,7 +36,7 @@ export default function Hero() {
   }, [])
   // Lighter video and poster for phones and small tablets
   const [small] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 900px)').matches)
-  const srcOf = (k: number) => `./projects/${SLIDES[k]}-hero${small ? '-720' : ''}.jpg`
+  const srcOf = (k: number) => (small ? SLIDES[k].mobile : SLIDES[k].desktop)
   const [slide, setSlide] = useState(0)
   const [loaded, setLoaded] = useState<Record<number, boolean>>({ 0: true })
   useEffect(() => {
@@ -75,6 +76,7 @@ export default function Hero() {
             key={k}
             src={srcOf(k)}
             alt=""
+            style={SLIDES[k].pos ? { objectPosition: SLIDES[k].pos } : undefined}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1600ms] ${ready && k === slide ? 'opacity-[0.8] hero-zoom' : 'opacity-0'}`}
           />
         ))}

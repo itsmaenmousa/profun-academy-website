@@ -1,6 +1,6 @@
 import { loadCms, fill, rowImage, inkFor, nestedImage, type Cms } from '../../shared/cms'
 import { applyCopy, pageTypes } from '../../shared/copy'
-import { FEATURED, CLIENTS, HOME_CLIENTS, AFFILIATIONS, STATS, SECTORS, SERVICES, CASE_STUDIES, type SectorId, type RegionId } from './data'
+import { HERO_SLIDES, FEATURED, CLIENTS, HOME_CLIENTS, AFFILIATIONS, STATS, SECTORS, SERVICES, CASE_STUDIES, type SectorId, type RegionId } from './data'
 import { CASE_DETAIL } from './content'
 import { TEAM_LIST } from './team'
 import { COPY } from './copy'
@@ -19,6 +19,11 @@ const paras = (t?: string) => (t ? t.split(/\n\s*\n/).map(p => p.trim()).filter(
 export function applyCms(c: Cms | null) {
   if (!c) return
   applyCopy('pf', COPY, c.pages)
+  const slides = c.pages?.find(d => d._type === 'pf_home')?.hero_slides as any[] | undefined
+  if (slides?.length) {
+    const ok = slides.map(i => ({ desktop: nestedImage(i, '', 2400), mobile: nestedImage(i, '', 1000), hs: i?.hotspot })).filter(x => x.desktop)
+    if (ok.length) HERO_SLIDES.splice(0, HERO_SLIDES.length, ...ok.map(x => ({ desktop: x.desktop, mobile: x.mobile, ...(x.hs ? { pos: `${Math.round(x.hs.x * 100)}% ${Math.round(x.hs.y * 100)}%` } : {}) })))
+  }
   fill(TEAM_LIST, c.pfTeam, r => ({ name: r.name, role: r.role ?? '', bio: r.bio ?? '', photo: rowImage(r, 800) }))
   fill(FEATURED, c.pfFeatured, r => ({
     title: r.title, location: r.location ?? '', sector: r.sector as SectorId, image: rowImage(r, 1600), about: r.about ?? '',

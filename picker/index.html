@@ -88,7 +88,7 @@
       <span class="bg" data-bg="profun"></span>
       <span class="content">
         <img class="logo" src="./profun-logo-white.svg" alt="ProFun" />
-        <p class="line">The world&rsquo;s trusted partner in attraction operations, from planning to management.</p>
+        <p class="line" data-line="profun">The world&rsquo;s trusted partner in attraction operations, from planning to management.</p>
         <span class="go">Enter ProFun <span class="dot"><svg width="16" height="12" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
       </span>
     </a>
@@ -96,7 +96,7 @@
       <span class="bg" data-bg="academy"></span>
       <span class="content">
         <img class="logo" src="./profun-academy-white.svg" alt="ProFun Academy" />
-        <p class="line">Training the people behind the world&rsquo;s greatest experiences.</p>
+        <p class="line" data-line="academy">Training the people behind the world&rsquo;s greatest experiences.</p>
         <span class="go">Enter ProFun Academy <span class="dot"><svg width="16" height="12" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M8.5 1L13 5M13 5L8.5 9M13 5H1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
       </span>
     </a>
@@ -105,8 +105,23 @@
 <script>
   // Lighter images on phones
   var small = window.matchMedia('(max-width: 900px)').matches;
-  document.querySelector('[data-bg="profun"]').style.backgroundImage = 'url(./profun-bg' + (small ? '-720' : '') + '.jpg)';
-  document.querySelector('[data-bg="academy"]').style.backgroundImage = 'url(./academy-bg' + (small ? '-720' : '') + '.jpg)';
+  var bg = { profun: './profun-bg' + (small ? '-720' : '') + '.jpg', academy: './academy-bg' + (small ? '-720' : '') + '.jpg' };
+  var shown = false;
+  function show(d) {
+    if (shown) return; shown = true;
+    ['profun', 'academy'].forEach(function (k) {
+      var img = d && d[k + '_image'] && d[k + '_image'].asset && d[k + '_image'].asset._ref;
+      var m = img && /^image-([a-f0-9]+)-(\d+x\d+)-(\w+)$/.exec(img);
+      var url = m ? 'https://cdn.sanity.io/images/hxe3wh04/production/' + m[1] + '-' + m[2] + '.' + m[3] + '?w=' + (small ? 1000 : 2400) + '&auto=format' : bg[k];
+      document.querySelector('[data-bg="' + k + '"]').style.backgroundImage = 'url(' + url + ')';
+      var t = d && d[k + '_text'];
+      if (t && t.trim()) document.querySelector('[data-line="' + k + '"]').textContent = t;
+    });
+  }
+  // Photos and lines can be changed in the dashboard (/studio); the built-in ones show if it is slow or down
+  setTimeout(function () { show(null) }, 900);
+  fetch('https://hxe3wh04.apicdn.sanity.io/v2025-01-01/data/query/production?query=' + encodeURIComponent('*[_id == "site_picker"][0]'))
+    .then(function (r) { return r.json() }).then(function (j) { show(j.result) }).catch(function () { show(null) });
   document.getElementById('y').textContent = new Date().getFullYear();
 </script>
 </body>

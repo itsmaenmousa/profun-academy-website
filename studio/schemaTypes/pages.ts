@@ -49,4 +49,24 @@ function pageDoc(site: string, page: string, defaults: Record<string, string>, t
 const build = (site: string, copy: Copy) => Object.entries(copy).map(([page, defaults]) => pageDoc(site, page, defaults, PAGE_TITLES[page] ?? human(page)))
 export const pfPages = build('pf', PF_COPY)
 export const acPages = build('ac', AC_COPY).map(t => (t.name === 'ac_team' ? { ...t, title: 'Team page' } : t))
-export const pageTypes = [...pfPages, ...acPages]
+// Home: the rotating hero photos (a list, so it sits outside the text defaults)
+const pfHome = pfPages.find(t => t.name === 'pf_home') as any
+pfHome.fields.unshift(defineField({
+  name: 'hero_slides', title: 'Rotating hero photos', type: 'array', fieldset: 'hero',
+  of: [{ type: 'image', options: { hotspot: true } }],
+  description: 'Wide landscape photos, at least 2400px across. Drag to reorder. Leave empty to keep the current set. Set each focus point with the crop icon.',
+}))
+
+// The landing page where visitors choose ProFun or ProFun Academy
+export const landing = defineType({
+  name: 'site_picker', title: 'Landing page (choose ProFun or Academy)', type: 'document',
+  fields: [
+    defineField({ name: 'profun_image', title: 'ProFun side: background photo', type: 'image', options: { hotspot: true }, description: 'Leave empty to keep the current photo.' }),
+    defineField({ name: 'profun_text', title: 'ProFun side: line', type: 'string', description: 'Leave empty to keep the current text.' }),
+    defineField({ name: 'academy_image', title: 'Academy side: background photo', type: 'image', options: { hotspot: true }, description: 'Leave empty to keep the current photo.' }),
+    defineField({ name: 'academy_text', title: 'Academy side: line', type: 'string', description: 'Leave empty to keep the current text.' }),
+  ],
+  preview: { prepare: () => ({ title: 'Landing page' }) },
+})
+
+export const pageTypes = [...pfPages, ...acPages, landing]
