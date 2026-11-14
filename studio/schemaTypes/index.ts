@@ -1,2 +1,3 @@
 import { news } from './news'
-export const schemaTypes = [news]
+import { listTypes } from './lists'
+export const schemaTypes = [news, ...listTypes]

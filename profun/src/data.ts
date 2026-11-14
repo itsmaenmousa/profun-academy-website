@@ -3,7 +3,7 @@
   Images are served from profun.com's media library (PF) until final files are supplied.
 */
 export const PF = 'https://profun.com/wp-content/uploads/'
-export const pf = (p: string) => PF + p
+export const pf = (p: string) => (/^(https?:|\.\/|\.\.\/)/.test(p) ? p : PF + p)
 
 /* ── Sectors (the four approved tags) ─────────────────────────── */
 export type SectorId = 'commercial' | 'science' | 'brand' | 'expos'
@@ -363,6 +363,14 @@ export const AFFILIATIONS = [
   { name: 'American Alliance of Museums', logo: './partner-aam-v2.png', color: '#000050' },
   { name: 'AIMS International', logo: pf('2024/05/3.png'), color: '#15D2A4', big: true },
   { name: 'MENALAC', logo: pf('2024/05/1.png'), color: '#FC026F', big: true },
+]
+
+/* ── Key numbers ─────────────────────────────────────────────── */
+export const STATS: { numeric: number; suffix: string; label: string; color: string; ink: string }[] = [
+  { numeric: 45, suffix: '+', label: 'Years in the industry, since 1980', color: '#3985FD', ink: '#2F6FE0' },
+  { numeric: 500, suffix: '+', label: 'Clients & projects on every continent', color: '#15D2A4', ink: '#0E9F7C' },
+  { numeric: 50, suffix: '', label: 'Countries, a record unmatched in the industry', color: '#FFCA03', ink: '#C99A00' },
+  { numeric: 5, suffix: '', label: 'Services, from planning to daily management', color: '#FC026F', ink: '#E0025F' },
 ]
 
 export const ACADEMY_URL = '../academy/index.html#/'

@@ -1,42 +1,66 @@
 import { useState } from 'react'
 import { useClient, type Tool } from 'sanity'
 import { Box, Button, Card, Stack, Text, Heading } from '@sanity/ui'
+import { LexoRank } from 'lexorank'
 import { NEWS_ALL, isoDate, hasDay, isLogoImage } from '../../shared/news'
+import { FEATURED, CLIENTS, AFFILIATIONS, STATS as PF_STATS, pf } from '../../profun/src/data'
+import { TEAM_LIST } from '../../profun/src/team'
+import { TEAM as AC_TEAM, PROJECTS, PARTNERS, STATS as AC_STATS, COURSES, SELF_PACED } from '../../academy/src/data'
 
 /*
-  One-click import of the stories that were built into the website.
-  Safe to click again: stories that already exist in the dashboard are left untouched.
+  One-click import of the content that is built into the website today.
+  Safe to click again: anything that already exists in the dashboard is left untouched.
 */
+const slug = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60)
+
+type Doc = Record<string, unknown> & { _id: string; _type: string }
+
+/* Gives each list item a position, in the order it shows on the site today */
+const ranked = (docs: Doc[]) => {
+  let r = LexoRank.min()
+  return docs.map(d => { r = r.genNext().genNext(); return { ...d, orderRank: r.toString() } })
+}
+
+const SETS: { title: string; docs: () => Doc[] }[] = [
+  {
+    title: 'News (both sites)',
+    docs: () => NEWS_ALL.map(n => ({
+      _id: `news-${n.id}`, _type: 'news', title: n.title, date: isoDate(n.date),
+      ...(hasDay(n.date) ? {} : { dateLabel: n.date }), tag: n.tag, ...(n.label ? { label: n.label } : {}),
+      logo: isLogoImage(n.image), legacyImage: n.image, ...(n.pos ? { pos: n.pos } : {}), summary: n.summary,
+      ...(n.body ? { body: n.body.join('\n\n') } : {}),
+      ...(n.link ? { link: { _type: 'object', label: n.link.label, href: n.link.href } } : {}),
+      ...(n.cta ? { cta: { _type: 'object', label: n.cta.label, to: n.cta.to } } : {}),
+    })),
+  },
+  { title: 'ProFun: Team', docs: () => ranked(TEAM_LIST.map(t => ({ _id: `pfTeam-${slug(t.name)}`, _type: 'pfTeam', name: t.name, role: t.role, bio: t.bio, legacyImage: t.photo }))) },
+  { title: 'ProFun: Featured projects', docs: () => ranked(FEATURED.map(p => ({ _id: `pfFeatured-${slug(p.title)}`, _type: 'pfFeatured', title: p.title, location: p.location, sector: p.sector, about: p.about, legacyImage: p.image, ...(p.link ? { link: p.link } : {}), ...(p.linkLabel ? { linkLabel: p.linkLabel } : {}) }))) },
+  { title: 'ProFun: Clients', docs: () => ranked(CLIENTS.map(([name, sectors, region, logo]) => ({ _id: `pfClient-${slug(name)}`, _type: 'pfClient', name, sectors, region, legacyImage: pf(logo) }))) },
+  { title: 'ProFun: Affiliations', docs: () => ranked(AFFILIATIONS.map(a => ({ _id: `pfAffiliation-${slug(a.name)}`, _type: 'pfAffiliation', name: a.name, color: a.color, big: !!(a as { big?: boolean }).big, legacyImage: a.logo }))) },
+  { title: 'ProFun: Key numbers', docs: () => ranked(PF_STATS.map((s, i) => ({ _id: `pfStat-${i + 1}`, _type: 'pfStat', numeric: s.numeric, suffix: s.suffix, label: s.label, color: s.color }))) },
+  { title: 'Academy: Team', docs: () => ranked(AC_TEAM.map(t => ({ _id: `acTeam-${slug(t.name)}`, _type: 'acTeam', name: t.name, role: t.role, bio: t.bio, legacyImage: t.photo }))) },
+  { title: 'Academy: Projects', docs: () => ranked(PROJECTS.map(p => ({ _id: `acProject-${slug(p.title)}`, _type: 'acProject', title: p.title, category: p.category, location: p.location, about: p.about, legacyImage: p.image }))) },
+  { title: 'Academy: Courses', docs: () => ranked(COURSES.map(c => ({ _id: `acCourse-${slug(c.id)}`, _type: 'acCourse', code: c.id, title: c.title, category: c.category, format: c.format, duration: c.duration, price: c.price, ...(c.accredited ? { accredited: c.accredited } : {}), desc: c.desc, selfPaced: c.dates === SELF_PACED, ...(c.dates === SELF_PACED ? {} : { dates: c.dates }) }))) },
+  { title: 'Academy: Partners', docs: () => ranked(PARTNERS.map(p => ({ _id: `acPartner-${slug(p.name)}`, _type: 'acPartner', name: p.name, color: p.color, big: !!p.big, legacyImage: p.logo }))) },
+  { title: 'Academy: Key numbers', docs: () => ranked(AC_STATS.map((s, i) => ({ _id: `acStat-${i + 1}`, _type: 'acStat', numeric: s.numeric, suffix: s.suffix, label: s.label, color: s.color }))) },
+]
+
 function ImportPage() {
   const client = useClient({ apiVersion: '2025-01-01' })
   const [state, setState] = useState<'idle' | 'busy' | 'done' | 'error'>('idle')
   const [msg, setMsg] = useState('')
+  const total = SETS.reduce((n, s) => n + s.docs().length, 0)
 
   const run = async () => {
     setState('busy')
     try {
-      const tx = client.transaction()
-      NEWS_ALL.forEach(n => {
-        tx.createIfNotExists({
-          _id: `news-${n.id}`,
-          _type: 'news',
-          title: n.title,
-          date: isoDate(n.date),
-          ...(hasDay(n.date) ? {} : { dateLabel: n.date }),
-          tag: n.tag,
-          ...(n.label ? { label: n.label } : {}),
-          logo: isLogoImage(n.image),
-          legacyImage: n.image,
-          ...(n.pos ? { pos: n.pos } : {}),
-          summary: n.summary,
-          ...(n.body ? { body: n.body.join('\n\n') } : {}),
-          ...(n.link ? { link: { _type: 'object', label: n.link.label, href: n.link.href } } : {}),
-          ...(n.cta ? { cta: { _type: 'object', label: n.cta.label, to: n.cta.to } } : {}),
-        })
-      })
-      await tx.commit()
+      for (const set of SETS) {
+        const tx = client.transaction()
+        set.docs().forEach(d => tx.createIfNotExists(d))
+        await tx.commit()
+      }
       setState('done')
-      setMsg(`${NEWS_ALL.length} stories checked. Any that were missing have been added. Open "Content" to see them.`)
+      setMsg(`Done. ${total} items checked; anything missing has been added. Open "Structure" to see them.`)
     } catch (e) {
       setState('error')
       setMsg(e instanceof Error ? e.message : String(e))
@@ -44,15 +68,20 @@ function ImportPage() {
   }
 
   return (
-    <Box padding={5} style={{ maxWidth: 640 }}>
+    <Box padding={5} style={{ maxWidth: 680 }}>
       <Stack gap={5}>
         <Heading size={3}>Import website content</Heading>
         <Text muted>
-          Copies the {NEWS_ALL.length} news stories that are on the website today into this dashboard. You only need to do this once.
-          Stories you have already edited here are never overwritten.
+          Copies the content that is on the website today into this dashboard. Items you have already
+          added or edited here are never overwritten, so it is safe to click again after an update.
         </Text>
+        <Card padding={4} radius={2} tone="transparent" border>
+          <Stack gap={3}>
+            {SETS.map(s => <Text key={s.title} size={1}>{s.title}: {s.docs().length}</Text>)}
+          </Stack>
+        </Card>
         <Box>
-          <Button text={state === 'busy' ? 'Importing…' : 'Import news stories'} tone="primary" disabled={state === 'busy'} onClick={run} />
+          <Button text={state === 'busy' ? 'Importing…' : 'Import everything'} tone="primary" disabled={state === 'busy'} onClick={run} />
         </Box>
         {msg && (
           <Card padding={4} radius={2} tone={state === 'error' ? 'critical' : 'positive'}>
@@ -64,8 +93,4 @@ function ImportPage() {
   )
 }
 
-export const importTool: Tool = {
-  name: 'import',
-  title: 'Import',
-  component: ImportPage,
-}
+export const importTool: Tool = { name: 'import', title: 'Import', component: ImportPage }

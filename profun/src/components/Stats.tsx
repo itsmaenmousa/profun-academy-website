@@ -1,13 +1,8 @@
 import { useState } from 'react'
 import { useInView } from '../hooks/useInView'
 import { useCounter } from '../hooks/useCounter'
+import { STATS as stats } from '../data'
 
-const stats = [
-  { numeric: 45, suffix: '+', label: 'Years in the industry, since 1980', color: '#3985FD', ink: '#2F6FE0' },
-  { numeric: 500, suffix: '+', label: 'Clients & projects on every continent', color: '#15D2A4', ink: '#0E9F7C' },
-  { numeric: 50, suffix: '', label: 'Countries, a record unmatched in the industry', color: '#FFCA03', ink: '#C99A00' },
-  { numeric: 5, suffix: '', label: 'Services, from planning to daily management', color: '#FC026F', ink: '#E0025F' },
-]
 
 function StatItem({ s, active, i }: { s: typeof stats[0]; active: boolean; i: number }) {
   const [replay, setReplay] = useState(0)

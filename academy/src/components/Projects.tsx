@@ -1,72 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
+import { PROJECTS as projects } from '../data'
 
-const projects = [
-  {
-    title: 'Grand Hyatt Dubai Waterpark',
-    about: "A resort waterpark in the heart of Dubai, with slides, pools and water play for the whole family.",
-    category: 'Commercial Attraction',
-    location: 'Dubai, UAE',
-    image: './grand-hyatt-waterpark-card.jpg',
-  },
-  {
-    title: 'Qiddiya City',
-    about: "Saudi Arabia's future capital of entertainment, sports and culture, rising just outside Riyadh.",
-    category: 'Commercial Attraction',
-    location: 'Riyadh, Saudi Arabia',
-    image: './qiddiya-entertainment-city-card.jpg',
-  },
-  {
-    title: 'Ferrari World Abu Dhabi',
-    about: "The world's first Ferrari-branded theme park, home to Formula Rossa, one of the fastest coasters.",
-    category: 'Commercial Attraction',
-    location: 'Abu Dhabi, UAE',
-    image: './ferrari-world-abu-dhabi-card.jpg',
-  },
-  {
-    title: 'Doha Quest',
-    about: "An indoor theme park at Doha Oasis, home to record-breaking rides and immersive themed zones.",
-    category: 'Commercial Attraction',
-    location: 'Doha, Qatar',
-    image: './doha-quest-card.jpg',
-  },
-  {
-    title: 'Merdeka 118',
-    about: "Malaysia's tallest tower, home to The View at 118, one of the highest observation decks on Earth.",
-    category: 'Commercial Attraction',
-    location: 'Kuala Lumpur, Malaysia',
-    image: './merdeka-118-card.jpg',
-  },
-  {
-    title: 'Expo 2020',
-    about: "The first World Expo in the Middle East, welcoming millions of visitors to Dubai over six months.",
-    category: 'Expositions & Mega-Events',
-    location: 'Dubai, UAE',
-    image: './expo-2020-dubai-card.jpg',
-  },
-  {
-    title: 'Makkah Clock Royal Tower',
-    about: "A landmark hotel tower beside the Grand Mosque in Makkah, crowned by its iconic clock and museum.",
-    category: 'Science & Culture',
-    location: 'Makkah, Kingdom of Saudi Arabia',
-    image: './makkah-clock-royal-tower-card.jpg',
-  },
-  {
-    title: 'Natural History Museum',
-    about: "The largest natural and historical museum in the western US, with over 35 million specimens.",
-    category: 'Science & Culture',
-    location: 'Los Angeles, USA',
-    image: './natural-history-museum-los-angeles-card.jpg',
-  },
-  {
-    title: 'Dubai Parks & Resorts',
-    about: "The region's largest integrated leisure destination, with theme parks, a waterpark and a resort.",
-    category: 'Commercial Attraction',
-    location: 'Dubai, UAE',
-    image: './dubai-parks-resorts-card.jpg',
-  },
-]
 
 const revealDelays = [
   'delay-100',

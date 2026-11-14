@@ -8,7 +8,9 @@
     "build": "sanity build ../dist/studio -y"
   },
   "dependencies": {
+    "@sanity/orderable-document-list": "^2.0.29",
     "@sanity/vision": "^6",
+    "lexorank": "^1.0.5",
     "react": "^19",
     "react-dom": "^19",
     "sanity": "^6",

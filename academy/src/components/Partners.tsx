@@ -1,16 +1,9 @@
 import { useState } from 'react'
 import type React from 'react'
 import { useInView } from '../hooks/useInView'
+import { PARTNERS as partners } from '../data'
 import { useDeepLink, scrollToId } from '../lib/deeplink'
 
-const partners = [
-  { name: 'Ellis & Associates', logo: './partner-ellis-sst.png', color: '#00AFDC' },
-  { name: 'IAAPA', logo: './partner-iaapa-v2.png', color: '#3985FD' },
-  { name: 'IBCCES', logo: './partner-ibcces-v2.png', color: '#15D2A4' },
-  { name: 'American Alliance of Museums', logo: './partner-aam-v2.png', color: '#000050' },
-  { name: 'World Waterpark Association', logo: './partner-wwa-hd.png', color: '#F85707', big: true },
-  { name: 'Themed Entertainment Association', logo: './partner-tea-v2.png', color: '#8238EB', big: true },
-]
 
 export default function Partners() {
   const { ref, inView } = useInView()
